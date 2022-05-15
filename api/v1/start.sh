@@ -3,11 +3,16 @@
 # Version 2.5.2.0 made by CrazyCloudCraft 05/15/2022 UTC/GMT +1 https://crazycloudcraft.de
 # Do not configure this scipts!
 . ./config/mcsys.conf
-. ./config/values.conf
-# Install depencies
-touch $MCNAME.jar
-mkdir -p $LPATH/mcsys/updater
+# Path generating
+LPATH=/$OPTBASE/$SERVERBASE
+# drive depencies
+if [ -f $LPATH/$MCNAME.jar ]; then
+ echo "Jar exists" | /usr/bin/logger -t $MCNAME
+else
+ touch $LPATH/$MCNAME.jar
+fi
 # Updateing everything...
+mkdir -p $LPATH/mcsys/updater
 cd $LPATH/mcsys/updater || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/updater.sh -O updater.sh
 /bin/bash $LPATH/mcsys/updater/updater.sh
