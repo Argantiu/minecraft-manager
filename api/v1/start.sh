@@ -11,11 +11,6 @@ if [ -f $LPATH/$MCNAME.jar ]; then
 else
  touch $LPATH/$MCNAME.jar
 fi
-# Updateing everything...
-mkdir -p $LPATH/mcsys/updater
-cd $LPATH/mcsys/updater || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/updater.sh -O updater.sh
-/bin/bash $LPATH/mcsys/updater/updater.sh
 
 # Accept eula.txt
 sed -i 's/false/true/g' $LPATH/eula.txt >/dev/null 2>&1
