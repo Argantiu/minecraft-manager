@@ -29,6 +29,8 @@ if [ ${REPLY} = "1" ]; then
  mkdir -p ${REPLY}/unused
  cd ${REPLY}/mcsys/config || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/en/mcsys.conf -O mcsys.conf
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
+ sed -i "s/DSERVERFOLDER=/DSERVERFOLDER=${REPLY}/g" ${REPLY}/mcsys/config/values.conf $>/dev/null 2>&1
  cd ${REPLY}/mcsys/ || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
