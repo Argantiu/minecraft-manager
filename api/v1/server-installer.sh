@@ -38,7 +38,9 @@ if [ ${REPLY} = "1" ]; then
  chmod +x *.sh
  cd ${REPLY} || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/config -O config
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/update -O update
  chmod +x config
+ chmod +x update
  echo -e "$PREFIX Setup finished!"
  echo -e "$PREFIX Open Configuration... "
  sleep 3
@@ -71,7 +73,9 @@ if [ ${REPLY} = "2" ]; then
  chmod +x *.sh
  cd ${REPLY} || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/config -O config
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/update -O update
  chmod +x config
+ chmod +x update
  echo -e "$PREFIX Fertig mit dem Aufsetzten!"
  echo -e "$PREFIX Hier kommt die Konfiguration..."
  sleep 3
