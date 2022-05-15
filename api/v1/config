@@ -1,0 +1,10 @@
+#!/bin/bash
+# Get configuration
+PREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
+{
+echo -e "$PREFIX Were is your Minecraft Server dictionary?
+echo -e "$PREFIX e.g. /opt/Paper or /home/myserver/server"
+echo -n -e "$PREFIX Don't write this: /opt/Paper\033[0;31m/ <- You don't need / at the end"
+read;
+joe ${REPLY}/mcsys/config/mcsys.conf
+}
