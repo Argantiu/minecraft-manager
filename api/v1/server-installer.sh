@@ -35,6 +35,10 @@ if [ ${REPLY} = "1" ]; then
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/stop.sh -O stop.sh
+ chmod +x *.sh
+ cd ${REPLY} || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/config -O config
+ chmod +x config
  echo -e "$PREFIX Setup finished!"
  echo -e "$PREFIX Open Configuration... "
  sleep 3
@@ -58,10 +62,16 @@ if [ ${REPLY} = "2" ]; then
  mkdir -p ${REPLY}/unused
  cd ${REPLY}/mcsys/config || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/de/mcsys.conf -O mcsys.conf
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
+ sed -i "s/DSERVERFOLDER=/DSERVERFOLDER=${REPLY}/g" ${REPLY}/mcsys/config/values.conf $>/dev/null 2>&1
  cd ${REPLY}/mcsys/ || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/stop.sh -O stop.sh
+ chmod +x *.sh
+ cd ${REPLY} || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/config -O config
+ chmod +x config
  echo -e "$PREFIX Fertig mit dem Aufsetzten!"
  echo -e "$PREFIX Hier kommt die Konfiguration..."
  sleep 3
