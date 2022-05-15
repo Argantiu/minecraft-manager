@@ -22,23 +22,28 @@ if [ ${REPLY} = "1" ]; then
  read;
  echo -e "$PREFIX Okey, i will install now everything. Please wait..."
  sleep 5
- mkdir -p {REPLY}
- mkdir -p {REPLY}/mcsys
- mkdir -p {REPLY}/mcsys/config
- mkdir -p {REPLY}/mcsys/commands
- mkdir -p {REPLY}/unused
- cd {REPLY}/mcsys/config || exit 1
+ mkdir -p ${REPLY}
+ mkdir -p ${REPLY}/mcsys
+ mkdir -p ${REPLY}/mcsys/config
+ mkdir -p ${REPLY}/mcsys/commands
+ mkdir -p ${REPLY}/unused
+ cd ${REPLY}/mcsys/config || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/en/mcsys.conf -O mcsys.conf
- cd {REPLY}/mcsys/ || exit 1
+ cd ${REPLY}/mcsys/ || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
- wget -q 
- wget -q
- wget -q
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/stop.sh -O stop.sh
+ echo -e "$PREFIX Setup finished!"
+ echo -e "$PREFIX Open Configuration... "
+ sleep 3
+ joe ${REPLY}/mcsys/config/mcsys.conf
  }
+fi
 if [ ${REPLY} = "2" ]; then
 echo -e "$PREFIX Vieles wird auf Deutsch sein, jedoch können einige Ausgaben nicht übersetzt werden."
 echo -e "$PREFIX"
 
+}
 # Were is or should be your minecraft server
 
 # setup in english or german
