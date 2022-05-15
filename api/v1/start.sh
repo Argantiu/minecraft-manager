@@ -14,7 +14,7 @@ fi
 
 # Accept eula.txt
 sed -i 's/false/true/g' $LPATH/eula.txt >/dev/null 2>&1
-sed -i 's/restart-script: ./start.sh/restart-script: ./mcsys/restart.sh/g' $LPATH/spigot.yml >/dev/null 2>&1
+sed -i 's/\restart-script: ./start.sh/\\restart-script: ./mcsys/restart.sh/g' $LPATH/spigot.yml >/dev/null 2>&1
 # Testing Dependencies
 if screen -list | grep -q "$MCNAME"; then
     echo "Server has already started! Use screen -r $MCNAME to open it"
