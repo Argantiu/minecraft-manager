@@ -25,14 +25,14 @@ mkdir -p {REPLY}
 mkdir -p {REPLY}/mcsys
 mkdir -p {REPLY}/mcsys/config
 mkdir -p {REPLY}/mcsys/commands
-mkdir -p {REPLY}/mcsys/updater
 mkdir -p {REPLY}/unused
-cd {REPLY}/mcsys/updater || exit 1
-wget -q https://github.com/Argantiu/system-api/blob/main/api/v1/updater.sh -O updater.sh
 cd {REPLY}/mcsys/config || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/en/mcsys.conf -O mcsys.conf
 cd {REPLY}/mcsys/ || exit 1
+wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
 wget -q 
+wget -q
+wget -q
 if [ ${REPLY} = "2" ]; then
 echo -e "$PREFIX Vieles wird auf Deutsch sein, jedoch können einige Ausgaben nicht übersetzt werden."
 echo -e "$PREFIX"
