@@ -1,0 +1,7 @@
+#!/bin/bash
+# Updateing everything...
+. ./mcsys/config/mcsys.conf
+mkdir -p $LPATH/mcsys/updater
+cd $LPATH/mcsys/updater || exit 1
+wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/updater.sh -O updater.sh
+/bin/bash $LPATH/mcsys/updater/updater.sh
