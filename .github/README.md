@@ -3,5 +3,5 @@ System api for [minecraft-server-manage](https://github.com/Argantiu/minecraft-s
 
 ## Use
 ```
-wget -q https://t1p.de/qfytj -O server-installer.sh && sh server-installer.sh 
+wget -q https://t1p.de/qfytj -O server-installer.sh && chmod +x server-installer.sh && ./server-installer.sh
 ```
