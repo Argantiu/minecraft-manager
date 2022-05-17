@@ -1,18 +1,7 @@
 #!/bin/bash
-# What software do you use? (Here are also Waterfall and Spigot supported)
-ASOFTWARE=MINECRAFT
-# Do you want Floodgate for connections without login to java Edition?
-BESUPPORT=FALSE
-# Do you want GeyserMC for Bedrock connection?
-GBESUPPORT=FALSE
-# Pathes
-MPATH=Eerror
-OPATH=opt
-MCNAME=error
-
-# Do not edit this values, only if you have made an mistake by cofiguring!
-
 # Sript start Do NOT EDIT THIS HERE!
+. ./config/values.conf
+. $DSERVERFOLDER/config/mcsys.conf
 
 LPATH=/$OPATH/$MPATH
 mkdir -p $LPATH/plugins
