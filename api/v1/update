@@ -1,7 +1,6 @@
 #!/bin/bash
 # Updateing everything...
-. ./config/values.conf
-. $DSERVERFOLDER/config/mcsys.conf
+. /mcsys/config/mcsys.conf
 #
 mkdir -p $LPATH/mcsys/updater
 cd $LPATH/mcsys/updater || exit 1
