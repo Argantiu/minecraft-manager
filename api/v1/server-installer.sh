@@ -116,5 +116,5 @@ fi
      apt-get install rpl -y
      echo "rpl installed"
  fi
- rm ./server-installer.sh
+ rm server-installer.sh
 # End of file. Please sh server-installer.sh this file.
