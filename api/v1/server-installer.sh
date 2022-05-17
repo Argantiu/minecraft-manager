@@ -6,9 +6,9 @@ echo -e "\033[1;32m_______"
 echo -e "$PREFIX Welcome to Argantiu's server management tool"
 echo -e "$PREFIX You can leave with STRG + C"
 echo -e "$PREFIX _______"
-echo -e "$PREFIX At first please select your language:"
-echo -e "$PREFIX 1 = English"
-echo -e "$PREFIX 2 = German"
+echo -e "$PREFIX At first, please select your language:"
+echo -e "$PREFIX 1 = English (English)"
+echo -e "$PREFIX 2 = Deutsch (German)"
 {
 echo -n -e "$PREFIX Please type a number and hit space:";
 read LANG -r;
