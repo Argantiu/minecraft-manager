@@ -1,7 +1,6 @@
 #!/bin/bash
 # Sript start Do NOT EDIT THIS HERE!
-. ./config/values.conf
-. $DSERVERFOLDER/config/mcsys.conf
+. /config/mcsys.conf
 
 LPATH=/$OPATH/$MPATH
 mkdir -p $LPATH/plugins
