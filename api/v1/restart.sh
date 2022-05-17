@@ -3,6 +3,7 @@
 # Update v2.5.2.0 on 05/15/2022 made by Argantiu
 
 # Do not configure this scipts!
+# shellcheck source=lang/en/mcsys.conf
 source ./config/mcsys.conf
 
 # Build path
