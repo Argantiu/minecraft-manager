@@ -7,7 +7,6 @@
 # Path generating
 LPATH=/$OPTBASE/$SERVERBASE
 #
-apt-get -qq upgrade -y
 apt-get -qq update -y
 cd $LPATH/mcsys/config || exit 1
 mv values.conf values.conf.old
