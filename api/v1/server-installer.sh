@@ -1,5 +1,6 @@
 # Minecraft Server installer for Easy Setup
 # Made By CrazyCloudCraft - Argantiu GmbH
+RPREFIX="\033[1;30m[\033[0;31mArgatiu\033[1;30m]\033[0;37m"
 PREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 # Which language do you speak. 1 English . 2 German 3 French ...
 echo -e "\033[1;32m_______"
@@ -58,110 +59,49 @@ if [ $LANG = "2" ]; then
 else
  echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
 fi
-DICTII=./mcsys/config/mcsys.conf
-if test -f "$DICTII"; then
- 
- if ! command -v joe &> /dev/null
- then
-     apt-get install joe -y
-     echo "joe installed"
- fi
-#
- if ! command -v screen &> /dev/null
- then
-     apt-get install screen -y
-     echo "screen installed"
- fi
-#
- if ! command -v sudo &> /dev/null
- then
-     apt-get install sudo -y
-     echo "sudo installed"
- fi
-#
- if ! command -v zip &> /dev/null
- then
-     apt-get install zip -y
-     echo "zip installed"
- fi
-#
- if ! command -v wget &> /dev/null
- then
-     apt-get install wget -y
-     echo "wget installed"
- fi
-#
- if ! command -v xargs &> /dev/null
- then
-     apt-get install findutils -y
-     echo "findutils installed"
- fi
-#
- if ! command -v diff &> /dev/null
- then
-     apt-get install diffutils -y
-     echo "diffutils installed"
- fi
-#
- if ! command -v rpl &> /dev/null
- then
-     apt-get install rpl -y
-     echo "rpl installed"
- fi
- }
-fi
-
+#DICTII=./mcsys/config/mcsys.conf
+#if test -f "$DICTII"; then
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
  sed -i 's/empty/"$DICTI"/' ./values.conf $>/dev/null 2>&1
- #
+ 
  if ! command -v joe &> /dev/null
- then
+  then
      apt-get install joe -y
      echo "joe installed"
  fi
-#
  if ! command -v screen &> /dev/null
  then
      apt-get install screen -y
      echo "screen installed"
  fi
-#
  if ! command -v sudo &> /dev/null
  then
      apt-get install sudo -y
      echo "sudo installed"
  fi
-#
  if ! command -v zip &> /dev/null
  then
      apt-get install zip -y
      echo "zip installed"
  fi
-#
  if ! command -v wget &> /dev/null
  then
      apt-get install wget -y
      echo "wget installed"
  fi
-#
  if ! command -v xargs &> /dev/null
  then
      apt-get install findutils -y
      echo "findutils installed"
  fi
-#
  if ! command -v diff &> /dev/null
  then
      apt-get install diffutils -y
      echo "diffutils installed"
  fi
-#
  if ! command -v rpl &> /dev/null
  then
      apt-get install rpl -y
      echo "rpl installed"
  fi
- }
-fi
-}
 # End of file. Please sh server-installer.sh this file.
