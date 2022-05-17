@@ -1,3 +1,4 @@
+#!/bin/bash
 # Minecraft Server installer for Easy Setup
 # Made By CrazyCloudCraft - Argantiu GmbH
 RPREFIX="\033[1;30m[\033[0;31mArgatiu\033[1;30m]\033[0;37m"
