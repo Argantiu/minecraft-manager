@@ -8,7 +8,8 @@ echo -e "$PREFIX einige Ausgaben nicht übersetzt werden."
 echo -e "$PREFIX _____"
 echo -e "$PREFIX Wo ist oder soll dein Serverordner sich befinnden?"
 echo -e "$PREFIX z.b. /opt/Paper oder /home/meinserver/server"
-echo -e "$PREFIX Schreibe es nicht so: /opt/Paper\033[0;31m/ <- Du brauchst kein / am Ende des Ordnerweges \033[0;37m"
+echo -e "$PREFIX Schreibe es nicht so: /opt/Paper\033[0;31m/ <- "
+echo -e "$PREFIX \033[0;31mDu brauchst kein / am Ende des Ordnerweges \033[0;37m"
 {
 echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein? -> "
 read;
