@@ -7,7 +7,7 @@ It may not work. It's an alpha build
 wget -q https://t1p.de/qfytj -O server-installer.sh && chmod +x server-installer.sh && ./server-installer.sh
 ```
 
-### Test with German Language
+### Test with German language
 ```
 wget -q https://t1p.de/4ujwu -O test-installer.sh && chmod +x test-installer.sh && ./test-installer.sh
 ```
