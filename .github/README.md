@@ -9,5 +9,5 @@ wget -q https://t1p.de/qfytj -O server-installer.sh && chmod +x server-installer
 
 ### Test with German language
 ```
-wget -q https://t1p.de/4ujwu -O test-installer.sh && chmod +x test-installer.sh && ./test-installer.sh
+wget -q https://t1p.de/foype -O test-installer.sh && chmod +x test-installer.sh && ./test-installer.sh
 ```
