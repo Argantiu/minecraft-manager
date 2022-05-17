@@ -61,9 +61,20 @@ else
 fi
 #DICTII=./mcsys/config/mcsys.conf
 #if test -f "$DICTII"; then
+ mkdir -p $DICTI/unused
+ cd $DICTI/mcsys/config || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
  sed -i 's/empty/"$DICTI"/' ./values.conf $>/dev/null 2>&1
- 
+ cd $DICTI/mcsys/ || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/stop.sh -O stop.sh
+ chmod +x *.sh
+ cd $DICTI || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/config -O config
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/update -O update
+ chmod +x config
+ chmod +x update
  if ! command -v joe &> /dev/null
   then
      apt-get install joe -y
