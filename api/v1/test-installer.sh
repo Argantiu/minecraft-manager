@@ -37,7 +37,6 @@ echo -e "$PREFIX Fertig mit dem Aufsetzten!"
 echo -e "$PREFIX Hier kommt die Konfiguration..."
 sleep 3
 joe ${REPLY}/mcsys/config/mcsys.conf
-}
  #
 if ! command -v joe &> /dev/null
 then
@@ -86,4 +85,4 @@ then
     apt-get install rpl -y
     echo "rpl installed"
 fi
-#}
+}
