@@ -3,7 +3,8 @@
 # Update v2.5.2.0 on 05/15/2022 made by Argantiu
 
 # Do not configure this scipts!
-. ./config/mcsys.conf
+. ./config/values.conf
+. $DSERVERFOLDER/config/mcsys.conf
 
 # Build path
 LPATH=/$OPTBASE/$SERVERBASE
