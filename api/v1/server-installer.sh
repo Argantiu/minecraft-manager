@@ -17,7 +17,7 @@ if [ $LANG = "1" ]; then
  echo -e "$PREFIX Everything will be in english"
  echo -e "$PREFIX Were should be or is your server dictionary?"
  echo -e "$PREFIX e.g. /opt/Paper or /home/myserver/server"
- echo -e "$PREFIX Don't write this: /opt/Paper\033[0;31m/ <- You don't need / at the end"
+ echo -e "$PREFIX Don't write this: /opt/Paper\033[0;31m/ <- You don't need / at the end\033[0;37m"
  {
  echo -n -e "$PREFIX Your server dictionary:";
  read -r;
