@@ -2,7 +2,7 @@
 # Sript start Do NOT EDIT THIS HERE!
 . /config/mcsys.conf
 
-LPATH=/$OPATH/$MPATH
+LPATH=/$OPTBASE/$SERVERBASE
 mkdir -p $LPATH/plugins
 mkdir -p $LPATH/mcsys
 
