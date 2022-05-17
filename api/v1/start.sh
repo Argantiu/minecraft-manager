@@ -173,23 +173,23 @@ if [ $ASOFTWARE = "VELOCITY" ]; then
  mkdir -p $LPATH/mcsys/jar
  cd $LPATH/mcsys/jar || exit 1
  rm -f version.json
- wget -q https://papermc.io/api/v2/projects/velocity/versions/$MAINVERSION-SNAPSHOT -O version.json
+ wget -q https://papermc.io/api/v2/projects/velocity/versions/$PRMCVERSION-SNAPSHOT -O version.json
  LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ")
- wget -q https://papermc.io/api/v2/projects/velocity/versions/$MAINVERSION-SNAPSHOT/builds/$LATEST/downloads/velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar -O velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar
- unzip -qq -t velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar
+ wget -q https://papermc.io/api/v2/projects/velocity/versions/$PRMCVERSION-SNAPSHOT/builds/$LATEST/downloads/velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar -O velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar
+ unzip -qq -t velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar
  if [ "$?" -ne 0 ]; then
-  echo "Downloaded velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar is corrupt. No update." | /usr/bin/logger -t $MCNAME
+  echo "Downloaded velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar is corrupt. No update." | /usr/bin/logger -t $MCNAME
  else
-  diff -q velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar $LPATH/$MCNAME.jar >/dev/null 2>&1
+  diff -q velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar $LPATH/$MCNAME.jar >/dev/null 2>&1
   if [ "$?" -eq 1 ]; then
-   cp velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar."$(date +%Y.%m.%d.%H.%M.%S)"
-   mv velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar $LPATH/$MCNAME.jar
+   cp velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar."$(date +%Y.%m.%d.%H.%M.%S)"
+   mv velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar $LPATH/$MCNAME.jar
    /usr/bin/find $LPATH/mcsys/jar/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
-   echo "velocity-$MAINVERSION-SNAPSHOT-$LATEST has been updated" | /usr/bin/logger -t $MCNAME
+   echo "velocity-$PRMCVERSION-SNAPSHOT-$LATEST has been updated" | /usr/bin/logger -t $MCNAME
    rm version.json
   else
-   echo "No velocity-$MAINVERSION-SNAPSHOT-$LATEST update neccessary" | /usr/bin/logger -t $MCNAME
-   rm velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar
+   echo "No velocity-$PRMCVERSION-SNAPSHOT-$LATEST update neccessary" | /usr/bin/logger -t $MCNAME
+   rm velocity-$PRMCVERSION-SNAPSHOT-$LATEST.jar
    rm version.json
   fi
  fi
