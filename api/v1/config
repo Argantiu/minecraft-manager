@@ -1,4 +1,4 @@
 #!/bin/bash
 # Get configuration
-. ./mcsys/config/values.conf
+. /mcsys/config/values.conf
 joe $DSERVERFOLDER/mcsys/config/mcsys.conf
