@@ -1,22 +1,25 @@
 #!/bin/bash 
+# Minecraft Server installer for Easy Setup
+# Made By CrazyCloudCraft - Argantiu GmbH
+PREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
+#
 echo -e "$PREFIX Vieles wird auf Deutsch sein, jedoch können einige Ausgaben nicht übersetzt werden."
 echo -e "$PREFIX Wo ist oder soll dein Serverordner sich befinnden?"
 echo -e "$PREFIX z.b. /opt/Paper oder /home/meinserver/server"
-echo -e "$PREFIX Schreibe es nicht so: /opt/Paper\033[0;31m/ <- Du brauchst kein / am Ende des Ordnerweges"
+echo -e "$PREFIX Schreibe es nicht so: /opt/Paper\033[0;31m/ <- Du brauchst kein / am Ende des Ordnerweges \033[0;37m"
 {
-echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein:"
+echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein: "
 read;
 echo -e "$PREFIX Okey, ich werde alles Installieren. Bitte warten.."
 sleep 5
 mkdir -p ${REPLY}
 mkdir -p ${REPLY}/mcsys
 mkdir -p ${REPLY}/mcsys/config
-mkdir -p ${REPLY}/mcsys/commands
 mkdir -p ${REPLY}/unused
 cd ${REPLY}/mcsys/config || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/de/mcsys.conf -O mcsys.conf
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
-sed -i "s/DSERVERFOLDER=/DSERVERFOLDER=${REPLY}/g" ${REPLY}/mcsys/config/values.conf $>/dev/null 2>&1
+sed -i "s/empty2/${REPLY}/g" ./values.conf $>/dev/null 2>&1
 cd ${REPLY}/mcsys/ || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
