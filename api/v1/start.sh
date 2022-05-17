@@ -2,7 +2,8 @@
 # Minecraft Server start script - Check if server is already started
 # Version 2.5.2.0 made by CrazyCloudCraft 05/15/2022 UTC/GMT +1 https://crazycloudcraft.de
 # Do not configure this scipts!
-. ./config/mcsys.conf
+. ./config/values.conf
+. $DSERVERFOLDER/config/mcsys.conf
 # Path generating
 LPATH=/$OPTBASE/$SERVERBASE
 # drive depencies
@@ -28,10 +29,10 @@ cd $LPATH || exit 1
 if [ $BACKUP = "TRUE" ]; then
  if [ -f "$MCNAME.jar" ]; then
     echo -e "\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m Create Backup..."
-    echo "Backing up server (to /$OPTBASE/$BPATH folder)" | /usr/bin/logger -t $MCNAME
-    cd /$OPTBASE/$BPATH && ls -1tr | head -n -10 | xargs -d '\n' rm -f --
+    echo "Backing up server (to /unused/$BPATH folder)" | /usr/bin/logger -t $MCNAME
+    cd $LPATH/unused/$BPATH && ls -1tr | head -n -10 | xargs -d '\n' rm -f --
     cd $LPATH || exit 1
-    tar -pzcf ../$BPATH/"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude='unused/*' ./
+    tar -pzcf ./unused/$BPATH/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude='unused/*' ./
  fi
 fi
 
@@ -49,6 +50,7 @@ if [ $BEUPDATE = TRUE ] || [ $GBEUPDATE = TRUE ]; then
 fi
 #Paper: Getting Update form your selected version.
 if [ $ASOFTWARE = "PAPER" ]; then
+ mkdir -p $LPATH/mcsys/jar
  cd $LPATH/mcsys/jar || exit 1
  rm -f version.json
  wget -q https://papermc.io/api/v2/projects/paper/versions/$MAINVERSION/ -O version.json
@@ -64,6 +66,7 @@ if [ $ASOFTWARE = "PAPER" ]; then
    mv paper-$MAINVERSION-$LATEST.jar $LPATH/$MCNAME.jar
    /usr/bin/find $LPATH/mcsys/jar/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
    echo "paper-$MAINVERSION-$LATEST has been updated" | /usr/bin/logger -t $MCNAME
+   rm version.json
   else
    echo "No paper-$MAINVERSION-$LATEST update neccessary" | /usr/bin/logger -t $MCNAME
    rm paper-$MAINVERSION-$LATEST.jar
@@ -74,6 +77,7 @@ fi
 
 #PurPur: Getting Update form your selected version.
 if [ $ASOFTWARE = "PURPUR" ]; then
+ mkdir -p $LPATH/mcsys/jar
  cd $LPATH/mcsys/jar || exit 1
  rm -f version.json
  wget -q https://api.purpurmc.org/v2/purpur/$MAINVERSION -O version.json
@@ -89,6 +93,7 @@ if [ $ASOFTWARE = "PURPUR" ]; then
    mv purpur-$MAINVERSION-$LATEST.jar $LPATH/$MCNAME.jar
    /usr/bin/find $LPATH/mcsys/jar/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
    echo "purpur-$MAINVERSION-$LATEST has been updated" | /usr/bin/logger -t $MCNAME
+   rm version.json
   else
    echo "No purpur-$MAINVERSION-$LATEST update neccessary" | /usr/bin/logger -t $MCNAME
    rm purpur-$MAINVERSION-$LATEST.jar
@@ -99,6 +104,7 @@ fi
 
 #Mohist: Getting Update form your selected version.
 if [ $ASOFTWARE = "MOHIST" ]; then
+ mkdir -p $LPATH/mcsys/jar
  cd $LPATH/mcsys/jar || exit 1
  DATE=$(date +%Y.%m.%d.%H.%M.%S)
  wget -q https://mohistmc.com/api/$MAINVERSION/latest/download -O mohist-$MAINVERSION-$DATE.jar
@@ -163,6 +169,7 @@ fi
 
 #Velocity: Getting Update form your selected version.
 if [ $ASOFTWARE = "VELOCITY" ]; then
+ mkdir -p $LPATH/mcsys/jar
  cd $LPATH/mcsys/jar || exit 1
  rm -f version.json
  wget -q https://papermc.io/api/v2/projects/velocity/versions/$MAINVERSION-SNAPSHOT -O version.json
@@ -178,6 +185,7 @@ if [ $ASOFTWARE = "VELOCITY" ]; then
    mv velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar $LPATH/$MCNAME.jar
    /usr/bin/find $LPATH/mcsys/jar/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
    echo "velocity-$MAINVERSION-SNAPSHOT-$LATEST has been updated" | /usr/bin/logger -t $MCNAME
+   rm version.json
   else
    echo "No velocity-$MAINVERSION-SNAPSHOT-$LATEST update neccessary" | /usr/bin/logger -t $MCNAME
    rm velocity-$MAINVERSION-SNAPSHOT-$LATEST.jar
