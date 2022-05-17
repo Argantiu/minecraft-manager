@@ -2,3 +2,5 @@
 - Testing spigot
 - Fix values issues on update and config
 - Fixing installer at read function
+- Configure be-updater!
+- fix config not found issues
