@@ -1,3 +1,4 @@
 - Move Backup Saves to unused instead of old dic
 - Testing spigot
 - Fix values issues on update and config
+- Fixing installer at read function
