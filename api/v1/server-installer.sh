@@ -27,6 +27,12 @@ if [ $LANG = "1" ]; then
  mkdir -p $DICTI/mcsys/config
  cd ${REPLY}/mcsys/config || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/en/mcsys.conf -O mcsys.conf
+ echo -e "$PREFIX Setup finished!"
+ echo -e "$PREFIX Open Configuration..."
+ sleep 1
+ joe $DICTI/mcsys/config/mcsys.conf
+ #
+ #
  cd ${REPLY}/mcsys/ || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
