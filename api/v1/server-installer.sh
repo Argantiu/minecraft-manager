@@ -12,8 +12,8 @@ echo -e "$PREFIX At first, please select your language:"
 echo -e "$PREFIX 1 = English (English)"
 echo -e "$PREFIX 2 = Deutsch (German)"
 {
-echo -n -e "$PREFIX Please type a number and hit space:";
-read LANG -r;
+echo -n -e "$PREFIX Please type a number and hit space:  ";
+read LANG;
 }
 if [ $LANG = "1" ]; then
  echo -e "$PREFIX Everything will be in english"
@@ -21,8 +21,8 @@ if [ $LANG = "1" ]; then
  echo -e "$PREFIX e.g. /opt/Paper or /home/myserver/server"
  echo -e "$PREFIX Don't write this: /opt/Paper\033[0;31m/ <- You don't need / at the end\033[0;37m"
  {
- echo -n -e "$PREFIX Your server dictionary:";
- read -r;
+ echo -n -e "$PREFIX Your server dictionary:  ";
+ read DICTI;
  }
  echo -e "$PREFIX Okey, i will preparing now the configuration. Please wait..."
  sleep 1
@@ -33,8 +33,8 @@ if [ $LANG = "1" ]; then
  echo -e "$PREFIX Open Configuration..."
  sleep 1
  joe $DICTI/mcsys/config/mcsys.conf
-else
- echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
+#else
+ #echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
 fi
 if [ $LANG = "2" ]; then
  echo -e "$PREFIX Vieles wird auf Deutsch sein, jedoch können"
@@ -46,7 +46,7 @@ if [ $LANG = "2" ]; then
  echo -e "$PREFIX \033[0;31mDu brauchst kein / am Ende des Ordnerweges \033[0;37m"
  {
  echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein:";
- read DICTI -r;
+ read DICTI;
  }
  echo -e "$PREFIX Okey, die Konfiguration wird vorbereitet. Bitte warten..."
  sleep 1
@@ -57,8 +57,8 @@ if [ $LANG = "2" ]; then
  echo -e "$PREFIX Hier kommt die Konfiguration..."
  sleep 1
  joe $DICTI/mcsys/config/mcsys.conf
-else
- echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
+#else
+ #echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
 fi
 #DICTII=./mcsys/config/mcsys.conf
 #if test -f "$DICTII"; then
