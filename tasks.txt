@@ -6,3 +6,4 @@
 - fix config not found issues
 - add rm version.json ;)
 - add create jar
+- Add values insted of ./config
