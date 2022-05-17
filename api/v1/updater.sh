@@ -1,7 +1,8 @@
 #!/bin/bash
 # Updating everything... Made by Argantiu
 # Don't edit this here
-. ../config/mcsys.conf
+. ./config/values.conf
+. $DSERVERFOLDER/config/mcsys.conf
 # Path generating
 LPATH=/$OPTBASE/$SERVERBASE
 #
