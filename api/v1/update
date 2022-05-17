@@ -1,6 +1,6 @@
 #!/bin/bash
 # Updateing everything...
-. /mcsys/config/mcsys.conf
+source ./mcsys/config/mcsys.conf
 #
 mkdir -p $LPATH/mcsys/updater
 cd $LPATH/mcsys/updater || exit 1
