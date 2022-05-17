@@ -25,12 +25,33 @@ if [ $LANG = "1" ]; then
  echo -e "$PREFIX Okey, i will preparing now the configuration. Please wait..."
  sleep 1
  mkdir -p $DICTI/mcsys/config
- cd ${REPLY}/mcsys/config || exit 1
+ cd $DICTI/mcsys/config || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/en/mcsys.conf -O mcsys.conf
  echo -e "$PREFIX Setup finished!"
  echo -e "$PREFIX Open Configuration..."
  sleep 1
  joe $DICTI/mcsys/config/mcsys.conf
+if [ $LANG = "2" ]; then
+ echo -e "$PREFIX Vieles wird auf Deutsch sein, jedoch können"
+ echo -e "$PREFIX einige Ausgaben nicht übersetzt werden."
+ echo -e "$PREFIX _____"
+ echo -e "$PREFIX Wo ist oder soll dein Serverordner sich befinnden?"
+ echo -e "$PREFIX z.b. /opt/Paper oder /home/meinserver/server"
+ echo -e "$PREFIX Schreibe es nicht so: /opt/Paper\033[0;31m/ <- "
+ echo -e "$PREFIX \033[0;31mDu brauchst kein / am Ende des Ordnerweges \033[0;37m"
+ {
+ echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein:";
+ read DICTI -r;
+ }
+ echo -e "$PREFIX Okey, die Konfiguration wird vorbereitet. Bitte warten..."
+ sleep 1
+ mkdir -p $DICTI/mcsys/config
+ cd $DICTI/mcsys/config || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/de/mcsys.conf -O mcsys.conf
+ echo -e "$PREFIX Fertig mit dem Aufsetzten!"
+ echo -e "$PREFIX Hier kommt die Konfiguration..."
+ sleep 1
+ joe ${REPLY}/mcsys/config/mcsys.conf
  #
  #
  cd ${REPLY}/mcsys/ || exit 1
