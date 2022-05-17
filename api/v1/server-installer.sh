@@ -64,7 +64,7 @@ fi
  mkdir -p $DICTI/unused
  cd $DICTI/mcsys/config || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
- sed -i 's/empty/"$DICTI"/' ./values.conf $>/dev/null 2>&1
+ sed -i "s/empty/$DICTI/" ./values.conf $>/dev/null 2>&1
  cd $DICTI/mcsys/ || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
