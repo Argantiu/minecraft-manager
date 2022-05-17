@@ -31,6 +31,9 @@ if [ $LANG = "1" ]; then
  echo -e "$PREFIX Open Configuration..."
  sleep 1
  joe $DICTI/mcsys/config/mcsys.conf
+else
+ echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
+fi
 if [ $LANG = "2" ]; then
  echo -e "$PREFIX Vieles wird auf Deutsch sein, jedoch können"
  echo -e "$PREFIX einige Ausgaben nicht übersetzt werden."
@@ -51,24 +54,13 @@ if [ $LANG = "2" ]; then
  echo -e "$PREFIX Fertig mit dem Aufsetzten!"
  echo -e "$PREFIX Hier kommt die Konfiguration..."
  sleep 1
- joe ${REPLY}/mcsys/config/mcsys.conf
- #
- #
- cd ${REPLY}/mcsys/ || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/stop.sh -O stop.sh
- chmod +x *.sh
- cd ${REPLY} || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/config -O config
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/update -O update
- chmod +x config
- chmod +x update
- echo -e "$PREFIX Setup finished!"
- echo -e "$PREFIX Open Configuration... "
- sleep 3
- joe ${REPLY}/mcsys/config/mcsys.conf
- #
+ joe $DICTI/mcsys/config/mcsys.conf
+else
+ echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
+fi
+DICTII=./mcsys/config/mcsys.conf
+if test -f "$DICTII"; then
+ 
  if ! command -v joe &> /dev/null
  then
      apt-get install joe -y
@@ -118,40 +110,7 @@ if [ $LANG = "2" ]; then
  fi
  }
 fi
-if [ ${REPLY} = "2" ]; then
- echo -e "$PREFIX Vieles wird auf Deutsch sein, jedoch können einige Ausgaben nicht übersetzt werden."
- echo -e "$PREFIX Wo ist oder soll dein Serverordner sich befinnden?"
- echo -e "$PREFIX z.b. /opt/Paper oder /home/meinserver/server"
- echo -e "$PREFIX Schreibe es nicht so: /opt/Paper\033[0;31m/ <- Du brauchst kein / am Ende des Ordnerweges"
- {
- echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein:"
- read;
- echo -e "$PREFIX Okey, ich werde alles Installieren. Bitte warten.."
- sleep 5
- mkdir -p ${REPLY}
- mkdir -p ${REPLY}/mcsys
- mkdir -p ${REPLY}/mcsys/config
- mkdir -p ${REPLY}/mcsys/commands
- mkdir -p ${REPLY}/unused
- cd ${REPLY}/mcsys/config || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/de/mcsys.conf -O mcsys.conf
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
- sed -i "s/DSERVERFOLDER=/DSERVERFOLDER=${REPLY}/g" ${REPLY}/mcsys/config/values.conf $>/dev/null 2>&1
- cd ${REPLY}/mcsys/ || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/stop.sh -O stop.sh
- chmod +x *.sh
- cd ${REPLY} || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/config -O config
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/update -O update
- chmod +x config
- chmod +x update
- echo -e "$PREFIX Fertig mit dem Aufsetzten!"
- echo -e "$PREFIX Hier kommt die Konfiguration..."
- sleep 3
- joe ${REPLY}/mcsys/config/mcsys.conf
- #
+
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
  sed -i 's/empty/"$DICTI"/' ./values.conf $>/dev/null 2>&1
  #
