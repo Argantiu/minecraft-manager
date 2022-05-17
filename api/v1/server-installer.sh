@@ -11,15 +11,15 @@ echo -e "$PREFIX 1 = English"
 echo -e "$PREFIX 2 = German"
 {
 echo -n -e "$PREFIX Please type a number and hit space:";
-read;
+read -r;
 if [ ${REPLY} = "1" ]; then
  echo -e "$PREFIX Everything will be in english"
  echo -e "$PREFIX Were should be or is your server dictionary?"
  echo -e "$PREFIX e.g. /opt/Paper or /home/myserver/server"
  echo -e "$PREFIX Don't write this: /opt/Paper\033[0;31m/ <- You don't need / at the end"
  {
- echo -n -e "$PREFIX Your server dictionary:"
- read;
+ echo -n -e "$PREFIX Your server dictionary:";
+ read -r;
  echo -e "$PREFIX Okey, i will install now everything. Please wait..."
  sleep 5
  mkdir -p ${REPLY}
@@ -30,7 +30,7 @@ if [ ${REPLY} = "1" ]; then
  cd ${REPLY}/mcsys/config || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/en/mcsys.conf -O mcsys.conf
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
- sed -i "s/DSERVERFOLDER=/DSERVERFOLDER=${REPLY}/g" ${REPLY}/mcsys/config/values.conf $>/dev/null 2>&1
+ sed -i 's/empty/"${REPLY}"/' ./values.conf $>/dev/null 2>&1
  cd ${REPLY}/mcsys/ || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
