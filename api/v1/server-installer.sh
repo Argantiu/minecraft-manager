@@ -69,7 +69,7 @@ fi
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/stop.sh -O stop.sh
- chmod +x *.sh
+ chmod +x ./*.sh
  cd $DICTI || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/config -O config
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/update -O update
