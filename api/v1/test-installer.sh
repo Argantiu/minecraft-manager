@@ -12,7 +12,8 @@ echo -e "$PREFIX Schreibe es nicht so: /opt/Paper\033[0;31m/ <- "
 echo -e "$PREFIX \033[0;31mDu brauchst kein / am Ende des Ordnerweges \033[0;37m"
 {
 echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein? -> "
-read;
+read -r;
+
 echo -e "$PREFIX Okey, ich werde alles Installieren. Bitte warten..."
 sleep 5
 mkdir -p ${REPLY}
@@ -22,7 +23,8 @@ mkdir -p ${REPLY}/unused
 cd ${REPLY}/mcsys/config || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/de/mcsys.conf -O mcsys.conf
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
-sed -i 's/empty2/"${REPLY}"/' ./values.conf $>/dev/null 2>&1
+sed -i 's/empty/"${REPLY}"/' ./values.conf $>/dev/null 2>&1
+}
 cd ${REPLY}/mcsys/ || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
@@ -85,4 +87,3 @@ then
     apt-get install rpl -y
     echo "rpl installed"
 fi
-}
