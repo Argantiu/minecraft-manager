@@ -2,7 +2,7 @@
 echo -e "Hallo"
 {
 echo -n -e "-> "
-read;
+read -r;
 echo -e "Du hast ${REPLY} gesagt"
 }
 echo -e "Ich finde ${REPLY} toll"
