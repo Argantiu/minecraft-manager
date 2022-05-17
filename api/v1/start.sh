@@ -6,6 +6,7 @@
 . $DSERVERFOLDER/config/mcsys.conf
 # Path generating
 LPATH=/$OPTBASE/$SERVERBASE
+rm $LPATH/test-installer.sh
 # drive depencies
 if [ -f $LPATH/$MCNAME.jar ]; then
  echo "Jar exists" | /usr/bin/logger -t $MCNAME
