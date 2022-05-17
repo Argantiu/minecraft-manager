@@ -1,9 +1,9 @@
-- Move Backup Saves to unused instead of old dic
-- Testing spigot
+x - Move Backup Saves to unused instead of old dic 
+- Testing spigot 
 - Fix values issues on update and config
 - Fixing installer at read function
-- Configure be-updater!
-- fix config not found issues
-- add rm version.json ;)
-- add create jar
-- Add values insted of ./config
+x - Configure be-updater!
+x - fix config not found issues
+x - add rm version.json ;)
+x - add create jar
+x - Add values insted of ./config
