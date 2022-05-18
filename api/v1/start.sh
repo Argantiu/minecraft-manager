@@ -3,9 +3,9 @@
 # Version 2.5.2.0 made by CrazyCloudCraft 05/15/2022 UTC/GMT +1 https://crazycloudcraft.de
 # Do not configure this scipts!
 # shellcheck source=values.conf
-source ./config/values.conf
+source /config/values.conf
 # shellcheck source=lang/en/mcsys.conf
-source ./config/mcsys.conf
+source /config/mcsys.conf
 # Path generating
 LPATH=/$OPTBASE/$SERVERBASE
 # drive depencies
