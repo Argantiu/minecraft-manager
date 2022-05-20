@@ -21,6 +21,6 @@ if [ $MAINVERSION = "1.16.5" ] || [ $MAINVERSION = "1.12.2" ]; then
   fi
  fi
 else
-echo "Mohist have no Complete support for this Minecraft Version."
+echo "Mohist have no support for this Minecraft Version."
 echo "Please use Crucible for 1.7.10 or Arclight for 1.18.2"
 fi
