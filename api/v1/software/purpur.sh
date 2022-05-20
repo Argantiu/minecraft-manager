@@ -1,6 +1,5 @@
 #!/bin/bash
 #PurPur: Getting Update form your selected version.
-if [ $ASOFTWARE = "PURPUR" ]; then
  mkdir -p $LPATH/mcsys/jar
  cd $LPATH/mcsys/jar || exit 1
  rm -f version.json
