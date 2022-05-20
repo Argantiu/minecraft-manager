@@ -2,9 +2,9 @@
 # Updating everything... Made by Argantiu
 # Don't edit this here
 # shellcheck source=/lang/en/mcsys.conf
-source ../config/mcsys.conf
+source ./../config/mcsys.conf
 # shellcheck source=/dev/null
-source ../config/values.conf.old 
+source ./../config/values.conf.old 
 # Path generating
 LPATH=/$OPTBASE/$SERVERBASE
 #
