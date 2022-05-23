@@ -2,8 +2,7 @@
 # Minecraft Server auto stop script - 
 # Version 2.5.2.0 Made by CrazyCloudCraft 05/15/2022 https://crazycloudcraft.de
 # Do not configure this scipts!
-# shellcheck source=lang/en/mcsys.conf
-source ./config/mcsys.conf
+. /config/mcsys.txt
 
 if ! screen -list | grep -q "$MCNAME"; then
   echo "Server is not currently running!"
