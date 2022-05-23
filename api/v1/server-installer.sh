@@ -28,11 +28,11 @@ if [ $LANG = "1" ]; then
  sleep 1
  mkdir -p $DICTI/mcsys/config
  cd $DICTI/mcsys/config || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/en/mcsys.conf -O mcsys.conf
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/en/mcsys.txt -O mcsys.txt
  echo -e "$PREFIX Setup finished!"
  echo -e "$PREFIX Open Configuration..."
  sleep 1
- joe $DICTI/mcsys/config/mcsys.conf
+ joe $DICTI/mcsys/config/mcsys.txt
 #else
  #echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
 fi
@@ -45,18 +45,18 @@ if [ $LANG = "2" ]; then
  echo -e "$PREFIX Schreibe es nicht so: /opt/Paper\033[0;31m/ <- "
  echo -e "$PREFIX \033[0;31mDu brauchst kein / am Ende des Ordnerweges \033[0;37m"
  {
- echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein:";
+ echo -n -e "$PREFIX Und wo ist oder soll der Ordner sein:  ";
  read DICTI;
  }
  echo -e "$PREFIX Okey, die Konfiguration wird vorbereitet. Bitte warten..."
  sleep 1
  mkdir -p $DICTI/mcsys/config
  cd $DICTI/mcsys/config || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/de/mcsys.conf -O mcsys.conf
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/lang/de/mcsys.txt -O mcsys.txt
  echo -e "$PREFIX Fertig mit dem Aufsetzten!"
  echo -e "$PREFIX Hier kommt die Konfiguration..."
  sleep 1
- joe $DICTI/mcsys/config/mcsys.conf
+ joe $DICTI/mcsys/config/mcsys.txt
 #else
  #echo -e "$RPREFIX Something went wrong! Please report on github with code error #l0001"
 fi
@@ -64,8 +64,8 @@ fi
 #if test -f "$DICTII"; then
  mkdir -p $DICTI/unused
  cd $DICTI/mcsys/config || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.conf -O values.conf
- sed -i "s:empty:$DICTI:g" ./values.conf $>/dev/null 2>&1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/values.txt -O values.txt
+ sed -i "s:empty:$DICTI:g" ./values.txt $>/dev/null 2>&1
  cd $DICTI/mcsys/ || exit 1
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/restart.sh -O restart.sh
  wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v1/start.sh -O start.sh
@@ -116,5 +116,5 @@ fi
      apt-get install rpl -y
      echo "rpl installed"
  fi
- rm server-installer.sh
+ #rm server-installer.sh
 # End of file. Please sh server-installer.sh this file.
