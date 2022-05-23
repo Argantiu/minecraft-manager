@@ -1,7 +1,6 @@
 #!/bin/bash
 # Sript start Do NOT EDIT THIS HERE!
-# shellcheck source=lang/en/mcsys.conf
-source ./config/mcsys.conf
+. /config/mcsys.txt
 
 LPATH=/$OPTBASE/$SERVERBASE
 mkdir -p $LPATH/plugins
