@@ -4,7 +4,7 @@
 
 # Do not configure this scipts!
 # shellcheck source=lang/en/mcsys.conf
-source ./config/mcsys.conf
+. /config/mcsys.txt
 
 # Build path
 LPATH=/$OPTBASE/$SERVERBASE
