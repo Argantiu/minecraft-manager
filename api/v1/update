@@ -1,7 +1,6 @@
 #!/bin/bash
 # Updateing everything...
-# shellcheck source=/lang/en/mcsys.conf
-source ./mcsys/config/mcsys.conf
+. /mcsys/config/mcsys.txt
 #
 mkdir -p $LPATH/mcsys/updater
 cd $LPATH/mcsys/updater || exit 1
