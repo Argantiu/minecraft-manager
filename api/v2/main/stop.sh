@@ -7,7 +7,9 @@ ASOFTWARE=
 MCOUNT=
 MPREFIX=
 NTRANZLATION=
-
+DISPLAYTRANZTIME=
+MESSAGESTOP=
+#
 if ! screen -list | grep -q "$MCNAME"; then
   echo -e "$MPREFIX "
   exit 1
