@@ -1,24 +1,21 @@
 #!/bin/bash
-# Made by CrazyCloudCraft
-# Update v2.5.2.0 on 05/15/2022 made by Argantiu
-
-# Do not configure this scipts!
-# shellcheck source=lang/en/mcsys.conf
-. /config/mcsys.txt
+# Minecraft Server auto stop script - Do not configure this scipt!!
+# Version 3.0.0.0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
+OPTBASE=
+SERVERBASE=
+MPREFIX=
+MTRANZLATION=
 
 # Build path
 LPATH=/$OPTBASE/$SERVERBASE
-
 # Check if offline
 if ! screen -list | grep -q "$MCNAME"; then
     echo -e "$MPREFIX $MTRANZLATION"
     # Start server
-    /bin/bash $LPATH/mcsys/start.sh
+    /bin/bash $LPATH/start.sh
     exit 0
 fi
-
 # Stop server
-/bin/bash $LPATH/mcsys/stop.sh
-
+/bin/bash $LPATH/stop.sh
 # Start server
-/bin/bash $LPATH/mcsys/start.sh
+/bin/bash $LPATH/start.sh
