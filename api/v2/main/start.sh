@@ -8,6 +8,12 @@ MCNAME=
 BEMCSUPPORT=
 BACKUP=
 BPATH=
+# For sed
+MAINVERSION=
+MCNAME=
+LPATH=
+RAM=
+JAVABIN=
 #Already Started
 if screen -list | grep -q "$MCNAME"; then
     echo -e "\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m Server has already started! Use screen -r $MCNAME to open it"
