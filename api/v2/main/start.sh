@@ -95,4 +95,7 @@ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/softwa
 fi
 
 sed -i "0,/MAINVERSION=.*/s//MAINVERSION=$MAINVERSION/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/MAINVERSION=.*/s//MAINVERSION=$MAINVERSION/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/MCNAME=.*/s//MCNAME=$MCNAME/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/LPATH=.*/s//LPATH=$LPATH/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/RAM=.*/s//RAM=$RAM/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/JAVABIN=.*/s//JAVABIN=$JAVABIN/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
