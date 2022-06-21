@@ -1,4 +1,4 @@
-#!./conf.file
+#!/bin/bash
 # Minecraft server management
 # Version en/us 2.5.2.0 made by CrazyCloudCraft 2022-15-05 UTC/GMT +1 https://crazycloudcraft.de/
 
