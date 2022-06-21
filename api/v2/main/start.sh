@@ -22,3 +22,9 @@ fi
 
 # Path generating
 LPATH=/$OPTBASE/$SERVERBASE
+
+# Bedrock updater
+
+# Auto updater
+
+# Startup
