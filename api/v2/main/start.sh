@@ -52,17 +52,17 @@ if [[ $BEMCUPDATE == "TRUE" ]]; then
  /bin/bash $LPATH/mcsys/be-updater.sh
 fi
 # Software update and start
-
+#Paper: Getting Update form your selected version.
 if [[ $ASOFTWARE == "PAPER" ]]; then
 cd $LPATH/mcsys/software || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/paper.sh -O $MCNAME.sh
 fi
-
+#Velocity: Getting Update form your selected version.
 if [[ $ASOFTWARE == "VELOCITY" ]]; then
 cd $LPATH/mcsys/software || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/paper.sh -O $MCNAME.sh
 fi
-
+#Purpur: Getting Update form your selected version.
 if [[ $ASOFTWARE == "PURPUR" ]]; then
 cd $LPATH/mcsys/software || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/paper.sh -O $MCNAME.sh
