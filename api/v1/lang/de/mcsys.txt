@@ -1,4 +1,4 @@
-#!./conf.file
+#!/bin/bash
 # Minecraft Server Verwaltung
 # Version "de" 2.5.2.0 erstellt von CrazyCloudCraft 15.05.2022 https://crazycloudcraft.de/
 
@@ -89,3 +89,4 @@ DISPLAYTRANZTIME="sekunden"
 # Light Gray:   \033[0;37m'     White:         \033[1;37m'
 
 # Konfiguration zu ende. Wenn das nicht hier stehen würde, dann ist die Datei kaputt!
+# Hier wird nur die Konfiguration ausgelesen. Bitte nichts verändern!
