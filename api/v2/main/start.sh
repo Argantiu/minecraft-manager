@@ -1,8 +1,8 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this scipt!!
 # Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
-MAINVERSION=
-PRMCVERSION=
+#MAINVERSION=
+#PRMCVERSION=3.1.2
 ASOFTWARE=
 OPTBASE=
 SERVERBASE=
@@ -25,6 +25,6 @@ LPATH=/$OPTBASE/$SERVERBASE
 
 # Bedrock updater
 
-# Auto updater
+# Auto updater datas
 
-# Startup
+# Startup in software updater
