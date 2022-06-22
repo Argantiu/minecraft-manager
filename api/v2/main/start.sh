@@ -57,43 +57,38 @@ fi
 # Software update and start
 #Paper: Getting Update form your selected version.
 if [[ $ASOFTWARE == "PAPER" ]]; then
-cd $LPATH/mcsys/software || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/paper.sh -O $MCNAME.sh
+ cd $LPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/paper.sh -O $MCNAME.sh
 fi
 #Velocity: Getting Update form your selected version.
 if [[ $ASOFTWARE == "VELOCITY" ]]; then
-cd $LPATH/mcsys/software || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/velocity.sh -O $MCNAME.sh
+ cd $LPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/velocity.sh -O $MCNAME.sh
 fi
 #Purpur: Getting Update form your selected version.
 if [[ $ASOFTWARE == "PURPUR" ]]; then
-cd $LPATH/mcsys/software || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/purpur.sh -O $MCNAME.sh
+ cd $LPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/purpur.sh -O $MCNAME.sh
 fi
-
 if [[ $ASOFTWARE == "MOHIST" ]]; then
-cd $LPATH/mcsys/software || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/mohist.sh -O $MCNAME.sh
+ cd $LPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/mohist.sh -O $MCNAME.sh
 fi
-
 if [[ $ASOFTWARE == "SPIGOT" ]]; then
-cd $LPATH/mcsys/software || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/spigot.sh -O $MCNAME.sh
+ cd $LPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/spigot.sh -O $MCNAME.sh
 fi
-
 if [[ $ASOFTWARE == "BUKKIT" ]]; then
-cd $LPATH/mcsys/software || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/bukkit.sh -O $MCNAME.sh
+ cd $LPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/bukkit.sh -O $MCNAME.sh
 fi
-
 if [[ $ASOFTWARE == "BUNGEECORD" ]]; then
-cd $LPATH/mcsys/software || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/bungeecord.sh -O $MCNAME.sh
+ cd $LPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/bungeecord.sh -O $MCNAME.sh
 fi
-
 if [[ $ASOFTWARE == "WATERFALL" ]]; then
-cd $LPATH/mcsys/software || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/waterfall.sh -O $MCNAME.sh
+ cd $LPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/waterfall.sh -O $MCNAME.sh
 fi
 
 sed -i "0,/MAINVERSION=.*/s//MAINVERSION=$MAINVERSION/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
@@ -101,3 +96,6 @@ sed -i "0,/MCNAME=.*/s//MCNAME=$MCNAME/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
 sed -i "0,/LPATH=.*/s//LPATH=$LPATH/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
 sed -i "0,/RAM=.*/s//RAM=$RAM/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
 sed -i "0,/JAVABIN=.*/s//JAVABIN=$JAVABIN/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+
+/bin/bash $LPATH/$MCNAME.sh
+exit 0
