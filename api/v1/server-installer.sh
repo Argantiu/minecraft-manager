@@ -12,7 +12,7 @@ echo -e "$PREFIX At first, please select your language:"
 echo -e "$PREFIX 1 = English (English)"
 echo -e "$PREFIX 2 = Deutsch (German)"
 {
-echo -n -e "$PREFIX Please type a number and hit space:  ";
+echo -n -e "$PREFIX Please type a number and hit enter:  ";
 read LANG;
 }
 if [ $LANG = "1" ]; then
