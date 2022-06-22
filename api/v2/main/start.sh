@@ -30,6 +30,9 @@ else
  touch $LPATH/$MCNAME.jar
 fi
 # Auto updater
+mkdir -p $LPATH/mcsys/update
+cd $LPATH/mcsys/update || exit 1
+wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/update/updater.sh -O updater.sh
 
 
 # Create backup for your server
