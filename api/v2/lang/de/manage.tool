@@ -6,22 +6,23 @@ echo -e " 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbei
 echo -n "";
 read MUPSTAT;
 }
+MTPATH=
 if [[ $MUPSTAT == "1" ]]; then
- /bin/bash $LPATH/mcsys/configs/mcsys.config
- /bin/bash $LPATH/mcsys/start.sh
+ /bin/bash $MTPATH/mcsys/configs/mcsys.config
+ /bin/bash $MTPATH/mcsys/start.sh
  exit 0
 fi
 if [[ $MUPSTAT == "2" ]]; then
- /bin/bash $LPATH/mcsys/configs/mcsys.config
- /bin/bash $LPATH/mcsys/stop.sh
+ /bin/bash $MTPATH/mcsys/configs/mcsys.config
+ /bin/bash $MTPATH/mcsys/stop.sh
  exit 0
 fi
 if [[ $MUPSTAT == "3" ]]; then
- /bin/bash $LPATH/mcsys/configs/mcsys.config
- /bin/bash $LPATH/mcsys/restart.sh
+ /bin/bash $MTPATH/mcsys/configs/mcsys.config
+ /bin/bash $MTPATH/mcsys/restart.sh
  exit 0
 fi
 if [[ $MUPSTAT == "4" ]]; then
- joe $LPATH/mcsys/configs/mcsys.config
+ joe $MTPATH/mcsys/configs/mcsys.config
 fi
 exit 1
