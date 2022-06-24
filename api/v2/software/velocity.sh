@@ -29,7 +29,6 @@ else
   rm version.json
  fi
 fi
-# Stop Bedrock edition part
 # Starting server
 cd $LPATH || exit 1
 echo "Starting $LPATH/$MCNAME.jar" | /usr/bin/logger -t $MCNAME
