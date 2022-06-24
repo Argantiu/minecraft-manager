@@ -32,7 +32,7 @@ else
   mv $LPATH/mcsys/build/mcmain/CraftBukkit/target/craftbukkit-*.jar $LPATH/$MCNAME.jar
   rm -r $LPATH/mcsys/build/mcmain
   /usr/bin/find $LPATH/mcsys/build/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
-  /usr/bin/find $LPATH/mcsys/spitool/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
+  /usr/bin/find $LPATH/mcsys/buktool/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
   echo "bukkit-$MAINVERSION.jar has been updated" | /usr/bin/logger -t $MCNAME
  else
   echo "No BuildTools.jar update neccessary" | /usr/bin/logger -t $MCNAME
