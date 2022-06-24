@@ -23,3 +23,8 @@ else
   rm -f version.json
  fi
 fi
+# Starting server
+cd $LPATH || exit 1
+echo "Starting $LPATH/$MCNAME.jar" | /usr/bin/logger -t $MCNAME
+screen -d -m -L -S $MCNAME  /bin/bash -c "$JAVABIN -Xms$RAM -Xmx$RAM -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:+UnlockExperimentalVMOptions -XX:+ParallelRefProcEnabled -XX:+AlwaysPreTouch -XX:MaxInlineLevel=15 -jar $MCNAME.jar"
+exit 1
