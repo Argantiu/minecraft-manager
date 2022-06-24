@@ -1,4 +1,9 @@
 #Bungeecord: Getting Update form your selected version.
+MAINVERSION=
+MCNAME=
+LPATH=
+RAM=
+JAVABIN=
 cd $LPATH/mcsys/jar || exit 1
 rm -f version.json
 wget -q https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
