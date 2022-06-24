@@ -27,7 +27,7 @@ else
   cd $LPATH/mcsys/spitool || exit 1
   cp BuildTools.jar BuildTools.jar"$(date +%Y.%m.%d.%H.%M.%S)"
   cd $LPATH/mcsys/build/mcmain || exit 1
-  java -jar BuildTools.jar --rev $MAINVERSION #--output-dir $LPATH/mcsys/build/
+  java -jar BuildTools.jar --rev $MAINVERSION
   cp $LPATH/mcsys/build/mcmain/spigot-$MAINVERSION.jar $LPATH/mcsys/spitool/spigot-$MAINVERSION.jar"$(date +%Y.%m.%d.%H.%M.%S)"
   mv $LPATH/mcsys/build/mcmain/spigot-$MAINVERSION.jar $LPATH/$MCNAME.jar
   rm -r $LPATH/mcsys/build/mcmain
