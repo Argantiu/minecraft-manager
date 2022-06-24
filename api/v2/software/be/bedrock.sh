@@ -1,3 +1,9 @@
+#!/bin/bash
+# Minecraft Server auto stop script - Do not configure this scipt!!
+# Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
+ASOFTWARE=
+MCNAME=
+LPATH=
 # Floodgate for normal servers
 if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] && [[ $BESUPPORT == "TRUE" ]]; then
  cd $LPATH/plugins || exit 1
@@ -166,3 +172,5 @@ fi
 if [[ $ASOFTWARE == "FORGE" ]] || [[ $ASOFTWARE == "MOHIST" ]] || [[ $ASOFTWARE == "FABRIC" ]] || [[ $ASOFTWARE == "MINECRAFT" ]] && [[ $BESUPPORT == "TRUE" ]]; then
 echo -e "Bedrock support doesn't work on this software! Please use an other sofware or disable Bedrock support."
 fi
+
+exit 1
