@@ -2,6 +2,11 @@
 # Minecraft Server auto stop script - Do not configure this scipt!!
 # Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
 #PurPur: Getting Update form your selected version.
+MAINVERSION=
+MCNAME=
+LPATH=
+RAM=
+JAVABIN=
 mkdir -p $LPATH/mcsys/jar
 cd $LPATH/mcsys/jar || exit 1
 rm -f version.json
