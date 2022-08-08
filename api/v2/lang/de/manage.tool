@@ -1,5 +1,5 @@
 #!/bin/bash
-# Bitte diese datei mit ./manage.tool ausfueren.
+# Bitte diese datei mit ./manage.tool.%server_name% ausfueren.
 MTPATH=
 echo -e "Was möchtest du den machen?"
 echo -e " 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten"
