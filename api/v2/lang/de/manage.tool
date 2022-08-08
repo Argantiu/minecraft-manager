@@ -25,4 +25,6 @@ fi
 if [[ $MUPSTAT == "4" ]]; then
  joe $MTPATH/mcsys/configs/mcsys.config
 fi
+else
+echo "Bitte gebe eine Nummer an!"
 exit 1
