@@ -1,6 +1,5 @@
 #!/bin/bash
 # Bitte diese datei mit ./manage.tool.%server_name% ausfueren.
-MTPATH=
 echo -e "Was möchtest du den machen?"
 echo -e " 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten"
 {
@@ -8,6 +7,7 @@ echo -n "";
 read MUPSTAT;
 }
 MTPATH=
+if
 if [[ $MUPSTAT == "1" ]]; then
  /bin/bash $MTPATH/mcsys/configs/mcsys.config
  /bin/bash $MTPATH/mcsys/start.sh
@@ -25,7 +25,9 @@ if [[ $MUPSTAT == "3" ]]; then
 fi
 if [[ $MUPSTAT == "4" ]]; then
  joe $MTPATH/mcsys/configs/mcsys.config
+ exit 0
 fi
 else
 echo "Bitte gebe eine Nummer an!"
 exit 1
+fi
