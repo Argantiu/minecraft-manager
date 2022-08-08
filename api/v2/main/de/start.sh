@@ -24,28 +24,28 @@ else
 echo -e "$MPREFIX Starte $MCNAME server..."
 fi
 # Bugg Patcher 
-if [ -f $LPATH/$MCNAME.jar ]; then
+if [ -f $MTPATH/$MCNAME.jar ]; then
  echo "Jar exestiert, perfekt" >/dev/null 2>&1
 else
- touch $LPATH/$MCNAME.jar
+ touch $MTPATH/$MCNAME.jar
 fi
 # Auto updater
-mkdir -p $LPATH/mcsys/update
-cd $LPATH/mcsys/update || exit 1
+mkdir -p $MTPATH/mcsys/update
+cd $MTPATH/mcsys/update || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/update/updater.sh -O updater.sh
 
 
 # Create backup for your server
 if [[ $BACKUP == "TRUE" ]]; then
  if [ -f "$MCNAME.jar" ]; then
-    echo -e "\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m Create Backup..."
-    echo "Backing up server (to /unused/$BPATH folder)" | /usr/bin/logger -t $MCNAME
-    cd $LPATH/unused/$BPATH && ls -1tr | head -n -10 | xargs -d '\n' rm -f --
-    cd $LPATH || exit 1
+    echo -e "$MPREFIX Create Backup..."
+    echo "Backing up server (to /unused/backups folder)" | /usr/bin/logger -t $MCNAME
+    cd $MTPATH/unused/backups && ls -1tr | head -n -10 | xargs -d '\n' rm -f --
+    cd $MTPATH || exit 1
     if [[ $BETTERBACKUP == "TRUE" ]] || [[ $BETTERBACKUP == "true" ]]; then
-    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude='unused/*' --exclude='$MCNAME.jar' --exclude='mcsys/jar/*' --exclude='mcsys/floodgate/*' --exclude='mcsys/geyser/*' ./
+    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude='unused/*' --exclude='$MCNAME.jar' --exclude='mcsys/*' --exclude='cache/*' --exclude='logs/*' --exclude='libraries/*' --exclude='paper.yml-README.txt' --exclude='screenlog.*' --exclude='versions/*' ./ 
     else
-    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude='unused/*' --exclude='$MCNAME.jar' --exclude='mcsys/*' --exclude='cache/*' --exclude='logs/*' --exclude='libraries/*' --exclude='paper.yml-README.txt' --exclude='screenlog.*' --exclude='versions/*' ./
+    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude='unused/*' --exclude='$MCNAME.jar' --exclude='mcsys/jar/*' --exclude='mcsys/floodgate/*' --exclude='mcsys/geyser/*' ./
     fi
  fi
 fi
