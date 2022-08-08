@@ -6,6 +6,7 @@ echo -e " 1 = Start\n 2 = Stop\n 3 = Restart\n 4 = Edit Configuration"
 echo -n "";
 read MUPSTAT;
 }
+if 
 if [[ $MUPSTAT == "1" ]]; then
  /bin/bash $LPATH/mcsys/start.sh
  exit 0
@@ -21,4 +22,6 @@ fi
 if [[ $MUPSTAT == "4" ]]; then
  joe $LPATH/mcsys/configs/mcsys.config
 fi
+else
+echo "Please type in a Number!"
 exit 1
