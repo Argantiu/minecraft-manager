@@ -1,18 +1,17 @@
 #!/bin/bash
-# Minecraft Server auto script - Do not configure this scipt!!
-# Version 3.0.0.0-#0 made by Argantiu GmBh 08/08/2022 UTC/GMT +1 https://crazycloudcraft.de
+# Automatisches Minecraft Server Script - Bearbeiten auf eigene Gefahr!!
+# Version 3.0.0.0-#0 erstellt von Argantiu GmBh 08.08.2022 https://crazycloudcraft.de
 MCNAME=
 MTPATH=
 MPREFIX=
-MTRANZLATION=
-# Check if offline
+# Checkt, ob der Server offline ist, damit er nur gestartet wird.
 if ! screen -list | grep -q "$MCNAME"; then
-    echo -e "$MPREFIX $MTRANZLATION"
-    # Start server
+    echo -e "$MPREFIX Der Server läuft nicht. Starte Server."
+    # Starte Server
     /bin/bash $LPATH/mcsys/start.sh
     exit 0
 fi
-# Stop server
+# Stoppe Server
 /bin/bash $MTPATH/mcsys/stop.sh
-# Start server
+# Starte Server
 /bin/bash $MTPATH/mcsys/start.sh
