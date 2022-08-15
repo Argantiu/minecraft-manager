@@ -16,10 +16,25 @@ fi
 echo -e "$MPREFIX Notification: Stppe $DISPLAYNAME Server ..."
 echo "[Argantiu] Notification: Stppe $DISPLAYNAME Server ..." | /usr/bin/logger -t $MCNAME
 # Sieht nach, ob Spieler Online sind
-
-MCONLINE=TRUE
-# Starte Countdown, wenn Spieler Online sind
 if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]] && [[ $MCONLINE == "TRUE" ]] ; then
+cd $MTPATH/mcsys/cache | exit 1
+hostname -I > ip-info.txt
+MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
+MCPORT=$(cat < $MTPATH/server.properties | grep server-port= | cut -b 13,14,1
+
+wget -q https://api.minetools.eu/ping/crazycloudcraft.de/25565 -O online-info
+if grep -q error "online-info.txt"; then
+ echo -e "ERROR the Server information is invalid."
+ echo -e "Please open your port to the outside or change the port."
+ echo -e "You can also disable this error in the config with MCOUNT=false"
+else
+MCOTYPE=$(cat < online-info.txt | grep online | tr -d " " | cut -b 10)
+fi
+
+# Starte Countdown, wenn Spieler Online sind
+if [[ $MCOTYPE = "0" ]]; then
+ echo ""
+else
  screen -Rd $MCNAME -X stuff "say Server stoppt in 10 sekunden! $(printf '\r')"
  sleep 6s
  screen -Rd $MCNAME -X stuff "say Server stoppt in 4 $DISPLAYTRANZTIME ! $(printf '\r')"
