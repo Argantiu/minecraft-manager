@@ -12,12 +12,15 @@ if ! screen -list | grep -q "$MCNAME"; then
   exit 1
 fi
 
-# Stop the server
+# Stoppe den Server
 echo -e "$MPREFIX Notification: Stppe $DISPLAYNAME Server ..."
 echo "[Argantiu] Notification: Stppe $DISPLAYNAME Server ..." | /usr/bin/logger -t $MCNAME
-# Start countdown notice on server
-if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]] ; then
- screen -Rd $MCNAME -X stuff "say Server stoppt in 10 $DISPLAYTRANZTIME ! $(printf '\r')"
+# Sieht nach, ob Spieler Online sind
+
+MCONLINE=TRUE
+# Starte Countdown, wenn Spieler Online sind
+if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]] && [[ $MCONLINE == "TRUE" ]] ; then
+ screen -Rd $MCNAME -X stuff "say Server stoppt in 10 sekunden! $(printf '\r')"
  sleep 6s
  screen -Rd $MCNAME -X stuff "say Server stoppt in 4 $DISPLAYTRANZTIME ! $(printf '\r')"
  sleep 1s
