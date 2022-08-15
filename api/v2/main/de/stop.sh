@@ -6,6 +6,7 @@ SERVERBASE=
 ASOFTWARE=
 MCOUNT=
 MPREFIX=
+MTPATH=
 #
 if ! screen -list | grep -q "$MCNAME"; then
   echo -e "$MPREFIX Der Server wurde schon gestoppt!"
@@ -17,7 +18,7 @@ echo -e "$MPREFIX Notification: Stppe $DISPLAYNAME Server ..."
 echo "[Argantiu] Notification: Stppe $DISPLAYNAME Server ..." | /usr/bin/logger -t $MCNAME
 # Sieht nach, ob Spieler Online sind
 if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]] && [[ $MCONLINE == "TRUE" ]] ; then
-cd $MTPATH/mcsys/cache | exit 1
+cd $MTPATH/mcsys/cache || exit 1
 hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
 MCPORT=$(cat < $MTPATH/server.properties | grep server-port= | cut -b 13,14,1
