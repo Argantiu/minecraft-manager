@@ -22,7 +22,7 @@ hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
 MCPORT=$(cat < $MTPATH/server.properties | grep server-port= | cut -b 13,14,1
 
-wget -q https://api.minetools.eu/ping/crazycloudcraft.de/25565 -O online-info
+wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O online-info
 if grep -q error "online-info.txt"; then
  echo -e "ERROR the Server information is invalid."
  echo -e "Please open your port to the outside or change the port."
