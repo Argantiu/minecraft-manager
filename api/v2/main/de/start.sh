@@ -14,7 +14,8 @@ RAM=
 JAVABIN=
 # Path generating
 MTPATH=/$OPTBASE/$SERVERBASE
-
+# Here is a setting for developers if, they create a own fork user/repo
+IFCREATEDFORK=Argantiu/system-api
 #Already Started
 if screen -list | grep -q "$MCNAME"; then
     echo -e "$MPREFIX Server ist schon längt online! Nutze: screen -r $MCNAME um in die Konsole zu gelangen"
@@ -32,7 +33,7 @@ fi
 # Auto updater
 mkdir -p $MTPATH/mcsys/update
 cd $MTPATH/mcsys/update || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/update/updater.sh -O updater.sh
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater.sh
 
 
 # Create backup for your server
@@ -53,7 +54,7 @@ fi
 if [[ $BEMCUPDATE == "TRUE" ]]; then
  echo -e "$MPREFIX Updateing Bedrock"
  cd $LPATH/mcsys || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/be-updater.sh -O be-updater.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/be-updater.sh -O be-updater.sh
  chmod +x be-updater.sh
  # sed #
  /bin/bash $LPATH/mcsys/be-updater.sh
@@ -62,37 +63,37 @@ fi
 #Paper: Getting Update form your selected version.
 if [[ $ASOFTWARE == "PAPER" ]]; then
  cd $LPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/paper.sh -O $MCNAME.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/paper.sh -O $MCNAME.sh
 fi
 #Velocity: Getting Update form your selected version.
 if [[ $ASOFTWARE == "VELOCITY" ]]; then
  cd $LPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/velocity.sh -O $MCNAME.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/velocity.sh -O $MCNAME.sh
 fi
 #Purpur: Getting Update form your selected version.
 if [[ $ASOFTWARE == "PURPUR" ]]; then
  cd $LPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/purpur.sh -O $MCNAME.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/purpur.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "MOHIST" ]]; then
  cd $LPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/mohist.sh -O $MCNAME.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/mohist.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "SPIGOT" ]]; then
  cd $LPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/spigot.sh -O $MCNAME.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/spigot.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "BUKKIT" ]]; then
  cd $LPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/bukkit.sh -O $MCNAME.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bukkit.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "BUNGEECORD" ]]; then
  cd $LPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/bungeecord.sh -O $MCNAME.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bungeecord.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "WATERFALL" ]]; then
  cd $LPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/Argantiu/system-api/main/api/v2/software/waterfall.sh -O $MCNAME.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/waterfall.sh -O $MCNAME.sh
 fi
 
 sed -i "0,/MAINVERSION=.*/s//MAINVERSION=$MAINVERSION/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
