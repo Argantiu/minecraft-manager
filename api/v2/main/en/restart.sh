@@ -6,7 +6,7 @@ MTPATH=
 MPREFIX=
 # Checking, if the server is offline, to restart it.
 if ! screen -list | grep -q "$MCNAME"; then
-    echo -e "$MPREFIX Der Server läuft nicht. Starte Server."
+    echo -e "$MPREFIX The server isn't running, starting server..."
     # Starting server
     /bin/bash $LPATH/mcsys/start.sh
     exit 0
