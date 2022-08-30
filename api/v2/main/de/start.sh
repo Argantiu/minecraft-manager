@@ -54,7 +54,7 @@ fi
 if [[ $BEMCUPDATE == "TRUE" ]] || [[ $BEMCUPDATE == "true" ]]; then
  echo -e "$MPREFIX Updateing Bedrock"
  cd $LPATH/mcsys || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/be-updater.sh -O be-updater.sh
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-updater.sh
  chmod +x be-updater.sh
  # sed #
  /bin/bash $LPATH/mcsys/be-updater.sh
