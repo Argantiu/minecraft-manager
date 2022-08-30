@@ -37,7 +37,7 @@ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/upda
 
 
 # Create backup for your server
-if [[ $BACKUP == "TRUE" ]]; then
+if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
  if [ -f "$MCNAME.jar" ]; then
     echo -e "$MPREFIX Create Backup..."
     echo "Backing up server (to /unused/backups folder)" | /usr/bin/logger -t $MCNAME
@@ -51,7 +51,7 @@ if [[ $BACKUP == "TRUE" ]]; then
  fi
 fi
 # Bedrock Part
-if [[ $BEMCUPDATE == "TRUE" ]]; then
+if [[ $BEMCUPDATE == "TRUE" ]] || [[ $BEMCUPDATE == "true" ]]; then
  echo -e "$MPREFIX Updateing Bedrock"
  cd $LPATH/mcsys || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/be-updater.sh -O be-updater.sh
