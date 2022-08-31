@@ -17,7 +17,7 @@ fi
 echo -e "$MPREFIX Notification: Stppe $DISPLAYNAME Server ..."
 echo "[Argantiu] Notification: Stppe $DISPLAYNAME Server ..." | /usr/bin/logger -t $MCNAME
 # Sieht nach, ob Spieler Online sind
-if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]] && [[ $MCONLINE == "TRUE" ]] ; then
+if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]]; then
 cd $MTPATH/mcsys/cache || exit 1
 hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
