@@ -53,54 +53,54 @@ fi
 # Bedrock Part
 if [[ $BEMCUPDATE == "TRUE" ]] || [[ $BEMCUPDATE == "true" ]]; then
  echo -e "$MPREFIX Updateing Bedrock"
- cd $LPATH/mcsys || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-updater.sh
- chmod +x be-updater.sh
+ cd $MTPATH/mcsys || exit 1
+ ? #wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-updater.sh
+ #chmod +x be-updater.sh
  # sed #
- /bin/bash $LPATH/mcsys/be-updater.sh
+ /bin/bash $MTPATH/mcsys/be-updater.sh
 fi
 # Software update and start
 #Paper: Getting Update form your selected version.
 if [[ $ASOFTWARE == "PAPER" ]]; then
- cd $LPATH/mcsys/software || exit 1
+ cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/paper.sh -O $MCNAME.sh
 fi
 #Velocity: Getting Update form your selected version.
 if [[ $ASOFTWARE == "VELOCITY" ]]; then
- cd $LPATH/mcsys/software || exit 1
+ cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/velocity.sh -O $MCNAME.sh
 fi
 #Purpur: Getting Update form your selected version.
 if [[ $ASOFTWARE == "PURPUR" ]]; then
- cd $LPATH/mcsys/software || exit 1
+ cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/purpur.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "MOHIST" ]]; then
- cd $LPATH/mcsys/software || exit 1
+ cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/mohist.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "SPIGOT" ]]; then
- cd $LPATH/mcsys/software || exit 1
+ cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/spigot.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "BUKKIT" ]]; then
- cd $LPATH/mcsys/software || exit 1
+ cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bukkit.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "BUNGEECORD" ]]; then
- cd $LPATH/mcsys/software || exit 1
+ cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bungeecord.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "WATERFALL" ]]; then
- cd $LPATH/mcsys/software || exit 1
+ cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/waterfall.sh -O $MCNAME.sh
 fi
 
-sed -i "0,/MAINVERSION=.*/s//MAINVERSION=$MAINVERSION/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/MCNAME=.*/s//MCNAME=$MCNAME/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/LPATH=.*/s//LPATH=$LPATH/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/RAM=.*/s//RAM=$RAM/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/JAVABIN=.*/s//JAVABIN=$JAVABIN/" $LPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/MAINVERSION=.*/s//MAINVERSION=$MAINVERSION/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/MCNAME=.*/s//MCNAME=$MCNAME/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/LPATH=.*/s//LPATH=$LPATH/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/RAM=.*/s//RAM=$RAM/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,/JAVABIN=.*/s//JAVABIN=$JAVABIN/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
 
-/bin/bash $LPATH/$MCNAME.sh
+/bin/bash $MTPATH/$MCNAME.sh
 exit 0
