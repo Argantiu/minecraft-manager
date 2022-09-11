@@ -34,8 +34,6 @@ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/upda
 diff -q updater-new.sh updater.sh >/dev/null 2>&1
 if [ "$?" -eq 1 ]; then
 /bin/bash $MTPATH/mcsys/update/
-else
-echo "No"
 fi
 
 # Create backup for your server
