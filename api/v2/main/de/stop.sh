@@ -25,9 +25,7 @@ MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
 MCPORT=$(cat < $MTPATH/server.properties | grep server-port= | cut -b 13,14,1)
 wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O online-info.txt
 if grep -q error "online-info.txt"; then
- echo -e "ERROR the Server information is invalid."
- echo -e "Please open your port to the outside or change the port."
- echo -e "You can also disable this error in the config with MCOUNT=false"
+ echo -e "ERROR the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false"
 else
 MCOTYPE=$(cat < online-info.txt | grep online | tr -d " " | cut -b 10)
 fi
