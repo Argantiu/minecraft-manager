@@ -102,5 +102,5 @@ sed -i "0,/LPATH=.*/s//LPATH=$LPATH/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
 sed -i "0,/RAM=.*/s//RAM=$RAM/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
 sed -i "0,/JAVABIN=.*/s//JAVABIN=$JAVABIN/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
 
-/bin/bash $MTPATH/$MCNAME.sh
+/bin/bash $MTPATH/mcsys/$MCNAME.sh
 exit 0
