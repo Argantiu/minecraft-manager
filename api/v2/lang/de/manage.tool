@@ -6,7 +6,7 @@ echo -e " 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbei
 echo -n "";
 read MUPSTAT;
 }
-MTPATH=
+MTPATH=$(cat ./mcsys/configs/mcsys.config | grep MTPATH= | cut -d '=' -f2)
 if
 if [[ $MUPSTAT == "1" ]]; then
  /bin/bash $MTPATH/mcsys/configs/mcsys.config
