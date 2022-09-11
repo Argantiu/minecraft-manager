@@ -1,12 +1,12 @@
 #!/bin/bash
 # Automatisches Minecraft Server Script - Bearbeiten auf eigene Gefahr!!
 # Version 3.0.0.0-#0 erstellt von Argantiu GmBh 08.08.2022 https://crazycloudcraft.de
-MCNAME=
-SERVERBASE=
-ASOFTWARE=
-MCOUNT=
-MPREFIX=
-MTPATH=
+MCNAME=$(cat ./configs/mcsys.config | grep MCNAME= | cut -d '=' -f2)
+SERVERBASE=$(cat ./configs/mcsys.config | grep SERVERBASE= | cut -d '=' -f2)
+ASOFTWARE=$(cat ./configs/mcsys.config | grep ASOFTWARE= | cut -d '=' -f2)
+MCOUNT=$(cat ./configs/mcsys.config | grep MCOUNT= | cut -d '=' -f2)
+MPREFIX=$(cat ./configs/mcsys.config | grep MPREFIX= | cut -d '=' -f2)
+MTPATH=$(cat ./configs/mcsys.config | grep MTPATH= | cut -d '=' -f2)
 #
 if ! screen -list | grep -q "$MCNAME"; then
   echo -e "$MPREFIX Der Server wurde schon gestoppt!"
@@ -18,11 +18,11 @@ echo -e "$MPREFIX Notification: Stppe $MCNAME Server ..."
 echo "[Argantiu] Notification: Stppe $MCNAME Server ..." | /usr/bin/logger -t $MCNAME
 # Sieht nach, ob Spieler Online sind
 if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]]; then
+mkdir -p $MTPATH/mcsys/cache
 cd $MTPATH/mcsys/cache || exit 1
 hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
 MCPORT=$(cat < $MTPATH/server.properties | grep server-port= | cut -b 13,14,1)
-
 wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O online-info.txt
 if grep -q error "online-info.txt"; then
  echo -e "ERROR the Server information is invalid."
