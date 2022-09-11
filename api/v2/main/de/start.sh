@@ -1,17 +1,14 @@
 #!/bin/bash
 # Automatisches Minecraft Server Script - Bearbeiten auf eigene Gefahr!!
 # Version 3.0.0.0-#0 erstellt von Argantiu GmBh 08.08.2022 https://crazycloudcraft.de
-ASOFTWARE=
-OPTBASE=
-SERVERBASE=
-BEMCUPDATE=
-BACKUP=
-MPREFIX=
-# For sed
-MAINVERSION=
-MCNAME=
-RAM=
-JAVABIN=
+ASOFTWARE=$(cat ./configs/mcsys.config | grep ASOFTWARE= | cut -d '=' -f2)
+OPTBASE=$(cat ./configs/mcsys.config | grep OPTBASE= | cut -d '=' -f2)
+SERVERBASE=$(cat ./configs/mcsys.config | grep SERVERBASE= | cut -d '=' -f2)
+BEMCUPDATE=$(cat ./configs/mcsys.config | grep BEMCUPDATE= | cut -d '=' -f2)
+BACKUP=$(cat ./configs/mcsys.config | grep BACKUP= | cut -d '=' -f2)
+BETTERBACKUP=$(cat ./configs/mcsys.config | grep BETTERBACKUP= | cut -d '=' -f2)
+MPREFIX=$(cat ./configs/mcsys.config | grep MPREFIX= | cut -d '=' -f2)
+MCNAME=$(cat ./configs/mcsys.config | grep MCNAME= | cut -d '=' -f2)
 # Path generating
 MTPATH=/$OPTBASE/$SERVERBASE
 # Here is a setting for developers if, they create a own fork user/repo
@@ -33,8 +30,9 @@ fi
 # Auto updater
 mkdir -p $MTPATH/mcsys/update
 cd $MTPATH/mcsys/update || exit 1
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater.sh
-
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh
+diff -q updater-new.sh updater.sh >/dev/null 2>&1
+/bin/bash $MTPATH/mcsys/update/
 
 # Create backup for your server
 if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
@@ -95,12 +93,6 @@ if [[ $ASOFTWARE == "WATERFALL" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/waterfall.sh -O $MCNAME.sh
 fi
-
-sed -i "0,/MAINVERSION=.*/s//MAINVERSION=$MAINVERSION/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/MCNAME=.*/s//MCNAME=$MCNAME/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/LPATH=.*/s//LPATH=$LPATH/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/RAM=.*/s//RAM=$RAM/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
-sed -i "0,/JAVABIN=.*/s//JAVABIN=$JAVABIN/" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
 
 /bin/bash $MTPATH/mcsys/$MCNAME.sh
 exit 0
