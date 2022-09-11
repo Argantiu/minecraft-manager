@@ -1,4 +1,6 @@
 #!/bin/bash
+SERVERNAME=$(cat ./mcsys/configs/mcsys.config | grep MCNAME= | cut -d '=' -f2)
+sed -i 's;%server_name%;$SERVERNAME;g' ./manage.tool >/dev/null 2>&1
 # Bitte diese datei mit ./manage.tool.%server_name% ausfueren.
 echo -e "Was möchtest du den machen?"
 echo -e " 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten"
@@ -34,6 +36,8 @@ if
   /bin/bash $MTPATH/mcsys/stop.sh
   rm -r ./mcsys
   echo -e "Oh wie schade dass du uns nicht mehr haben möchtest. Bitte endferne auch das 'manage.tool.%server_name%' denn ich kann mich nicht selber löschen :("
+  sed -i 's;#!/bin/bash;#!/disabled;g' ./manage.tool >/dev/null 2>&1
+  exit 0
   else
   echo -e "Oh ein glück das du das nicht so mit uns meintest."
   exit 0
