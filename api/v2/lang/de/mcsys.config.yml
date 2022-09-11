@@ -66,5 +66,5 @@ MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 # Purple:       \033[0;35m'     Light Purple:  \033[1;35m'
 # Cyan:         \033[0;36m'     Light Cyan:    \033[1;36m'
 # Light Gray:   \033[0;37m'     White:         \033[1;37m'
-
+MTPATH=/$OPTBASE/$SERVERBASE
 # Konfiguration zu ende. Wenn das nicht hier stehen würde, dann ist die Datei kaputt!
