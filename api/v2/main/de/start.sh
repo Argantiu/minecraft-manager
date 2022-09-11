@@ -32,6 +32,7 @@ mkdir -p $MTPATH/mcsys/update
 cd $MTPATH/mcsys/update || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh
 diff -q updater-new.sh updater.sh >/dev/null 2>&1
+
 /bin/bash $MTPATH/mcsys/update/
 
 # Create backup for your server
