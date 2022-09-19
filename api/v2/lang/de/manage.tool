@@ -10,7 +10,7 @@ sed -i 's;%server_name%;$SERVERNAME;g' ./manage.tool.* >/dev/null 2>&1
 
 
 echo -e "Was möchtest du den machen?"
-echo -e " 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten"
+echo -e " 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen"
 {
 echo -n "";
 read MUPSTAT;
