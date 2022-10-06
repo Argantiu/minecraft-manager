@@ -6,5 +6,5 @@ Still not finished!
     <img src="https://www.azul.com/wp-content/themes/azul/dist/img/logo.svg" width="150">
 </a>
 
-https://minecraft-mirror.io/ for minecraft default? save?
+-- https://minecraft-mirror.io/ for minecraft default? save?
 -->
