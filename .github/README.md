@@ -8,5 +8,8 @@ Still not finished!
     <img src="https://www.azul.com/wp-content/themes/azul/dist/img/logo.svg" width="150">
 </a>
 
+https://wiki.ubuntuusers.de/tcpdump/
+https://www.spigotmc.org/threads/list-of-found-malware.389467/
+https://www.spigotmc.org/threads/check-backdoor-plugins.446046/
 -- https://minecraft-mirror.io/ for minecraft default? save?
 -->
