@@ -2,6 +2,9 @@
 # Here are the System variables don't edit them here. You can use the mcsys.yml ;)
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
+
+#### Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
+#### OPT und SERVER base zusammen basteln
 MLANG=./messages.lang
 # start.sh
 ASOFTWARE=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
