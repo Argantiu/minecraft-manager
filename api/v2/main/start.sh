@@ -6,16 +6,13 @@ IFCREATEDFORK=Argantiu/system-api
 . ./configs/variables.sh
 # Already Started
 if screen -list | grep -q "$MCNAME"; then
-    echo -e ""
+    echo -e "$MSTART1"
     exit 1
 else
-echo -e "$MPREFIX Starte $MCNAME server..."
+echo -e "$MSTART2"
 fi
 # Bugg Patcher 
-if [ -f $MTPATH/$MCNAME.jar ]; then
- echo "Server Jar exists" >/dev/null 2>&1
-else
- touch $MTPATH/$MCNAME.jar
+if [ ! -f ./dabuda.jar ]; then touch ./dabuda.jar
 fi
 # Auto updater
 mkdir -p $MTPATH/mcsys/update
@@ -23,7 +20,8 @@ cd $MTPATH/mcsys/update || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh
 diff -q updater-new.sh updater.sh >/dev/null 2>&1
 if [ "$?" -eq 1 ]; then
-/bin/bash $MTPATH/mcsys/update/
+mv updater-new.sh updater.sh
+/bin/bash $MTPATH/mcsys/update/updater.sh
 fi
 
 # Create backup for your server
