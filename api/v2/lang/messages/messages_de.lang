@@ -6,7 +6,8 @@ startsh.
 manage.tool.output: Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen 
 
 
-
+$MPREFIX Create Backup...
+Backing up server (to /unused/backups folder)
 
 
 
