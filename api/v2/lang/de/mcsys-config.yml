@@ -7,54 +7,54 @@
 # Wähle deine Minecraft Version 1.18.2, 1.18.1, 1.18, ...
 # Manche Software typen brauchen keine Minecraft Version z.B. Velocity oder Bungeecord. 
 # Aber man sollte sie trotzdem hier eintragen.
-MAINVERSION=1.18.2
+version: 1.18.2
 
 # Was für eine Software willst du eigentlich verwenden?
 # Du kannst hier < PAPER | PURPUR | MOHIST | VELOCITY | BUNGEECORD | SPIGOT | BUKKIT > hinschreiben.
-ASOFTWARE=PAPER
+software: PAPER
 
-# Welche(r) Unterordner verwendest du für deine Server? Bitte verwende einen.
-# z.B. home/server/(serverbase) oder opt/(serverbase)
-OPTBASE=opt
+# Welche(r) Unterordner verwendest du für deine Server? Du musst einen verwenden.
+# z.B. home/server/(...) oder opt/(...)
+servers.directory: opt
 
-# Wie heißt der Hauptordner wo der Server läuft? (serverbase)
-SERVERBASE=Paper
+# Wie heißt der Hauptordner wo der Server läuft?
+main.directory: Paper
 
 # Welchen System-Namen soll die Konsole und die main.jar haben?
 # Nutze keine Namen wie zum Beispiel "system" oder "main", 
 # weil diese eventuell schon vom System belegt sind.
-MCNAME=mcpaper
+systemname: mcpaper
 # Sicherer ist, wenn du "mc" vor dem Namen schreibst ;)
 
 # Wie viel Ram soll dein Server bekommen? 
 # Der Server nutzt M und G ohne dem B dahinter. z.B.: RAM=2024M oder RAM=10G
-RAM=4G
+ram: 4GB
 
-# Wo befinndet sich das Java? 
+# Wo befinndet sich das Java?
 # (Default java) was man mit "java --version" erreicht, ist z.B.: JAVABIN=/usr/bin/java
-JAVABIN=/usr/bin/java
+java: /usr/bin/java
+# Dieses feature wird bald durch ein automatisches system ersetzt!
 
 # --- Backups ---
 # Brauchst du Backups? 
-# Dann musst du das hier auf TRUE setzen.
-BACKUP=FALSE
+# Dann musst du das hier auf "true" setzen.
+backups: false
 
-# Möchtest du bessere backups? (Es reduziert die Dateiengröße sehr, und funktioniert trotzdem wenn man den server startet)
-BETTERBACKUP=TRUE
+# Möchtest du bessere backups? (Es reduziert die Dateiengröße sehr, und behält nur alle nötigen dinge)
+primebackups: false
 
 # --- Bedrock Edition (MCPE) ---
 # Brauchst du Floodgate ansonsten kann niemand ohne Java account Spielen.
-BEUPDATE=FALSE
+bedrock: FALSE
 # Geyser auch? Du brauchst es jedoch nicht,
 # wenn das hier ein unterserver von einen Proxy ist.
-GBESUPPORT=FALSE
+#GBESUPPORT: FALSE
 
 
 # --- Bearbeitsfähige Nachrichten ---
-# Wenn du weißt, wie du in Shell farben bei "echo" commandos verwendest,
-# dann kannst du auch hier farben hinzugeben.
+# Du auch hier auch Minecraft farben hinzufuegen:
 
-MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
+MPREFIX="§8[§aArgantiu§8]"
 
 # Farbliste:
 
@@ -66,5 +66,5 @@ MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 # Purple:       \033[0;35m'     Light Purple:  \033[1;35m'
 # Cyan:         \033[0;36m'     Light Cyan:    \033[1;36m'
 # Light Gray:   \033[0;37m'     White:         \033[1;37m'
-MTPATH=/$OPTBASE/$SERVERBASE
+#MTPATH=/$OPTBASE/$SERVERBASE
 # Konfiguration zu ende. Wenn das nicht hier stehen würde, dann ist die Datei kaputt!
