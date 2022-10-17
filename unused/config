@@ -1,5 +1,0 @@
-#!/bin/bash
-# Get configuration
-# shellcheck source=values.conf
-. /mcsys/config/values.txt
-joe $DSERVERFOLDER/mcsys/config/mcsys.txt
