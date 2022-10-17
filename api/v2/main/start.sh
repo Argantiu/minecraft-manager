@@ -3,22 +3,10 @@
 IFCREATEDFORK=Argantiu/system-api
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
-MCONF=./configs/mcsys.yml
-MLANG=./configs/messages.lang
-ASOFTWARE=$(cat < $MCONF | grep software: | cut -d ':' -d ' ' -f2)
-MTPATH=$(cat < $MCONF | grep server.directory: | cut -d ':' -d ' ' -f2)
-BEMCUPDATE=$(cat < $MCONF | grep BEMCUPDATE= | cut -d ':' -d ' ' -f2)
-BACKUP=$(cat < $MCONF | grep BACKUP= | cut -d ':' -d ' ' -f2)
-BETTERBACKUP=$(cat < $MCONF | grep BETTERBACKUP= | cut -d ':' -d ' ' -f2)
-MPREFIX=$(cat < $MCONF | grep MPREFIX= | cut -d ':' -d ' ' -f2)
-MCNAME=$(cat < $MCONF | grep MCNAME= | cut -d ':' -d ' ' -f2)
-OPTBASE=
-SERVERBASE=
-# Tranzlations
-TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
+. ./configs/variables.sh
 # Already Started
 if screen -list | grep -q "$MCNAME"; then
-    echo -e "$MPREFIX Server ist schon längt online! Nutze: screen -r $MCNAME um in die Konsole zu gelangen. \n$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen."
+    echo -e ""
     exit 1
 else
 echo -e "$MPREFIX Starte $MCNAME server..."
