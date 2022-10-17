@@ -1,3 +1,19 @@
 message.file.translation: de_DE
-server.already.online="Server is already online! Use: screen-r %server_name% to get into the Console."
-server.already.online.line2="You can also use: less -r screenlog.0 to view the log."
+startsh.already.online: $MPREFIX Server ist schon längt online! Nutze: screen -r $MCNAME um in die Konsole zu gelangen. \n$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
+startsh.start.server: $MPREFIX Starte $MCNAME server...
+startsh.
+startsh.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
