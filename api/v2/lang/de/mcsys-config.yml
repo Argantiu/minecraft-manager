@@ -35,6 +35,9 @@ ram: 4GB
 java: /usr/bin/java
 # Dieses feature wird bald durch ein automatisches system ersetzt!
 
+# Soll oder ist dieser Server mit einem Proxy (Bungeecord/Waterfall etc.) verbunden? 
+proxy.mode: false
+
 # --- Backups ---
 # Brauchst du Backups? 
 # Dann musst du das hier auf "true" setzen.
@@ -44,12 +47,8 @@ backups: false
 primebackups: false
 
 # --- Bedrock Edition (MCPE) ---
-# Brauchst du Floodgate ansonsten kann niemand ohne Java account Spielen.
-bedrock: FALSE
-# Geyser auch? Du brauchst es jedoch nicht,
-# wenn das hier ein unterserver von einen Proxy ist.
-#GBESUPPORT: FALSE
-
+# Willst du, dass Bedrock Edition Spieler auch mitspielen können?
+bedrock: false
 
 # --- Bearbeitsfähige Nachrichten ---
 # Du auch hier auch Minecraft farben hinzufuegen:
