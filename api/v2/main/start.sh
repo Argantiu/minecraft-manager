@@ -5,23 +5,17 @@ IFCREATEDFORK=Argantiu/system-api
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
 . ./configs/variables.sh
 # Already Started
-if screen -list | grep -q "$MCNAME"; then
-    echo -e "$MSTART1"
-    exit 1
-else
-echo -e "$MSTART2"
+if screen -list | grep -q "$MCNAME"; then echo -e "$MSTART1" && exit 1
+else echo -e "$MSTART2"
 fi
-# Bugg Patcher 
-if [ ! -f ./dabuda.jar ]; then touch ./dabuda.jar
+# Bugg Patcher
+if [ ! -f $MTPATH/$MCNAME.jar ]; then touch $MTPATH/$MCNAME.jar
 fi
 # Auto updater
 mkdir -p $MTPATH/mcsys/update
 cd $MTPATH/mcsys/update || exit 1
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh
-diff -q updater-new.sh updater.sh >/dev/null 2>&1
-if [ "$?" -eq 1 ]; then
-mv updater-new.sh updater.sh
-/bin/bash $MTPATH/mcsys/update/updater.sh
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh && diff -q updater-new.sh updater.sh >/dev/null 2>&1
+if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && /bin/bash $MTPATH/mcsys/update/updater.sh
 fi
 
 # Create backup for your server
