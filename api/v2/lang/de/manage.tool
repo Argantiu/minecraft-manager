@@ -4,13 +4,12 @@ SERVERNAME=$(cat ./mcsys/configs/mcsys.config | grep MCNAME: | cut -d '=' -f2)
 mv manage.tool manage.tool.$SERVERNAME
 sed -i 's;%server_name%;$SERVERNAME;g' ./manage.tool.* >/dev/null 2>&1
 
-echo -e "Was möchtest du den machen?"
-echo -e " 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen"
+echo -e "Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen"
 {
 echo -n "";
 read MUPSTAT;
 }
-MTPATH=$(cat ./mcsys/configs/mcsys.config | grep MTPATH= | cut -d '=' -f2)
+MTPATH=$(cat ./mcsys/configs/mcsys.config | grep complete.path | cut -d ':' -f2)
 if
  if [[ $MUPSTAT == "1" ]]; then
   /bin/bash $MTPATH/mcsys/start.sh
