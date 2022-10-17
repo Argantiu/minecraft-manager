@@ -53,8 +53,3 @@ if
  echo "Bitte gebe eine Nummer an!"
  exit 1
 fi
-#
-# Add removal option to remove this thing easily, make it with confirmation
-#
-#
-
