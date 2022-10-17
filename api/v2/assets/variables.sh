@@ -20,3 +20,9 @@ SERVERBASE=
 SERVERNAME=$(cat < mcsys.yml | grep MCNAME: | cut -d '=' -f2)
 # Tranzlations
 TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
+
+
+
+#ASOFTWARE=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
+IGNORE=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
+ASOFTWARE=$(cat mcsys.yml | grep "software:" | tr -d " " | cut -d ':' -f2 | sed s/$IGNORE//m)
