@@ -3,7 +3,7 @@ startsh.already.online: $MPREFIX Server ist schon längt online! Nutze: screen -
 startsh.start.server: $MPREFIX Starte $MCNAME server...
 startsh.
 startsh.
-
+manage.tool.output: Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen 
 
 
 
