@@ -1,8 +1,8 @@
 #!/bin/bash
 # Bitte diese datei mit ./manage.tool.%server_name% ausfueren.
-SERVERNAME=$(cat ./mcsys/configs/mcsys.config | grep MCNAME: | cut -d '=' -f2)
-mv manage.tool manage.tool.$SERVERNAME
-sed -i 's;%server_name%;$SERVERNAME;g' ./manage.tool.* >/dev/null 2>&1
+. ./mcsys/configs/variables.sh
+mv manage.tool manage.tool.$MCNAME
+sed -i 's;%server_name%;$MCNAME;g' ./manage.tool.* >/dev/null 2>&1
 
 echo -e "Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen"
 {
