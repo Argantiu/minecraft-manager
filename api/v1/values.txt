@@ -1,3 +1,0 @@
-# Values for Using this scripts. Please don't edit this here
-PRMCVERSION=3.1.2
-DSERVERFOLDER=empty
