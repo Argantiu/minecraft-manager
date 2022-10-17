@@ -13,12 +13,9 @@ version: 1.18.2
 # Du kannst hier < PAPER | PURPUR | MOHIST | VELOCITY | BUNGEECORD | SPIGOT | BUKKIT > hinschreiben.
 software: PAPER
 
-# Welche(r) Unterordner verwendest du für deine Server? Du musst einen verwenden.
-# z.B. home/server/(...) oder opt/(...)
-servers.directory: opt
-
-# Wie heißt der Hauptordner wo der Server läuft?
-main.directory: Paper
+# In welchem ordner(n) befindet sich dann der Server?
+# z.B. home/server/MeinCoolerServer oder opt/MeinGeilomatikoServer
+server.directory: opt/MeinServer
 
 # Welchen System-Namen soll die Konsole und die main.jar haben?
 # Nutze keine Namen wie zum Beispiel "system" oder "main", 
