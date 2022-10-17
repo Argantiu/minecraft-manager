@@ -1,29 +1,31 @@
 #!/bin/bash
-# Automatisches Minecraft Server Script - Bearbeiten auf eigene Gefahr!!
-# Version 3.0.0.0-#0 erstellt von Argantiu GmBh 08.08.2022 https://crazycloudcraft.de
-ASOFTWARE=$(cat < ./configs/mcsys.config | grep ASOFTWARE= | cut -d '=' -f2)
-OPTBASE=$(cat < ./configs/mcsys.config | grep OPTBASE= | cut -d '=' -f2)
-SERVERBASE=$(cat < ./configs/mcsys.config | grep SERVERBASE= | cut -d '=' -f2)
-BEMCUPDATE=$(cat < ./configs/mcsys.config | grep BEMCUPDATE= | cut -d '=' -f2)
-BACKUP=$(cat < ./configs/mcsys.config | grep BACKUP= | cut -d '=' -f2)
-BETTERBACKUP=$(cat < ./configs/mcsys.config | grep BETTERBACKUP= | cut -d '=' -f2)
-MPREFIX=$(cat < ./configs/mcsys.config | grep MPREFIX= | cut -d '=' -f2)
-MCNAME=$(cat < ./configs/mcsys.config | grep MCNAME= | cut -d '=' -f2)
-# Path generating
-MTPATH=/$OPTBASE/$SERVERBASE
 # Here is a setting for developers if, they create a own fork user/repo
 IFCREATEDFORK=Argantiu/system-api
-#Already Started
+# Automatic minecraft server script - Edit at your own risks!!
+# Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
+MCONF=./configs/mcsys.yml
+MLANG=./configs/messages.lang
+ASOFTWARE=$(cat < $MCONF | grep software: | cut -d ':' -d ' ' -f2)
+MTPATH=$(cat < $MCONF | grep server.directory: | cut -d ':' -d ' ' -f2)
+BEMCUPDATE=$(cat < $MCONF | grep BEMCUPDATE= | cut -d ':' -d ' ' -f2)
+BACKUP=$(cat < $MCONF | grep BACKUP= | cut -d ':' -d ' ' -f2)
+BETTERBACKUP=$(cat < $MCONF | grep BETTERBACKUP= | cut -d ':' -d ' ' -f2)
+MPREFIX=$(cat < $MCONF | grep MPREFIX= | cut -d ':' -d ' ' -f2)
+MCNAME=$(cat < $MCONF | grep MCNAME= | cut -d ':' -d ' ' -f2)
+OPTBASE=
+SERVERBASE=
+# Tranzlations
+TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
+# Already Started
 if screen -list | grep -q "$MCNAME"; then
-    echo -e "$MPREFIX Server ist schon längt online! Nutze: screen -r $MCNAME um in die Konsole zu gelangen"
-    echo -e "$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen."
+    echo -e "$MPREFIX Server ist schon längt online! Nutze: screen -r $MCNAME um in die Konsole zu gelangen. \n$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen."
     exit 1
 else
 echo -e "$MPREFIX Starte $MCNAME server..."
 fi
 # Bugg Patcher 
 if [ -f $MTPATH/$MCNAME.jar ]; then
- echo "Jar exestiert, perfekt" >/dev/null 2>&1
+ echo "Server Jar exists" >/dev/null 2>&1
 else
  touch $MTPATH/$MCNAME.jar
 fi
