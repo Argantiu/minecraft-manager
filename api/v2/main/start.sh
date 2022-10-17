@@ -17,12 +17,9 @@ cd $MTPATH/mcsys/update || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh && diff -q updater-new.sh updater.sh >/dev/null 2>&1
 if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && /bin/bash $MTPATH/mcsys/update/updater.sh
 fi
-
 # Create backup for your server
 if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
- if [ -f "$MCNAME.jar" ]; then
-    echo -e "$MPREFIX Create Backup..."
-    echo "Backing up server (to /unused/backups folder)" | /usr/bin/logger -t $MCNAME
+ if [ -f "$MCNAME.jar" ]; then echo -e "$MSTART3" && echo -e "$MSTART3" | /usr/bin/logger -t $MCNAME
     cd $MTPATH/unused/backups && ls -1tr | head -n -10 | xargs -d '\n' rm -f --
     cd $MTPATH || exit 1
     if [[ $BETTERBACKUP == "TRUE" ]] || [[ $BETTERBACKUP == "true" ]]; then
@@ -33,8 +30,8 @@ if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
  fi
 fi
 # Bedrock Part
-if [[ $BEMCUPDATE == "TRUE" ]] || [[ $BEMCUPDATE == "true" ]]; then
- echo -e "$MPREFIX Updateing Bedrock"
+if [[ $BEUPDATE == "TRUE" ]] || [[ $BEUPDATE == "true" ]]; then
+ echo -e "$MSTART4"
  cd $MTPATH/mcsys || exit 1
  ? #wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-updater.sh
  #chmod +x be-updater.sh
@@ -43,21 +40,16 @@ if [[ $BEMCUPDATE == "TRUE" ]] || [[ $BEMCUPDATE == "true" ]]; then
 fi
 # Software update and start
 #Paper: Getting Update form your selected version.
-if [[ $ASOFTWARE == "PAPER" ]]; then
+if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "paper" ]] || [[ $ASOFTWARE == "papermc" ]] || [[ $ASOFTWARE == "paperspigot" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/paper.sh -O $MCNAME.sh
 fi
-#Velocity: Getting Update form your selected version.
-if [[ $ASOFTWARE == "VELOCITY" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/velocity.sh -O $MCNAME.sh
-fi
 #Purpur: Getting Update form your selected version.
-if [[ $ASOFTWARE == "PURPUR" ]]; then
+if [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "purpur" ]] || [[ $ASOFTWARE == "purpurmc" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/purpur.sh -O $MCNAME.sh
 fi
-if [[ $ASOFTWARE == "MOHIST" ]]; then
+if [[ $ASOFTWARE == "MOHIST" ]] || [[ $ASOFTWARE == "mohist" ]] || [[ $ASOFTWARE == "mohistmc" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/mohist.sh -O $MCNAME.sh
 fi
@@ -68,6 +60,11 @@ fi
 if [[ $ASOFTWARE == "BUKKIT" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bukkit.sh -O $MCNAME.sh
+fi
+#Proxys: Getting Update form your selected version.
+if [[ $ASOFTWARE == "VELOCITY" ]] || [[ $ASOFTWARE == "velo" ]] || [[ $ASOFTWARE == "velocity" ]]; then
+ cd $MTPATH/mcsys/software || exit 1
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/velocity.sh -O $MCNAME.sh
 fi
 if [[ $ASOFTWARE == "BUNGEECORD" ]]; then
  cd $MTPATH/mcsys/software || exit 1
