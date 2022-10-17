@@ -1,14 +1,14 @@
 #!/bin/bash
 # Automatisches Minecraft Server Script - Bearbeiten auf eigene Gefahr!!
 # Version 3.0.0.0-#0 erstellt von Argantiu GmBh 08.08.2022 https://crazycloudcraft.de
-ASOFTWARE=$(cat ./configs/mcsys.config | grep ASOFTWARE= | cut -d '=' -f2)
-OPTBASE=$(cat ./configs/mcsys.config | grep OPTBASE= | cut -d '=' -f2)
-SERVERBASE=$(cat ./configs/mcsys.config | grep SERVERBASE= | cut -d '=' -f2)
-BEMCUPDATE=$(cat ./configs/mcsys.config | grep BEMCUPDATE= | cut -d '=' -f2)
-BACKUP=$(cat ./configs/mcsys.config | grep BACKUP= | cut -d '=' -f2)
-BETTERBACKUP=$(cat ./configs/mcsys.config | grep BETTERBACKUP= | cut -d '=' -f2)
-MPREFIX=$(cat ./configs/mcsys.config | grep MPREFIX= | cut -d '=' -f2)
-MCNAME=$(cat ./configs/mcsys.config | grep MCNAME= | cut -d '=' -f2)
+ASOFTWARE=$(cat < ./configs/mcsys.config | grep ASOFTWARE= | cut -d '=' -f2)
+OPTBASE=$(cat < ./configs/mcsys.config | grep OPTBASE= | cut -d '=' -f2)
+SERVERBASE=$(cat < ./configs/mcsys.config | grep SERVERBASE= | cut -d '=' -f2)
+BEMCUPDATE=$(cat < ./configs/mcsys.config | grep BEMCUPDATE= | cut -d '=' -f2)
+BACKUP=$(cat < ./configs/mcsys.config | grep BACKUP= | cut -d '=' -f2)
+BETTERBACKUP=$(cat < ./configs/mcsys.config | grep BETTERBACKUP= | cut -d '=' -f2)
+MPREFIX=$(cat < ./configs/mcsys.config | grep MPREFIX= | cut -d '=' -f2)
+MCNAME=$(cat < ./configs/mcsys.config | grep MCNAME= | cut -d '=' -f2)
 # Path generating
 MTPATH=/$OPTBASE/$SERVERBASE
 # Here is a setting for developers if, they create a own fork user/repo
@@ -44,9 +44,9 @@ if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
     cd $MTPATH/unused/backups && ls -1tr | head -n -10 | xargs -d '\n' rm -f --
     cd $MTPATH || exit 1
     if [[ $BETTERBACKUP == "TRUE" ]] || [[ $BETTERBACKUP == "true" ]]; then
-    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude='unused/*' --exclude='$MCNAME.jar' --exclude='mcsys/*' --exclude='cache/*' --exclude='logs/*' --exclude='libraries/*' --exclude='paper.yml-README.txt' --exclude='screenlog.*' --exclude='versions/*' ./ 
+    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
     else
-    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude='unused/*' --exclude='$MCNAME.jar' --exclude='mcsys/jar/*' --exclude='mcsys/floodgate/*' --exclude='mcsys/geyser/*' ./
+    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/jar/*" --exclude="mcsys/floodgate/*" --exclude="mcsys/geyser/*" ./
     fi
  fi
 fi
