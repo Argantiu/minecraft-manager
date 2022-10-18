@@ -54,11 +54,11 @@ if [[ $ASOFTWARE == "MOHIST" ]] || [[ $ASOFTWARE == "mohist" ]] || [[ $ASOFTWARE
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/mohist.sh -O $MCNAME.sh
 fi
-if [[ $ASOFTWARE == "SPIGOT" ]]; then
+if [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "spigot" ]] || [[ $ASOFTWARE == "spigotmc" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/spigot.sh -O $MCNAME.sh
 fi
-if [[ $ASOFTWARE == "BUKKIT" ]]; then
+if [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "bukkit" ]] || [[ $ASOFTWARE == "bukkitmc" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bukkit.sh -O $MCNAME.sh
 fi
@@ -67,14 +67,13 @@ if [[ $ASOFTWARE == "VELOCITY" ]] || [[ $ASOFTWARE == "velo" ]] || [[ $ASOFTWARE
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/velocity.sh -O $MCNAME.sh
 fi
-if [[ $ASOFTWARE == "BUNGEECORD" ]]; then
+if [[ $ASOFTWARE == "BUNGEECORD" ]] || [[ $ASOFTWARE == "bungeecord" ]] || [[ $ASOFTWARE == "bungee" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bungeecord.sh -O $MCNAME.sh
 fi
-if [[ $ASOFTWARE == "WATERFALL" ]]; then
+if [[ $ASOFTWARE == "WATERFALL" ]] || [[ $ASOFTWARE == "waterfall" ]] || [[ $ASOFTWARE == "waterfallmc" ]]; then
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/waterfall.sh -O $MCNAME.sh
 fi
-
 /bin/bash $MTPATH/mcsys/$MCNAME.sh
 exit 0
