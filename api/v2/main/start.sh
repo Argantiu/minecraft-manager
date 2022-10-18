@@ -75,5 +75,4 @@ if [[ $ASOFTWARE == "WATERFALL" ]] || [[ $ASOFTWARE == "waterfall" ]] || [[ $ASO
  cd $MTPATH/mcsys/software || exit 1
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/waterfall.sh -O $MCNAME.sh
 fi
-/bin/bash $MTPATH/mcsys/$MCNAME.sh
-exit 0
+/bin/bash $MTPATH/mcsys/$MCNAME.sh && exit 0
