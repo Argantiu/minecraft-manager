@@ -1,18 +1,10 @@
 #!/bin/bash
-# Automatisches Minecraft Server Script - Bearbeiten auf eigene Gefahr!!
-# Version 3.0.0.0-#0 erstellt von Argantiu GmBh 08.08.2022 https://crazycloudcraft.de
-MCNAME=$(cat ./configs/mcsys.config | grep MCNAME= | cut -d '=' -f2)
-SERVERBASE=$(cat ./configs/mcsys.config | grep SERVERBASE= | cut -d '=' -f2)
-ASOFTWARE=$(cat ./configs/mcsys.config | grep ASOFTWARE= | cut -d '=' -f2)
-MCOUNT=$(cat ./configs/mcsys.config | grep MCOUNT= | cut -d '=' -f2)
-MPREFIX=$(cat ./configs/mcsys.config | grep MPREFIX= | cut -d '=' -f2)
-MTPATH=$(cat ./configs/mcsys.config | grep MTPATH= | cut -d '=' -f2)
-#
-if ! screen -list | grep -q "$MCNAME"; then
-  echo -e "$MPREFIX Der Server wurde schon gestoppt!"
+# Automatic minecraft server script - Edit at your own risks!!
+# Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
+. ./configs/variables.sh
+if ! screen -list | grep -q "$MCNAME"; then echo -e "$SHSTOP1"
   exit 1
 fi
-
 # Stoppe den Server
 echo -e "$MPREFIX Notification: Stppe $MCNAME Server ..."
 echo "[Argantiu] Notification: Stppe $MCNAME Server ..." | /usr/bin/logger -t $MCNAME
