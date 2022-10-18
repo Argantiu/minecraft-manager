@@ -1,10 +1,10 @@
 #!/bin/bash
-# Bitte diese datei mit ./manage.tool.%server_name% ausfueren.
+# GET THE RIGHT COMMAND: ./manage.tool.%server_name%
 . ./mcsys/configs/variables.sh
 mv manage.tool manage.tool.$MCNAME
-sed -i 's;%server_name%;$MCNAME;g' ./manage.tool.* >/dev/null 2>&1
+sed -i '0,/%server_name%/s//$MCNAME/' ./manage.tool.* >/dev/null 2>&1
 
-echo -e "Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen"
+echo -e "$MANAGET1"
 {
 echo -n "";
 read MUPSTAT;
@@ -28,15 +28,15 @@ if
   exit 0
  fi
  if [[ $MUPSTAT == "5" ]]; then
-  echo -e "Möchtest du wirklich das System endfernen? (Dein Server bleibt erhalten)\n Ja oder ja um die löschung zu bestätigen.\nAlles andere zählt als Nein."
+  echo -e "$MANAGET2 "
   {
   echo -n "";
   read MCONFIRM;
   }
-  if [[ $MCONFIRM == "Ja" ]] || [[ $MCONFIRM == "ja" ]]; then
+  if [[ $MCONFIRM == "Ja" ]] || [[ $MCONFIRM == "ja" ]] || [[ ; then
   /bin/bash $MTPATH/mcsys/stop.sh
   rm -r ./mcsys
-  echo -e "Oh wie schade dass du uns nicht mehr haben möchtest. Bitte endferne auch das 'manage.tool.%server_name%' denn ich kann mich nicht selber löschen :("
+  echo -e "Oh wie schade dass du uns nicht mehr haben möchtest. Bitte endferne auch das 'manage.tool' denn ich kann mich nicht selber löschen :("
   sed -i 's;#!/bin/bash;#!/disabled;g' ./manage.tool.%server_name% >/dev/null 2>&1
   exit 0
   else
