@@ -1,13 +1,11 @@
 # Minecraft Server Verwaltungs Werkzeug
-# Version de 2.5.20 erstellt von CrazyCloudCraft 15.05.2022 https://crazycloudcraft.de/
+# Version de 3.1.0.0 erstellt von CrazyCloudCraft 18.10.2022 https://crazycloudcraft.de/
 
-# Verwende STRG + k + x um die Einstellungen zu speichern (mithilfe des joe's Bearbeitungsprogramm)
-# Verwende STRG + c um alle Einstellungen abzubrechen (Du kannst die Einstellungen mit ./config öffnen)
+# Verwende STRG+k+x um die Einstellungen zu speichern (mithilfe des joe's Bearbeitungsprogramm)
+# Verwende STRG+c um alle Einstellungen abzubrechen (Du kannst die Einstellungen mit ./config öffnen)
 
-# Wähle deine Minecraft Version 1.18.2, 1.18.1, 1.18, ...
-# Manche Software typen brauchen keine Minecraft Version z.B. Velocity oder Bungeecord. 
-# Aber man sollte sie trotzdem hier eintragen.
-version: 1.18.2
+# Wähle deine Minecraft Version 1.18.2, 1.18.1, 1.18, 1.19.2, ...
+version: 1.19.2
 
 # Was für eine Software willst du eigentlich verwenden?
 # Du kannst hier < PAPER | PURPUR | MOHIST | VELOCITY | BUNGEECORD | SPIGOT | BUKKIT > hinschreiben.
