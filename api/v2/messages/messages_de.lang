@@ -15,7 +15,7 @@ $MPREFIX Der Server läuft nicht. Starte Server.
 $MPREFIX Der Server wurde schon gestoppt!
 
 
+Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen
 
-
-
+Möchtest du wirklich das System endfernen? (Dein Server bleibt erhalten)\n Ja oder ja um die löschung zu bestätigen.\nAlles andere zählt als Nein.
 
