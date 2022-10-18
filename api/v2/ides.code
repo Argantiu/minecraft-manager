@@ -5,21 +5,13 @@ sed manage.tool.%server_name% MTPATH
 
 PurPur Need some other java flags
 
-Remove Language Settings to have place for other settings.
-
-Remove BPATH backup-path
-
-sed ? "s;$MCNAME*;$MCNAME server.lang.name;" per line difination
-
-
 updater (lang):
 
 start.sh
 stop.sh
 restart.sh
-message.pather.sh
+variables.sh
+manage.tool
+updater.sh
 
 look if config or langfile has chaged. to inform.
-
-
-MTPATH also in stop.sh
