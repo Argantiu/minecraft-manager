@@ -27,3 +27,20 @@ Oh wie schade dass du uns nicht mehr haben möchtest. Bitte endferne auch das 'm
 Oh ein glück das du das nicht so mit uns meintest.
 
 Bitte gebe eine Nummer an!
+
+
+
+$MPREFIX Notification: Stppe $MCNAME Server ...
+
+ERROR the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false
+
+&f Server stoppt in 10 sekunden!
+&f Server stoppt in 4 sekunden!
+&f Server stoppt in 3 sekunden!
+&f Server stoppt in 2 sekunden!
+&f Server stoppt in 1er sekunde!
+&f Server stoppt.
+Schalte Minecraft $MCNAME Server aus...
+
+$MPREFIX $SERVERBASE Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt.
+$MPREFIX Minecraft $MCNAME gestoppt.
