@@ -51,7 +51,7 @@ bedrock: false
 # --- Bearbeitsfähige Nachrichten ---
 # Du auch hier auch Minecraft farben hinzufuegen:
 
-MPREFIX="§8[§aArgantiu§8]"
+sys.prefix: §8[§aArgantiu§8]
 
 # Farbliste:
 
