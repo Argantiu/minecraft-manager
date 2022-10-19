@@ -13,3 +13,5 @@ x ... /MainServer/mcsys/backsave/jar/*
 x ... /MainServer/mcsys/backsave/geyser/*
 x ... /MainServer/mcsys/backsave/floodgate/*
 x ... /MainServer/mcsys/software/*
+
+rm -- "$0" # Delete this file
