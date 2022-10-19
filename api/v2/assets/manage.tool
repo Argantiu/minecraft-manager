@@ -1,9 +1,8 @@
 #!/bin/bash
 # GET THE RIGHT COMMAND: ./manage.tool.%server_name%
 . ./mcsys/configs/variables.sh
-mv manage.tool manage.tool.$MCNAME
-sed -i '0,/%server_name%/s//$MCNAME/' ./manage.tool.* >/dev/null 2>&1
-
+mv manage.tool manage.tool.$MCNAME && sed -i '0,/%server_name%/s//$MCNAME/' ./manage.tool.* >/dev/null 2>&1
+# Selector
 echo -e "$MANAGET1"
 {
 echo -n "";
