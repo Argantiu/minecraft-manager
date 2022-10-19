@@ -1,10 +1,11 @@
 {
     "main": {
-    "project": "Argantiu Language File",
+    "project": "Argantiu language file",
     "language.name": "de_DE",
+    "placeholders": %prefix%, %server_name%
     }
 }
-startsh.server.online: $MPREFIX Server ist schon längt online! Nutze: screen -r $MCNAME um in die Konsole zu gelangen. \n$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
+startsh.server.online: %prefix% Server ist schon längt online! Nutze: §5screen -r %server_name% §rum in die Konsole zu gelangen. \n$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
 startsh.server.start: $MPREFIX Starte $MCNAME server...
 startsh.backup.create: $MPREFIX Create Backup...
 startsh.backup.folder: Backing up server (to /unused/backups folder)
