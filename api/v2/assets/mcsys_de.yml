@@ -33,6 +33,9 @@ java: /usr/bin/java
 # Soll oder ist dieser Server mit einem Proxy (Bungeecord/Waterfall etc.) verbunden? 
 proxy.mode: false
 
+# Fügt einen coutdown beim stoppen hinzu, wenn noch spieler online sind (bei einem Proxy hat das hier keine wirkung)
+dynamic.counter: true
+
 # --- Backups ---
 # Brauchst du Backups? 
 # Dann musst du das hier auf "true" setzen.
