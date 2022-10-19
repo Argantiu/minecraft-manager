@@ -19,21 +19,12 @@ wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O online-info.txt
 if grep -q error "online-info.txt"; then echo -e "$SHSTOP3"
 else MCOTYPE=$(cat < online-info.txt | grep online | tr -d " " | cut -b 10)
 fi
-
-# Starte Countdown, wenn Spieler Online sind
-if [[ $MCOTYPE = "0" ]]; then
- echo "0 Spieler Online, Perfekt."
-else
- screen -Rd $MCNAME -X stuff "say $SHSTOP4 $(printf '\r')"
- sleep 6s
- screen -Rd $MCNAME -X stuff "say $SHSTOP5 $(printf '\r')"
- sleep 1s
- screen -Rd $MCNAME -X stuff "say $SHSTOP6 $(printf '\r')"
- sleep 1s
- screen -Rd $MCNAME -X stuff "say $SHSTOP7 $(printf '\r')"
- sleep 1s
- screen -Rd $MCNAME -X stuff "say $SHSTOP8 $(printf '\r')"
- sleep 1s
+# Starte coutdown if there players online.
+if ! [[ $MCOTYPE = "0" ]]; then screen -Rd $MCNAME -X stuff "say $SHSTOP4 $(printf '\r')" && sleep 6s
+ screen -Rd $MCNAME -X stuff "say $SHSTOP5 $(printf '\r')" && sleep 1s
+ screen -Rd $MCNAME -X stuff "say $SHSTOP6 $(printf '\r')" && sleep 1s
+ screen -Rd $MCNAME -X stuff "say $SHSTOP7 $(printf '\r')" && sleep 1s
+ screen -Rd $MCNAME -X stuff "say $SHSTOP8 $(printf '\r')" && sleep 1s
 fi
 screen -Rd $MCNAME -X stuff "say $SHSTOP9 $(printf '\r')"
 echo "$SHSTOP10" | /usr/bin/logger -t $MCNAME
