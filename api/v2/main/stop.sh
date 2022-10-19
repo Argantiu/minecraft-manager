@@ -6,8 +6,8 @@ if ! screen -list | grep -q "$MCNAME"; then echo -e "$SHSTOP1"
   exit 1
 fi
 # Stoppe den Server
-echo -e "$MPREFIX Notification: Stppe $MCNAME Server ..."
-echo "[Argantiu] Notification: Stppe $MCNAME Server ..." | /usr/bin/logger -t $MCNAME
+echo -e "$SHSTOP2"
+echo "$SHSTOP2" | /usr/bin/logger -t $MCNAME
 # Sieht nach, ob Spieler Online sind
 if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]]; then
 mkdir -p $MTPATH/mcsys/cache
