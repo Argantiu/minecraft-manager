@@ -10,8 +10,7 @@ echo -e "$SHSTOP2"
 echo "$SHSTOP2" | /usr/bin/logger -t $MCNAME
 # Sieht nach, ob Spieler Online sind
 if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]]; then
-mkdir -p $MTPATH/mcsys/cache
-cd $MTPATH/mcsys/cache || exit 1
+mkdir -p $MTPATH/mcsys/cache && cd $MTPATH/mcsys/cache || exit 1
 hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
 MCPORT=$(cat < $MTPATH/server.properties | grep server-port= | cut -b 13,14,1)
@@ -28,7 +27,6 @@ if ! [[ $MCOTYPE = "0" ]]; then screen -Rd $MCNAME -X stuff "say $SHSTOP4 $(prin
 fi
 screen -Rd $MCNAME -X stuff "say $SHSTOP9 $(printf '\r')"
 echo "$SHSTOP10" | /usr/bin/logger -t $MCNAME
-
 # Wait up to 20 seconds for server to close
 StopChecks=0
 while [ $StopChecks -lt 30 ]; do
@@ -38,13 +36,11 @@ while [ $StopChecks -lt 30 ]; do
   sleep 1;
   StopChecks=$((StopChecks+1))
 done
-
 # Force quit if server is still open
 if screen -list | grep -q "$MCNAME"; then
   echo -e "$SHSTOP11"  | /usr/bin/logger -t $MCNAME
   screen -S $MCNAME -X quit
   pkill -15 -f "SCREEN -dmSL $MCNAME"
 fi
-
 echo -e "$SHSTOP12"
 echo -e "$SHSTOP12" | /usr/bin/logger -t $MCNAME
