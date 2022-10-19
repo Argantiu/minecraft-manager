@@ -1,14 +1,17 @@
-message.file.translation: de_DE
-startsh.already.online: $MPREFIX Server ist schon längt online! Nutze: screen -r $MCNAME um in die Konsole zu gelangen. \n$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
-startsh.start.server: $MPREFIX Starte $MCNAME server...
-startsh.
-startsh.
+{
+    "main": {
+    "project": "Argantiu Language File",
+    "language.name": "de_DE",
+    }
+}
+startsh.server.online: $MPREFIX Server ist schon längt online! Nutze: screen -r $MCNAME um in die Konsole zu gelangen. \n$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
+startsh.server.start: $MPREFIX Starte $MCNAME server...
+startsh.backup.create: $MPREFIX Create Backup...
+startsh.backup.folder: Backing up server (to /unused/backups folder)
+startsh.bedrock.update: $MPREFIX Updateing Bedrock
+
+
 manage.tool.output: Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen 
-
-
-$MPREFIX Create Backup...
-Backing up server (to /unused/backups folder)
-$MPREFIX Updateing Bedrock
 
 $MPREFIX Der Server läuft nicht. Starte Server.
 
