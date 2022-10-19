@@ -8,7 +8,6 @@ echo -e "$MANAGET1"
 echo -n "";
 read MUPSTAT;
 }
-MTPATH=$(cat ./mcsys/configs/mcsys.config | grep complete.path | cut -d ':' -f2)
 if
  if [[ $MUPSTAT == "1" ]]; then /bin/bash $MTPATH/mcsys/start.sh && exit 0
  fi
