@@ -24,19 +24,19 @@ fi
 if [[ $MCOTYPE = "0" ]]; then
  echo "0 Spieler Online, Perfekt."
 else
- screen -Rd $MCNAME -X stuff "say &f Server stoppt in 10 sekunden! $(printf '\r')"
+ screen -Rd $MCNAME -X stuff "say $SHSTOP4 $(printf '\r')"
  sleep 6s
- screen -Rd $MCNAME -X stuff "say &f Server stoppt in 4 sekunden! $(printf '\r')"
+ screen -Rd $MCNAME -X stuff "say $SHSTOP5 $(printf '\r')"
  sleep 1s
- screen -Rd $MCNAME -X stuff "say &f Server stoppt in 3 sekunden! $(printf '\r')"
+ screen -Rd $MCNAME -X stuff "say $SHSTOP6 $(printf '\r')"
  sleep 1s
- screen -Rd $MCNAME -X stuff "say &f Server stoppt in 2 sekunden! $(printf '\r')"
+ screen -Rd $MCNAME -X stuff "say $SHSTOP7 $(printf '\r')"
  sleep 1s
- screen -Rd $MCNAME -X stuff "say &f Server stoppt in 1er sekunde! $(printf '\r')"
+ screen -Rd $MCNAME -X stuff "say $SHSTOP8 $(printf '\r')"
  sleep 1s
 fi
-screen -Rd $MCNAME -X stuff "say &f Server stoppt.$(printf '\r')"
-echo "Schalte Minecraft $MCNAME Server aus..." | /usr/bin/logger -t $MCNAME
+screen -Rd $MCNAME -X stuff "say $SHSTOP9 $(printf '\r')"
+echo "$SHSTOP10" | /usr/bin/logger -t $MCNAME
 
 # Wait up to 20 seconds for server to close
 StopChecks=0
@@ -50,10 +50,10 @@ done
 
 # Force quit if server is still open
 if screen -list | grep -q "$MCNAME"; then
-  echo -e "$MPREFIX $SERVERBASE Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt."  | /usr/bin/logger -t $MCNAME
+  echo -e "$SHSTOP11"  | /usr/bin/logger -t $MCNAME
   screen -S $MCNAME -X quit
   pkill -15 -f "SCREEN -dmSL $MCNAME"
 fi
 
-echo -e "$MPREFIX Minecraft $MCNAME gestoppt."
-echo -e "Minecraft Server $MCNAME stoppt." | /usr/bin/logger -t $MCNAME
+echo -e "$SHSTOP12"
+echo -e "$SHSTOP12" | /usr/bin/logger -t $MCNAME
