@@ -15,9 +15,9 @@ hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
 MCPORT=$(cat < $MTPATH/server.properties | grep server-port= | cut -b 13,14,1)
 wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O online-info.txt
-if grep -q error "online-info.txt"; then echo -e "$SHSTOP3"
-else MCOTYPE=$(cat < online-info.txt | grep online | tr -d " " | cut -b 10)
-fi
+ if grep -q error "online-info.txt"; then echo -e "$SHSTOP3"
+ else MCOTYPE=$(cat < online-info.txt | grep online | tr -d " " | cut -b 10)
+ fi
 fi
 # Starte coutdown if there players online.
 if ! [[ $MCOTYPE = "0" ]]; then screen -Rd $MCNAME -X stuff "say $SHSTOP4 $(printf '\r')" && sleep 6s
