@@ -18,6 +18,7 @@ wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O online-info.txt
 if grep -q error "online-info.txt"; then echo -e "$SHSTOP3"
 else MCOTYPE=$(cat < online-info.txt | grep online | tr -d " " | cut -b 10)
 fi
+fi
 # Starte coutdown if there players online.
 if ! [[ $MCOTYPE = "0" ]]; then screen -Rd $MCNAME -X stuff "say $SHSTOP4 $(printf '\r')" && sleep 6s
  screen -Rd $MCNAME -X stuff "say $SHSTOP5 $(printf '\r')" && sleep 1s
