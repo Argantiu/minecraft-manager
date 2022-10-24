@@ -21,13 +21,18 @@ primebackups: false
 bedrock: false
 sys.prefix: §8[§aArgantiu§8]
 
-ASOFTWARE=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
+VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
+if [[ $VARSOFT == "PAPER" ]] || [ $VARSOFT == "papermc" ]] || [ $VARSOFT == "paper" ]]; then
+
+
 MTPATH=$(cat < mcsys.yml | grep server.directory: | cut -d ':' -d ' ' -f2)
+
 BEUPDATE=$(cat < mcsys.yml | grep BEMCUPDATE= | cut -d ':' -d ' ' -f2)
 BACKUP=$(cat < mcsys.yml | grep BACKUP= | cut -d ':' -d ' ' -f2)
 BETTERBACKUP=$(cat < mcsys.yml | grep BETTERBACKUP= | cut -d ':' -d ' ' -f2)
 MPREFIX=$(cat < mcsys.yml | grep MPREFIX= | cut -d ':' -d ' ' -f2)
 MCNAME=$(cat < mcsys.yml | grep MCNAME= | cut -d ':' -d ' ' -f2)
+
 OPTBASE=
 SERVERBASE=
 # manage.tool
