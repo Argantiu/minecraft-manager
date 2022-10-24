@@ -22,9 +22,9 @@ bedrock: false
 sys.prefix: §8[§aArgantiu§8]
 
 VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
-if [[ $VARSOFT == "PAPER" ]] || [ $VARSOFT == "papermc" ]] || [ $VARSOFT == "paper" ]]; then
-
-
+if [[ $VARSOFT == "PAPER" ]] || [ $VARSOFT == "papermc" ]] || [ $VARSOFT == "paper" ]]; then ASOFTWARE=PAPER
+fi
+if [[ $VARSOFT == "" ]] ||
 MTPATH=$(cat < mcsys.yml | grep server.directory: | cut -d ':' -d ' ' -f2)
 
 BEUPDATE=$(cat < mcsys.yml | grep BEMCUPDATE= | cut -d ':' -d ' ' -f2)
