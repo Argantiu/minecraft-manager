@@ -8,15 +8,14 @@
 # Define your Minecraft version. For exaple 1.18.2, 1.18.1, 1.18, ...
 # Some software types don't need the Minecraft version e. g. velocity or bungeecord.
 # But it's better when you set here a version.
-MAINVERSION=1.18.2
+version: 1.19.2
 
-# You can use: < PAPER | PURPUR | MOHIST | VELOCITY | BUNGEECORD | WATERFALL >
-#  Alpha versions: < SPIGOT | BUKKIT >
-ASOFTWARE=PAPER
+# You can use: < PAPER | PURPUR | MOHIST | VELOCITY | BUNGEECORD | WATERFALL | SPIGOT | BUKKIT >
+software: PAPER
 
 # Do you have a Subfolder for your server(s)? We recommend to set and use one.
 # E.g. home/server/(serverbase) or opt/(serverbase)
-OPTBASE=opt
+server.directory: opt/Myserver
 
 # Set your server folder, where your server shall run (serverbase).
 SERVERBASE=Paper
@@ -24,11 +23,11 @@ SERVERBASE=Paper
 # Wich system-name should have the console and main.jar?
 # Don't use something like "system" or "main" for example, 
 # because the system sometimes already use this names.
-MCNAME=mcpaper
+systemname: mcpaper
 # Save is, to put "mc" before that name.
 
-#Should your server have a stop counter? (This will not work on Velocity)
-MCOUNT=TRUE
+#Should your server have a stop counter? (This will not work on a Proxy server type)
+dynamic.counter: true
 
 # Amount of RAM that your Mincecraft server will use M or G (instead of MB and GB) e.g.: RAM=2024M or RAM=10G
 RAM=4G
