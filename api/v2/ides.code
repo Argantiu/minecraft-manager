@@ -17,3 +17,9 @@ updater.sh
 look if config or langfile has chaged. to inform.
 
 https://launchermeta.mojang.com/mc/game/version_manifest.json
+
+
+In Edit
+updater.sh
+variables.sh
+:softwares/
