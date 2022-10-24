@@ -7,6 +7,20 @@
 #### OPT und SERVER base zusammen basteln
 MLANG=./messages.lang
 # start.sh
+
+version: 1.19.2
+software: PAPER
+server.directory: opt/MeinServer
+systemname: mcpaper
+ram: 4GB
+java: /usr/bin/java
+proxy.mode: false
+dynamic.counter: true
+backups: false
+primebackups: false
+bedrock: false
+sys.prefix: §8[§aArgantiu§8]
+
 ASOFTWARE=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
 MTPATH=$(cat < mcsys.yml | grep server.directory: | cut -d ':' -d ' ' -f2)
 BEUPDATE=$(cat < mcsys.yml | grep BEMCUPDATE= | cut -d ':' -d ' ' -f2)
