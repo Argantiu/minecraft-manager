@@ -5,43 +5,38 @@
     "placeholders": %prefix%, %server_name%
     }
 }
+{
+manage.tool.output: "Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen"
+manage.tool.remove: "Möchtest du wirklich das System endfernen? (Dein Server bleibt erhalten)\n Ja oder ja um die löschung zu bestätigen.\nAlles andere zählt als Nein."
+manage.tool.remove.ok: "Oh wie schade dass du uns nicht mehr haben möchtest. Bitte endferne auch das 'manage.tool' denn ich kann mich nicht selber löschen :("
+manage.tool.remove.no: "Oh ein glück das du das nicht so mit uns meintest."
+manage.tool.no.input: "Bitte gebe eine Nummer an!"
+}
+{
+restartsh.server.offline: "%prefix% Der Server läuft nicht. Starte Server."
+}
+{
 startsh.server.online: %prefix% Server ist schon längt online! Nutze: screen -r %server_name% um in die Konsole zu gelangen. \n%prefix% Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
 startsh.server.start: %prefix% Starte $MCNAME server...
 startsh.backup.create: %prefix% Create Backup...
 startsh.backup.folder: Backing up server (to /unused/backups folder)
 startsh.bedrock.update: %prefix% Updateing Bedrock
-
-
-manage.tool.output: "Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen"
-manage.tool.
-%prefix% Der Server läuft nicht. Starte Server.
-
-%prefix% Der Server wurde schon gestoppt!
-
-
-Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen
-
-Möchtest du wirklich das System endfernen? (Dein Server bleibt erhalten)\n Ja oder ja um die löschung zu bestätigen.\nAlles andere zählt als Nein.
-
-Oh wie schade dass du uns nicht mehr haben möchtest. Bitte endferne auch das 'manage.tool' denn ich kann mich nicht selber löschen :(
-
-Oh ein glück das du das nicht so mit uns meintest.
-
-Bitte gebe eine Nummer an!
-
-
-
-$MPREFIX Notification: Stppe $MCNAME Server ...
-
-ERROR the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false
-
-&f Server stoppt in 10 sekunden!
-&f Server stoppt in 4 sekunden!
-&f Server stoppt in 3 sekunden!
-&f Server stoppt in 2 sekunden!
-&f Server stoppt in 1er sekunde!
-&f Server stoppt.
-Schalte Minecraft $MCNAME Server aus...
-
-$MPREFIX $SERVERBASE Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt.
-$MPREFIX Minecraft $MCNAME gestoppt.
+}
+{
+stopsh.server.offline: "%prefix% Der Server wurde schon gestoppt!"
+stopsh.server.stop.info: "%prefix% Notification: Stppe %server_name% Server ..."
+}
+{
+stopsh.counter.invalid: "ERROR the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false"
+stopsh.counter.stop.10: "Server stoppt in 10 sekunden!"
+stopsh.counter.stop.4: "Server stoppt in 4 sekunden!"
+stopsh.counter.stop.3: "Server stoppt in 3 sekunden!"
+stopsh.counter.stop.2: "Server stoppt in 2 sekunden!"
+stopsh.counter.stop.1: "Server stoppt in 1er sekunde!"
+stopsh.counter.stop: "&f Server stoppt."
+}
+{
+stopsh.server.stopping: "Schalte Minecraft $MCNAME Server aus..."
+stopsh.server.killing: "MPREFIX $SERVERBASE Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt."
+stopsh.server.stopped: "MPREFIX Minecraft MCNAME gestoppt."
+}
