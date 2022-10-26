@@ -32,25 +32,25 @@ SERVERBASE=$(cat < mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 |
 OPTBASE=$(cat < mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
 # Prefix
 COLOR=\033[0;
-MPREFIX=$(cat < mcsys.yml | grep sys.prefix: | cut -d ':' -f2 | sed s:§0:\033[0;30m:m | )
+MPREFIX=$(cat < mcsys.yml | grep "sys.prefix:" | cut -d ':' -f2 | sed s:§0:\033[0;30m:m | )
 # Version
-MAINVERSION=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
+MAINVERSION=$(cat < mcsys.yml | grep "version:" | cut -d ':' -f2)
 # Systemname
-MCNAME=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
+MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
 # Ram 
-RAM=$(cat < mcsys.yml | grep ram: | cut -d ':' -d 'B' -f2)
+RAM=$(cat < mcsys.yml | grep "ram:" | cut -d ':' -d 'B' -f2)
 # Java
-JAVABIN=$(cat < mcsys.yml | grep java: | cut -d ':' -f2)
+JAVABIN=$(cat < mcsys.yml | grep "java:" | cut -d ':' -f2)
 # Proxy Mode
-PROXYMO=$(cat < mcsys.yml | grep proxy.mode: | cut -d ':' -f2)
+PROXYMO=$(cat < mcsys.yml | grep "proxy.mode:" | cut -d ':' -f2)
 # Couter
-MCOUNT=$(cat < mcsys.yml | grep dynamic.counter: | cut -d ':' -f2)
+MCOUNT=$(cat < mcsys.yml | grep "dynamic.counter:" | cut -d ':' -f2)
 # Backups
-BACKUP=$(cat < mcsys.yml | grep backups: | cut -d ':' -f2)
+BACKUP=$(cat < mcsys.yml | grep "backups:" | cut -d ':' -f2)
 # Prime Backups
-BETTERBACKUP=$(cat < mcsys.yml | grep primebackups: | cut -d ':' -f2)
+BETTERBACKUP=$(cat < mcsys.yml | grep "primebackups:" | cut -d ':' -f2)
 # Bedrock
-BEUPDATE=$(cat < mcsys.yml | grep bedrock: | cut -d ':' -f2)
+BEUPDATE=$(cat < mcsys.yml | grep "bedrock:" | cut -d ':' -f2)
 
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
