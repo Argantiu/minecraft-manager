@@ -22,7 +22,7 @@ systemname: mcpaper
 # Sicherer ist, wenn du "mc" vor dem Namen schreibst ;)
 
 # Wie viel Ram soll dein Server bekommen? 
-# z.B.: ram: 2024MB oder ram: 10GB
+# z.B.: 2024MB oder 10GB
 ram: 4GB
 
 # Wo befinndet sich das Java?
@@ -41,7 +41,7 @@ dynamic.counter: true
 # Dann musst du das hier auf "true" setzen.
 backups: false
 
-# Möchtest du bessere backups? (Es reduziert die Dateiengröße sehr, und behält nur alle nötigen dinge)
+# (Empfohlen) Möchtest du bessere backups? (Es reduziert die Dateiengröße sehr, und behält nur alle nötigen dinge)
 # Hierfür muss das obere backups: true sein.
 primebackups: false
 
