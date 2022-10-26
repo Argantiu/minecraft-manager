@@ -28,7 +28,7 @@ if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
     tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
     echo -e "$MSTART4"
     else
-    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/jar/*" --exclude="mcsys/floodgate/*" --exclude="mcsys/geyser/*" ./
+    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/saves/*" ./
     echo -e "$MSTART4"
     fi
  fi
@@ -54,6 +54,16 @@ else
 sed -i '0,;online-mode=false;online-mode=true' $MTPATH/server.propeties >/dev/null 2>&1
 sed -i '0,;bungeecord: true;bungeecord: false' $MTPATH/spigot.yml >/dev/null 2>&1
 fi
+# Logfile rotate
+# if $LOGROTATE == true ; then ...
+[ -f screenlog.6 ] && rm screenlog.6
+[ -f screenlog.5 ] && mv screenlog.6
+[ -f screenlog.4 ] && mv screenlog.5
+[ -f screenlog.3 ] && mv screenlog.4
+[ -f screenlog.2 ] && mv screenlog.3
+[ -f screenlog.1 ] && mv screenlog.2
+[ -f screenlog.0 ] && mv screenlog.1
+
 # Software update and start
 mkdir -p $MTPATH/mcsys/saves/jar
 cd $MTPATH/mcsys/software || exit 1
