@@ -1,11 +1,7 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this scipt!!
 # Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
-MAINVERSION=$(cat ./../configs/mcsys.config | grep MAINVERSION= | cut -d '=' -f2)
-MCNAME=$(cat ./configs/mcsys.config | grep MCNAME= | cut -d '=' -f2)
-MTPATH=$(cat ./configs/mcsys.config | grep MTPATH= | cut -d '=' -f2)
-RAM=$(cat ./configs/mcsys.config | grep RAM= | cut -d '=' -f2)
-JAVABIN=$(cat ./configs/mcsys.config | grep JAVABIN= | cut -d '=' -f2)
+. ./../configs/mcsys.config
 mkdir -p $LPATH/mcsys/jar
 cd $MTPATH/mcsys/jar || exit 1
 rm -f version.json
