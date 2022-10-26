@@ -17,10 +17,15 @@ echo -n -e "$PREFIX Please type a number and hit enter:";
 echo -n -e " "
 read LANG;
 if [[ $LANG == "1" ]]; then
- echo -e "$PREFIX Everything will be in english"
  echo -e "$PREFIX Were should be or is your server dictionary?"
  echo -e "$PREFIX e.g. /opt/Paper or /home/myserver/server"
  echo -e "$PREFIX Your server dictionary:";
+fi
+if [[ $LANG == "2" ]]; then
+ echo -e "$PREFIX Wo ist oder soll dein Serverordner sich befinnden?"
+ echo -e "$PREFIX z.b. /opt/Paper oder /home/meinserver/server"
+ echo -e "$PREFIX Und wo ist oder soll der Ordner sein:"
+else "Please select a language" && exit 1
 fi
  {
  echo -n -e " "
@@ -35,11 +40,11 @@ fi
      apt-get install wget -y >/dev/null 2>&1
  fi
 if [[ $LANG == "1" ]]; then echo -e "$PREFIX Okey, i will preparing now the configuration. Please wait..."
-wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_en.yml
+wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_en.yml -O mcsys.yml
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 fi
 if [[ $LANG == "2" ]]; then echo -e "$PREFIX Okey, die Konfiguration wird vorbereitet. Bitte warten..."
-wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_de.yml
+wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_de.yml -O mcsys.yml
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 fi
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
@@ -52,39 +57,42 @@ chmod +x ./*.sh
 cd $DICTY || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/assets/manage.tool
 chmod +x manage.tool
+if [[ $LANG == "1" ]]; then
+ echo -e "$PREFIX Setup finished!"
+ echo -e "$PREFIX Open Configuration..."
+fi
+if [[ $LANG == "2" ]]; then
+ echo -e "$PREFIX Fertig mit dem Aufsetzten!"
+ echo -e "$PREFIX Hier kommt die Konfiguration..."
+fi
 if ! command -v joe &> /dev/null
   then
-     apt-get install joe -y
-     echo "joe installed"
+     apt-get install joe -y &> /dev/null
  fi
  if ! command -v screen &> /dev/null
  then
-     apt-get install screen -y
-     echo "screen installed"
+     apt-get install screen -y &> /dev/null
  fi
  if ! command -v sudo &> /dev/null
  then
-     apt-get install sudo -y
-     echo "sudo installed"
+     apt-get install sudo -y &> /dev/null
  fi
  if ! command -v zip &> /dev/null
  then
-     apt-get install zip -y
-     echo "zip installed"
+     apt-get install zip -y &> /dev/null
  fi
  if ! command -v xargs &> /dev/null
  then
-     apt-get install findutils -y
-     echo "findutils installed"
+     apt-get install findutils -y &> /dev/null
  fi
  if ! command -v diff &> /dev/null
  then
-     apt-get install diffutils -y
-     echo "diffutils installed"
+     apt-get install diffutils -y &> /dev/null
  fi
  if ! command -v rpl &> /dev/null
  then
-     apt-get install rpl -y
-     echo "rpl installed"
+     apt-get install rpl -y &> /dev/null
  fi
+ joe $DICTY/mcsys/configs/mcsys.yml 
+ exit 0
 rm -- "$0" # Delete this file
