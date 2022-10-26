@@ -80,7 +80,7 @@
  if [ "$?" -ne 0 ]; then
   echo "Downloaded Geyser-Velocity is corrupt. No update." | /usr/bin/logger -t $MCNAME
  else
-  diff -q Geyser-Velocity.jar $LPATH/plugins/Geyser-Velocity.jar >/dev/null 2>&1
+  diff -q Geyser-Velocity.jar $MTPATH/plugins/Geyser-Velocity.jar >/dev/null 2>&1
   if [ "$?" -eq 1 ]; then
   cp Geyser-Velocity.jar Geyser-Velocity.jar."$(date +%Y.%m.%d.%H.%M.%S)"
   mv Geyser-Velocity.jar $MTPATH/plugins/Geyser-Velocity.jar
