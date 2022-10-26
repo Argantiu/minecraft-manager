@@ -1,5 +1,6 @@
 #!/bin/bash
 # GET THE RIGHT COMMAND: ./manage.tool.%server_name%
+# shellcheck source=/dev/null
 . ./mcsys/configs/variables.sh
 mv manage.tool manage.tool.$MCNAME && sed -i '0,/%server_name%/s//$MCNAME/' ./manage.tool.* >/dev/null 2>&1
 # Selector to have a nice overview about the commands.
