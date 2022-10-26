@@ -57,12 +57,12 @@ fi
 # Logfile rotate
 # if $LOGROTATE == true ; then ...
 [ -f screenlog.6 ] && rm screenlog.6
-[ -f screenlog.5 ] && mv screenlog.6
-[ -f screenlog.4 ] && mv screenlog.5
-[ -f screenlog.3 ] && mv screenlog.4
-[ -f screenlog.2 ] && mv screenlog.3
-[ -f screenlog.1 ] && mv screenlog.2
-[ -f screenlog.0 ] && mv screenlog.1
+[ -f screenlog.5 ] && mv screenlog.5 screenlog.6
+[ -f screenlog.4 ] && mv screenlog.4 screenlog.5
+[ -f screenlog.3 ] && mv screenlog.3 screenlog.4
+[ -f screenlog.2 ] && mv screenlog.2 screenlog.3
+[ -f screenlog.1 ] && mv screenlog.1 screenlog.2
+[ -f screenlog.0 ] && mv screenlog.0 screenlog.1
 
 # Software update and start
 mkdir -p $MTPATH/mcsys/saves/jar
