@@ -6,7 +6,7 @@
 # Here is a setting for developers if, they create a own fork user/repo
 IFCREATEDFORK=Argantiu/minecraft-manager
 # Software
-VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -f2 | tr -d " ")
+VARSOFT=$(cat < mcsys.yml | grep "software:" | cut -d ':' -f2 | tr -d " ")
 if [[ $VARSOFT == "PURPUR" ]] || [[ $VARSOFT == "purpur" ]] || [[ $VARSOFT == "purpurmc" ]]; then ASOFTWARE=purpur.sh
 fi
 if [[ $VARSOFT == "PAPER" ]] || [[ $VARSOFT == "papermc" ]] || [[ $VARSOFT == "paper" ]] || [[ $VARSOFT == "paperspigot" ]]; then ASOFTWARE=paper.sh
@@ -27,6 +27,7 @@ if [[ $VARSOFT == "WATERFALL" ]] || [[ $VARSOFT == "waterfall" ]] || [[ $VARSOFT
 fi
 # Server Directory
 #=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
+MTPATH=$(cat < mcsys.yml | grep "server.directory:" | cut -d ':' -f2 | tr -d " ")
 SERVERBASE=$(cat mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
 OPTBASE=$(cat mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
 
@@ -50,7 +51,6 @@ sys.prefix: §8[§aArgantiu§8]
 
 
 
-MTPATH=$(cat < mcsys.yml | grep server.directory: | cut -d ':' -d ' ' -f2)
 
 BEUPDATE=$(cat < mcsys.yml | grep BEMCUPDATE= | cut -d ':' -d ' ' -f2)
 BACKUP=$(cat < mcsys.yml | grep BACKUP= | cut -d ':' -d ' ' -f2)
