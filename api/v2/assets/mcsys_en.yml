@@ -23,6 +23,9 @@ systemname: mcpaper
 # Should your server have a stop counter? (This will not work on a Proxy server type)
 dynamic.counter: true
 
+# Is or should this server connected to a proxy?
+proxy.mode: false
+
 # Amount of ram that your Mincecraft server should use e.g.: 2024MB or 10GB
 ram: 4GB
 
