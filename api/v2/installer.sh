@@ -28,32 +28,30 @@ fi
  }
  DICTY=$(grep $DCI | rev | cut -b "/" | rev)
  mkdir -p $DICTY/mcsys/configs
+ mkdir -p $DICTY/unused
  cd $DICTY/mcsys/configs || exit 1
  if ! command -v wget &> /dev/null
  then
      apt-get install wget -y >/dev/null 2>&1
  fi
 if [[ $LANG == "1" ]]; then echo -e "$PREFIX Okey, i will preparing now the configuration. Please wait..."
-wget -q https://github.com/$IFCREATEDFORK/blob/main/api/v2/assets/mcsys_en.yml
+wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_en.yml
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 fi
-if [[ $LANG == "2" ]]; then echo -e ""
-whet -q https://github.com/$IFCREATEDFORK/blob/main/api/v2/assets/mcsys_de.yml
+if [[ $LANG == "2" ]]; then echo -e "$PREFIX Okey, die Konfiguration wird vorbereitet. Bitte warten..."
+wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_de.yml
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 fi
-
-#File locations:
-#x will installed though other progress
-#... /MainServer/manage.tool
-#... /MainServer/mcsys/start.sh
-#... /MainServer/mcsys/stop.sh
-#... /MainServer/mcsys/restart.sh
-#... /MainServer/mcsys/configs/mcsys.config
-#... /MainServer/mcsys/updater/*
-#x ... /MainServer/mcsys/backsave/jar/*
-#x ... /MainServer/mcsys/backsave/geyser/*
-#x ... /MainServer/mcsys/backsave/floodgate/*
-#x ... /MainServer/mcsys/software/*
-
-
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
+chmod +x variables.sh
+cd $DICTY/mcsys || exit 1
+wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/restart.sh
+wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/start.sh
+wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/stop.sh
+chmod +x ./*.sh
+cd $DICTY || exit 1
+wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/assets/manage.tool
+chmod +x manage.tool
 if ! command -v joe &> /dev/null
   then
      apt-get install joe -y
