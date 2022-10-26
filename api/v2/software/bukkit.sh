@@ -15,7 +15,7 @@ else
   rm BuildTools.jar && mv BuildTools-1.jar BuildTools.jar && mkdir -p $MTPATH/mcsys/saves/jar/cache
   cd $MTPATH/mcsys/saves/jar/cache || exit 1
   cp ./../BuildTools.jar .
-  java -jar BuildTools.jar --rev $MAINVERSION
+  java -jar BuildTools.jar --rev $MAINVERSION --compile craftbukkit
   cp ./CraftBukkit/target/craftbukkit-*.jar $MTPATH/mcsys/saves/jar/craftbukkit-$MAINVERSION.jar"$(date +%Y.%m.%d.%H.%M.%S)"
   mv ./CraftBukkit/target/craftbukkit-*.jar $MTPATH/$MCNAME.jar
   cd ../ || exit 1
