@@ -51,12 +51,9 @@ BETTERBACKUP=$(cat < mcsys.yml | grep BETTERBACKUP= | cut -d ':' -d ' ' -f2)
 MPREFIX=$(cat < mcsys.yml | grep MPREFIX= | cut -d ':' -d ' ' -f2)
 MCNAME=$(cat < mcsys.yml | grep MCNAME= | cut -d ':' -d ' ' -f2)
 
-OPTBASE=
-SERVERBASE=
+
 # manage.tool
 SERVERNAME=$(cat < mcsys.yml | grep MCNAME: | cut -d '=' -f2)
-# Tranzlations
-
 
 
 
