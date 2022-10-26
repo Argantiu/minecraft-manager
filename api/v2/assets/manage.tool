@@ -25,7 +25,6 @@ if
   read MCONFIRM;
   }
   if [[ $MCONFIRM == "Ja" ]] || [[ $MCONFIRM == "ja" ]] || [[ $MCONFIRM == "yes" ]] || [[ $MCONFIRM == "Yes" ]]; then /bin/bash $MTPATH/mcsys/stop.sh && sleep 10s && rm -r ./mcsys && echo -e "$MANAGET3"
-  sed -i 's;#!/bin/bash;#!/disabled;g' ./manage.tool.%server_name% >/dev/null 2>&1
   rm -- "$0"
   exit 0
   else echo -e "$MANAGET4"
