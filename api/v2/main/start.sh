@@ -40,38 +40,6 @@ if [[ $BEUPDATE == "TRUE" ]] || [[ $BEUPDATE == "true" ]]; then
 fi
 # Software update and start
 #Paper: Getting Update form your selected version.
-if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "paper" ]] || [[ $ASOFTWARE == "papermc" ]] || [[ $ASOFTWARE == "paperspigot" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/paper.sh -O $MCNAME.sh
-fi
-#Purpur: Getting Update form your selected version.
-if [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "purpur" ]] || [[ $ASOFTWARE == "purpurmc" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/purpur.sh -O $MCNAME.sh
-fi
-if [[ $ASOFTWARE == "MOHIST" ]] || [[ $ASOFTWARE == "mohist" ]] || [[ $ASOFTWARE == "mohistmc" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/mohist.sh -O $MCNAME.sh
-fi
-if [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "spigot" ]] || [[ $ASOFTWARE == "spigotmc" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/spigot.sh -O $MCNAME.sh
-fi
-if [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "bukkit" ]] || [[ $ASOFTWARE == "bukkitmc" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bukkit.sh -O $MCNAME.sh
-fi
-#Proxys: Getting Update form your selected version.
-if [[ $ASOFTWARE == "VELOCITY" ]] || [[ $ASOFTWARE == "velo" ]] || [[ $ASOFTWARE == "velocity" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/velocity.sh -O $MCNAME.sh
-fi
-if [[ $ASOFTWARE == "BUNGEECORD" ]] || [[ $ASOFTWARE == "bungeecord" ]] || [[ $ASOFTWARE == "bungee" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/bungeecord.sh -O $MCNAME.sh
-fi
-if [[ $ASOFTWARE == "WATERFALL" ]] || [[ $ASOFTWARE == "waterfall" ]] || [[ $ASOFTWARE == "waterfallmc" ]]; then
- cd $MTPATH/mcsys/software || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/waterfall.sh -O $MCNAME.sh
-fi
+cd $MTPATH/mcsys/software || exit 1
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/$ASOFTWARE -O $MCNAME.sh
 /bin/bash $MTPATH/mcsys/$MCNAME.sh && exit 0
