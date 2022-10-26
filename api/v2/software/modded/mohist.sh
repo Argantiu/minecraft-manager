@@ -1,6 +1,6 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this scipt!!
-# Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
+# Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
 . ./../configs/variables.sh
 cd $MTPATH/mcsys/saves/jar || exit 1
 DATE=$(date +%Y.%m.%d.%H.%M.%S)
