@@ -27,9 +27,11 @@ fi
  }
  DICTY=$(grep $DCI | rev | cut -b "/" | rev)
 if [[ $LANG == "1" ]]; then echo -e "$PREFIX Okey, i will preparing now the configuration. Please wait..."
+fi
 if [[ $LANG == "2" ]]; then echo -e ""
-
-
+fi
+mkdir -p $DICTY/mcsys/configs
+mkdir -p $DICTY/mcsys/configs
 #File locations:
 #x will installed though other progress
 #... /MainServer/manage.tool
