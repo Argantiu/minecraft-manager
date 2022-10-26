@@ -89,12 +89,9 @@ SHSTOP6=$(cat < $MLANG | grep "stopsh.counter.stop.3:" | cut -d ':' -d '"' -f2 |
 SHSTOP7=$(cat < $MLANG | grep "stopsh.counter.stop.2:" | cut -d ':' -d '"' -f2 | $PLACEAT)
 SHSTOP8=$(cat < $MLANG | grep "stopsh.counter.stop.1:" | cut -d ':' -d '"' -f2 | $PLACEAT)
 SHSTOP9=$(cat < $MLANG | grep "stopsh.counter.stop:" | cut -d ':' -d '"' -f2 | $PLACEAT)
-SHSTOP10=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
-SHSTOP11=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
-SHSTOP12=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP10=$(cat < $MLANG | grep "stopsh.server.stopping:" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP11=$(cat < $MLANG | grep "stopsh.server.killing:" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP12=$(cat < $MLANG | grep "stopsh.server.stopped:" | cut -d ':' -d '"' -f2 | $PLACEAT)
 #restart.sh
-SHRESTART=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHRESTART=$(cat < $MLANG | grep "restartsh.server.offline:" | cut -d ':' -d '"' -f2 | $PLACEAT)
 #software.sh
-
-#TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -f2 | tr -d " ")
-
