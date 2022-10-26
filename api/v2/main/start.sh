@@ -57,4 +57,4 @@ fi
 mkdir -p $MTPATH/mcsys/saves/jar
 cd $MTPATH/mcsys/software || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/$ASOFTWARE -O $MCNAME.sh
-/bin/bash $MTPATH/mcsys/$MCNAME.sh && exit 0
+/bin/bash $MTPATH/mcsys/software/$MCNAME.sh && exit 0
