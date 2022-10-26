@@ -3,6 +3,8 @@
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
 
+# Here is a setting for developers if, they create a own fork user/repo
+IFCREATEDFORK=Argantiu/minecraft-manager
 # Software
 VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -f2 | tr -d " ")
 if [[ $VARSOFT == "PURPUR" ]] || [[ $VARSOFT == "purpur" ]] || [[ $VARSOFT == "purpurmc" ]]; then ASOFTWARE=PURPUR
@@ -23,6 +25,8 @@ if [[ $VARSOFT == "BUNGEECORD" ]] || [[ $VARSOFT == "bungeecord" ]] || [[ $VARSO
 fi
 if [[ $VARSOFT == "WATERFALL" ]] || [[ $VARSOFT == "waterfall" ]] || [[ $VARSOFT == "waterfallmc" ]]; then ASOFTWARE=WATERFALL
 fi
+
+
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
 #TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
