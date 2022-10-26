@@ -1,4 +1,42 @@
-#!/bin/bash
-message.file.translation: en_EN
-server.already.online="Server is already online! Use: screen-r %server_name% to get into the Console."
-server.already.online.line2="You can also use: less -r screenlog.0 to view the log."
+{
+    "main": {
+    "project": "Argantiu language file",
+    "language.name": "en_EN",
+    "placeholders": %prefix%, %server_name%
+    }
+}
+{
+manage.tool.output: "What do you want?\n 1 = Start\n 2 = Stop\n 3 = Restart\n 4 = Edit config\n 5 = Remove system"
+manage.tool.remove: "Do you really want to remove the system? (Your server won't be removed)\nWrite Yes or yes to confirm.\nAnything else is no."
+manage.tool.remove.ok: "Oh how sad it is that you don't want this anymore."
+manage.tool.remove.no: "Oh how luckly that you don't meant it like that."
+manage.tool.no.input: "Please type in a number!"
+}
+{
+restartsh.server.offline: "%prefix% The server isn't online. Starting server..."
+}
+{
+startsh.server.online: "%prefix% Server is already online! Use: screen -r %server_name% to get the Console.\n%prefix% You can also use:less -r screenlog.0 schreiben um in den log zu sehen."
+startsh.server.start: "%prefix% Starte %server_name% server..."
+startsh.backup.create: "%prefix% Erstelle Backup..."
+startsh.backup.folder: "%prefix% Backup ist im /unused/backups Ordner"
+startsh.bedrock.update: "%prefix% Aktualisiert Bedrock Edition"
+}
+{
+stopsh.server.offline: "%prefix% Der Server wurde schon gestoppt!"
+stopsh.server.stop.info: "%prefix% Notification: Stppe %server_name%"
+}
+{
+stopsh.counter.invalid: "%prefix% ERROR 404 the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false"
+stopsh.counter.stop.10: "Server stoppt in 10 sekunden!"
+stopsh.counter.stop.4: "Server stoppt in 4 sekunden!"
+stopsh.counter.stop.3: "Server stoppt in 3 sekunden!"
+stopsh.counter.stop.2: "Server stoppt in 2 sekunden!"
+stopsh.counter.stop.1: "Server stoppt in 1er sekunde!"
+stopsh.counter.stop: "Server stoppt."
+}
+{
+stopsh.server.stopping: "Schalte Minecraft %server_name% Server aus..."
+stopsh.server.killing: "%prefix% %server_name% Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt."
+stopsh.server.stopped: "%prefix% Minecraft %server_name% gestoppt."
+}
