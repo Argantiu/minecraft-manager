@@ -1,7 +1,7 @@
 #!/bin/bash
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
-# shellcheck source=./../assets/variables.sh
+# shellcheck source=/dev/null
 . ./configs/variables.sh
 # Check, if server is offline. And then start the server.
 if ! screen -list | grep -q "$MCNAME"; then echo -e "$SHRESTART" && /bin/bash $LPATH/mcsys/start.sh && exit 0
