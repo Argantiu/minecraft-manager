@@ -12,7 +12,7 @@ if [ ! -f $MTPATH/$MCNAME.jar ]; then touch $MTPATH/$MCNAME.jar
 fi
 sed -i 's/false/true/g' $MTPATH/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./mcsys/restart.sh;g' $MTPATH/spigot.yml >/dev/null 2>&1
-# Auto updater
+# Auto updater -----
 mkdir -p $MTPATH/mcsys/update
 cd $MTPATH/mcsys/update || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh
@@ -22,7 +22,7 @@ fi
 # Create backup for your server
 if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
  if [ -f "$MCNAME.jar" ]; then echo -e "$MSTART3" && echo -e "$MSTART3" | /usr/bin/logger -t $MCNAME
-    cd $MTPATH/unused/backups && ls -1tr | head -n -10 | xargs -d '\n' rm -f --
+    cd $MTPATH/unused/backups && usr/bin/find $MTPATH/unused/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
     cd $MTPATH || exit 1
     if [[ $BETTERBACKUP == "TRUE" ]] || [[ $BETTERBACKUP == "true" ]]; then
     tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
@@ -44,6 +44,7 @@ if [[ $BEUPDATE == "TRUE" ]] || [[ $BEUPDATE == "true" ]]; then echo -e "$MSTART
  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-default.sh
  chmod +x be-default.sh
  /bin/bash $MTPATH/mcsys/be-default.sh &
+ fi
 fi
 # Check if this server is in proxymode
 if [[ $PROXYMO == "TRUE" ]] || [[ $PROXYMO == "true" ]]; then
