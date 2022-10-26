@@ -36,7 +36,7 @@ fi
 # Bedrock Part
 if [[ $BEUPDATE == "TRUE" ]] || [[ $BEUPDATE == "true" ]]; then echo -e "$MSTART5"
  cd $MTPATH/mcsys || exit 1
- ISITAPROXY=$()
+ ISITAPROXY=$(grep "$ASOFTWARE" | cut -d '/' -f1)
  if [[ $ISITAPROXY == "proxy" ]]; then wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser-proxy.sh -O be-proxy.sh
  chmod +x be-proxy.sh
  /bin/bash $MTPATH/mcsys/be-proxy.sh &
