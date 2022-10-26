@@ -11,8 +11,7 @@ wget -q https://api.papermc.io/v2/projects/paper/versions/"$MAINVERSION"/builds/
 unzip -qq -t paper-$MAINVERSION-$LATEST.jar
 if [ "$?" -ne 0 ]; then echo "Downloaded paper-$MAINVERSION-$LATEST.jar is corrupt. No update." | /usr/bin/logger -t $MCNAME
 else diff -q paper-$MAINVERSION-$LATEST.jar $MTPATH/$MCNAME.jar >/dev/null 2>&1
- if [ "$?" -eq 1 ]; then
-  cp paper-$MAINVERSION-$LATEST.jar paper-$MAINVERSION-$LATEST.jar."$(date +%Y.%m.%d.%H.%M.%S)" && mv paper-$MAINVERSION-$LATEST.jar $MTPATH/$MCNAME.jar
+ if [ "$?" -eq 1 ]; then cp paper-$MAINVERSION-$LATEST.jar paper-$MAINVERSION-$LATEST.jar."$(date +%Y.%m.%d.%H.%M.%S)" && mv paper-$MAINVERSION-$LATEST.jar $MTPATH/$MCNAME.jar
   /usr/bin/find $MTPATH/mcsys/saves/jar/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
   echo "paper-$MAINVERSION-$LATEST has been updated" | /usr/bin/logger -t $MCNAME
   rm -f version.json
