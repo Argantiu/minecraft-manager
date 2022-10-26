@@ -10,6 +10,8 @@ fi
 # Bugg Patcher
 if [ ! -f $MTPATH/$MCNAME.jar ]; then touch $MTPATH/$MCNAME.jar
 fi
+sed -i 's/false/true/g' $MTPATH/eula.txt >/dev/null 2>&1
+sed -i 's;restart-script: ./start.sh;restart-script: ./mcsys/restart.sh;g' $MTPATH/spigot.yml >/dev/null 2>&1
 # Auto updater
 mkdir -p $MTPATH/mcsys/update
 cd $MTPATH/mcsys/update || exit 1
@@ -32,16 +34,20 @@ if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
  fi
 fi
 # Bedrock Part
-if [[ $BEUPDATE == "TRUE" ]] || [[ $BEUPDATE == "true" ]]; then
- echo -e "$MSTART5"
+if [[ $BEUPDATE == "TRUE" ]] || [[ $BEUPDATE == "true" ]]; then echo -e "$MSTART5"
  cd $MTPATH/mcsys || exit 1
- ? #wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-updater.sh
- #chmod +x be-updater.sh
- # sed #
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-updater.sh
+ chmod +x be-updater.sh
  /bin/bash $MTPATH/mcsys/be-updater.sh
 fi
+# Check if this server is in proxymode
+if [[ $PROXYMO == "TRUE" ]] || [[ $PROXYMO == "true" ]]; then
+sed -i '0,;online-mode=true;online-mode=false' $MTPATH/server.propeties >/dev/null 2>&1
+sed -i '0,;bungeecord: false;bungeecord: true' $MTPATH/spigot.yml >/dev/null 2>&1
+else 
+sed -i '0,;online-mode=false;online-mode=true' $MTPATH/server.propeties >/dev/null 2>&1
+sed -i '0,;bungeecord: true;bungeecord: false' $MTPATH/spigot.yml >/dev/null 2>&1
 # Software update and start
-#Paper: Getting Update form your selected version.
 cd $MTPATH/mcsys/software || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/$ASOFTWARE -O $MCNAME.sh
 /bin/bash $MTPATH/mcsys/$MCNAME.sh && exit 0
