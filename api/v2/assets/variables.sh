@@ -43,29 +43,17 @@ PROXYMO=$(cat < mcsys.yml | grep proxy.mode: | cut -d ':' -f2)
 # Couter
 MCOUNT=$(cat < mcsys.yml | grep dynamic.counter: | cut -d ':' -f2)
 # Backups
-BACKUP=
+BACKUP=$(cat < mcsys.yml | grep backups: | cut -d ':' -f2)
 # Prime Backups
+BETTERBACKUP=$(cat < mcsys.yml | grep primebackups: | cut -d ':' -f2)
+# Bedrock
+BEUPDATE=$(cat < mcsys.yml | grep bedrock: | cut -d ':' -f2)
 
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
 TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
 
-
-dynamic.counter: true
-backups: false
-primebackups: false
-bedrock: false
 sys.prefix: §8[§aArgantiu§8]
-
-
-
-
-BEUPDATE=$(cat < mcsys.yml | grep BEMCUPDATE= | cut -d ':' -d ' ' -f2)
-BACKUP=$(cat < mcsys.yml | grep BACKUP= | cut -d ':' -d ' ' -f2)
-BETTERBACKUP=$(cat < mcsys.yml | grep BETTERBACKUP= | cut -d ':' -d ' ' -f2)
-MPREFIX=$(cat < mcsys.yml | grep MPREFIX= | cut -d ':' -d ' ' -f2)
-MCNAME=$(cat < mcsys.yml | grep MCNAME= | cut -d ':' -d ' ' -f2)
-
 
 # manage.tool
 SERVERNAME=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
