@@ -1,6 +1,5 @@
-#!/bin/bash
-# Minecraft server management
-# Version en/us 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
+# Automatic minecraft server script
+# Version en/us 3.0.0.0-#0 made by CrazyCloudCraft 10/29/2022 UTC/GMT +1 https://crazycloudcraft.de
 
 # Use STRG + k + x to save this settings (with joe's editor)
 # Use STRG + c to close it without saveing (you can edit the config with ./manage.tool command)
@@ -10,15 +9,15 @@
 # But it's better when you set here a version.
 version: 1.19.2
 
-# You can use: < PAPER | PURPUR | MOHIST | VELOCITY | BUNGEECORD | WATERFALL | SPIGOT | BUKKIT >
-software: PAPER
+# You can use: paper, purpur, spigot, bukkit, mohist, bungeecord, velocity, waterfall
+software: paper
 
 # Do you have a Subfolder for your server(s)? We recommend to set and use one.
 # E.g. home/server/(serverbase) or opt/(serverbase)
 server.directory: opt/Myserver
 
 # Set your server folder, where your server shall run (serverbase).
-SERVERBASE=Paper
+
 
 # Wich system-name should have the console and main.jar?
 # Don't use something like "system" or "main" for example, 
@@ -26,23 +25,20 @@ SERVERBASE=Paper
 systemname: mcpaper
 # Save is, to put "mc" before that name.
 
-#Should your server have a stop counter? (This will not work on a Proxy server type)
+# Should your server have a stop counter? (This will not work on a Proxy server type)
 dynamic.counter: true
 
-# Amount of RAM that your Mincecraft server will use M or G (instead of MB and GB) e.g.: RAM=2024M or RAM=10G
-RAM=4G
+# Amount of ram that your Mincecraft server should use e.g.: ram: 2024MB or ram: 10GB
+ram: 4GB
 
 # Name of your java executable.
-# (Default java) that you can view with "java --version" is for exaple: JAVABIN=/usr/bin/java
-JAVABIN=/usr/bin/java17
+# (Default java) that you can view with "java --version" is mostly something like this: java: /usr/bin/java
+java: /usr/bin/java
 
 # --- Backups ---
 # Do you need backups?
 # Then you have to set it to TRUE
 BACKUP=FALSE
-# Were should the backups under "/ununsed/" be saved?
-# The backups will be saved in "/unused/(BPATH folder)"
-BPATH=Paper_backups
 
 ## (Cloud / faster save feature may comming in v4.7.0.0)
 
@@ -53,27 +49,4 @@ BESUPPORT=TRUE
 # Geyser too? Because you didn't need it, if this server is connected with a proxy.
 GBESUPPORT=TRUE
 
-
-# --- Editable messages ---
-# If you know how colors works on shell, you can add colors in it. 
-
-MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
-MTRANZLATION="The server is not running. Starting server."
-NTRANZLATION="Notification: Stopping $SERVERBASE server ..."
-
-# In this messages under here, are colors NOT ALLOWED!
-# Stopping message tranzlation:
-MESSAGESTOP="Server is stopping in"
-
-# Message time tranzlation:
-DISPLAYTRANZTIME="seconds"
-
-# Colorcodes:
-# Black:        \033[0;30m'     Dark Gray:     \033[1;30m'
-# Red:          \033[0;31m'     Light Red:     \033[1;31m'
-# Green:        \033[0;32m'     Light Green:   \033[1;32m'
-# Brown/Orange: \033[0;33m'     Yellow:        \033[1;33m'
-# Blue:         \033[0;34m'     Light Blue:    \033[1;34m'
-# Purple:       \033[0;35m'     Light Purple:  \033[1;35m'
-# Cyan:         \033[0;36m'     Light Cyan:    \033[1;36m'
-# Light Gray:   \033[0;37m'     White:         \033[1;37m'
+# End of config. Youre done with configuring ;)
