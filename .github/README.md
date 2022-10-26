@@ -1,7 +1,7 @@
 # Creating Major version 3 with api v2
   
 Still not finished!  
-![Codacy Security Scan](https://github.com/Argantiu/system-api/actions/workflows/codacy.yml/badge.svg)
+![Codacy Security Scan](https://github.com/Argantiu/minecraft-manager/actions/workflows/codacy.yml/badge.svg)
   
 <!--
 <p align="center">
