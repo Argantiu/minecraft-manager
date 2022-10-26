@@ -4,9 +4,9 @@
 # shellcheck source=/dev/null
 . ./../configs/variables.sh
 # Floodgate
- mkdir -p $MTPATH/mcsys/saves/floodgate
- cd $MTPATH/mcsys/saves/floodgate || exit 1
- if [ ! $ASOFTWARE = "proxy/velocity.sh" ]; then
+mkdir -p $MTPATH/mcsys/saves/floodgate
+cd $MTPATH/mcsys/saves/floodgate || exit 1
+if [ ! $ASOFTWARE = "proxy/velocity.sh" ]; then
  if [ ! -f $MTPATH/plugins/floodgate-bungee.jar ]; then touch $MTPATH/plugins/floodgate-bungee.jar
  fi
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bungee/target/floodgate-bungee.jar -O floodgate-bungee.jar
@@ -25,9 +25,9 @@
    rm floodgate-bungee.jar
   fi
  fi
- fi
+fi
 # Velocity part
- if [[ $ASOFTWARE == "proxy/velocity.sh" ]]; then
+if [[ $ASOFTWARE == "proxy/velocity.sh" ]]; then
  if [ ! -f $MTPATH/plugins/floodgate-velocity.jar ]; then touch $MTPATH/plugins/floodgate-velocity.jar
  fi
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/velocity/target/floodgate-velocity.jar -O floodgate-velocity.jar
@@ -46,12 +46,12 @@
    rm floodgate-velocity.jar
   fi
  fi
- fi
+fi
 
 # Geyser for Proxy
- mkdir -p $MTPATH/mcsys/geyser
- cd $MTPATH/mcsys/geyser || exit 1
- if [ ! $ASOFTWARE = "proxy/velocity.sh" ]; then
+mkdir -p $MTPATH/mcsys/geyser
+cd $MTPATH/mcsys/geyser || exit 1
+if [ ! $ASOFTWARE = "proxy/velocity.sh" ]; then
  if [ ! -f $MTPATH/plugins/Geyser-BungeeCord.jar ]; then touch $MTPATH/plugins/Geyser-BungeeCord.jar
  fi
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/bungeecord/target/Geyser-BungeeCord.jar -O Geyser-BungeeCord.jar
@@ -70,9 +70,9 @@
    rm Geyser-BungeeCord.jar
   fi
  fi
- fi
+fi
 # Velocity part
- if [[ $ASOFTWARE == "proxy/velocity.sh" ]]; then
+if [[ $ASOFTWARE == "proxy/velocity.sh" ]]; then
  if [ ! -f $MTPATH/plugins/Geyser-Velocity.jar ]; then touch $MTPATH/plugins/Geyser-Velocity.jar
  fi
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/velocity/target/Geyser-Velocity.jar -O Geyser-Velocity.jar
@@ -90,7 +90,6 @@
    echo "No Geyser-Velocity.jar update neccessary" | /usr/bin/logger -t $MCNAME
    rm Geyser-Velocity.jar
   fi
- fi
  fi
 fi
 exit 0
