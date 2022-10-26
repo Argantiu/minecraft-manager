@@ -49,6 +49,7 @@ sed -i '0,;online-mode=false;online-mode=true' $MTPATH/server.propeties >/dev/nu
 sed -i '0,;bungeecord: true;bungeecord: false' $MTPATH/spigot.yml >/dev/null 2>&1
 fi
 # Software update and start
+mkdir -p $MTPATH/mcsys/saves/jar
 cd $MTPATH/mcsys/software || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/$ASOFTWARE -O $MCNAME.sh
 /bin/bash $MTPATH/mcsys/$MCNAME.sh && exit 0
