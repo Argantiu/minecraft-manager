@@ -1,9 +1,7 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this scipt!!
 # Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
-ASOFTWARE=
-MCNAME=
-LPATH=
+. ./../configs/variables.sh
 # Floodgate for normal servers
 if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] && [[ $BESUPPORT == "TRUE" ]]; then
  cd $LPATH/plugins || exit 1
