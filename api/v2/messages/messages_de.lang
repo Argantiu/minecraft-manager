@@ -16,27 +16,25 @@ manage.tool.no.input: "Bitte gebe eine Nummer an!"
 restartsh.server.offline: "%prefix% Der Server läuft nicht. Starte Server."
 }
 {
-startsh.server.online: %prefix% Server ist schon längt online! Nutze: screen -r %server_name% um in die Konsole zu gelangen. \n%prefix% Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
-startsh.server.start: %prefix% Starte $MCNAME server...
-startsh.backup.create: %prefix% Create Backup...
-startsh.backup.folder: Backing up server (to /unused/backups folder)
-startsh.bedrock.update: %prefix% Updateing Bedrock
+startsh.server.online: "%prefix% Server ist schon längt online! Nutze: screen -r %server_name% um in die Konsole zu gelangen. \n%prefix% Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen."
+startsh.server.start: "%prefix% Starte %server_name% server..."
+startsh.backup.create: "%prefix% Erstelle Backup..."
+startsh.backup.folder: "%prefix% Backup ist im /unused/backups Ordner"
+startsh.bedrock.update: "%prefix% Aktualisiert Bedrock Edition"
 }
 {
 stopsh.server.offline: "%prefix% Der Server wurde schon gestoppt!"
-stopsh.server.stop.info: "%prefix% Notification: Stppe %server_name% Server ..."
-}
-{
-stopsh.counter.invalid: "ERROR the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false"
+stopsh.server.stop.info: "%prefix% Notification: Stppe %server_name% 
+stopsh.counter.invalid: "%prefix% ERROR 404 the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false"
 stopsh.counter.stop.10: "Server stoppt in 10 sekunden!"
 stopsh.counter.stop.4: "Server stoppt in 4 sekunden!"
 stopsh.counter.stop.3: "Server stoppt in 3 sekunden!"
 stopsh.counter.stop.2: "Server stoppt in 2 sekunden!"
 stopsh.counter.stop.1: "Server stoppt in 1er sekunde!"
-stopsh.counter.stop: "&f Server stoppt."
+stopsh.counter.stop: "Server stoppt."
 }
 {
-stopsh.server.stopping: "Schalte Minecraft $MCNAME Server aus..."
-stopsh.server.killing: "MPREFIX $SERVERBASE Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt."
-stopsh.server.stopped: "MPREFIX Minecraft MCNAME gestoppt."
+stopsh.server.stopping: "Schalte Minecraft  Server aus..."
+stopsh.server.killing: "MPREFIX %server_name% Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt."
+stopsh.server.stopped: "MPREFIX Minecraft %server_name% gestoppt."
 }
