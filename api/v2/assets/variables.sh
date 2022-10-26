@@ -35,21 +35,22 @@ MAINVERSION=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
 # Systemname
 MCNAME=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
 # Ram 
-MRAM=$(cat < mcsys.yml | grep ram: | cut -d ':' -d 'B' -f2)
+RAM=$(cat < mcsys.yml | grep ram: | cut -d ':' -d 'B' -f2)
 # Java
-
-
+JAVABIN=$(cat < mcsys.yml | grep java: | cut -d ':' -f2)
+# Proxy Mode
+PROXYMO=$(cat < mcsys.yml | grep proxy.mode: | cut -d ':' -f2)
+# Couter
+MCOUNT=$(cat < mcsys.yml | grep dynamic.counter: | cut -d ':' -f2)
+# Backups
+BACKUP=
+# Prime Backups
 
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
 TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
 
 
-version: 1.19.2
-systemname: mcpaper
-ram: 4GB
-java: /usr/bin/java
-proxy.mode: false
 dynamic.counter: true
 backups: false
 primebackups: false
