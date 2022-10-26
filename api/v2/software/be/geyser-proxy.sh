@@ -1,14 +1,13 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this scipt!!
-# Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
+# Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
 # shellcheck source=/dev/null
 . ./../configs/variables.sh
 
-# Floodgate for Proxy
-if [[ $ASOFTWARE == "BUNGEECORD" ]] || [[ $ASOFTWARE == "VELOCITY" ]] || [[ $ASOFTWARE == "WATERFALL" ]] && [[ $BESUPPORT == "TRUE" ]]; then
- cd $LPATH/plugins || exit 1
- mkdir -p $LPATH/mcsys/floodgate
- cd $LPATH/mcsys/floodgate || exit 1
+# Floodgate
+ cd $MTPATH/plugins || exit 1
+ mkdir -p $MTPATH/mcsys/saves/floodgate
+ cd $MTPATH/mcsys/saves/floodgate || exit 1
  if [ $ASOFTWARE = "BUNGEECORD" ] || [ $ASOFTWARE = "WATERFALL" ]; then
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bungee/target/floodgate-bungee.jar -O floodgate-bungee.jar
  unzip -qq -t floodgate-bungee.jar
