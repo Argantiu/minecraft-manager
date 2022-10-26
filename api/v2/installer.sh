@@ -1,6 +1,7 @@
 #!/bin/bash
 # Minecraft Server installer for an Easy Setup
 # Made By CrazyCloudCraft
+IFCREATEDFORK=Argantiu/minecraft-manager
 RPREFIX="\033[1;30m[\033[0;31mArgatiu\033[1;30m]\033[0;37m"
 PREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 # Which language do you speak. 1 English . 2 German 3 French ...
@@ -26,12 +27,19 @@ fi
  read DCI;
  }
  DICTY=$(grep $DCI | rev | cut -b "/" | rev)
+ mkdir -p $DICTY/mcsys/configs
+ cd $DICTY/mcsys/configs || exit 1
+ if ! command -v wget &> /dev/null
+ then
+     apt-get install wget -y >/dev/null 2>&1
+ fi
 if [[ $LANG == "1" ]]; then echo -e "$PREFIX Okey, i will preparing now the configuration. Please wait..."
+wget -q https://github.com/$IFCREATEDFORK/blob/main/api/v2/assets/mcsys_en.yml
 fi
 if [[ $LANG == "2" ]]; then echo -e ""
+whet -q https://github.com/$IFCREATEDFORK/blob/main/api/v2/assets/mcsys_de.yml
 fi
-mkdir -p $DICTY/mcsys/configs
-mkdir -p $DICTY/mcsys/configs
+
 #File locations:
 #x will installed though other progress
 #... /MainServer/manage.tool
@@ -65,11 +73,6 @@ if ! command -v joe &> /dev/null
  then
      apt-get install zip -y
      echo "zip installed"
- fi
- if ! command -v wget &> /dev/null
- then
-     apt-get install wget -y
-     echo "wget installed"
  fi
  if ! command -v xargs &> /dev/null
  then
