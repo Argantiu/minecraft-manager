@@ -10,7 +10,7 @@ fi
 echo -e "$SHSTOP2"
 echo "$SHSTOP2" | /usr/bin/logger -t $MCNAME
 # Sieht nach, ob Spieler Online sind
-if [[ $ASOFTWARE == "PAPER" ]] || [[ $ASOFTWARE == "SPIGOT" ]] || [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "MOHIST" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]]; then
+if [[ $ASOFTWARE == "paper.sh" ]] || [[ $ASOFTWARE == "spigot.sh" ]] || [[ $ASOFTWARE == "bukkit.sh" ]] || [[ $ASOFTWARE == "purpur.sh" ]] || [[ $ASOFTWARE == "modded/mohist.sh" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]]; then
 mkdir -p $MTPATH/mcsys/cache && cd $MTPATH/mcsys/cache || exit 1
 hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
