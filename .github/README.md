@@ -2,6 +2,13 @@
   
 Still not finished!  
 ![Codacy Security Scan](https://github.com/Argantiu/minecraft-manager/actions/workflows/codacy.yml/badge.svg)
+
+![GitHub all releases](https://img.shields.io/github/downloads/Argantiu/.github/total?color=lime&label=All%20Downloads)
+
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/downloads-pre/Argantiu/.github/v3.0/total?color=lime&label=Downloads%20latest)
+
+
+
 ```
 wget -q https://t1p.de/minecraft-manager -O agon && chmod +x agon && ./agon
 ```
