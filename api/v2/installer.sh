@@ -2,7 +2,7 @@
 # installer
 
 File locations:
-x = will installed though other progress
+x will installed though other progress
 ... /MainServer/manage.tool
 ... /MainServer/mcsys/start.sh
 ... /MainServer/mcsys/stop.sh
