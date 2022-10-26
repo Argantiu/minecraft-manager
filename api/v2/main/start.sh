@@ -1,6 +1,4 @@
 #!/bin/bash
-# Here is a setting for developers if, they create a own fork user/repo
-IFCREATEDFORK=Argantiu/minecraft-manager
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
 # shellcheck source=./../assets/variables.sh
