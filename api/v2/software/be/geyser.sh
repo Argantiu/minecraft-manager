@@ -29,27 +29,26 @@ else echo -e "Bedrock support doesn't work on this software! Please use an other
 fi
 
 # Geyser
- mkdir -p $LPATH/mcsys/geyser
- cd $LPATH/mcsys/geyser || exit 1
+mkdir -p $MTPATH/mcsys/geyser
+if [[ ! $ASOFTWARE == "modded/mohist.sh" ]] && [[ ! $PROXYMO == "true" ]] || [[ ! $PROXYMO == "TRUE" ]]; then
+ if [ ! -f $MTPATH/plugins/Geyser-Spigot.jar ]; then touch $MTPATH/plugins/Geyser-Spigot.jar
+ fi
+ cd $MTPATH/mcsys/geyser || exit 1
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/spigot/target/Geyser-Spigot.jar -O Geyser-Spigot.jar
  unzip -qq -t Geyser-Spigot.jar
  if [ "$?" -ne 0 ]; then
   echo "Downloaded Geyser Default is corrupt. No update." | /usr/bin/logger -t $MCNAME
  else
-  if [ -f $LPATH/plugins/Geyser-Spigot.jar ]; then
-   echo "Geyser default plugin exists" | /usr/bin/logger -t $MCNAME
-  else
-   touch $LPATH/plugins/Geyser-Spigot.jar
-  fi
   diff -q Geyser-Spigot.jar $LPATH/plugins/Geyser-Spigot.jar >/dev/null 2>&1
   if [ "$?" -eq 1 ]; then
    cp Geyser-Spigot.jar Geyser-Spigot.jar."$(date +%Y.%m.%d.%H.%M.%S)"
-   mv Geyser-Spigot.jar $LPATH/plugins/Geyser-Spigot.jar
-   /usr/bin/find $LPATH/mcsys/geyser/* -type f -mtime +6 -delete 2>&1 | /usr/bin/logger -t $MCNAME
+   mv Geyser-Spigot.jar $MTPATH/plugins/Geyser-Spigot.jar
+   /usr/bin/find $MTPATH/mcsys/saves/geyser/* -type f -mtime +5 -delete 2>&1 | /usr/bin/logger -t $MCNAME
    echo "Geyser Default has been updated" | /usr/bin/logger -t $MCNAME
   else
    echo "No Geyser default update neccessary" | /usr/bin/logger -t $MCNAME
    rm Geyser-Spigot.jar
   fi
  fi
+else echo -e "Bedrock support doesn't work on this software! Please use an other sofware or disable Bedrock support."
 fi
