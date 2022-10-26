@@ -1,6 +1,7 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this scipt!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
+# shellcheck source=/dev/null
 . ./../configs/variables.sh
 PRMCVERSION=3.1.2
 cd $MTPATH/mcsys/saves/jar || exit 1
