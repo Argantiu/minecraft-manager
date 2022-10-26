@@ -28,17 +28,24 @@ fi
 # Server Directory
 #=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
 MTPATH=$(cat < mcsys.yml | grep "server.directory:" | cut -d ':' -f2 | tr -d " ")
-SERVERBASE=$(cat mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
-OPTBASE=$(cat mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
+SERVERBASE=$(cat < mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
+OPTBASE=$(cat < mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
+# Version
+MAINVERSION=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
+# Systemname
+MCNAME=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
+# Ram 
+MRAM=$(cat < mcsys.yml | grep ram: | cut -d ':' -d 'B' -f2)
+# Java
+
+
 
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
-#TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
+TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
 
 
 version: 1.19.2
-software: PAPER
-server.directory: opt/MeinServer
 systemname: mcpaper
 ram: 4GB
 java: /usr/bin/java
@@ -60,4 +67,4 @@ MCNAME=$(cat < mcsys.yml | grep MCNAME= | cut -d ':' -d ' ' -f2)
 
 
 # manage.tool
-SERVERNAME=$(cat < mcsys.yml | grep MCNAME: | cut -d '=' -f2)
+SERVERNAME=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
