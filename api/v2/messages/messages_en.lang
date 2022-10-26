@@ -16,27 +16,27 @@ manage.tool.no.input: "Please type in a number!"
 restartsh.server.offline: "%prefix% The server isn't online. Starting server..."
 }
 {
-startsh.server.online: "%prefix% Server is already online! Use: screen -r %server_name% to get the Console.\n%prefix% You can also use:less -r screenlog.0 schreiben um in den log zu sehen."
-startsh.server.start: "%prefix% Starte %server_name% server..."
-startsh.backup.create: "%prefix% Erstelle Backup..."
-startsh.backup.folder: "%prefix% Backup ist im /unused/backups Ordner"
-startsh.bedrock.update: "%prefix% Aktualisiert Bedrock Edition"
+startsh.server.online: "%prefix% Server is already online! Use: screen -r %server_name% to get the Console.\n%prefix% You can also use: less -r screenlog.0 to look into the log."
+startsh.server.start: "%prefix% Starting %server_name% server..."
+startsh.backup.create: "%prefix% Create backup..."
+startsh.backup.folder: "%prefix% Backup finished is now in the ./unused/backups directory."
+startsh.bedrock.update: "%prefix% Update Bedrock Edition"
 }
 {
-stopsh.server.offline: "%prefix% Der Server wurde schon gestoppt!"
-stopsh.server.stop.info: "%prefix% Notification: Stppe %server_name%"
+stopsh.server.offline: "%prefix% Server already stopped."
+stopsh.server.stop.info: "%prefix% Notification: Stop %server_name%"
 }
 {
-stopsh.counter.invalid: "%prefix% ERROR 404 the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false"
-stopsh.counter.stop.10: "Server stoppt in 10 sekunden!"
-stopsh.counter.stop.4: "Server stoppt in 4 sekunden!"
-stopsh.counter.stop.3: "Server stoppt in 3 sekunden!"
-stopsh.counter.stop.2: "Server stoppt in 2 sekunden!"
-stopsh.counter.stop.1: "Server stoppt in 1er sekunde!"
-stopsh.counter.stop: "Server stoppt."
+stopsh.counter.invalid: "%prefix% ERROR 404 the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with dynamic.counter: false"
+stopsh.counter.stop.10: "Server stop in 10 seconds!"
+stopsh.counter.stop.4: "Server stop in 4 seconds!"
+stopsh.counter.stop.3: "Server stop in 3 seconds!"
+stopsh.counter.stop.2: "Server stop in 2 seconds!"
+stopsh.counter.stop.1: "Server stop in 1 second!"
+stopsh.counter.stop: "Server stopped."
 }
 {
-stopsh.server.stopping: "Schalte Minecraft %server_name% Server aus..."
-stopsh.server.killing: "%prefix% %server_name% Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt."
-stopsh.server.stopped: "%prefix% Minecraft %server_name% gestoppt."
+stopsh.server.stopping: "Turn server %server_name% off..."
+stopsh.server.killing: "%prefix% %server_name% server hasn't reacted for 30 seconds, killing now this instance."
+stopsh.server.stopped: "%prefix% Minecraft %server_name% gestopped."
 }
