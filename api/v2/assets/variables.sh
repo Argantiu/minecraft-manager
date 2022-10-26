@@ -66,5 +66,18 @@ BEUPDATE=$(cat < mcsys.yml | grep "bedrock:" | cut -d ':' -f2)
 
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
+#manage.tool
+MANAGET1=
+MANAGET2=
+MANAGET3=
+MANAGET4=
+MANAGET5=
+#start.sh
+
+
+#stop.sh
+#restart.sh
+#software.sh
+
 TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -f2 | tr -d " ")
 
