@@ -5,18 +5,18 @@
     "placeholders": %prefix%, %server_name%
     }
 }
-startsh.server.online: %prefix% Server ist schon längt online! Nutze: §5screen -r %server_name% §rum in die Konsole zu gelangen. \n$MPREFIX Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
-startsh.server.start: $MPREFIX Starte $MCNAME server...
-startsh.backup.create: $MPREFIX Create Backup...
+startsh.server.online: %prefix% Server ist schon längt online! Nutze: screen -r %server_name% um in die Konsole zu gelangen. \n%prefix% Sie können auch: less -r screenlog.0 schreiben um in den log zu sehen.
+startsh.server.start: %prefix% Starte $MCNAME server...
+startsh.backup.create: %prefix% Create Backup...
 startsh.backup.folder: Backing up server (to /unused/backups folder)
-startsh.bedrock.update: $MPREFIX Updateing Bedrock
+startsh.bedrock.update: %prefix% Updateing Bedrock
 
 
-manage.tool.output: Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen 
+manage.tool.output: "Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen"
+manage.tool.
+%prefix% Der Server läuft nicht. Starte Server.
 
-$MPREFIX Der Server läuft nicht. Starte Server.
-
-$MPREFIX Der Server wurde schon gestoppt!
+%prefix% Der Server wurde schon gestoppt!
 
 
 Was möchtest du den machen?\n 1 = Starten\n 2 = Stoppen\n 3 = Neustarten\n 4 = Konfiguration Bearbeiten\n 5 = System Endfernen
