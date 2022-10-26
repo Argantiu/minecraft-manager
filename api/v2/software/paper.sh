@@ -2,7 +2,6 @@
 # Minecraft Server auto stop script - Do not configure this scipt!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
 . ./../configs/variables.sh
-MCAPI=https://api.papermc.io/v2/projects/paper/versions/
 mkdir -p $MTPATH/mcsys/saves/jar
 cd $MTPATH/mcsys/saves/jar || exit 1
 rm -f version.json
@@ -17,13 +16,13 @@ else
  if [ "$?" -eq 1 ]; then
   cp paper-$MAINVERSION-$LATEST.jar paper-$MAINVERSION-$LATEST.jar."$(date +%Y.%m.%d.%H.%M.%S)"
   mv paper-$MAINVERSION-$LATEST.jar $MTPATH/$MCNAME.jar
-  /usr/bin/find $MTPATH/mcsys/jar/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
+  /usr/bin/find $MTPATH/mcsys/saves/jar/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t $MCNAME
   echo "paper-$MAINVERSION-$LATEST has been updated" | /usr/bin/logger -t $MCNAME
-  rm version.json
+  rm -f version.json
  else
   echo "No paper-$MAINVERSION-$LATEST update neccessary" | /usr/bin/logger -t $MCNAME
   rm paper-$MAINVERSION-$LATEST.jar
-  rm version.json
+  rm -f version.json
  fi
 fi
 # Starting server.
