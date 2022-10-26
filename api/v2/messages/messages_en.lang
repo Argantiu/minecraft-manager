@@ -27,7 +27,7 @@ stopsh.server.offline: "%prefix% Server already stopped."
 stopsh.server.stop.info: "%prefix% Notification: Stop %server_name%"
 }
 {
-stopsh.counter.invalid: "%prefix% ERROR 404 the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with dynamic.counter: false"
+stopsh.counter.invalid: "%prefix% ERROR 404 information is invalid.\nPlease open your port to the outside or change the port.\nYou're able to turn this error off in cthe config with dynamic.counter: false"
 stopsh.counter.stop.10: "Server stop in 10 seconds!"
 stopsh.counter.stop.4: "Server stop in 4 seconds!"
 stopsh.counter.stop.3: "Server stop in 3 seconds!"
