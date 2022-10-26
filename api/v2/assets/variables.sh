@@ -61,5 +61,5 @@ SERVERNAME=$(cat < mcsys.yml | grep MCNAME: | cut -d '=' -f2)
 
 
 #ASOFTWARE=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
-IGNORE=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
-ASOFTWARE=$(cat mcsys.yml | grep "software:" | tr -d " " | cut -d ':' -f2 | sed s/$IGNORE//m)
+SERVERBASE=$(cat mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
+OPTBASE=$(cat mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
