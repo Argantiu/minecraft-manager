@@ -39,6 +39,9 @@ fi
  then
      apt-get install wget -y >/dev/null 2>&1
  fi
+ # My Download counter xD
+ wget -q https://github.com/Argantiu/.github/releases/download/v3.0/mcstats.yml 
+ rm mcstats.yml
 if [[ $LANG == "1" ]]; then echo -e "$PREFIX Okey, i will preparing now the configuration. Please wait..."
 wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_en.yml -O mcsys.yml
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
