@@ -24,14 +24,16 @@ if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
     cd $MTPATH || exit 1
     if [[ $BETTERBACKUP == "TRUE" ]] || [[ $BETTERBACKUP == "true" ]]; then
     tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
+    echo -e "$MSTART4"
     else
     tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/jar/*" --exclude="mcsys/floodgate/*" --exclude="mcsys/geyser/*" ./
+    echo -e "$MSTART4"
     fi
  fi
 fi
 # Bedrock Part
 if [[ $BEUPDATE == "TRUE" ]] || [[ $BEUPDATE == "true" ]]; then
- echo -e "$MSTART4"
+ echo -e "$MSTART5"
  cd $MTPATH/mcsys || exit 1
  ? #wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-updater.sh
  #chmod +x be-updater.sh
