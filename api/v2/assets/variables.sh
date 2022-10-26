@@ -25,7 +25,10 @@ if [[ $VARSOFT == "BUNGEECORD" ]] || [[ $VARSOFT == "bungeecord" ]] || [[ $VARSO
 fi
 if [[ $VARSOFT == "WATERFALL" ]] || [[ $VARSOFT == "waterfall" ]] || [[ $VARSOFT == "waterfallmc" ]]; then ASOFTWARE=proxy/waterfall.sh
 fi
-
+# Server Directory
+#=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
+SERVERBASE=$(cat mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
+OPTBASE=$(cat mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
 
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
@@ -58,9 +61,3 @@ MCNAME=$(cat < mcsys.yml | grep MCNAME= | cut -d ':' -d ' ' -f2)
 
 # manage.tool
 SERVERNAME=$(cat < mcsys.yml | grep MCNAME: | cut -d '=' -f2)
-
-
-
-#ASOFTWARE=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
-SERVERBASE=$(cat mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
-OPTBASE=$(cat mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
