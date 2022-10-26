@@ -3,10 +3,30 @@
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
 
-#### Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
-#### OPT und SERVER base zusammen basteln
+# Software
+VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
+if [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "purpur" ]] || [[ $ASOFTWARE == "purpurmc" ]]; then
+fi
+if [[ $VARSOFT == "PAPER" ]] || [[ $VARSOFT == "papermc" ]] || [[ $VARSOFT == "paper" ]] || [[ $VARSOFT == "paperspigot" ]]; then ASOFTWARE=PAPER
+fi
+if [[ $VARSOFT == "SPIGOT" ]] || [[ $VARSOFT == "spigot" ]] || [[ $VARSOFT == "spogotmc" ]]; then ASOFTWARE=SPIGOT
+fi
+if [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "bukkit" ]] || [[ $ASOFTWARE == "bukkitmc" ]]; then ASOFTWARE=BUKKIT
+fi
+# Modded
+if [[ $ASOFTWARE == "MOHIST" ]] || [[ $ASOFTWARE == "mohist" ]] || [[ $ASOFTWARE == "mohistmc" ]]; then ASOFTWARE=MOHIST
+fi
+# Proxy
+if [[ $ASOFTWARE == "VELOCITY" ]] || [[ $ASOFTWARE == "velo" ]] || [[ $ASOFTWARE == "velocity" ]]; then ASOFTWARE=VELOCITY
+fi
+if [[ $ASOFTWARE == "BUNGEECORD" ]] || [[ $ASOFTWARE == "bungeecord" ]] || [[ $ASOFTWARE == "bungee" ]]; then ASOFTWARE=BUNGEECORD
+fi
+if [[ $ASOFTWARE == "WATERFALL" ]] || [[ $ASOFTWARE == "waterfall" ]] || [[ $ASOFTWARE == "waterfallmc" ]]; then ASOFTWARE=WATERFALL
+fi
+## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
-# start.sh
+#TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
+
 
 version: 1.19.2
 software: PAPER
@@ -21,10 +41,8 @@ primebackups: false
 bedrock: false
 sys.prefix: §8[§aArgantiu§8]
 
-VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
-if [[ $VARSOFT == "PAPER" ]] || [ $VARSOFT == "papermc" ]] || [ $VARSOFT == "paper" ]]; then ASOFTWARE=PAPER
-fi
-if [[ $VARSOFT == "" ]] ||
+
+
 MTPATH=$(cat < mcsys.yml | grep server.directory: | cut -d ':' -d ' ' -f2)
 
 BEUPDATE=$(cat < mcsys.yml | grep BEMCUPDATE= | cut -d ':' -d ' ' -f2)
@@ -38,7 +56,7 @@ SERVERBASE=
 # manage.tool
 SERVERNAME=$(cat < mcsys.yml | grep MCNAME: | cut -d '=' -f2)
 # Tranzlations
-TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
+
 
 
 
