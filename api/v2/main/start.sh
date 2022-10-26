@@ -36,9 +36,14 @@ fi
 # Bedrock Part
 if [[ $BEUPDATE == "TRUE" ]] || [[ $BEUPDATE == "true" ]]; then echo -e "$MSTART5"
  cd $MTPATH/mcsys || exit 1
- wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-updater.sh
- chmod +x be-updater.sh
- /bin/bash $MTPATH/mcsys/be-updater.sh
+ ISITAPROXY=$()
+ if [[ $ISITAPROXY == "proxy" ]]; then wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser-proxy.sh -O be-proxy.sh
+ chmod +x be-proxy.sh
+ /bin/bash $MTPATH/mcsys/be-proxy.sh &
+ else
+ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/be/geyser.sh -O be-default.sh
+ chmod +x be-default.sh
+ /bin/bash $MTPATH/mcsys/be-default.sh &
 fi
 # Check if this server is in proxymode
 if [[ $PROXYMO == "TRUE" ]] || [[ $PROXYMO == "true" ]]; then
