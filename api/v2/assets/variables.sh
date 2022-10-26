@@ -44,7 +44,7 @@ OPTBASE=$(cat < mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f
 # Cyan:         \033[0;36m'     Light Cyan:    \033[1;36m'
 # Light Gray:   \033[0;37m'     White:         \033[1;37m'
 
-MPREFIX=§8[§aArgantiu§8]
+MPREFIX=\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m 
 # Version
 MAINVERSION=$(cat < mcsys.yml | grep "version:" | cut -d ':' -f2)
 # Systemname
