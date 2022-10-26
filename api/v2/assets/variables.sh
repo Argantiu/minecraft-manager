@@ -68,31 +68,31 @@ BEUPDATE=$(cat < mcsys.yml | grep "bedrock:" | cut -d ':' -f2)
 MLANG=./messages.lang
 PLACEAT=sed s:%server_name%:$MCNAME:m | sed s:%prefix%:$MPREFIX:m
 #manage.tool
-MANAGET1=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
-MANAGET2=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
-MANAGET3=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
-MANAGET4=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
-MANAGET5=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
+MANAGET1=$(cat < $MLANG | grep "manage.tool.output:" | cut -d ':' -d '"' -f2 | $PLACEAT)
+MANAGET2=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+MANAGET3=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | $PLACEAT)
+MANAGET4=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | $PLACEAT)
+MANAGET5=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | $PLACEAT)
 #start.sh
-MSTART1=
-MSTART2=
-MSTART3=
-MSTART4=
+MSTART1=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+MSTART2=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+MSTART3=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+MSTART4=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
 #stop.sh
-SHSTOP1=
-SHSTOP2=
-SHSTOP3=
-SHSTOP4=
-SHSTOP5=
-SHSTOP6=
-SHSTOP7=
-SHSTOP8=
-SHSTOP9=
-SHSTOP10=
-SHSTOP11=
-SHSTOP12=
+SHSTOP1=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP2=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP3=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP4=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP5=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP6=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP7=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP8=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP9=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP10=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP11=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
+SHSTOP12=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
 #restart.sh
-SHRESTART=
+SHRESTART=$(cat < $MLANG | grep "" | cut -d ':' -d '"' -f2 | $PLACEAT)
 #software.sh
 
 #TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -f2 | tr -d " ")
