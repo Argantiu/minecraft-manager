@@ -1,12 +1,8 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this scipt!!
 # Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
-MAINVERSION=
-MCNAME=
-LPATH=
-RAM=
-JAVABIN=
-#Spigot / Bukkit: Getting Update form your selected version.
+. ./../configs/variables.sh
+
 mkdir -p $LPATH/mcsys/build
 mkdir -p $LPATH/mcsys/buktool
 mkdir -p $LPATH/mcsys/build/mcmain
