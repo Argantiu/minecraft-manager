@@ -41,7 +41,7 @@ dynamic.counter: true
 # Dann musst du das hier auf "true" setzen.
 backups: false
 
-# (Empfohlen) Möchtest du bessere backups? (Es reduziert die Dateiengröße sehr, und behält nur alle nötigen dinge)
+# (Empfohlen) Möchtest du bessere backups? (Es reduziert die Dateiengröße sehr und behält nur alle nötigen dinge)
 # Hierfür muss das obere backups: true sein.
 primebackups: false
 
