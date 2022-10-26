@@ -24,7 +24,9 @@ startsh.bedrock.update: "%prefix% Aktualisiert Bedrock Edition"
 }
 {
 stopsh.server.offline: "%prefix% Der Server wurde schon gestoppt!"
-stopsh.server.stop.info: "%prefix% Notification: Stppe %server_name% 
+stopsh.server.stop.info: "%prefix% Notification: Stppe %server_name%"
+}
+{
 stopsh.counter.invalid: "%prefix% ERROR 404 the Server information is invalid.\nPlease open your port to the outside or change the port.\nYou can also disable this error in the config with MCOUNT=false"
 stopsh.counter.stop.10: "Server stoppt in 10 sekunden!"
 stopsh.counter.stop.4: "Server stoppt in 4 sekunden!"
@@ -34,7 +36,7 @@ stopsh.counter.stop.1: "Server stoppt in 1er sekunde!"
 stopsh.counter.stop: "Server stoppt."
 }
 {
-stopsh.server.stopping: "Schalte Minecraft  Server aus..."
-stopsh.server.killing: "MPREFIX %server_name% Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt."
-stopsh.server.stopped: "MPREFIX Minecraft %server_name% gestoppt."
+stopsh.server.stopping: "Schalte Minecraft %server_name% Server aus..."
+stopsh.server.killing: "%prefix% %server_name% Server hat nach 30 sekunden nicht reagiert, Minecraft Server wird abgewürgt."
+stopsh.server.stopped: "%prefix% Minecraft %server_name% gestoppt."
 }
