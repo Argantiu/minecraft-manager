@@ -4,7 +4,7 @@
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
 
 # Software
-VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
+VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -f2 | tr -d " ")
 if [[ $VARSOFT == "PURPUR" ]] || [[ $VARSOFT == "purpur" ]] || [[ $VARSOFT == "purpurmc" ]]; then ASOFTWARE=PURPUR
 fi
 if [[ $VARSOFT == "PAPER" ]] || [[ $VARSOFT == "papermc" ]] || [[ $VARSOFT == "paper" ]] || [[ $VARSOFT == "paperspigot" ]]; then ASOFTWARE=PAPER
