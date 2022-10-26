@@ -1,7 +1,6 @@
 #!/bin/bash
 # Updater for the manage system.
-
-Update things and load things, that just were disapered like dependencys
+# Version: 3.0.0.0
 
 if ! command -v joe &> /dev/null
   then
