@@ -2,9 +2,10 @@
   
 Still not finished!  
 ![Codacy Security Scan](https://github.com/Argantiu/minecraft-manager/actions/workflows/codacy.yml/badge.svg)
- 
+
+'''
  wget -q https://t1p.de/minecraft-manager -O agon && chmod +x agon && ./agon
- 
+'''
 <!--
 <p align="center">
     <img src="https://www.azul.com/wp-content/themes/azul/dist/img/logo.svg" width="150">
