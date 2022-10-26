@@ -73,11 +73,26 @@ MANAGET3=
 MANAGET4=
 MANAGET5=
 #start.sh
-
-
+MSTART1=
+MSTART2=
+MSTART3=
+MSTART4=
 #stop.sh
+SHSTOP1=
+SHSTOP2=
+SHSTOP3=
+SHSTOP4=
+SHSTOP5=
+SHSTOP6=
+SHSTOP7=
+SHSTOP8=
+SHSTOP9=
+SHSTOP10=
+SHSTOP11=
+SHSTOP12=
 #restart.sh
+SHRESTART=
 #software.sh
 
-TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -f2 | tr -d " ")
+#TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -f2 | tr -d " ")
 
