@@ -128,44 +128,6 @@ if [[ $ASOFTWARE == "BUNGEECORD" ]] || [[ $ASOFTWARE == "VELOCITY" ]] || [[ $ASO
    echo "Geyser-BungeeCord.jar plugin exists" | /usr/bin/logger -t $MCNAME
   else
    touch $LPATH/plugins/Geyser-BungeeCord.jar
-  fi
-  diff -q Geyser-BungeeCord.jar $LPATH/plugins/Geyser-BungeeCord.jar >/dev/null 2>&1
-  if [ "$?" -eq 1 ]; then
-  cp Geyser-BungeeCord.jar Geyser-BungeeCord.jar."$(date +%Y.%m.%d.%H.%M.%S)"
-  mv Geyser-BungeeCord.jar $LPATH/plugins/Geyser-BungeeCord.jar
-  /usr/bin/find $LPATH/mcsys/geyser/* -type f -mtime +6 -delete 2>&1 | /usr/bin/logger -t $MCNAME
-   echo "Geyser for Bungeecord and Waterfall has been updated" | /usr/bin/logger -t $MCNAME
-  else
-   echo "No Geyser-BungeeCord.jar update neccessary" | /usr/bin/logger -t $MCNAME
-   rm Geyser-BungeeCord.jar
-  fi
- fi
- fi
-# Velocity part
- if [[ $ASOFTWARE == "VELOCITY" ]]; then
- wget -q https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/velocity/target/Geyser-Velocity.jar -O Geyser-Velocity.jar
- unzip -qq -t Geyser-Velocity.jar
- if [ "$?" -ne 0 ]; then
-  echo "Downloaded Geyser-Velocity is corrupt. No update." | /usr/bin/logger -t $MCNAME
- else
-  if [ -f $LPATH/plugins/Geyser-Velocity.jar ]; then
-   echo "Geyser-Velocity.jar plugin exists" | /usr/bin/logger -t $MCNAME
-  else
-   touch $LPATH/plugins/Geyser-Velocity.jar
-  fi
-  diff -q Geyser-Velocity.jar $LPATH/plugins/Geyser-Velocity.jar >/dev/null 2>&1
-  if [ "$?" -eq 1 ]; then
-  cp Geyser-Velocity.jar Geyser-Velocity.jar."$(date +%Y.%m.%d.%H.%M.%S)"
-  mv Geyser-Velocity.jar $LPATH/plugins/Geyser-Velocity.jar
-  /usr/bin/find $LPATH/mcsys/geyser/* -type f -mtime +6 -delete 2>&1 | /usr/bin/logger -t $MCNAME
-   echo "Geyser for Velocity has been updated" | /usr/bin/logger -t $MCNAME
-  else
-   echo "No Geyser-Velocity.jar update neccessary" | /usr/bin/logger -t $MCNAME
-   rm Geyser-Velocity.jar
-  fi
- fi
- fi
-fi
 
 # Error for Mod Servers
 if [[ $ASOFTWARE == "FORGE" ]] || [[ $ASOFTWARE == "MOHIST" ]] || [[ $ASOFTWARE == "FABRIC" ]] || [[ $ASOFTWARE == "MINECRAFT" ]] && [[ $BESUPPORT == "TRUE" ]]; then
