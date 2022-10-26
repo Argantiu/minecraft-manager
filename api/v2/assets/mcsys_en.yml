@@ -4,49 +4,43 @@
 # Use STRG + k + x to save this settings (with joe's editor)
 # Use STRG + c to close it without saveing (you can edit the config with ./manage.tool command)
 
-# Define your Minecraft version. For exaple 1.18.2, 1.18.1, 1.18, ...
-# Some software types don't need the Minecraft version e. g. velocity or bungeecord.
-# But it's better when you set here a version.
+# Define your Minecraft version. For exaple 1.19.2, 1.19, 1.18.2, ...
 version: 1.19.2
 
+# Select your Software. 
 # You can use: paper, purpur, spigot, bukkit, mohist, bungeecord, velocity, waterfall
-software: paper
+software: paperspigot
 
-# Do you have a Subfolder for your server(s)? We recommend to set and use one.
-# E.g. home/server/(serverbase) or opt/(serverbase)
+# In wich directorys is your server located?
+# e.g. home/server/MyCoolServer or opt/MyServer
 server.directory: opt/Myserver
 
-# Set your server folder, where your server shall run (serverbase).
-
-
 # Wich system-name should have the console and main.jar?
-# Don't use something like "system" or "main" for example, 
-# because the system sometimes already use this names.
+# Don't use something like "system" or "main" for example, because the system sometimes already use this names.
 systemname: mcpaper
 # Save is, to put "mc" before that name.
 
 # Should your server have a stop counter? (This will not work on a Proxy server type)
 dynamic.counter: true
 
-# Amount of ram that your Mincecraft server should use e.g.: ram: 2024MB or ram: 10GB
+# Amount of ram that your Mincecraft server should use e.g.: 2024MB or 10GB
 ram: 4GB
 
 # Name of your java executable.
-# (Default java) that you can view with "java --version" is mostly something like this: java: /usr/bin/java
+# You can  view the Default java with "java --version".
+# The most used location is: java: /usr/bin/java
 java: /usr/bin/java
 
 # --- Backups ---
 # Do you need backups?
-# Then you have to set it to TRUE
-BACKUP=FALSE
+# Then you have to set it to "true".
+backups: false
 
-## (Cloud / faster save feature may comming in v4.7.0.0)
-
+# (Recommended) Do you want better backups? (It reduce the data in the tar.gz file and only keep the needed things in them)
+# For this, you also have to set the beckups: to true.
+primebackups: false
 
 # --- Bedrock Edition (MCPE) ---
-# Get Floodgate updater? Otherwise nobody can join without Java Edition account from Bedrock.
-BESUPPORT=TRUE
-# Geyser too? Because you didn't need it, if this server is connected with a proxy.
-GBESUPPORT=TRUE
-
+# Do you want, that Bedrock players also being able to play on this server?
+bedrock: false
 # End of config. Youre done with configuring ;)
