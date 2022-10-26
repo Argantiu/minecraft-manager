@@ -66,13 +66,13 @@ BEUPDATE=$(cat < mcsys.yml | grep "bedrock:" | cut -d ':' -f2)
 
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
-
+PLACEAT=sed s:%server_name%:$MCNAME:m | sed s:%prefix%:$MPREFIX:m
 #manage.tool
-MANAGET1=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " |)
-MANAGET2=
-MANAGET3=
-MANAGET4=
-MANAGET5=
+MANAGET1=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
+MANAGET2=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
+MANAGET3=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
+MANAGET4=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
+MANAGET5=$(cat < $MLANG | grep x | cut -d ':' -d '"' -f2 | tr -d " " | $PLACEAT)
 #start.sh
 MSTART1=
 MSTART2=
