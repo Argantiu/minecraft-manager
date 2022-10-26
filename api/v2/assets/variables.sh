@@ -30,6 +30,9 @@ fi
 MTPATH=$(cat < mcsys.yml | grep "server.directory:" | cut -d ':' -f2 | tr -d " ")
 SERVERBASE=$(cat < mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
 OPTBASE=$(cat < mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
+# Prefix
+COLOR=\033[0;
+MPREFIX=$(cat < mcsys.yml | grep sys.prefix: | cut -d ':' -f2 | sed s:§0:\033[0;30m:m | )
 # Version
 MAINVERSION=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
 # Systemname
@@ -52,8 +55,3 @@ BEUPDATE=$(cat < mcsys.yml | grep bedrock: | cut -d ':' -f2)
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
 TR1=$(cat < $MLANG | grep startsh.already.online: | cut -d ':' -d ' ' -f2)
-
-sys.prefix: §8[§aArgantiu§8]
-
-# manage.tool
-SERVERNAME=$(cat < mcsys.yml | grep systemname: | cut -d ':' -f2)
