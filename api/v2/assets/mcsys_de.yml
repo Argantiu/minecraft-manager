@@ -8,8 +8,8 @@
 version: 1.19.2
 
 # Was für eine Software willst du eigentlich verwenden?
-# Du kannst hier < PAPER | PURPUR | MOHIST | VELOCITY | BUNGEECORD | SPIGOT | BUKKIT > hinschreiben.
-software: PAPER
+# Du kannst hier paper, purpur, spigot, bukkit, mohist, bungeecord, velocity, waterfall hinschreiben.
+software: purpur
 
 # In welchem ordner(n) befindet sich dann der Server?
 # z.B. home/server/MeinCoolerServer oder opt/MeinGeilomatikoServer
