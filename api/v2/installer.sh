@@ -65,7 +65,7 @@ if [[ $LANG == "2" ]]; then
  echo -e "$PREFIX Fertig mit dem Aufsetzten!"
  echo -e "$PREFIX Hier kommt die Konfiguration..."
 fi
-if ! command -v joe &> /dev/null
+ if ! command -v joe &> /dev/null
   then
      apt-get install joe -y &> /dev/null
  fi
