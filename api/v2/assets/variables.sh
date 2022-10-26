@@ -5,23 +5,23 @@
 
 # Software
 VARSOFT=$(cat < mcsys.yml | grep software: | cut -d ':' -d ' ' -f2)
-if [[ $ASOFTWARE == "PURPUR" ]] || [[ $ASOFTWARE == "purpur" ]] || [[ $ASOFTWARE == "purpurmc" ]]; then ASOFTWARE=PURPUR
+if [[ $VARSOFT == "PURPUR" ]] || [[ $VARSOFT == "purpur" ]] || [[ $VARSOFT == "purpurmc" ]]; then ASOFTWARE=PURPUR
 fi
 if [[ $VARSOFT == "PAPER" ]] || [[ $VARSOFT == "papermc" ]] || [[ $VARSOFT == "paper" ]] || [[ $VARSOFT == "paperspigot" ]]; then ASOFTWARE=PAPER
 fi
 if [[ $VARSOFT == "SPIGOT" ]] || [[ $VARSOFT == "spigot" ]] || [[ $VARSOFT == "spogotmc" ]]; then ASOFTWARE=SPIGOT
 fi
-if [[ $ASOFTWARE == "BUKKIT" ]] || [[ $ASOFTWARE == "bukkit" ]] || [[ $ASOFTWARE == "bukkitmc" ]]; then ASOFTWARE=BUKKIT
+if [[ $VARSOFT == "BUKKIT" ]] || [[ $VARSOFT == "bukkit" ]] || [[ $VARSOFT == "bukkitmc" ]]; then ASOFTWARE=BUKKIT
 fi
 # Modded
-if [[ $ASOFTWARE == "MOHIST" ]] || [[ $ASOFTWARE == "mohist" ]] || [[ $ASOFTWARE == "mohistmc" ]]; then ASOFTWARE=MOHIST
+if [[ $VARSOFT == "MOHIST" ]] || [[ $VARSOFT == "mohist" ]] || [[ $VARSOFT == "mohistmc" ]]; then ASOFTWARE=MOHIST
 fi
 # Proxy
-if [[ $ASOFTWARE == "VELOCITY" ]] || [[ $ASOFTWARE == "velo" ]] || [[ $ASOFTWARE == "velocity" ]]; then ASOFTWARE=VELOCITY
+if [[ $VARSOFT == "VELOCITY" ]] || [[ $VARSOFT == "velo" ]] || [[ $VARSOFT == "velocity" ]]; then ASOFTWARE=VELOCITY
 fi
-if [[ $ASOFTWARE == "BUNGEECORD" ]] || [[ $ASOFTWARE == "bungeecord" ]] || [[ $ASOFTWARE == "bungee" ]]; then ASOFTWARE=BUNGEECORD
+if [[ $VARSOFT == "BUNGEECORD" ]] || [[ $VARSOFT == "bungeecord" ]] || [[ $VARSOFT == "bungee" ]]; then ASOFTWARE=BUNGEECORD
 fi
-if [[ $ASOFTWARE == "WATERFALL" ]] || [[ $ASOFTWARE == "waterfall" ]] || [[ $ASOFTWARE == "waterfallmc" ]]; then ASOFTWARE=WATERFALL
+if [[ $VARSOFT == "WATERFALL" ]] || [[ $VARSOFT == "waterfall" ]] || [[ $VARSOFT == "waterfallmc" ]]; then ASOFTWARE=WATERFALL
 fi
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
