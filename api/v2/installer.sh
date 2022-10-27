@@ -57,7 +57,7 @@ wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2
 wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/start.sh
 wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/stop.sh
 chmod +x ./*.sh
-cd $DICTY || exit 1
+cd "$DICTY" || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/assets/manage.tool
 chmod +x manage.tool
 if [[ $LANG == "1" ]]; then
