@@ -11,7 +11,7 @@ if [ ! $ASOFTWARE = "proxy/velocity.sh" ]; then
  fi
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/bungee/target/floodgate-bungee.jar -O floodgate-bungee.jar
  unzip -qq -t floodgate-bungee.jar
- if [ "$?" -ne 0 ]; then
+ if ! unzip -qq -t floodgate-bungee.jar; then #if [ "$?" -ne 0 ]; then
   echo "Downloaded floodgate for Bungeecord and Waterfall is corrupt. No update." | /usr/bin/logger -t $MCNAME
  else
   diff -q floodgate-bungee.jar $MTPATH/plugins/floodgate-bungee.jar >/dev/null 2>&1
@@ -32,7 +32,7 @@ if [[ $ASOFTWARE == "proxy/velocity.sh" ]]; then
  fi
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/velocity/target/floodgate-velocity.jar -O floodgate-velocity.jar
  unzip -qq -t floodgate-velocity.jar
- if [ "$?" -ne 0 ]; then
+ if ! unzip -qq -t floodgate-velocity.jar; then #if [ "$?" -ne 0 ]; then
   echo "Downloaded floodgate for velocity is corrupt. No update." | /usr/bin/logger -t $MCNAME
  else
   diff -q floodgate-velocity.jar $MTPATH/plugins/floodgate-velocity.jar >/dev/null 2>&1
@@ -56,7 +56,7 @@ if [ ! $ASOFTWARE = "proxy/velocity.sh" ]; then
  fi
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/bungeecord/target/Geyser-BungeeCord.jar -O Geyser-BungeeCord.jar
  unzip -qq -t Geyser-BungeeCord.jar
- if [ "$?" -ne 0 ]; then
+ if ! unzip -qq -t Geyser-BungeeCord.jar; then #if [ "$?" -ne 0 ]; then
   echo "Downloaded Geyser Bungeecord and Waterfall is corrupt. No update." | /usr/bin/logger -t $MCNAME
  else
   diff -q Geyser-BungeeCord.jar $MTPATH/plugins/Geyser-BungeeCord.jar >/dev/null 2>&1
@@ -77,7 +77,7 @@ if [[ $ASOFTWARE == "proxy/velocity.sh" ]]; then
  fi
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/velocity/target/Geyser-Velocity.jar -O Geyser-Velocity.jar
  unzip -qq -t Geyser-Velocity.jar
- if [ "$?" -ne 0 ]; then
+ if ! unzip -qq -t Geyser-Velocity.jar; then #if [ "$?" -ne 0 ]; then
   echo "Downloaded Geyser-Velocity is corrupt. No update." | /usr/bin/logger -t $MCNAME
  else
   diff -q Geyser-Velocity.jar $MTPATH/plugins/Geyser-Velocity.jar >/dev/null 2>&1
