@@ -32,7 +32,7 @@ case $VERSION in
 			echo "Java $VERSION is unavailable on Adoptopenjdk for your system."
 			echo "The following versions are available for your system ($(lsb_release -sc))"
 			echo "--------------------------------"
-			echo $(apt-cache search adoptopenjdk | sed 's/^adoptopenjdk-//g' | sed 's/-.*//g' | uniq) | sed 's/ / \/ /g'
+			#echo $(apt-cache search adoptopenjdk | sed 's/^adoptopenjdk-//g' | sed 's/-.*//g' | uniq) | sed 's/ / \/ /g'
 			echo "--------------------------------"
 			echo "Please restart the script and use one of the listed versions."
 			exit 1
