@@ -2,6 +2,8 @@
 # Updater for the manage system.
 # Version: 3.0.0.0
 
+apt-get upgrade
+apt-get update
 if ! command -v joe &> /dev/null
   then
      apt-get install joe -y
@@ -42,3 +44,4 @@ if ! command -v joe &> /dev/null
      apt-get install rpl -y
      echo "rpl installed"
  fi
+
