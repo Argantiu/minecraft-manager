@@ -9,7 +9,8 @@ Still not finished!
 
 ```bash
 wget -q https://t1p.de/minecraft-manager -O agon && chmod +x agon && ./agon
-```
+```  
+  
 <!--
 <p align="center">
     <img src="https://www.azul.com/wp-content/themes/azul/dist/img/logo.svg" width="150">
