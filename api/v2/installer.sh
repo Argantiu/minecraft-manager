@@ -31,10 +31,10 @@ fi
  echo -n -e " "
  read -r DCI;
  }
- DICTY=$(echo $DCI | sed 's/\/$//')
- mkdir -p $DICTY/mcsys/configs
- mkdir -p $DICTY/unused
- cd $DICTY/mcsys/configs || exit 1
+ DICTY=$(echo "$DCI" | sed 's/\/$//')
+ mkdir -p "$DICTY"/mcsys/configs
+ mkdir -p "$DICTY"/unused
+ cd "$DICTY"/mcsys/configs || exit 1
  if ! command -v wget &> /dev/null
  then
      apt-get install wget -y >/dev/null 2>&1
@@ -96,5 +96,5 @@ fi
  then
      apt-get install rpl -y &> /dev/null
 fi
-joe $DICTY/mcsys/configs/mcsys.yml 
+joe "$DICTY"/mcsys/configs/mcsys.yml 
 rm -- "$0" # Delete this file
