@@ -31,7 +31,7 @@ fi
  echo -n -e " "
  read -r DCI;
  }
- DICTY=$(grep $DCI | rev | cut -b "/" | rev)
+ DICTY=$(echo $DCI | sed 's/\/$//')
  mkdir -p $DICTY/mcsys/configs
  mkdir -p $DICTY/unused
  cd $DICTY/mcsys/configs || exit 1
