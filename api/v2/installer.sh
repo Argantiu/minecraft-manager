@@ -52,7 +52,7 @@ wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/me
 fi
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
 chmod +x variables.sh
-cd $DICTY/mcsys || exit 1
+cd "$DICTY"/mcsys || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/restart.sh
 wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/start.sh
 wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/stop.sh
