@@ -8,7 +8,7 @@ if [ ! -f $MTPATH/mcsys/saves/jar/BuildTools.jar ]; then touch $MTPATH/mcsys/sav
 fi
 wget -q https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -O BuildTools-1.jar
 unzip -qq -t BuildTools-1.jar
-if [ "$?" -ne 0 ]; then
+if ! unzip -qq -t BuildTools-1.jar; then #if [ "$?" -ne 0 ]; then
  echo "Downloaded BuildTools.jar is corrupt. No update." | /usr/bin/logger -t $MCNAME
 else
  diff -q BuildTools-1.jar BuildTools.jar >/dev/null 2>&1
