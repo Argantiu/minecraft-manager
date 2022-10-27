@@ -6,7 +6,7 @@ mv manage.tool manage.tool.$MCNAME && sed -i '0,/%server_name%/s//$MCNAME/' ./ma
 # Selector to have a nice overview about the commands.
 echo -e "$MANAGET1"
 {
-echo -n "";
+echo -n " ";
 read MUPSTAT;
 }
 if
