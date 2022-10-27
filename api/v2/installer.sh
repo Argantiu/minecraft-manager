@@ -16,6 +16,7 @@ echo -e "$PREFIX 2 = Deutsch (German)"
 echo -n -e "$PREFIX Please type a number and hit enter:";
 echo -n -e " "
 read LANG;
+}
 if [[ $LANG == "1" ]]; then
  echo -e "$PREFIX Were should be or is your server dictionary?"
  echo -e "$PREFIX e.g. /opt/Paper or /home/myserver/server"
