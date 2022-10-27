@@ -19,7 +19,7 @@ mkdir -p $MTPATH/mcsys/update
 cd $MTPATH/mcsys/update || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh
 diff -q updater-new.sh updater.sh >/dev/null 2>&1
-if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && /bin/bash $MTPATH/mcsys/update/updater.sh
+if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && chmod +x updater.sh && /bin/bash $MTPATH/mcsys/update/updater.sh
 fi
 # Create backup for your server
 if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
@@ -70,4 +70,4 @@ fi
 mkdir -p $MTPATH/mcsys/saves/jar
 cd $MTPATH/mcsys/software || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/$ASOFTWARE -O $MCNAME.sh
-/bin/bash $MTPATH/mcsys/software/$MCNAME.sh && exit 0
+chmod +x $MCNAME.sh && /bin/bash $MTPATH/mcsys/software/$MCNAME.sh && exit 0
