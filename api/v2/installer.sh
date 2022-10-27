@@ -95,6 +95,6 @@ fi
  if ! command -v rpl &> /dev/null
  then
      apt-get install rpl -y &> /dev/null
- fi
+fi
 joe $DICTY/mcsys/configs/mcsys.yml 
 rm -- "$0" # Delete this file
