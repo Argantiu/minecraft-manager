@@ -16,7 +16,7 @@ if
  fi
  if [[ $MUPSTAT == "3" ]]; then /bin/bash $MTPATH/mcsys/restart.sh && exit 0
  fi
- if [[ $MUPSTAT == "4" ]]; then joe $MTPATH/mcsys/configs/mcsys.config && exit 0
+ if [[ $MUPSTAT == "4" ]]; then joe $MTPATH/mcsys/configs/mcsys.yml && exit 0
  fi
  if [[ $MUPSTAT == "5" ]]; then
   echo -e "$MANAGET2"
