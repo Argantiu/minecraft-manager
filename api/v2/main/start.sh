@@ -10,6 +10,8 @@ fi
 # Bugg Patcher
 if [ ! -f $MTPATH/$MCNAME.jar ]; then touch $MTPATH/$MCNAME.jar
 fi
+if [ ! -f $MTPATH/mcsys/update/updater.sh ]; then touch $MTPATH/mcsys/update/updater.sh
+fi
 sed -i 's/false/true/g' $MTPATH/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./mcsys/restart.sh;g' $MTPATH/spigot.yml >/dev/null 2>&1
 # Auto updater -----
