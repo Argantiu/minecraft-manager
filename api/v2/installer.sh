@@ -2,7 +2,6 @@
 # Minecraft Server installer for an Easy Setup
 # Made By CrazyCloudCraft
 IFCREATEDFORK=Argantiu/minecraft-manager
-RPREFIX="\033[1;30m[\033[0;31mArgatiu\033[1;30m]\033[0;37m"
 PREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 # Which language do you speak. 1 English . 2 German 3 French ...
 echo -e "\033[1;32m_______"
@@ -15,7 +14,7 @@ echo -e "$PREFIX 2 = Deutsch (German)"
 {
 echo -n -e "$PREFIX Please type a number and hit enter:";
 echo -n -e " "
-read LANG;
+read -r LANG;
 }
 if [[ $LANG == "1" ]]; then
  echo -e "$PREFIX Were should be or is your server dictionary?"
@@ -30,7 +29,7 @@ else "Please select a language" && exit 1
 fi
  {
  echo -n -e " "
- read DCI;
+ read -r DCI;
  }
  DICTY=$(grep $DCI | rev | cut -b "/" | rev)
  mkdir -p $DICTY/mcsys/configs
