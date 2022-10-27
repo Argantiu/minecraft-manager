@@ -10,16 +10,16 @@ fi
 # Bugg Patcher
 if [ ! -f $MTPATH/$MCNAME.jar ]; then touch $MTPATH/$MCNAME.jar
 fi
-if [ ! -f $MTPATH/mcsys/update/updater.sh ]; then touch $MTPATH/mcsys/update/updater.sh
+if [ ! -f $MTPATH/mcsys/update/updater.sh ]; then touch "$MTPATH"/mcsys/update/updater.sh
 fi
 sed -i 's/false/true/g' $MTPATH/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./mcsys/restart.sh;g' $MTPATH/spigot.yml >/dev/null 2>&1
 # Auto updater -----
 mkdir -p $MTPATH/mcsys/update
-cd $MTPATH/mcsys/update || exit 1
+cd "$MTPATH"/mcsys/update || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/update/updater.sh -O updater-new.sh
 diff -q updater-new.sh updater.sh >/dev/null 2>&1
-if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && chmod +x updater.sh && /bin/bash $MTPATH/mcsys/update/updater.sh
+if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && chmod +x updater.sh && /bin/bash "$MTPATH"/mcsys/update/updater.sh
 fi
 # Create backup for your server
 if [[ $BACKUP == "TRUE" ]] || [[ $BACKUP == "true" ]]; then
