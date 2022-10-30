@@ -19,7 +19,8 @@ read -r LANG;
 if [[ $LANG == "1" ]]; then
  echo -e "$PREFIX Were should be or is your server dictionary?"
  echo -e "$PREFIX e.g. /opt/Paper or /home/myserver/server"
- echo -e "$PREFIX Your server dictionary:";
+ echo -e "$PREFIX Your server dictionary:"
+else "Please select a language" && exit 1
 fi
 if [[ $LANG == "2" ]]; then
  echo -e "$PREFIX Wo ist oder soll dein Serverordner sich befinnden?"
