@@ -7,7 +7,7 @@
 if screen -list | grep -q "$MCNAME"; then echo -e "$MSTART1" && exit 1
 else echo -e "$MSTART2"
 fi
-# Bugg Patcher
+# Bug Patcher
 if [ ! -f $MTPATH/$MCNAME.jar ]; then touch $MTPATH/$MCNAME.jar
 fi
 if [ ! -f $MTPATH/mcsys/update/updater.sh ]; then touch "$MTPATH"/mcsys/update/updater.sh

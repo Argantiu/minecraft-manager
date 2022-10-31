@@ -2,36 +2,36 @@
 # Version en/us 3.0.0.0-#0 made by CrazyCloudCraft 10/29/2022 UTC/GMT +1 https://crazycloudcraft.de
 
 # Use STRG + k + x to save this settings (with joe's editor)
-# Use STRG + c to close it without saveing (you can edit the config with ./manage.tool command)
+# Use STRG + c to close it without saving (you can edit the config with ./manage.tool command)
 
-# Define your Minecraft version. For exaple 1.19.2, 1.19, 1.18.2, ...
+# Define your Minecraft version. For example 1.19.2, 1.19, 1.18.2, ...
 version: 1.19.2
 
 # Select your Software. 
 # You can use: paper, purpur, spigot, bukkit, mohist, bungeecord, velocity, waterfall
 software: paperspigot
 
-# In wich directorys is your server located?
-# e.g. home/server/MyCoolServer or opt/MyServer
-server.directory: opt/Myserver
+# In which directories is your server located?
+# e.g. home/server/mycoolserver or opt/myserver
+server.directory: opt/myserver
 
-# Wich system-name should have the console and main.jar?
+# Which system-name should have the console and main.jar?
 # Don't use something like "system" or "main" for example, because the system sometimes already use this names.
 systemname: mcpaper
-# Save is, to put "mc" before that name.
+# Best is to put mc before the actual name, as seen above.
 
 # Should your server have a stop counter? (This will not work on a Proxy server type)
 dynamic.counter: true
 
-# Is or should this server connected to a proxy?
+# Is or should this server be connected to a proxy?
 proxy.mode: false
 
 # Amount of ram that your Mincecraft server should use e.g.: 2024MB or 10GB
 ram: 4GB
 
 # Name of your java executable.
-# You can  view the Default java with "java --version".
-# The most used location is: java: /usr/bin/java
+# You can view the Default java with "java --version".
+# The most used location is: /usr/bin/java
 java: /usr/bin/java
 
 # --- Backups ---
@@ -40,10 +40,10 @@ java: /usr/bin/java
 backups: false
 
 # (Recommended) Do you want better backups? (It reduce the data in the tar.gz file and only keep the needed things in them)
-# For this, you also have to set the beckups: to true.
+# For this, you also have to set the backups to "true".
 primebackups: false
 
 # --- Bedrock Edition (MCPE) ---
 # Do you want, that Bedrock players also being able to play on this server?
 bedrock: false
-# End of config. Youre done with configuring ;)
+# End of config. You're done with configuring ;)

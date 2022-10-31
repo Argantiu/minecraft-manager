@@ -6,10 +6,10 @@
 if ! screen -list | grep -q "$MCNAME"; then echo -e "$SHSTOP1"
   exit 1
 fi
-# Stoppe den Server
+# Stop the server
 echo -e "$SHSTOP2"
 echo "$SHSTOP2" | /usr/bin/logger -t $MCNAME
-# Sieht nach, ob Spieler Online sind
+# Looks if players are online
 if [[ $ASOFTWARE == "paper.sh" ]] || [[ $ASOFTWARE == "spigot.sh" ]] || [[ $ASOFTWARE == "bukkit.sh" ]] || [[ $ASOFTWARE == "purpur.sh" ]] || [[ $ASOFTWARE == "modded/mohist.sh" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]]; then
 mkdir -p $MTPATH/mcsys/cache && cd $MTPATH/mcsys/cache || exit 1
 hostname -I > ip-info.txt
@@ -20,7 +20,7 @@ wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O online-info.txt
  else MCOTYPE=$(cat < online-info.txt | grep online | tr -d " " | cut -b 10)
  fi
 fi
-# Starte coutdown if there players online.
+# Start a countdown if there are players online.
 if ! [[ $MCOTYPE = "0" ]]; then screen -Rd $MCNAME -X stuff "say $SHSTOP4 $(printf '\r')" && sleep 6s
  screen -Rd $MCNAME -X stuff "say $SHSTOP5 $(printf '\r')" && sleep 1s
  screen -Rd $MCNAME -X stuff "say $SHSTOP6 $(printf '\r')" && sleep 1s
