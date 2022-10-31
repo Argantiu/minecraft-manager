@@ -8,7 +8,7 @@ echo -e "\033[1;32m_______"
 echo -e "$PREFIX Welcome to Argantiu's server management tool"
 echo -e "$PREFIX You can leave with STRG+C"
 echo -e "$PREFIX _______"
-echo -e "$PREFIX At first, please select your language:"
+echo -e "$PREFIX First, please select your language:"
 echo -e "$PREFIX 1 = English (English)"
 echo -e "$PREFIX 2 = Deutsch (German)"
 {
@@ -17,14 +17,14 @@ echo -n -e " "
 read -r LANG;
 }
 if [[ $LANG == "1" ]]; then
- echo -e "$PREFIX Were should be or is your server dictionary?"
- echo -e "$PREFIX e.g. /opt/Paper or /home/myserver/server"
- echo -e "$PREFIX Your server dictionary:"
+ echo -e "$PREFIX Where is your server directory located?"
+ echo -e "$PREFIX e.g. /opt/paper or /home/myserver/server"
+ echo -e "$PREFIX Your server directory:"
 else "Please select a language" && exit 1
 fi
 if [[ $LANG == "2" ]]; then
  echo -e "$PREFIX Wo ist oder soll dein Serverordner sich befinnden?"
- echo -e "$PREFIX z.b. /opt/Paper oder /home/meinserver/server"
+ echo -e "$PREFIX z.b. /opt/paper oder /home/meinserver/server"
  echo -e "$PREFIX Und wo ist oder soll der Ordner sein:"
 else "Please select a language" && exit 1
 fi
@@ -43,11 +43,11 @@ fi
  # My Download counter xD
  wget -q https://github.com/Argantiu/.github/releases/download/v3.0/mcstats.yml 
  rm mcstats.yml
-if [[ $LANG == "1" ]]; then echo -e "$PREFIX Okey, i will preparing now the configuration. Please wait..."
+if [[ $LANG == "1" ]]; then echo -e "$PREFIX Great! I will prepare the configuration now. Please wait..."
 wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_en.yml -O mcsys.yml
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 fi
-if [[ $LANG == "2" ]]; then echo -e "$PREFIX Okey, die Konfiguration wird vorbereitet. Bitte warten..."
+if [[ $LANG == "2" ]]; then echo -e "$PREFIX Okay! die Konfiguration wird vorbereitet. Bitte warten..."
 wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_de.yml -O mcsys.yml
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 fi
