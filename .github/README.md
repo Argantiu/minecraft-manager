@@ -40,10 +40,6 @@ With this scripts it's probably solved.</a>
 </p>
    
 ---
-   
-<h3 align="center">
-Supported software
-</h3>
  
 | Type | Software | What supported | Plugin API base | State |
 |:-----|:--------:|:--------------:|:---------------:|------:|
