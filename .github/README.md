@@ -1,5 +1,7 @@
+<!--
 <p align="side">
 <a href="https://github.com/Argantiu/minecraft-manager/tree/main/.github/README-de.md">Deutsch</a>
+-->
 <p align="center">
     <a href="https://crazycloudcraft.de/">
     <img src="https://crazycloudcraft.de/wp-content/uploads/2021/04/cropped-crazycloudcraft-icon-server.png" width="150"><br/>
@@ -10,14 +12,13 @@
     <a href="https://github.com/Argantiu/minecraft-manager">
     <img src="https://img.shields.io/github/downloads/Argantiu/.github/total?color=lime&label=All%20Downloads" />
 </a>
-  
+</p>
 <h3 align="center">
 Minecraft management scripts
 </h3>
 <p align="center">
     <a><b>Shell scripts to run your Mineraft server very well</b></a>
 </p>
-  
 <h3 align="center">
 What the scripts can do
 </h3>
@@ -30,7 +31,6 @@ What the scripts can do
 <a>• You can set your own ram that the minecraft server should use •</a><br/>
 <a>• Userfriendly use •</a>
 </p>
-
 <h3 align="center">
 Why you should use it
 </h3>
@@ -38,9 +38,9 @@ Why you should use it
 <a>If you run a Minecraft server, you probably get issues by manage them or by updating the software manually.</a><br/>
 <a>With these scripts it's probably solved.</a>
 </p>
-   
+  
 ---
- 
+  
 | Type | Software | What supported | Plugin API base | State |
 |:-----|:--------|:--------------|:---------------|:------|
 | Server  | [PurpurMC](https://purpurmc.org)         | Plugins        | Paper, Spigot, Bukkit | Supported
