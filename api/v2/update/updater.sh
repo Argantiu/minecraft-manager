@@ -1,8 +1,8 @@
 #!/bin/bash
 # Updater for the manage system. Created by CrazyCloudCraft.
 # Version: 3.0.0.0
-apt-get upgrade
-apt-get update
+apt-get upgrade -y &> /dev/null
+apt-get update -y &> /dev/null
 if ! command -v joe &> /dev/null; then apt-get install joe -y &> /dev/null
 fi
 if ! command -v screen &> /dev/null; then apt-get install screen -y &> /dev/null
