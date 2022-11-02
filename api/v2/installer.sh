@@ -88,7 +88,7 @@ if ! command -v diff &> /dev/null then apt-get install diffutils -y &> /dev/null
 fi
 if ! command -v rpl &> /dev/null then apt-get install rpl -y &> /dev/null
 fi
-sed -i "s:$DICTY:"
+sed -i "s:opt/.*:$DICTY:g" $DICTY/mcsys/configs/mcsys.yml >/dev/null 2>&1
 joe "$DICTY"/mcsys/configs/mcsys.yml
 # download counter
 wget -q https://github.com/Argantiu/.github/releases/download/v3.0/mcstats.yml && rm mcstats.yml
