@@ -43,8 +43,8 @@ What the scripts can do
 Why you should use it
 </h3>
 <p align="center">
-<a>If you run a Minecraft server, you probably get issues by manage them or by updating the software manually.
-With this scripts it's probably solved.</a>
+<a>If you run a Minecraft server, you probably get issues by manage them or by updating the software manually.</a><br/>
+<a>With this scripts it's probably solved.</a>
 </p>
    
 ---
