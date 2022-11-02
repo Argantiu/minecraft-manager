@@ -44,6 +44,7 @@ With this scripts it's probably solved.</a>
 <h3 align="center">
 Supported software
 </h3>
+ 
 | Type | Software | What supported | Plugin API base | State |
 |:-----|:--------:|:--------------:|:---------------:|------:|
 | Server  | [PurpurMC](https://purpurmc.org)         | Plugins        | Paper, Spigot, Bukkit | Supported
