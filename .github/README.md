@@ -21,14 +21,6 @@ Minecraft management scripts
 <h3 align="center">
 What the scripts can do
 </h3>
-<!--
-• Updates any supported software automatically<br/>
-• Can update Bedrock Edition connection plugins<br/>
-• Can create (lightwight) backups and save them with date<br/>
-• You can configure everything like you want<br/>
-• You can set your own ram that the minecraft server should use<br/>
-• Userfriendly use<br/>
--->
 <p align="center">
 <a>• Updates any supported software automatically •</a><br/>
 <a>• Can update Bedrock Edition connection plugins •</a><br/>
@@ -44,7 +36,7 @@ Why you should use it
 </h3>
 <p align="center">
 <a>If you run a Minecraft server, you probably get issues by manage them or by updating the software manually.</a><br/>
-<a>With this scripts it's probably solved.</a>
+<a>With these scripts it's probably solved.</a>
 </p>
    
 ---
