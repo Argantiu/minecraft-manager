@@ -2,7 +2,7 @@
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
 # shellcheck source=/dev/null
-. ./configs/variables.sh
+source /configs/variables.sh
 if ! screen -list | grep -q "$MCNAME"; then echo -e "$SHSTOP1"
   exit 1
 fi
