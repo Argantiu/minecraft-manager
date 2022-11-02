@@ -1,5 +1,5 @@
 #!/bin/bash
-# Minecraft Server auto stop script - Do not configure this scipt!!
+# Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
 # shellcheck source=/dev/null
 . ./../configs/variables.sh
