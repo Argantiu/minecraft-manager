@@ -20,7 +20,9 @@ Minecraft management scripts
   
 ---
    
-
+<h3 align="center">
+Supported software
+</h3>
   
 | Type | Software | What supported | Plugin API base | State |
 |:-----|:--------:|:--------------:|:---------------:|------:|
@@ -33,3 +35,24 @@ Minecraft management scripts
 | Proxy   | [Waterfall](https://papermc.io)          | Plugins        | Bungeecord | Supported
 | Modded  | [MohistMC](https://mohistmc.com)         | Plugins & Mods | Paper, Spigot, Bukkit, Forge | Supported
 
+<h3 align="center">
+Installation
+</h3>
+<p align="center">
+    <a>To use this manager you have to install Java (this will be fixed in version 3.5)</a>
+<p align="center">
+    <a href="https://www.azul.com/downloads/?package=jdk">Get a Java repository</a>
+<p align="center">
+    <a>If Java is already installed, you can paste this anywhere on your distribution:</a>
+</p>
+
+```bash
+wget -q https://t1p.de/minecraft-manager -O mcagon && chmod +x mcagon && ./mcagon
+```  
+
+<h3 align="center">
+More
+</h3>
+<p align="center">
+<a href="https://github.com/Argantiu/minecraft-manager/issues">Support</a>
+</p>
