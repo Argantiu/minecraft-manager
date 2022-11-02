@@ -39,7 +39,7 @@ DICTY=$(echo "$DCI" | sed 's/\/$//')
 mkdir -p "$DICTY"/mcsys/configs
 mkdir -p "$DICTY"/unused
 cd "$DICTY"/mcsys/configs || exit 1
-if ! command -v wget &> /dev/null then apt-get install wget -y >/dev/null 2>&1
+if ! command -v wget &> /dev/null; then apt-get install wget -y >/dev/null 2>&1
 fi
 case $LANG in
 1)
@@ -74,19 +74,19 @@ case $LANG in
 ;;
 esac
 # Install dependencys
-if ! command -v joe &> /dev/null then apt-get install joe -y &> /dev/null
+if ! command -v joe &> /dev/null; then apt-get install joe -y &> /dev/null
 fi
-if ! command -v screen &> /dev/null then apt-get install screen -y &> /dev/null
+if ! command -v screen &> /dev/null; then apt-get install screen -y &> /dev/null
 fi
-if ! command -v sudo &> /dev/null then apt-get install sudo -y &> /dev/null
+if ! command -v sudo &> /dev/null; then apt-get install sudo -y &> /dev/null
 fi
-if ! command -v zip &> /dev/null then apt-get install zip -y &> /dev/null
+if ! command -v zip &> /dev/null; then apt-get install zip -y &> /dev/null
 fi
-if ! command -v xargs &> /dev/null then apt-get install findutils -y &> /dev/null
+if ! command -v xargs &> /dev/null; then apt-get install findutils -y &> /dev/null
 fi
-if ! command -v diff &> /dev/null then apt-get install diffutils -y &> /dev/null
+if ! command -v diff &> /dev/null; then apt-get install diffutils -y &> /dev/null
 fi
-if ! command -v rpl &> /dev/null then apt-get install rpl -y &> /dev/null
+if ! command -v rpl &> /dev/null; then apt-get install rpl -y &> /dev/null
 fi
 sed -i "s:opt/.*:$DICTY:g" $DICTY/mcsys/configs/mcsys.yml >/dev/null 2>&1
 joe "$DICTY"/mcsys/configs/mcsys.yml
