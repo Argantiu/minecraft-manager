@@ -20,6 +20,20 @@ Minecraft management scripts
     <a><b>Shell scripts to run your Mineraft server very well</b></a>
 </p>
   
+<h3 align="center">
+What the scripts can do​:
+</h3>
+<p align="center">
+<a>• Updates any supported software automatically</a>
+<a>• Can update Bedrock Edition connection plugins</a>
+<a>• </a>
+<a>• </a>
+<a>• </a>
+<a>• </a>
+<a>• </a>
+</p>
+
+  
 ---
    
 <h3 align="center">
