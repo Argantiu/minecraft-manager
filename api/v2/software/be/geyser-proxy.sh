@@ -2,7 +2,7 @@
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
 # shellcheck source=/dev/null
-. ./../configs/variables.sh
+source /../configs/variables.sh
 # Floodgate
 mkdir -p $MTPATH/mcsys/saves/floodgate
 cd $MTPATH/mcsys/saves/floodgate || exit 1
