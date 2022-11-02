@@ -2,7 +2,7 @@
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
 # shellcheck source=/dev/null
-. ./../configs/variables.sh
+source /../configs/variables.sh
 cd $MTPATH/mcsys/saves/jar || exit 1
 DATE=$(date +%Y.%m.%d.%H.%M.%S)
 wget -q https://mohistmc.com/api/$MAINVERSION/latest/download -O mohist-$MAINVERSION-$DATE.jar
