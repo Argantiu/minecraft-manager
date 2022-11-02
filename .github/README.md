@@ -71,3 +71,4 @@ wget -q https://t1p.de/minecraft-manager -O mcagon && chmod +x mcagon && ./mcago
 <a href="https://github.com/Argantiu/minecraft-manager/issues">Support</a>
 <a>•</a>
 </p>
+Thanks @Faye for Tranzlate my project!
