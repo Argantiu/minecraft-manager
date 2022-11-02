@@ -10,3 +10,13 @@
     <a href="https://github.com/Argantiu/minecraft-manager">
     <img src="https://img.shields.io/github/downloads/Argantiu/.github/total?color=lime&label=All%20Downloads" />
 </a>
+  
+<h3 align="center">
+Minecraft management scripts
+</h3>
+<p align="center">
+    <a><b>Shell scripts to run your Mineraft server very well</b></a>
+</p>
+  
+---
+        
