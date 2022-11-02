@@ -25,15 +25,27 @@ What the scripts can do​:
 </h3>
 <p align="center">
 <a>• Updates any supported software automatically</a>
+<p align="center">
 <a>• Can update Bedrock Edition connection plugins</a>
-<a>• </a>
-<a>• </a>
-<a>• </a>
-<a>• </a>
-<a>• </a>
+<p align="center">
+<a>• Can create (lightwight) backups and save them with date</a>
+<p align="center">
+<a>• You can configure everything like you want</a>
+<p align="center">
+<a>• Install all needed things to work (except for Java)</a>
+<p align="center">
+<a>• You can set your own ram that the minecraft server should use</a>
+<p align="center">
+<a>• Userfriendly use</a>
 </p>
-
   
+<h3 align="center">
+Why you should use it​:
+</h3>
+<p align="center">
+<a>If you run a Minecraft server, you probably get issues by manage them or by updating the software manually.
+With this scripts it's probably solved.</a>
+</p>
 ---
    
 <h3 align="center">
