@@ -39,9 +39,7 @@ DICTY=$(echo "$DCI" | sed 's/\/$//')
 mkdir -p "$DICTY"/mcsys/configs
 mkdir -p "$DICTY"/unused
 cd "$DICTY"/mcsys/configs || exit 1
-if ! command -v wget &> /dev/null
-then
-    apt-get install wget -y >/dev/null 2>&1
+if ! command -v wget &> /dev/null then apt-get install wget -y >/dev/null 2>&1
 fi
 case $LANG in
 1)
@@ -58,51 +56,40 @@ esac
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
 chmod +x variables.sh
 cd "$DICTY"/mcsys || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/restart.sh
-wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/start.sh
-wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/main/stop.sh
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/restart.sh
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/start.sh
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/stop.sh
 chmod +x ./*.sh
 cd "$DICTY" || exit 1
-wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/main/api/v2/assets/manage.tool
+wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/manage.tool
 chmod +x manage.tool
-if [[ $LANG == "1" ]]; then
- echo -e "$PREFIX Setup finished!"
- echo -e "$PREFIX Open Configuration..."
+case $LANG in
+1)
+  echo -e "$PREFIX Setup finished!"
+  echo -e "$PREFIX Open Configuration..."
+;;
+2)
+  echo -e "$PREFIX Fertig mit dem Aufsetzten!"
+  echo -e "$PREFIX Hier kommt die Konfiguration..."
+;;
+esac
+# Install dependencys
+if ! command -v joe &> /dev/null then apt-get install joe -y &> /dev/null
 fi
-if [[ $LANG == "2" ]]; then
- echo -e "$PREFIX Fertig mit dem Aufsetzten!"
- echo -e "$PREFIX Hier kommt die Konfiguration..."
+if ! command -v screen &> /dev/null then apt-get install screen -y &> /dev/null
 fi
- if ! command -v joe &> /dev/null
-  then
-     apt-get install joe -y &> /dev/null
- fi
- if ! command -v screen &> /dev/null
- then
-     apt-get install screen -y &> /dev/null
- fi
- if ! command -v sudo &> /dev/null
- then
-     apt-get install sudo -y &> /dev/null
- fi
- if ! command -v zip &> /dev/null
- then
-     apt-get install zip -y &> /dev/null
- fi
- if ! command -v xargs &> /dev/null
- then
-     apt-get install findutils -y &> /dev/null
- fi
- if ! command -v diff &> /dev/null
- then
-     apt-get install diffutils -y &> /dev/null
- fi
- if ! command -v rpl &> /dev/null
- then
-     apt-get install rpl -y &> /dev/null
+if ! command -v sudo &> /dev/null then apt-get install sudo -y &> /dev/null
 fi
+if ! command -v zip &> /dev/null then apt-get install zip -y &> /dev/null
+fi
+if ! command -v xargs &> /dev/null then apt-get install findutils -y &> /dev/null
+fi
+if ! command -v diff &> /dev/null then apt-get install diffutils -y &> /dev/null
+fi
+if ! command -v rpl &> /dev/null then apt-get install rpl -y &> /dev/null
+fi
+sed -i "s:$DICTY:"
 joe "$DICTY"/mcsys/configs/mcsys.yml
-# My download counter xD
-wget -q https://github.com/Argantiu/.github/releases/download/v3.0/mcstats.yml 
-rm mcstats.yml
+# download counter
+wget -q https://github.com/Argantiu/.github/releases/download/v3.0/mcstats.yml && rm mcstats.yml
 rm -- "$0" # Delete this file
