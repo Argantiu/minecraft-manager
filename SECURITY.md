@@ -15,5 +15,5 @@ If we find an vulnerability or someone reported it, we will be faster as a plane
 Any Pull request will be checkt for vulnerabilitys before accepting it.
 
 If you report something unrelevant you will be blocked to send any mails to us.
-Spamm and unallowed mails will be blocked anyways.
+Spamm and unallowed mails will be blocked anyways.  
 Argantiu Security
