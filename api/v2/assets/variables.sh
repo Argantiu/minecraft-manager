@@ -67,6 +67,7 @@ BEUPDATE=$(cat < mcsys.yml | grep "bedrock:" | cut -d ':' -f2)
 
 ## Variablen möglich machen, dass man farben verwenden kann ( "§a §9" etc.) 
 MLANG=./messages.lang
+# shellcheck disable=SC2086
 #manage.tool
 MANAGET1=$(cat < $MLANG | grep "manage.tool.output:" | cut -d ':' -d '"' -f2 | sed s:%server_name%:$MCNAME:m | sed s:%prefix%:$MPREFIX:m)
 MANAGET2=$(cat < $MLANG | grep "manage.tool.remove:" | cut -d ':' -d '"' -f2 | sed s:%server_name%:$MCNAME:m | sed s:%prefix%:$MPREFIX:m)
