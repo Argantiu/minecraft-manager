@@ -1,6 +1,10 @@
 #!/bin/bash
 # Updater for the manage system. Created by CrazyCloudCraft.
-# Version: 3.0.0.0
+echo -e "Update >> 3.0.0"
+echo -e "- Fixing everything"
+echo -e "- It should run now ;)"
+echo -e "Downloading new assets."
+echo -e "Update Secured by Argantiu Germany"
 apt-get upgrade -y &> /dev/null
 apt-get update -y &> /dev/null
 if ! command -v joe &> /dev/null; then apt-get install joe -y &> /dev/null
