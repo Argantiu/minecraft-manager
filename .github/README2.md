@@ -22,6 +22,7 @@ Minecraft management scripts
    
 
 <center>
+  
 | Type | Software | What supported | Plugin API base | State |
 |-|:-:|:-:|:-:|-:|
 | Server  | [PurpurMC](https://purpurmc.org)         | Plugins        | Paper, Spigot, Bukkit | Supported
@@ -32,4 +33,5 @@ Minecraft management scripts
 | Proxy   | [Bungeecord](https://spigotmc.org)       | Plugins        | Bungeecord | Supported
 | Proxy   | [Waterfall](https://papermc.io)       | Plugins        | Bungeecord | Supported
 | Modded  | [MohistMC](https://mohistmc.com)         | Plugins & Mods | Paper, Spigot, Bukkit, Forge | Supported
+  
 </center>
