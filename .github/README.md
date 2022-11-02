@@ -1,5 +1,5 @@
 <p align="side">
-<a href="https://github.com/Argantiu/minecraft-manager/tree/main/.github/README-de.md">🇺🇲</a>
+<a href="https://github.com/Argantiu/minecraft-manager/tree/main/.github/README-de.md">Deutsch</a>
 <p align="center">
     <a href="https://crazycloudcraft.de/">
     <img src="https://crazycloudcraft.de/wp-content/uploads/2021/04/cropped-crazycloudcraft-icon-server.png" width="150"><br/>
