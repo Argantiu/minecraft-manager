@@ -92,4 +92,4 @@ sed -i "s:opt/.*:$DICTY:g" $DICTY/mcsys/configs/mcsys.yml >/dev/null 2>&1
 joe "$DICTY"/mcsys/configs/mcsys.yml
 cd "$DICTY" || exit 1
 # download counter
-wget -q https://github.com/Argantiu/.github/releases/download/v3.0/mcstats.yml && rm mcstats.yml
+wget -q https://github.com/Argantiu/.github/releases/download/v3.0.0.1/mcstats.yml && rm mcstats.yml
