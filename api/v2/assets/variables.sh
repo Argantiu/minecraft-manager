@@ -2,6 +2,7 @@
 # Here are the System variables don't edit them here. You can use the mcsys.yml ;)
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
+# shellcheck disable=SC2034
 
 # Here is a setting for developers if, they create a own fork user/repo
 IFCREATEDFORK=Argantiu/minecraft-manager
@@ -27,7 +28,6 @@ if [[ $VARSOFT == "WATERFALL" ]] || [[ $VARSOFT == "waterfall" ]] || [[ $VARSOFT
 fi
 # Server Directory
 #=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
-# shellcheck disable=SC2034
 MTPATH=$(cat < mcsys.yml | grep "server.directory:" | cut -d ':' -f2 | tr -d " ")
 SERVERBASE=$(cat < mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
 OPTBASE=$(cat < mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
