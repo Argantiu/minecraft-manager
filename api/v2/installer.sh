@@ -16,41 +16,45 @@ echo -n -e "$PREFIX Please type a number and hit enter:";
 echo -n -e " "
 read -r LANG;
 }
-if [[ $LANG == "1" ]]; then
+case $LANG in
+1)
  echo -e "$PREFIX Where is your server directory located?"
  echo -e "$PREFIX e.g. /opt/paper or /home/myserver/server"
  echo -e "$PREFIX Your server directory:"
-else "Please select a language" && exit 1
-fi
-if [[ $LANG == "2" ]]; then
+;;
+2)
  echo -e "$PREFIX Wo ist oder soll dein Serverordner sich befinnden?"
  echo -e "$PREFIX z.b. /opt/paper oder /home/meinserver/server"
  echo -e "$PREFIX Und wo ist oder soll der Ordner sein:"
-else "Please select a language" && exit 1
+;;
+*)
+ echo "Please select a language" && exit 1
+;;
+esac
+{
+echo -n -e " "
+read -r DCI;
+}
+DICTY=$(echo "$DCI" | sed 's/\/$//')
+mkdir -p "$DICTY"/mcsys/configs
+mkdir -p "$DICTY"/unused
+cd "$DICTY"/mcsys/configs || exit 1
+if ! command -v wget &> /dev/null
+then
+    apt-get install wget -y >/dev/null 2>&1
 fi
- {
- echo -n -e " "
- read -r DCI;
- }
- DICTY=$(echo "$DCI" | sed 's/\/$//')
- mkdir -p "$DICTY"/mcsys/configs
- mkdir -p "$DICTY"/unused
- cd "$DICTY"/mcsys/configs || exit 1
- if ! command -v wget &> /dev/null
- then
-     apt-get install wget -y >/dev/null 2>&1
- fi
- # My Download counter xD
- wget -q https://github.com/Argantiu/.github/releases/download/v3.0/mcstats.yml 
- rm mcstats.yml
-if [[ $LANG == "1" ]]; then echo -e "$PREFIX Great! I will prepare the configuration now. Please wait..."
-wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_en.yml -O mcsys.yml
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
-fi
-if [[ $LANG == "2" ]]; then echo -e "$PREFIX Okay! die Konfiguration wird vorbereitet. Bitte warten..."
-wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_de.yml -O mcsys.yml
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
-fi
+case $LANG in
+1)
+  echo -e "$PREFIX Great! I will prepare the configuration now. Please wait..."
+  wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_en.yml -O mcsys.yml
+  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
+;;
+2)
+  echo -e "$PREFIX Okay! die Konfiguration wird vorbereitet. Bitte warten..."
+  wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_de.yml -O mcsys.yml
+  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
+;;
+esac
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
 chmod +x variables.sh
 cd "$DICTY"/mcsys || exit 1
@@ -97,5 +101,8 @@ fi
  then
      apt-get install rpl -y &> /dev/null
 fi
-joe "$DICTY"/mcsys/configs/mcsys.yml 
+joe "$DICTY"/mcsys/configs/mcsys.yml
+# My download counter xD
+wget -q https://github.com/Argantiu/.github/releases/download/v3.0/mcstats.yml 
+rm mcstats.yml
 rm -- "$0" # Delete this file
