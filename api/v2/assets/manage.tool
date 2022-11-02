@@ -6,7 +6,7 @@ source variables.sh
 cd $MTPATH || exit 1
 # Selector to have a nice overview about the commands.
 echo -e "$MANAGET1"
-echo -n ">>";
+echo -n ">>  ";
 {
 echo -n "";
 read MUPSTAT;
@@ -30,6 +30,7 @@ case $MUPSTAT in
 ;;
 5)
   echo -e "$MANAGET2"
+  echo -n ">> ";
   {
   echo -n "";
   read MCONFIRM;
