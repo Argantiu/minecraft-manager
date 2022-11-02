@@ -19,7 +19,7 @@ Minecraft management scripts
 </p>
   
 <h3 align="center">
-What the scripts can do​:
+What the scripts can do
 </h3>
 <p align="center">
 <a>• Updates any supported software automatically</a><br/>
@@ -32,18 +32,18 @@ What the scripts can do​:
 </p>
   
 <h3 align="center">
-Why you should use it​:
+Why you should use it
 </h3>
 <p align="center">
 <a>If you run a Minecraft server, you probably get issues by manage them or by updating the software manually.
 With this scripts it's probably solved.</a>
 </p>
+   
 ---
    
 <h3 align="center">
 Supported software
 </h3>
-  
 | Type | Software | What supported | Plugin API base | State |
 |:-----|:--------:|:--------------:|:---------------:|------:|
 | Server  | [PurpurMC](https://purpurmc.org)         | Plugins        | Paper, Spigot, Bukkit | Supported
