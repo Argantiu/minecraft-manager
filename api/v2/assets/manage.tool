@@ -7,7 +7,7 @@ cd $MTPATH || exit 1
 # Selector to have a nice overview about the commands.
 echo -e "$MANAGET1"
 {
-echo -n " ";
+echo -n ">> ";
 read MUPSTAT;
 }
 if
