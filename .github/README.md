@@ -8,7 +8,7 @@
     <a href="https://github.com/Argantiu/minecraft-manager/security">
     <img src="https://github.com/Argantiu/minecraft-manager/actions/workflows/codacy.yml/badge.svg" /><br/>
     <a href="https://github.com/Argantiu/minecraft-manager">
-    <img src="https://img.shields.io/github/downloads-pre/Argantiu/.github/v3.0/total?color=lime&label=Downloads%20latest" />
+    <img src="https://img.shields.io/github/downloads-pre/Argantiu/.github/v3.0.0.1/total?color=lime&label=Downloads%20latest" />
     <a href="https://github.com/Argantiu/minecraft-manager">
     <img src="https://img.shields.io/github/downloads/Argantiu/.github/total?color=lime&label=All%20Downloads" />
 </a>
