@@ -50,9 +50,9 @@ Installation
 wget -q https://t1p.de/minecraft-manager -O mcagon && chmod +x mcagon && ./mcagon
 ```  
 
-<h3 align="center">
-More
 </h3>
 <p align="center">
+<a>•</a>
 <a href="https://github.com/Argantiu/minecraft-manager/issues">Support</a>
+<a>•</a>
 </p>
