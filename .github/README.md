@@ -10,7 +10,7 @@ Still not finished!
 Beta test of v3.0.0 (could have issues)
   
 ```bash
-wget -q https://t1p.de/minecraft-manager -O agon && chmod +x agon && ./agon
+wget -q https://t1p.de/minecraft-manager -O mcagon && chmod +x mcagon && ./mcagon
 ```  
   
 <!--
