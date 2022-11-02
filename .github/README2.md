@@ -2,11 +2,9 @@
 <a href="https://github.com/Argantiu/minecraft-manager/tree/main/.github/README-de.md">🇺🇲</a>
 <p align="center">
     <a href="https://crazycloudcraft.de/">
-    <img src="https://crazycloudcraft.de/wp-content/uploads/2021/04/cropped-crazycloudcraft-icon-server.png" width="150">
-<p align="center">
+    <img src="https://crazycloudcraft.de/wp-content/uploads/2021/04/cropped-crazycloudcraft-icon-server.png" width="150"><br/>
     <a href="https://github.com/Argantiu/minecraft-manager/security">
-    <img src="https://github.com/Argantiu/minecraft-manager/actions/workflows/codacy.yml/badge.svg" />
-<p align="center">
+    <img src="https://github.com/Argantiu/minecraft-manager/actions/workflows/codacy.yml/badge.svg" /><br/>
     <a href="https://github.com/Argantiu/minecraft-manager">
     <img src="https://img.shields.io/github/downloads-pre/Argantiu/.github/v3.0/total?color=lime&label=Downloads%20latest" />
     <a href="https://github.com/Argantiu/minecraft-manager">
@@ -24,18 +22,12 @@ Minecraft management scripts
 What the scripts can do​:
 </h3>
 <p align="center">
-<a>• Updates any supported software automatically</a>
-<p align="center">
-<a>• Can update Bedrock Edition connection plugins</a>
-<p align="center">
-<a>• Can create (lightwight) backups and save them with date</a>
-<p align="center">
-<a>• You can configure everything like you want</a>
-<p align="center">
-<a>• Install all needed things to work (except for Java)</a>
-<p align="center">
-<a>• You can set your own ram that the minecraft server should use</a>
-<p align="center">
+<a>• Updates any supported software automatically</a><br/>
+<a>• Can update Bedrock Edition connection plugins</a><br/>
+<a>• Can create (lightwight) backups and save them with date</a><br/>
+<a>• You can configure everything like you want</a><br/>
+<a>• Install all needed things to work (except for Java)</a><br/>
+<a>• You can set your own ram that the minecraft server should use</a><br/>
 <a>• Userfriendly use</a>
 </p>
   
@@ -67,10 +59,8 @@ Supported software
 Installation
 </h3>
 <p align="center">
-    <a>To use this manager you have to install Java (this will be fixed in version 3.5)</a>
-<p align="center">
-    <a href="https://www.azul.com/downloads/?package=jdk">Get a Java repository</a>
-<p align="center">
+    <a>To use this manager you have to install Java (this will be fixed in version 3.5)</a><br/>
+    <a href="https://www.azul.com/downloads/?package=jdk">Get a Java repository</a><br/>
     <a>If Java is already installed, you can paste this anywhere on your distribution:</a>
 </p>
 
