@@ -42,7 +42,7 @@ With this scripts it's probably solved.</a>
 ---
  
 | Type | Software | What supported | Plugin API base | State |
-|:-----|:--------:|:--------------:|:---------------:|------:|
+|:-----|:--------|:--------------|:---------------|:------|
 | Server  | [PurpurMC](https://purpurmc.org)         | Plugins        | Paper, Spigot, Bukkit | Supported
 | Server  | [Paper](https://papermc.io)              | Plugins        | Paper, Spigot, Bukkit | Supported
 | Server  | [Spigot](https://spigotmc.org)           | Plugins        | Spigot, Bukkit | Alpha 1.1
