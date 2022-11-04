@@ -33,4 +33,6 @@ chmod +x ./*.sh
 cd ./../../ || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/manage.tool
 chmod +x manage.tool
+sed -i "0,:./configs:s:$DICTY/mcsys/configs" $DICTY/mcsys/start.sh $DICTY/mcsys/stop.sh $DICTY/mcsys/restart.sh >/dev/null 2>&1
+sed -i "0,:./mcsys/configs:s:$DICTY/mcsys/configs" $DICTY/manage.tool >/dev/null 2>&1
 exit 0
