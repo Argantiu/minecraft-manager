@@ -1,4 +1,4 @@
-#!/bin/bash
+<#!/bin/bash
 # Minecraft Server installer for an Easy Setup
 # Made By CrazyCloudCraft
 IFCREATEDFORK=Argantiu/minecraft-manager
@@ -89,6 +89,7 @@ fi
 if ! command -v rpl &> /dev/null; then apt-get install rpl -y &> /dev/null
 fi
 sed -i "s:opt/.*:$DICTY:g" $DICTY/mcsys/configs/mcsys.yml >/dev/null 2>&1
+sed -i "0,:./configs:s:$DICTY/mcsys/configs" $DICTY/mcsys/start.sh $DICTY/mcsys/stop.sh $DICTY/mcsys/restart.sh >/dev/null 2>&1
 joe "$DICTY"/mcsys/configs/mcsys.yml
 cd "$DICTY" || exit 1
 # download counter
