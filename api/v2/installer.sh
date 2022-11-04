@@ -1,4 +1,4 @@
-<#!/bin/bash
+#!/bin/bash
 # Minecraft Server installer for an Easy Setup
 # Made By CrazyCloudCraft
 IFCREATEDFORK=Argantiu/minecraft-manager
