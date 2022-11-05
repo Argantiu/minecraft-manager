@@ -1,0 +1,2 @@
+#1 replace source mcsys to source ... intsead of cd and then source
+#2 \0 and sed dosen't work well together. %prefix%
