@@ -53,7 +53,7 @@ Why you should use it
 | Modded  | [MohistMC](https://mohistmc.com)         | Plugins & Mods | Paper, Spigot, Bukkit, Forge | Supported
 
 <h3 align="center">
-Installation
+Installation (Beta 3.0.0.0)
 </h3>
 <p align="center">
     <a>To use this manager you have to install Java (this will be fixed in version 3.5)</a><br/>
