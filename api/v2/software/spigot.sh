@@ -2,9 +2,7 @@
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
 # shellcheck source=/dev/null
-cd ./../configs || exit 1
 source variables.sh
-cd $MTPATH || exit 1
 cd $MTPATH/mcsys/saves/jar || exit 1
 if [ ! -f $MTPATH/mcsys/saves/jar/BuildTools.jar ]; then touch $MTPATH/mcsys/saves/jar/BuildTools.jar
 fi
