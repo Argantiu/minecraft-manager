@@ -2,9 +2,7 @@
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
 # shellcheck source=/dev/null
-cd ./configs || exit 1
 source variables.sh
-cd $MTPATH || exit 1
 
 find / -name "mcagon" -exec rm {} \;
 # Already Started
