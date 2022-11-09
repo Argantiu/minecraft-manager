@@ -1,9 +1,7 @@
 #!/bin/bash
 # GET THE RIGHT COMMAND: ./manage.tool
 # shellcheck source=/dev/null
-cd ./mcsys/configs || exit 1
 source variables.sh
-cd $MTPATH || exit 1
 # Selector to have a nice overview about the commands.
 echo -e "$MANAGET1"
 echo -n ">>  ";
