@@ -89,8 +89,8 @@ fi
 if ! command -v rpl &> /dev/null; then apt-get install rpl -y &> /dev/null
 fi
 sed -i "s:opt/.*:$DICTY:g" $DICTY/mcsys/configs/mcsys.yml >/dev/null 2>&1
-sed -i "0,:./configs:s:$DICTY/mcsys/configs" $DICTY/mcsys/start.sh $DICTY/mcsys/stop.sh $DICTY/mcsys/restart.sh >/dev/null 2>&1
-sed -i "0,:./mcsys/configs:s:$DICTY/mcsys/configs" $DICTY/manage.tool >/dev/null 2>&1
+sed -i "0,:source variables.sh:s:$DICTY/mcsys/configs/variables.sh" $DICTY/mcsys/start.sh $DICTY/mcsys/stop.sh $DICTY/mcsys/restart.sh >/dev/null 2>&1
+sed -i "0,:source variables.sh:s:$DICTY/mcsys/configs/variables.sh" $DICTY/manage.tool >/dev/null 2>&1
 joe "$DICTY"/mcsys/configs/mcsys.yml
 cd "$DICTY" || exit 1
 # download counter
