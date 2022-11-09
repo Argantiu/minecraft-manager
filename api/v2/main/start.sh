@@ -72,5 +72,5 @@ fi
 mkdir -p $MTPATH/mcsys/saves/jar
 cd $MTPATH/mcsys/software || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/software/$ASOFTWARE -O $MCNAME.sh
-sed -i "0,:./../configs:s:$MTPATH/mcsys/configs" $MTPATH/mcsys/$MCNAME.sh >/dev/null 2>&1
+sed -i "0,:source variables.sh:s:$MTPATH/mcsys/configs/variables.sh" $MTPATH/mcsys/$MCNAME.sh, >/dev/null 2>&1
 chmod +x $MCNAME.sh && /bin/bash $MTPATH/mcsys/software/$MCNAME.sh && exit 0
