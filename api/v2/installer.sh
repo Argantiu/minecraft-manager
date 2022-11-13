@@ -4,10 +4,10 @@
 IFCREATEDFORK=Argantiu/minecraft-manager
 PREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 # Which language do you speak. 1 English . 2 German 3 French ...
-echo -e "\033[1;32m_______"
+echo -e "\033[1;32m------------------------------------------"
 echo -e "$PREFIX Welcome to Argantiu's server management tool"
 echo -e "$PREFIX You can leave with STRG+C"
-echo -e "$PREFIX _______"
+echo -e "$PREFIX -----------------------------------"
 echo -e "$PREFIX First, please select your language:"
 echo -e "$PREFIX 1 = English (English)"
 echo -e "$PREFIX 2 = Deutsch (German)"
