@@ -30,10 +30,10 @@ fi
 #=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
 MTPATH=$(cat < mcsys.yml | grep "server.directory:" | cut -d ':' -f2 | tr -d " ")
 SERVERBASE=$(cat < mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
-OPTBASE=$(cat < mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//m)
+OPTBASE=$(cat < mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//g)
 # Prefix
 #COLOR=\033[0;
-#MPREFIX=$(cat < mcsys.yml | grep "sys.prefix:" | cut -d ':' -f2 | sed s:§0:\033[0;30m:m | )
+#MPREFIX=$(cat < mcsys.yml | grep "sys.prefix:" | cut -d ':' -f2 | sed s:§0:\033[0;30m:g | )
 # Farbliste:
 
 # Black:        \033[0;30m'     Dark Gray:     \033[1;30m'
@@ -69,30 +69,30 @@ BEUPDATE=$(cat < mcsys.yml | grep "bedrock:" | cut -d ':' -f2)
 MLANG=messages.lang
 # shellcheck disable=SC2086
 #manage.tool
-MANAGET1=$(cat < $MLANG | grep "manage.tool.output:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-MANAGET2=$(cat < $MLANG | grep "manage.tool.remove:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-MANAGET3=$(cat < $MLANG | grep "manage.tool.remove.ok:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-MANAGET4=$(cat < $MLANG | grep "manage.tool.remove.no:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-MANAGET5=$(cat < $MLANG | grep "manage.tool.no.input:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
+MANAGET1=$(cat < $MLANG | grep "manage.tool.output:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+MANAGET2=$(cat < $MLANG | grep "manage.tool.remove:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+MANAGET3=$(cat < $MLANG | grep "manage.tool.remove.ok:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+MANAGET4=$(cat < $MLANG | grep "manage.tool.remove.no:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+MANAGET5=$(cat < $MLANG | grep "manage.tool.no.input:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
 #start.sh
-MSTART1=$(cat < $MLANG | grep "startsh.server.online:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-MSTART2=$(cat < $MLANG | grep "startsh.server.start:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-MSTART3=$(cat < $MLANG | grep "startsh.backup.create:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-MSTART4=$(cat < $MLANG | grep "startsh.backup.folder:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-MSTART5=$(cat < $MLANG | grep "startsh.bedrock.update:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
+MSTART1=$(cat < $MLANG | grep "startsh.server.online:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+MSTART2=$(cat < $MLANG | grep "startsh.server.start:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+MSTART3=$(cat < $MLANG | grep "startsh.backup.create:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+MSTART4=$(cat < $MLANG | grep "startsh.backup.folder:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+MSTART5=$(cat < $MLANG | grep "startsh.bedrock.update:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
 #stop.sh
-SHSTOP1=$(cat < $MLANG | grep "stopsh.server.offline:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP2=$(cat < $MLANG | grep "stopsh.server.stop.info:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP3=$(cat < $MLANG | grep "stopsh.counter.invalid:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP4=$(cat < $MLANG | grep "stopsh.counter.stop.10:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP5=$(cat < $MLANG | grep "stopsh.counter.stop.4:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP6=$(cat < $MLANG | grep "stopsh.counter.stop.3:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP7=$(cat < $MLANG | grep "stopsh.counter.stop.2:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP8=$(cat < $MLANG | grep "stopsh.counter.stop.1:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP9=$(cat < $MLANG | grep "stopsh.counter.stop:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP10=$(cat < $MLANG | grep "stopsh.server.stopping:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP11=$(cat < $MLANG | grep "stopsh.server.killing:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
-SHSTOP12=$(cat < $MLANG | grep "stopsh.server.stopped:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
+SHSTOP1=$(cat < $MLANG | grep "stopsh.server.offline:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP2=$(cat < $MLANG | grep "stopsh.server.stop.info:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP3=$(cat < $MLANG | grep "stopsh.counter.invalid:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP4=$(cat < $MLANG | grep "stopsh.counter.stop.10:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP5=$(cat < $MLANG | grep "stopsh.counter.stop.4:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP6=$(cat < $MLANG | grep "stopsh.counter.stop.3:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP7=$(cat < $MLANG | grep "stopsh.counter.stop.2:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP8=$(cat < $MLANG | grep "stopsh.counter.stop.1:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP9=$(cat < $MLANG | grep "stopsh.counter.stop:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP10=$(cat < $MLANG | grep "stopsh.server.stopping:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP11=$(cat < $MLANG | grep "stopsh.server.killing:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
+SHSTOP12=$(cat < $MLANG | grep "stopsh.server.stopped:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
 #restart.sh
-SHRESTART=$(cat < $MLANG | grep "restartsh.server.offline:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:m" | sed "s:%prefix%:$MPREFIX:m")
+SHRESTART=$(cat < $MLANG | grep "restartsh.server.offline:" | cut -d ':' -d '"' -f2 | sed "s:%server_name%:$MCNAME:g" | sed "s:%prefix%:$MPREFIX:g")
 # END-
