@@ -13,7 +13,7 @@ software: purpur
 
 # In welchem ordner(n) befindet sich dann der Server?
 # z.B. home/server/MeinCoolerServer oder opt/MeinGeilomatikoServer
-server.directory: opt/MeinServer
+server-directory: opt/MeinServer
 
 # Welchen System-Namen soll die Konsole und die main.jar haben?
 # Nutze keine Namen wie zum Beispiel "system" oder "main", 
@@ -31,10 +31,10 @@ java: /usr/bin/java
 # Dieses feature wird bald durch ein automatisches system ersetzt! (version 3.5.0.0)
 
 # Soll oder ist dieser Server mit einem Proxy (Bungeecord/Waterfall etc.) verbunden? 
-proxy.mode: false
+proxy-mode: false
 
 # Fügt einen coutdown beim stoppen hinzu, wenn noch spieler online sind (bei einem Proxy hat das hier keine wirkung)
-dynamic.counter: true
+dynamic-counter: true
 
 # --- Backups ---
 # Brauchst du Backups? 
