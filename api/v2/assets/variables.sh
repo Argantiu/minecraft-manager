@@ -28,9 +28,9 @@ if [[ $VARSOFT == "WATERFALL" ]] || [[ $VARSOFT == "waterfall" ]] || [[ $VARSOFT
 fi
 # Server Directory
 #=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
-MTPATH=$(cat < mcsys.yml | grep "server.directory:" | cut -d ':' -f2 | tr -d " ")
-SERVERBASE=$(cat < mcsys.yml | grep "server.directory:" | rev | cut -d '/' -f1 | rev )
-OPTBASE=$(cat < mcsys.yml | grep "server.directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//g)
+MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
+SERVERBASE=$(cat < mcsys.yml | grep "server-directory:" | rev | cut -d '/' -f1 | rev )
+OPTBASE=$(cat < mcsys.yml | grep "server-directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//g)
 # Prefix
 #COLOR=\033[0;
 #MPREFIX=$(cat < mcsys.yml | grep "sys.prefix:" | cut -d ':' -f2 | sed s:§0:\033[0;30m:g | )
@@ -55,9 +55,9 @@ RAM=$(cat < mcsys.yml | grep "ram:" | cut -d ':' -d 'B' -f2)
 # Java
 JAVABIN=$(cat < mcsys.yml | grep "java:" | cut -d ':' -f2)
 # Proxy Mode
-PROXYMO=$(cat < mcsys.yml | grep "proxy.mode:" | cut -d ':' -f2)
+PROXYMO=$(cat < mcsys.yml | grep "proxy-mode:" | cut -d ':' -f2)
 # Couter
-MCOUNT=$(cat < mcsys.yml | grep "dynamic.counter:" | cut -d ':' -f2)
+MCOUNT=$(cat < mcsys.yml | grep "dynamic-counter:" | cut -d ':' -f2)
 # Backups
 BACKUP=$(cat < mcsys.yml | grep "backups:" | cut -d ':' -f2)
 # Prime Backups
