@@ -13,7 +13,7 @@ software: paperspigot
 
 # In which directories is your server located?
 # e.g. home/server/mycoolserver or opt/myserver
-server.directory: opt/myserver
+server-directory: opt/myserver
 
 # Which system-name should have the console and main.jar?
 # Don't use something like "system" or "main" for example, because the system sometimes already use this names.
@@ -21,10 +21,10 @@ systemname: mcpaper
 # Best is to put mc before the actual name, as seen above.
 
 # Should your server have a stop counter? (This will not work on a Proxy server type)
-dynamic.counter: true
+dynamic-counter: true
 
 # Is or should this server be connected to a proxy?
-proxy.mode: false
+proxy-mode: false
 
 # Amount of ram that your Mincecraft server should use e.g.: 2024MB or 10GB
 ram: 4GB
