@@ -18,7 +18,7 @@ server-directory: opt/MeinServer
 # Welchen System-Namen soll die Konsole und die main.jar haben?
 # Nutze keine Namen wie zum Beispiel "system" oder "main", 
 # weil diese eventuell schon vom System belegt sind.
-systemname: mcpaper
+systemname: mcpurpur
 # Sicherer ist, wenn du "mc" vor dem Namen schreibst ;)
 
 # Wie viel Ram soll dein Server bekommen? 
