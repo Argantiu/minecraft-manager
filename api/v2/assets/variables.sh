@@ -7,9 +7,9 @@
 # Here is a setting for developers if, they create a own fork user/repo
 IFCREATEDFORK=Argantiu/minecraft-manager
 
-while read -r key val; do
-    printf -v "$key" "$val"
-done < <(yq ".variables[] | key + ' ' + ." data.yml)
+#while read -r key val; do
+#    printf -v "$key" "$val"
+#done < <(yq ".variables[] | key + ' ' + ." data.yml)
 
 # Software
 VARSOFT=$(cat < mcsys.yml | grep "software:" | cut -d ':' -f2 | tr -d " ")
