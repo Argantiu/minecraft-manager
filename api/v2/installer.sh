@@ -28,7 +28,7 @@ case $LANG in
  echo -e "$PREFIX Und wo ist oder soll der Ordner sein:"
 ;;
 *)
- echo "Please select a language" && exit 1
+ echo "Please select a language! " && exit 1
 ;;
 esac
 {
@@ -43,12 +43,12 @@ if ! command -v wget &> /dev/null; then apt-get install wget -y >/dev/null 2>&1
 fi
 case $LANG in
 1)
-  echo -e "$PREFIX Great! I will prepare the configuration now. Please wait..."
+  echo -e "$PREFIX Great! System is generating the configuration now. Please wait..."
   wget -q https://github.com/$IFFORK/raw/main/api/v2/assets/mcsys_en.yml -O mcsys.yml
   wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 ;;
 2)
-  echo -e "$PREFIX Okay! die Konfiguration wird vorbereitet. Bitte warten..."
+  echo -e "$PREFIX Okay! Die Konfiguration wird vorbereitet. Bitte warten..."
   wget -q https://github.com/$IFFORK/raw/main/api/v2/assets/mcsys_de.yml -O mcsys.yml
   wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/messages/messages_de.lang -O messages.lang
 ;;
@@ -64,14 +64,8 @@ cd "$DICTY" || exit 1
 wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/assets/manage.tool
 chmod +x manage.tool
 case $LANG in
-1)
-  echo -e "$PREFIX Setup finished!"
-  echo -e "$PREFIX Open Configuration..."
-;;
-2)
-  echo -e "$PREFIX Fertig mit dem Aufsetzten!"
-  echo -e "$PREFIX Hier kommt die Konfiguration..."
-;;
+1) echo -e "$PREFIX Setup finished! \nOpen configuration..." ;;
+2) echo -e "$PREFIX Fertig mit dem Aufsetzten! \nHier kommt die Konfiguration..." ;;
 esac
 # Install dependencys
 if ! command -v joe &> /dev/null; then apt-get install joe -y &> /dev/null
