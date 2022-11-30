@@ -1,7 +1,7 @@
 #!/bin/bash
 # Minecraft Server installer for an Easy Setup
 # Made By CrazyCloudCraft
-IFCREATEDFORK=Argantiu/minecraft-manager
+IFFORK=Argantiu/minecraft-manager
 PREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 # Which language do you speak. 1 English . 2 German 3 French ...
 echo -e "\033[1;32m------------------------------------------"
@@ -44,24 +44,24 @@ fi
 case $LANG in
 1)
   echo -e "$PREFIX Great! I will prepare the configuration now. Please wait..."
-  wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_en.yml -O mcsys.yml
-  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
+  wget -q https://github.com/$IFFORK/raw/main/api/v2/assets/mcsys_en.yml -O mcsys.yml
+  wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 ;;
 2)
   echo -e "$PREFIX Okay! die Konfiguration wird vorbereitet. Bitte warten..."
-  wget -q https://github.com/$IFCREATEDFORK/raw/main/api/v2/assets/mcsys_de.yml -O mcsys.yml
-  wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/messages/messages_en.lang -O messages.lang
+  wget -q https://github.com/$IFFORK/raw/main/api/v2/assets/mcsys_de.yml -O mcsys.yml
+  wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/messages/messages_en.lang -O messages.lang
 ;;
 esac
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
+wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/assets/variables.sh
 chmod +x variables.sh
 cd "$DICTY"/mcsys || exit 1
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/restart.sh
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/start.sh
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/stop.sh
+wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/main/restart.sh
+wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/main/start.sh
+wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/main/stop.sh
 chmod +x ./*.sh
 cd "$DICTY" || exit 1
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/manage.tool
+wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/assets/manage.tool
 chmod +x manage.tool
 case $LANG in
 1)
