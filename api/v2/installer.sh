@@ -50,7 +50,7 @@ case $LANG in
 2)
   echo -e "$PREFIX Okay! die Konfiguration wird vorbereitet. Bitte warten..."
   wget -q https://github.com/$IFFORK/raw/main/api/v2/assets/mcsys_de.yml -O mcsys.yml
-  wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/messages/messages_en.lang -O messages.lang
+  wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/messages/messages_de.lang -O messages.lang
 ;;
 esac
 wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/assets/variables.sh
