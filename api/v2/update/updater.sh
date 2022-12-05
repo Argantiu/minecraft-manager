@@ -1,7 +1,7 @@
 #!/bin/bash
 # Updater for the manage system. Created by CrazyCloudCraft.
-echo -e "Update >> 3.0.0"
-echo -e "- Fixing everything"
+echo -e "Update >> 3.0.1"
+echo -e "- Fixing Configuration"
 echo -e "- It should run now ;)"
 echo -e "Downloading new assets."
 echo -e "Update Secured by Argantiu Germany"
@@ -23,8 +23,8 @@ if ! command -v rpl &> /dev/null; then apt-get install rpl -y &> /dev/null
 fi
 cd ./../configs || exit 1
 rm variables.sh
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
-chmod +x variables.sh
+#wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
+#chmod +x variables.sh
 cd ./../ || exit 1
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/restart.sh
 wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/start.sh
