@@ -1,8 +1,42 @@
 #!/bin/bash
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
-# shellcheck source=/dev/null
-source variables.sh
+MLANG=messages.lang
+SHSTOP1=$(cat < $MLANG | grep "stopsh.server.offline:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP2=$(cat < $MLANG | grep "stopsh.server.stop.info:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP3=$(cat < $MLANG | grep "stopsh.counter.invalid:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP4=$(cat < $MLANG | grep "stopsh.counter.stop.10:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP5=$(cat < $MLANG | grep "stopsh.counter.stop.4:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP6=$(cat < $MLANG | grep "stopsh.counter.stop.3:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP7=$(cat < $MLANG | grep "stopsh.counter.stop.2:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP8=$(cat < $MLANG | grep "stopsh.counter.stop.1:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP9=$(cat < $MLANG | grep "stopsh.counter.stop:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP10=$(cat < $MLANG | grep "stopsh.server.stopping:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP11=$(cat < $MLANG | grep "stopsh.server.killing:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+SHSTOP12=$(cat < $MLANG | grep "stopsh.server.stopped:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
+MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
+MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
+MCOUNT=$(cat < mcsys.yml | grep "dynamic-counter:" | cut -d ':' -f2)
+VARSOFT=$(cat < mcsys.yml | grep "software:" | cut -d ':' -f2 | tr -d " ")
+if [[ $VARSOFT == "PURPUR" ]] || [[ $VARSOFT == "purpur" ]] || [[ $VARSOFT == "purpurmc" ]]; then ASOFTWARE=purpur.sh
+fi
+if [[ $VARSOFT == "PAPER" ]] || [[ $VARSOFT == "papermc" ]] || [[ $VARSOFT == "paper" ]] || [[ $VARSOFT == "paperspigot" ]]; then ASOFTWARE=paper.sh
+fi
+if [[ $VARSOFT == "SPIGOT" ]] || [[ $VARSOFT == "spigot" ]] || [[ $VARSOFT == "spogotmc" ]]; then ASOFTWARE=spigot.sh
+fi
+if [[ $VARSOFT == "BUKKIT" ]] || [[ $VARSOFT == "bukkit" ]] || [[ $VARSOFT == "bukkitmc" ]]; then ASOFTWARE=bukkit.sh
+fi
+# Modded
+if [[ $VARSOFT == "MOHIST" ]] || [[ $VARSOFT == "mohist" ]] || [[ $VARSOFT == "mohistmc" ]]; then ASOFTWARE=modded/mohist.sh
+fi
+# Proxy
+if [[ $VARSOFT == "VELOCITY" ]] || [[ $VARSOFT == "velo" ]] || [[ $VARSOFT == "velocity" ]]; then ASOFTWARE=proxy/velocity.sh
+fi
+if [[ $VARSOFT == "BUNGEECORD" ]] || [[ $VARSOFT == "bungeecord" ]] || [[ $VARSOFT == "bungee" ]]; then ASOFTWARE=proxy/bungeecord.sh
+fi
+if [[ $VARSOFT == "WATERFALL" ]] || [[ $VARSOFT == "waterfall" ]] || [[ $VARSOFT == "waterfallmc" ]]; then ASOFTWARE=proxy/waterfall.sh
+fi
+
 if ! screen -list | grep -q "$MCNAME"; then echo -e "$SHSTOP1"
   exit 1
 fi
