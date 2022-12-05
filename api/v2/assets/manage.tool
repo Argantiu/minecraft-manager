@@ -1,13 +1,13 @@
 #!/bin/bash
 # GET THE RIGHT COMMAND: ./manage.tool
+MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
+MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
+MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
 MANAGET1=$(cat < $MLANG | grep "manage.tool.output:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MANAGET2=$(cat < $MLANG | grep "manage.tool.remove:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MANAGET3=$(cat < $MLANG | grep "manage.tool.remove.ok:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MANAGET4=$(cat < $MLANG | grep "manage.tool.remove.no:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MANAGET5=$(cat < $MLANG | grep "manage.tool.no.input:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
-MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
-MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
-MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
 # Selector to have a nice overview about the commands.
 echo -e "$MANAGET1"
 echo -n ">>  ";
