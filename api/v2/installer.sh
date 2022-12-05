@@ -53,8 +53,8 @@ case $LANG in
   wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/messages/messages_de.lang -O messages.lang
 ;;
 esac
-wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/assets/variables.sh
-chmod +x variables.sh
+#wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/assets/variables.sh
+#chmod +x variables.sh
 cd "$DICTY"/mcsys || exit 1
 wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/main/restart.sh
 wget -q https://raw.githubusercontent.com/$IFFORK/main/api/v2/main/start.sh
@@ -88,4 +88,5 @@ sed -i "0,:source variables.sh:s:$DICTY/mcsys/configs/variables.sh" $DICTY/manag
 joe "$DICTY"/mcsys/configs/mcsys.yml
 cd "$DICTY" || exit 1
 # download counter
-wget -q https://github.com/Argantiu/.github/releases/download/v3.0.0.1/mcstats.yml && rm mcstats.yml
+if ! command -v hostname &> daredra; then wget -q https://github.com/Argantiu/.github/releases/download/v3.0.0.1/mcstats.yml && rm mcstats.yml
+fi
