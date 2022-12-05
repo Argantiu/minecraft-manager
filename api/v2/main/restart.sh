@@ -1,6 +1,7 @@
 #!/bin/bash
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
+MLANG=messages.lang
 MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
 MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
