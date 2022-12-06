@@ -1,8 +1,12 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by Argantiu GmBh 06/21/2022 UTC/GMT +1 https://crazycloudcraft.de
-# shellcheck source=/dev/null
-source variables.sh
+MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
+MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
+VARSOFT=$(cat < mcsys.yml | grep "software:" | cut -d ':' -f2 | tr -d " ")
+PROXYMO=$(cat < mcsys.yml | grep "proxy-mode:" | cut -d ':' -f2)
+if [[ $VARSOFT == "MOHIST" ]] || [[ $VARSOFT == "mohist" ]] || [[ $VARSOFT == "mohistmc" ]]; then ASOFTWARE=modded/mohist.sh
+fi
 # Floodgate
 mkdir -p $MTPATH/mcsys/floodgate
 if [ ! $ASOFTWARE = "modded/mohist.sh" ]; then
