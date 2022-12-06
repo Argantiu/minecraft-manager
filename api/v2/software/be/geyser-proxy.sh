@@ -1,6 +1,9 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
+VARSOFT=$(cat < mcsys.yml | grep "software:" | cut -d ':' -f2 | tr -d " ")
+if [[ $VARSOFT == "VELOCITY" ]] || [[ $VARSOFT == "velo" ]] || [[ $VARSOFT == "velocity" ]]; then ASOFTWARE=proxy/velocity.sh
+fi
 MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
 MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
 # Floodgate
