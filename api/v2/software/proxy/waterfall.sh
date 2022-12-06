@@ -1,8 +1,11 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
-# shellcheck source=/dev/null
-source variables.sh
+MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
+MAINVERSION=$(cat < mcsys.yml | grep "version:" | cut -d ':' -f2)
+RAM=$(cat < mcsys.yml | grep "ram:" | cut -d ':' -d 'B' -f2)
+JAVABIN=$(cat < mcsys.yml | grep "java:" | cut -d ':' -f2)
+MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
 cd $MTPATH/mcsys/saves/jar || exit 1
 rm -f version.json
 wget -q https://api.papermc.io/v2/projects/waterfall/versions/$MAINVERSION -O version.json
