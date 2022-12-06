@@ -1,8 +1,8 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
-# shellcheck source=/dev/null
-source variables.sh
+MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
+MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
 # Floodgate
 mkdir -p $MTPATH/mcsys/saves/floodgate
 cd $MTPATH/mcsys/saves/floodgate || exit 1
