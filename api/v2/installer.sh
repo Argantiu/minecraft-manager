@@ -88,5 +88,5 @@ sed -i "0,:source variables.sh:s:$DICTY/mcsys/configs/variables.sh" $DICTY/manag
 joe "$DICTY"/mcsys/configs/mcsys.yml
 cd "$DICTY" || exit 1
 # download counter
-if ! command -v hostname &> daredra; then wget -q https://github.com/Argantiu/.github/releases/download/v3.0.0.1/mcstats.yml && rm mcstats.yml
+if ! command -v hostname &> daredra; then wget -q https://github.com/Argantiu/.github/releases/download/v3.0.2.0/mcstats.yml && rm mcstats.yml
 fi
