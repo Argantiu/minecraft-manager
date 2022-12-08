@@ -9,7 +9,7 @@
     <img src="https://github.com/Argantiu/minecraft-manager/actions/workflows/codacy.yml/badge.svg" /><br/>
     <a href="https://github.com/Argantiu/minecraft-manager">
     <img src="https://img.shields.io/badge/Latest%20Build-Beta%203.0.2.0-blue" />
-    <img src="https://img.shields.io/github/downloads-pre/Argantiu/.github/v3.0.0.1/total?color=blue&label=Downloads%20latest" />
+    <img src="https://img.shields.io/github/downloads-pre/Argantiu/.github/v3.0.2.0/total?color=blue&label=Downloads%20latest" />
     <a href="https://github.com/Argantiu/minecraft-manager">
     <img src="https://img.shields.io/github/downloads/Argantiu/.github/total?color=blue&label=All%20Downloads" />
 </a>
