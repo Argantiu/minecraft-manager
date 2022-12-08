@@ -1,7 +1,7 @@
 #!/bin/bash
 # Updater for the manage system. Created by CrazyCloudCraft.
-echo -e "Update >> 3.0.1"
-echo -e "- Fixing Configuration"
+echo -e "Update >> 3.0.2.0"
+echo -e "- Fixing Configuration reading"
 echo -e "- It should run now ;)"
 echo -e "Downloading new assets."
 echo -e "Update Secured by Argantiu Germany"
