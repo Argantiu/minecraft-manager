@@ -1,9 +1,9 @@
-##### Things, that i have to fix:
+##### Things, that i have to fix
 
 - [x] Fix config issues
 - [x] Fix compilation for message files.
 
-##### Checks that have to be done:
+##### Checks that have to be done
 
 - [ ] Check every single software type
 - [ ] test with ubuntu
