@@ -42,27 +42,27 @@ if ! screen -list | grep -q "$MCNAME"; then echo -e "$SHSTOP1"
 fi
 # Stop the server
 echo -e "$SHSTOP2"
-echo "$SHSTOP2" | /usr/bin/logger -t $MCNAME
+echo "$SHSTOP2" | /usr/bin/logger -t "$MCNAME"
 # Looks if players are online
 if [[ $ASOFTWARE == "paper.sh" ]] || [[ $ASOFTWARE == "spigot.sh" ]] || [[ $ASOFTWARE == "bukkit.sh" ]] || [[ $ASOFTWARE == "purpur.sh" ]] || [[ $ASOFTWARE == "modded/mohist.sh" ]] && [[ $MCOUNT == "TRUE" ]] || [[ $MCOUNT == "true" ]]; then
-mkdir -p $MTPATH/mcsys/cache && cd $MTPATH/mcsys/cache || exit 1
+mkdir -p "$MTPATH"/mcsys/cache && cd "$MTPATH"/mcsys/cache || exit 1
 hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
-MCPORT=$(cat < $MTPATH/server.properties | grep server-port= | cut -b 13,14,1)
+MCPORT=$(cat < "$MTPATH"/server.properties | grep server-port= | cut -b 13,14,1)
 wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O online-info.txt
  if grep -q error "online-info.txt"; then echo -e "$SHSTOP3"
  else MCOTYPE=$(cat < online-info.txt | grep online | tr -d " " | cut -b 10)
  fi
 fi
 # Start a countdown if there are players online.
-if ! [[ $MCOTYPE = "0" ]]; then screen -Rd $MCNAME -X stuff "say $SHSTOP4 $(printf '\r')" && sleep 6s
- screen -Rd $MCNAME -X stuff "say $SHSTOP5 $(printf '\r')" && sleep 1s
- screen -Rd $MCNAME -X stuff "say $SHSTOP6 $(printf '\r')" && sleep 1s
- screen -Rd $MCNAME -X stuff "say $SHSTOP7 $(printf '\r')" && sleep 1s
- screen -Rd $MCNAME -X stuff "say $SHSTOP8 $(printf '\r')" && sleep 1s
+if ! [[ $MCOTYPE = "0" ]]; then screen -Rd "$MCNAME" -X stuff "say $SHSTOP4 $(printf '\r')" && sleep 6s
+ screen -Rd "$MCNAME" -X stuff "say $SHSTOP5 $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $SHSTOP6 $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $SHSTOP7 $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $SHSTOP8 $(printf '\r')" && sleep 1s
 fi
-screen -Rd $MCNAME -X stuff "say $SHSTOP9 $(printf '\r')"
-echo "$SHSTOP10" | /usr/bin/logger -t $MCNAME
+screen -Rd "$MCNAME" -X stuff "say $SHSTOP9 $(printf '\r')"
+echo "$SHSTOP10" | /usr/bin/logger -t "$MCNAME"
 # Wait up to 20 seconds for server to close
 StopChecks=0
 while [ $StopChecks -lt 30 ]; do
@@ -74,9 +74,9 @@ while [ $StopChecks -lt 30 ]; do
 done
 # Force quit if server is still open
 if screen -list | grep -q "$MCNAME"; then
-  echo -e "$SHSTOP11"  | /usr/bin/logger -t $MCNAME
-  screen -S $MCNAME -X quit
+  echo -e "$SHSTOP11"  | /usr/bin/logger -t "$MCNAME"
+  screen -S "$MCNAME" -X quit
   pkill -15 -f "SCREEN -dmSL $MCNAME"
 fi
 echo -e "$SHSTOP12"
-echo -e "$SHSTOP12" | /usr/bin/logger -t $MCNAME
+echo -e "$SHSTOP12" | /usr/bin/logger -t "$MCNAME"
