@@ -26,13 +26,13 @@ rm variables.sh
 #wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/variables.sh
 #chmod +x variables.sh
 cd ./../ || exit 1
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/restart.sh
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/start.sh
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/main/stop.sh
+wget -q https://raw.githubusercontent.com/"$IFCREATEDFORK"/main/api/v2/main/restart.sh
+wget -q https://raw.githubusercontent.com/"$IFCREATEDFORK"/main/api/v2/main/start.sh
+wget -q https://raw.githubusercontent.com/"$IFCREATEDFORK"/main/api/v2/main/stop.sh
 chmod +x ./*.sh
 cd ./../../ || exit 1
-wget -q https://raw.githubusercontent.com/$IFCREATEDFORK/main/api/v2/assets/manage.tool
+wget -q https://raw.githubusercontent.com/"$IFCREATEDFORK"/main/api/v2/assets/manage.tool
 chmod +x manage.tool
-sed -i "0,:source variables.sh:s:$DICTY/mcsys/configs/variables.sh" $DICTY/mcsys/start.sh $DICTY/mcsys/stop.sh $DICTY/mcsys/restart.sh >/dev/null 2>&1
-sed -i "0,:source variables.sh:s:$DICTY/mcsys/configs/variables.sh" $DICTY/manage.tool >/dev/null 2>&1
+sed -i "0,:source variables.sh:s:$DICTY/mcsys/configs/variables.sh" "$DICTY"/mcsys/start.sh "$DICTY"/mcsys/stop.sh "$DICTY"/mcsys/restart.sh >/dev/null 2>&1
+sed -i "0,:source variables.sh:s:$DICTY/mcsys/configs/variables.sh" "$DICTY"/manage.tool >/dev/null 2>&1
 exit 0
