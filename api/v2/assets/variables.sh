@@ -35,7 +35,7 @@ fi
 #=$(cat mcsys.yml | grep "software:" | rev | cut -d '/' -f1 | rev )
 MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
 SERVERBASE=$(cat < mcsys.yml | grep "server-directory:" | rev | cut -d '/' -f1 | rev )
-OPTBASE=$(cat < mcsys.yml | grep "server-directory:" | tr -d " " | cut -d ':' -f2 | sed s/$SERVERBASE//g)
+OPTBASE=$(cat < mcsys.yml | grep "server-directory:" | tr -d " " | cut -d ':' -f2 | sed s/"$SERVERBASE"//g)
 # Prefix
 #COLOR=\033[0;
 #MPREFIX=$(cat < mcsys.yml | grep "sys.prefix:" | cut -d ':' -f2 | sed s:§0:\033[0;30m:g | )
