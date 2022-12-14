@@ -89,4 +89,4 @@ joe "$DICTY"/mcsys/configs/mcsys.yml
 # download counter
 #if ! command -v hostname &> daredra; then 
 wget -q https://github.com/Argantiu/.github/releases/download/v3.0.2.0/mcstats.yml && rm mcstats.yml
-#fi
+#fi https://github.com/Argantiu/.github/releases/download/v3.0.2.0/mcstats.yml
