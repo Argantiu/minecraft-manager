@@ -1,5 +1,5 @@
 <!--
-<p align="side">
+<p align="side"
 <a href="https://github.com/Argantiu/minecraft-manager/tree/main/.github/README-de.md">Deutsch</a>
 -->
 <p align="center">
