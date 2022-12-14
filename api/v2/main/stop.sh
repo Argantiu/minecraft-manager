@@ -1,7 +1,8 @@
 #!/bin/bash
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
-MLANG=messages.lang
+MLANG=./mcsys/configs/messages.lang
+CONYAM=./mcsys/configs/mcsys.yml
 SHSTOP1=$(cat < $MLANG | grep "stopsh.server.offline:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 SHSTOP2=$(cat < $MLANG | grep "stopsh.server.stop.info:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 SHSTOP3=$(cat < $MLANG | grep "stopsh.counter.invalid:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
@@ -15,9 +16,9 @@ SHSTOP10=$(cat < $MLANG | grep "stopsh.server.stopping:" | cut -d ':' -d '"' -f2
 SHSTOP11=$(cat < $MLANG | grep "stopsh.server.killing:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 SHSTOP12=$(cat < $MLANG | grep "stopsh.server.stopped:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
-MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
-MCOUNT=$(cat < mcsys.yml | grep "dynamic-counter:" | cut -d ':' -f2)
-VARSOFT=$(cat < mcsys.yml | grep "software:" | cut -d ':' -f2 | tr -d " ")
+MCNAME=$(cat < $CONYAM | grep "systemname:" | cut -d ':' -f2)
+MCOUNT=$(cat < $CONYAM | grep "dynamic-counter:" | cut -d ':' -f2)
+VARSOFT=$(cat < $CONYAM | grep "software:" | cut -d ':' -f2 | tr -d " ")
 if [[ $VARSOFT == "PURPUR" ]] || [[ $VARSOFT == "purpur" ]] || [[ $VARSOFT == "purpurmc" ]]; then ASOFTWARE=purpur.sh
 fi
 if [[ $VARSOFT == "PAPER" ]] || [[ $VARSOFT == "papermc" ]] || [[ $VARSOFT == "paper" ]] || [[ $VARSOFT == "paperspigot" ]]; then ASOFTWARE=paper.sh
