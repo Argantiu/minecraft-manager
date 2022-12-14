@@ -1,20 +1,21 @@
 #!/bin/bash
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
-MLANG=messages.lang
-BEUPDATE=$(cat < mcsys.yml | grep "bedrock:" | cut -d ':' -f2)
-BETTERBACKUP=$(cat < mcsys.yml | grep "primebackups:" | cut -d ':' -f2)
-BACKUP=$(cat < mcsys.yml | grep "backups:" | cut -d ':' -f2)
-PROXYMO=$(cat < mcsys.yml | grep "proxy-mode:" | cut -d ':' -f2)
-MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
-MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
+MLANG=./mcsys/configs/messages.lang
+CONYAM=./mcsys/configs/mcsys.yml
+BEUPDATE=$(cat < $CONYAM | grep "bedrock:" | cut -d ':' -f2)
+BETTERBACKUP=$(cat < $CONYAM | grep "primebackups:" | cut -d ':' -f2)
+BACKUP=$(cat < $CONYAM | grep "backups:" | cut -d ':' -f2)
+PROXYMO=$(cat < $CONYAM | grep "proxy-mode:" | cut -d ':' -f2)
+MTPATH=$(cat < $CONYAM | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
+MCNAME=$(cat < $CONYAM | grep "systemname:" | cut -d ':' -f2)
 MPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 MSTART1=$(cat < $MLANG | grep "startsh.server.online:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MSTART2=$(cat < $MLANG | grep "startsh.server.start:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MSTART3=$(cat < $MLANG | grep "startsh.backup.create:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MSTART4=$(cat < $MLANG | grep "startsh.backup.folder:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 MSTART5=$(cat < $MLANG | grep "startsh.bedrock.update:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
-VARSOFT=$(cat < mcsys.yml | grep "software:" | cut -d ':' -f2 | tr -d " ")
+VARSOFT=$(cat < $CONYAM | grep "software:" | cut -d ':' -f2 | tr -d " ")
 if [[ $VARSOFT == "PURPUR" ]] || [[ $VARSOFT == "purpur" ]] || [[ $VARSOFT == "purpurmc" ]]; then ASOFTWARE=purpur.sh
 fi
 if [[ $VARSOFT == "PAPER" ]] || [[ $VARSOFT == "papermc" ]] || [[ $VARSOFT == "paper" ]] || [[ $VARSOFT == "paperspigot" ]]; then ASOFTWARE=paper.sh
