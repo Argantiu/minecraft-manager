@@ -1,6 +1,7 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
+CONYAM=./configs/mcsys.yml
 VARSOFT=$(cat < $CONYAM | grep "software:" | cut -d ':' -f2 | tr -d " ")
 if [[ $VARSOFT == "VELOCITY" ]] || [[ $VARSOFT == "velo" ]] || [[ $VARSOFT == "velocity" ]]; then ASOFTWARE=proxy/velocity.sh
 fi
