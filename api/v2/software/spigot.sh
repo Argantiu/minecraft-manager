@@ -1,7 +1,7 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
-CONYAM=./../configs/mcsys.yml
+CONYAM=./configs/mcsys.yml
 MTPATH=$(cat < $CONYAM | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
 MAINVERSION=$(cat < $CONYAM | grep "version:" | cut -d ':' -f2)
 RAM=$(cat < $CONYAM | grep "ram:" | cut -d ':' -d 'B' -f2)
