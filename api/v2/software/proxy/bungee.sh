@@ -1,10 +1,11 @@
 #!/bin/bash
 # Minecraft Server auto stop script - Do not configure this script!!
 # Version 3.0.0.0-#0 made by CrazyCloudCraft https://crazycloudcraft.de
-MTPATH=$(cat < mcsys.yml | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
-RAM=$(cat < mcsys.yml | grep "ram:" | cut -d ':' -d 'B' -f2)
-JAVABIN=$(cat < mcsys.yml | grep "java:" | cut -d ':' -f2)
-MCNAME=$(cat < mcsys.yml | grep "systemname:" | cut -d ':' -f2)
+CONYAM=./../configs/mcsys.yml
+MTPATH=$(cat < $CONYAM | grep "server-directory:" | cut -d ':' -f2 | tr -d " ")
+RAM=$(cat < $CONYAM | grep "ram:" | cut -d ':' -d 'B' -f2)
+JAVABIN=$(cat < $CONYAM | grep "java:" | cut -d ':' -f2)
+MCNAME=$(cat < $CONYAM | grep "systemname:" | cut -d ':' -f2)
 cd "$MTPATH"/mcsys/saves/jar || exit 1
 rm -f version.json
 wget -q https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
