@@ -1,8 +1,8 @@
 #!/bin/bash
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
-MLANG=./mcsys/configs/messages.lang
-CONYAM=./mcsys/configs/mcsys.yml
+MLANG=./configs/messages.lang
+CONYAM=./configs/mcsys.yml
 SHSTOP1=$(cat < $MLANG | grep "stopsh.server.offline:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 SHSTOP2=$(cat < $MLANG | grep "stopsh.server.stop.info:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
 SHSTOP3=$(cat < $MLANG | grep "stopsh.counter.invalid:" | cut -d ':' -d '"' -f2 | sed "s/%server_name%/$MCNAME/g" | sed "s/%prefix%/$MPREFIX/g")
