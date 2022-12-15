@@ -1,8 +1,8 @@
 #!/bin/bash
 # Automatic minecraft server script - Edit at your own risks!!
 # Version 3.0.0.0-#0 created by CrazyCloudCraft https://crazycloudcraft.de
-MLANG=./mcsys/configs/messages.lang
-CONYAM=./mcsys/configs/mcsys.yml
+MLANG=./configs/messages.lang
+CONYAM=./configs/mcsys.yml
 BEUPDATE=$(cat < $CONYAM | grep "bedrock:" | cut -d ':' -f2)
 BETTERBACKUP=$(cat < $CONYAM | grep "primebackups:" | cut -d ':' -f2)
 BACKUP=$(cat < $CONYAM | grep "backups:" | cut -d ':' -f2)
