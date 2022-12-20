@@ -1,6 +1,7 @@
 #!/bin/bash
 # Minecraft Server installer for an Easy Setup
 # Made By CrazyCloudCraft
+# wget https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev/.github/dev-test.sh && chmod +x dev-test.sh && ./dev-test.sh
 IFFORK=Argantiu/minecraft-manager
 PREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 LANG=2
