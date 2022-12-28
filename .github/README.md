@@ -73,4 +73,5 @@ wget -q https://t1p.de/minecraft-manager -O mcagon && chmod +x mcagon && ./mcago
 <a>•</a>
 <a href="https://github.com/orgs/Argantiu/projects/1">Tasks & Todos</a>
 <a>•</a>
+<a href="https://github.com/Argantiu/minecraft-manager/wiki">Wiki (en/de)</a>
 </p>
