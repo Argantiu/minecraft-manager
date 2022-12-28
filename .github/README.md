@@ -74,6 +74,3 @@ wget -q https://t1p.de/minecraft-manager -O mcagon && chmod +x mcagon && ./mcago
 <a href="https://github.com/orgs/Argantiu/projects/1">Tasks & Todos</a>
 <a>•</a>
 </p>
-<p align="center">
-Thanks @Faye for Tranzlateing my project!
-</p>
