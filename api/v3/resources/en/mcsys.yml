@@ -7,7 +7,7 @@ debug: false
 name: myserver
 
 # In these directorys is your server located.
-directory: /opt/MyServer/
+directory: installarg1
 
 # Wich Minecraft Version do you like to use?
 version: 1.19.3
