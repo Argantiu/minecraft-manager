@@ -1,0 +1,38 @@
+# Minecraft Server verwaltungs Werkzeug
+# Version en-3.5.0.0 created by CrazyCloudCraft crazycloudcraft.de
+debug: false
+
+# Wich name should your system have? 
+# Please use lowercase letters only
+name: myserver
+
+# In these directorys is your server located.
+directory: /opt/MyServer/
+
+# Wich Minecraft Version do you like to use?
+version: 1.19.3
+
+# Wich Software do you want to use?
+# You can write [ paper, purpur, spigot, bukkit, mohist
+# bungeecord, velocity, waterfall ] here.
+software: purpur
+
+# Do you like to have Bedrock players on your Server?
+bedrock: false
+
+# How much ram do you need?
+# Never use all of the ram. The server also needs something to eat.
+# Ram isn't CPU and can't do anything about lags.
+ram: 4GB
+
+# Is or should your server be connected to a proxy?
+proxy: false
+
+# Do you want to have a counter if there are still players online?
+counter: true
+
+# Do you want intelligent backups of your server?
+backup: true
+
+
+# Configuration finished :)
