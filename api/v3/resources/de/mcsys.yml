@@ -1,0 +1,37 @@
+# Minecraft Server verwaltungs Werkzeug
+# Version de-3.1.0.0 erstellt von CrazyCloudCraft 26.10.2022 https://crazycloudcraft.de/
+debug: false
+
+# Welchen Namen soll dein system haben? 
+# Nutze nur kleinbuchstaben
+name: myserver
+
+# In diesen Ordner(n) befinndet sich dein Server.
+directory: /opt/MyServer/
+
+# Welche Minecraft Version willst du haben?
+version: 1.19.3
+
+# Welche Software willst du verwenden?
+# Du kannst hier [ paper, purpur, spigot, bukkit, mohist
+# bungeecord, velocity, waterfall ] hinschreiben.
+software: purpur
+
+# Willst du Bedrock Spieler auf deinen Server lassen?
+bedrock: false
+
+# Wie viel Ram brauchst du? 
+# Nutze niemals alles an Ram. Der Server braucht auch was zu Essen.
+# Ram ist nicht CPU und kann nichts gegen lags machen.
+ram: 4GB
+
+# Ist oder Soll dein Server mit einem Proxy verbunden sein?
+proxy: false
+
+# Willst du einen Counter haben wenn noch Spieler online sind?
+counter: true
+
+# Willst du intiligente Backups von deinem Server machen?
+backup: true
+  
+# Konfiguration fertig :)
