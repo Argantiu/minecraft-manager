@@ -5,8 +5,6 @@ MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
 #MCCOUNT=yq eval '.count' mcsys.yml
 #MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
-#MCBEDROCK=$(yq eval '.bedrock' mcsys.yml
-#MCPROXY=$(yq eval '.proxy' mcsys.yml
 
 mcstart (){
 if screen -list | grep -q "$MCNAME"; then echo -e "1" && exit 1
@@ -27,6 +25,7 @@ if [[ $MCBACKUP == "true" ]]; then
    echo -e "4"
  fi
 fi
+MCPROXY=$(yq eval '.proxy' mcsys.yml
 if [[ $MCPROXY == "TRUE" ]]; then
 sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
 sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1
@@ -44,6 +43,7 @@ fi
 [ -f screenlog.0 ] && mv screenlog.0 screenlog.1
 /bin/bash "$MCPATH"/libraries/mcsys/software.sh &
 MCUP=$!
+MCBEDROCK=$(yq eval '.bedrock' mcsys.yml
 if [[ $MCBEDROCK == "true" ]]; then echo -e "5"
  cd "$MCPATH"/libraries/mcsys || exit 1
  wget -q 
@@ -52,8 +52,9 @@ if [[ $MCBEDROCK == "true" ]]; then echo -e "5"
  BEUP=$!
  fi
 fi
+wait $BEUP
+wait $MCUP
 
-# Start Server
 }
 
 mcstop (){
