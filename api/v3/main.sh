@@ -41,20 +41,15 @@ fi
 [ -f screenlog.2 ] && mv screenlog.2 screenlog.3
 [ -f screenlog.1 ] && mv screenlog.1 screenlog.2
 [ -f screenlog.0 ] && mv screenlog.0 screenlog.1
-/bin/bash "$MCPATH"/libraries/mcsys/software.sh &
-MCUP=$!
 MCBEDROCK=$(yq eval '.bedrock' mcsys.yml)
 if [[ $MCBEDROCK == "true" ]]; then echo -e "5"
  cd "$MCPATH"/libraries/mcsys || exit 1
- wget -q 
+ wget -q  
  chmod +x bedrock.sh
- /bin/bash "$MTPATH"/mcsys/be-default.sh &
- BEUP=$!
+ /bin/bash "$MTPATH"/mcsys/bedrock.sh &
+ /bin/bash "$MCPATH"/libraries/mcsys/software.sh &
  fi
 fi
-wait $BEUP
-wait $MCUP
-
 }
 
 mcstop (){
