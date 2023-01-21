@@ -13,3 +13,5 @@
 # Check for if not proxy
 # Update Bedrock.sh
 # else update Bedrock.pr.sh
+
+# Update dependencys
