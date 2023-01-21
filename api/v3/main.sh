@@ -43,7 +43,7 @@ fi
 [ -f screenlog.0 ] && mv screenlog.0 screenlog.1
 /bin/bash "$MCPATH"/libraries/mcsys/software.sh &
 MCUP=$!
-MCBEDROCK=$(yq eval '.bedrock' mcsys.yml
+MCBEDROCK=$(yq eval '.bedrock' mcsys.yml)
 if [[ $MCBEDROCK == "true" ]]; then echo -e "5"
  cd "$MCPATH"/libraries/mcsys || exit 1
  wget -q 
