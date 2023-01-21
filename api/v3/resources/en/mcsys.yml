@@ -35,4 +35,5 @@ counter: true
 backup: true
 
 
+conf_version: 1
 # Configuration finished :)
