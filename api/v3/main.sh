@@ -28,6 +28,10 @@ mcrestart (){
 # restart server
 }
 
+mcdelete (){
+
+}
+
 ##### Choosemodul
 #-h or anythig = help
 # 1 = Start
