@@ -19,11 +19,6 @@ if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries
 fi
 sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
-MCVERSION=$(yq eval '.version' mcsys.yml && cut -d "." -f2)
-if [[ $MCVERSION == "19" ]] || [[ $MCVERSION == "18" ]]; then
-
-else 
-fi
 
 # Make Backup
 # push Software.sh
