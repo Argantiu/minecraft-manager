@@ -1,5 +1,8 @@
 #!/bin/bash
 # Version...
+
+find / -name "mcagon" -exec rm {} \;
+
 #View for language in config
 
 # Check if mycsys.yml version has changed
@@ -15,3 +18,4 @@
 # else update Bedrock.pr.sh
 
 # Update dependencys
+# With yq
