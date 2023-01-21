@@ -3,7 +3,6 @@
 MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
-#MCVERSION=$(yq eval '.version' mcsys.yml
 #MCCOUNT=yq eval '.count' mcsys.yml
 #MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
 #MCBACKUP=$(yq eval '.backup' mcsys.yml
@@ -20,8 +19,11 @@ if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries
 fi
 sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
+MCVERSION=$(yq eval '.version' mcsys.yml && cut -d "." -f2)
+if [[ $MCVERSION == "19" ]] || [[ $MCVERSION == "18" ]]; then
 
-# Update Java if needed.
+else 
+fi
 
 # Make Backup
 # push Software.sh
