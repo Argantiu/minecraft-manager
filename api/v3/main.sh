@@ -46,21 +46,24 @@ if [[ $MCBEDROCK == "true" ]]; then echo -e "5"
  cd "$MCPATH"/libraries/mcsys || exit 1
  wget -q  
  chmod +x bedrock.sh
- /bin/bash "$MTPATH"/mcsys/bedrock.sh &
- /bin/bash "$MCPATH"/libraries/mcsys/software.sh &
+ /bin/bash "$MCPATH"/libraries/mcsys/bedrock.sh &
  fi
 fi
+/bin/bash "$MCPATH"/libraries/mcsys/software.sh &
+exit 0
 }
 
 mcstop (){
 # Check if Server already offline
 # Check if can make counter
 # Stopps server
+exit 0
 }
 
 mcrestart (){
 # Check if server already offline
 # restart server
+exit 0
 }
 
 mcdelete (){
