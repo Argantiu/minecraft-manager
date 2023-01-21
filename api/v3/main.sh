@@ -4,18 +4,22 @@ MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
 #MCVERSION=$(yq eval '.version' mcsys.yml
-#MCCOUNT=
-#MCSOFTWARE=yq 'downcase'
-#MCBACKUP=
-#MCBEDROCK=
-#MCPROXY=
+#MCCOUNT=yq eval '.count' mcsys.yml
+#MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
+#MCBACKUP=$(yq eval '.backup' mcsys.yml
+#MCBEDROCK=$(yq eval '.bedrock' mcsys.yml
+#MCPROXY=$(yq eval '.proxy' mcsys.yml
 
 mcstart (){
-if screen -list | grep -q "$MCNAME"; then echo -e "$MSTART1" && exit 1
-else echo -e "$MSTART2"
+if screen -list | grep -q "$MCNAME"; then echo -e "1" && exit 1
+else echo -e "2"
 fi
-
-# Fix System errors.
+if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar
+fi
+if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries/mcsys/updater.sh
+fi
+sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
+sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
 
 # Update Java if needed.
 
