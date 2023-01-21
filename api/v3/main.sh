@@ -21,23 +21,38 @@ sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/sp
 MCBACKUP=$(yq eval '.backup' mcsys.yml
 if [[ $MCBACKUP == "true" ]]; then
  if [ -f "$MCNAME.jar" ]; then echo -e "3"
-    cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MTPATH"/unused/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
-    cd "$MCPATH" || exit 1
-    if [[ $BETTERBACKUP == "TRUE" ]] || [[ $BETTERBACKUP == "true" ]]; then
-    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
-    echo -e "$MSTART4"
-    else
-    tar -pzcf ./unused/backups/backup-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/saves/*" ./
-    echo -e "$MSTART4"
-    fi
+   cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
+   cd "$MCPATH" || exit 1
+   tar -pzcf ./libraries/mcsys/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
+   echo -e "4"
  fi
 fi
-# Make Backup
-# push Software.sh
-# Berock Part
-# Chage to proxy if needed
-# Logrotate
-# wait until software finish
+if [[ $MCPROXY == "TRUE" ]]; then
+sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
+sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1
+else 
+sed -i '0,;online-mode=false;online-mode=true' "$MCPATH"/server.propeties >/dev/null 2>&1
+sed -i '0,;bungeecord: true;bungeecord: false' "$MCPATH"/spigot.yml >/dev/null 2>&1
+fi
+# if $LOGROTATE == true ; then ...
+[ -f screenlog.6 ] && rm screenlog.6
+[ -f screenlog.5 ] && mv screenlog.5 screenlog.6
+[ -f screenlog.4 ] && mv screenlog.4 screenlog.5
+[ -f screenlog.3 ] && mv screenlog.3 screenlog.4
+[ -f screenlog.2 ] && mv screenlog.2 screenlog.3
+[ -f screenlog.1 ] && mv screenlog.1 screenlog.2
+[ -f screenlog.0 ] && mv screenlog.0 screenlog.1
+/bin/bash "$MCPATH"/libraries/mcsys/software.sh &
+MCUP=$!
+if [[ $MCBEDROCK == "true" ]]; then echo -e "5"
+ cd "$MCPATH"/libraries/mcsys || exit 1
+ wget -q 
+ chmod +x bedrock.sh
+ /bin/bash "$MTPATH"/mcsys/be-default.sh &
+ BEUP=$!
+ fi
+fi
+
 # Start Server
 }
 
