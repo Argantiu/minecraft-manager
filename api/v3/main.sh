@@ -16,7 +16,7 @@ if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries
 fi
 sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
-MCBACKUP=$(yq eval '.backup' mcsys.yml
+MCBACKUP=$(yq eval '.backup' mcsys.yml)
 if [[ $MCBACKUP == "true" ]]; then
  if [ -f "$MCNAME.jar" ]; then echo -e "3"
    cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
@@ -25,7 +25,7 @@ if [[ $MCBACKUP == "true" ]]; then
    echo -e "4"
  fi
 fi
-MCPROXY=$(yq eval '.proxy' mcsys.yml
+MCPROXY=$(yq eval '.proxy' mcsys.yml)
 if [[ $MCPROXY == "TRUE" ]]; then
 sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
 sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1
