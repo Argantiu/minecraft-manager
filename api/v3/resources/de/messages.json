@@ -1,10 +1,27 @@
 {
-  "main": {
-    "tool": {
-      "help": "$MCPREFIX Was willst du den machen?\n$MCPREFIX 1 = Starten\n$MCPREFIX 2 = Stoppen\n$MCPREFIX 3 = Neustarten\n$MCPREFIX 4 = Konfiguration Bearbeiten\n$MCPREFIX 5 = System Endfernen",
-      "remove": "$MCPREFIX Willst du das System endfernen? (Server bleibt erhalten)\n[ja/nein]",
-      "rm_ok": "$MCPREFIX System wird endfernt.",
-      "rm_no": "$MCPREFIX System bleibt."
-    }
-  }
-}
+   "tool": {
+    "help": "$MCPREFIX Was willst du den machen?\n$MCPREFIX 1 = Starten\n$MCPREFIX 2 = Stoppen\n$MCPREFIX 3 = Neustarten\n$MCPREFIX 4 = Konfiguration Bearbeiten\n$MCPREFIX 5 = System Endfernen",
+    "remove": "$MCPREFIX Willst du das System endfernen? (Server bleibt erhalten)\n[ja/nein]",
+    "rm_ok": "$MCPREFIX System wird endfernt.",
+    "rm_no": "$MCPREFIX System bleibt."
+    },
+   "mcstart": {
+	  "online": "$MCPREFIX Server ist schon online! Nutze:\n$MCPREFIX screen -r $MCNAME um in die Konsole zu gelangen.\n$MCPREFIX less -r screenlog.0 um in den log zu sehen.",
+	  "start": "$MCPREFIX Starte $MCNAME Server...",
+	  "bedrock": "$MCPREFIX Aktualisiere Bedrock Edition...",
+	  "backup": {
+	  	"create": "$MCPREFIX Erstelle Backup...",
+		"finish": "$MCPREFIX Backup ist im /libraries/mcsys/backups Ordner"
+	  }
+   },
+   "mcstop": {
+   	  "offline": "Der Server wurde schon gestoppt!",
+	  "stop_n": "Stoppe $MCNAME server...",
+	  "kill": "Server hat nach 30 sekunden nicht reagiert, Minecraft instance wird abgewürgt.",
+	  "stopped": "Minecraft %server_name% gestoppt."
+   },
+   "counter": {
+  	"sec": "sekunden",
+	"stop": "Server stoppt in",
+	"invalid": "ERROR 404 Information ungültig.\nBitte mache deinen Port zugänglich oder ändere ihn zu etwas sinnvollem.\nSie können auch in der config dynamic.counter: false stellen um es zu deaktivieren."
+}}
