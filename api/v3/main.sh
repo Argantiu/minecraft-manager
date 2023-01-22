@@ -104,11 +104,12 @@ mcdelete (){
 
 }
 
-##### Choosemodul
-#-h or anythig = help
-# 1 = Start
-# 2 = Stop
-# 3 = Restart
-# 4 = Config
-# 5 = Delete
-# * = Help
+while getopts ":h" option; do
+   case $option in
+     1) mcstart && exit;;
+     2) mcstop && exit;;
+     3) mcresart && exit;;
+     4) mcdelete && exit;;
+     \?) echo "Error: Invalid option" && help && exit;;
+   esac
+done
