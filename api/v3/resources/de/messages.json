@@ -15,13 +15,13 @@
 	  }
    },
    "mcstop": {
-   	  "offline": "Der Server wurde schon gestoppt!",
-	  "stop_n": "Stoppe $MCNAME server...",
-	  "kill": "Server hat nach 30 sekunden nicht reagiert, Minecraft instance wird abgewürgt.",
-	  "stopped": "Minecraft %server_name% gestoppt."
+   	  "offline": "$MCPREFIX Der Server wurde schon gestoppt!",
+	  "stop_n": "$MCPREFIX Stoppe $MCNAME server...",
+	  "kill": "$MCPREFIX Server hat nach 30 sekunden nicht reagiert, Minecraft instance wird abgewürgt.",
+	  "stopped": "$MCPREFIX Minecraft $MCNAME gestoppt."
    },
    "counter": {
   	"sec": "sekunden",
 	"stop": "Server stoppt in",
-	"invalid": "ERROR 404 Information ungültig.\nBitte mache deinen Port zugänglich oder ändere ihn zu etwas sinnvollem.\nSie können auch in der config dynamic.counter: false stellen um es zu deaktivieren."
+	"invalid": "$MCPREFIX Counter Information ungültig.\n$MCPREFIX Bitte mache deinen Port zugänglich oder ändere ihn zu etwas sinnvollem.\n$MCPREFIX Oder in der config \033[1;32mcounter:\033[0;31m false\033[0;37m"
 }}
