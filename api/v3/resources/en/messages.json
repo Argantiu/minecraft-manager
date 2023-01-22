@@ -1,0 +1,27 @@
+{
+   "tool": {
+    "help": "$MCPREFIX What do you want to do?\n$MCPREFIX 1 = Start\n$MCPREFIX 2 = Stop\n$MCPREFIX 3 = Restart\n$MCPREFIX 4 = Remove system",
+    "remove": "$MCPREFIX Do you want to remove the system? (Server itself won't be removed)\n[\033[1;32myes\033[0m|\033[0;31mno\033[0m]",
+    "rm_ok": "$MCPREFIX Deleting system...",
+    "rm_no": "$MCPREFIX OK System stays."
+    },
+   "mcstart": {
+	  "online": "$MCPREFIX Server is already online! Use:\n$MCPREFIX screen -r $MCNAME to get the console.\n$MCPREFIX less -r screenlog.0 to view the log.",
+	  "start": "$MCPREFIX Start $MCNAME server...",
+	  "bedrock": "$MCPREFIX Updating Bedrock Edition...",
+	  "backup": {
+	  	"create": "$MCPREFIX Create backup...",
+		"finish": "$MCPREFIX Backup is in the /libraries/mcsys/backups directory."
+	  }
+   },
+   "mcstop": {
+   	  "offline": "$MCPREFIX Server already stopped!",
+	  "stop_n": "$MCPREFIX Stop $MCNAME server...",
+	  "kill": "$MCPREFIX Server hasn't reacted after 30 seconds. Kill Minecraft instance...",
+	  "stopped": "$MCPREFIX Server $MCNAME stopped."
+   },
+   "counter": {
+  	"sec": "seconds",
+	"stop": "Server stopping in",
+	"invalid": "$MCPREFIX Counter information invalid.\n$MCPREFIX Please open the port to the outside or change it.\n$MCPREFIX Or disable in the config \033[1;32mcounter:\033[0;31m false\033[0;37m"
+}}
