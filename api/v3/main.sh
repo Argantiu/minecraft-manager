@@ -88,7 +88,7 @@ exit 0
 }
 
 mcrestart (){
-if ! screen -list | grep -q "$MCNAME"; then echo -e "S1 & 2" && mcstart && exit 0
+if ! screen -list | grep -q "$MCNAME"; then echo -e ".mcstop.offline & .mcstart.start" && mcstart && exit 0
 else
 mcstop
 mcstart
@@ -97,7 +97,19 @@ exit 0
 }
 
 mcdelete (){
-
+echo -e ".tool.remove"
+{
+echo -n "";
+read MCONFIRM;
+}
+if [[ $MCONFIRM == "ja" ]] || [[ $MCONFIRM == "yes" ]]; then 
+mcstop &
+DELMC="$?" 
+wait $DELMC
+rm -r ./mcsys && echo -e ".tool.rm_ok" && rm -- "$0"
+else echo -e ".tool.rm_no"
+fi
+exit 0
 }
 
 while getopts ":h" option; do
