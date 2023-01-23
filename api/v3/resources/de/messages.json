@@ -1,6 +1,6 @@
 {
    "tool": {
-    "help": "$MCPREFIX Was willst du den machen?\n$MCPREFIX 1 = Starten\n$MCPREFIX 2 = Stoppen\n$MCPREFIX 3 = Neustarten\n$MCPREFIX 5 = System Endfernen",
+    "help": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Was willst du den machen?\n$MCPREFIX 1 = Starten\n$MCPREFIX 2 = Stoppen\n$MCPREFIX 3 = Neustarten\n$MCPREFIX 5 = System Endfernen",
     "remove": "$MCPREFIX Willst du das System endfernen? (Server bleibt erhalten)\n[${green}ja${reset}|${red}nein${reset}",
     "rm_ok": "$MCPREFIX System wird endfernt...",
     "rm_no": "$MCPREFIX System bleibt."
