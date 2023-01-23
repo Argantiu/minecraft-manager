@@ -5,7 +5,7 @@ MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
 
 mcstart (){
-if screen -list | grep -q "$MCNAME"; then echo -e "1" && exit 1
+if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.online | messages.json' | jq -r .online)" && exit 1
 else echo -e "2"
 fi
 if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar
