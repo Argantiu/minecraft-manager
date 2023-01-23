@@ -1,7 +1,7 @@
 {
    "tool": {
     "help": "$MCPREFIX Was willst du den machen?\n$MCPREFIX 1 = Starten\n$MCPREFIX 2 = Stoppen\n$MCPREFIX 3 = Neustarten\n$MCPREFIX 5 = System Endfernen",
-    "remove": "$MCPREFIX Willst du das System endfernen? (Server bleibt erhalten)\n[$greenja$reset|$rednein$reset",
+    "remove": "$MCPREFIX Willst du das System endfernen? (Server bleibt erhalten)\n[${green}ja${reset}|${red}nein${reset}",
     "rm_ok": "$MCPREFIX System wird endfernt...",
     "rm_no": "$MCPREFIX System bleibt."
     },
@@ -23,5 +23,5 @@
    "counter": {
   	"sec": "sekunden",
 	"stop": "Server stoppt in",
-	"invalid": "$MCPREFIX Counter Information ungültig.\n$MCPREFIX Bitte mache deinen Port zugänglich oder ändere ihn.\n$MCPREFIX Oder deaktivire es in der config $greencounter:$red false$reset"
+	"invalid": "$MCPREFIX Counter Information ungültig.\n$MCPREFIX Bitte mache deinen Port zugänglich oder ändere ihn.\n$MCPREFIX Oder deaktivire es in der config ${green}counter:${red} false${reset}"
 }}
