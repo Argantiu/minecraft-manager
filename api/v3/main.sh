@@ -15,7 +15,7 @@ fi
 sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
 if [[ $(yq eval '.backup' mcsys.yml) == "true" ]]; then
- if [ -f "$MCNAME.jar" ]; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.bachup.create' ./libraries/mcsys/messages.json | jq -r .create)"
+ if [ -f "$MCNAME.jar" ]; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.backup.create' ./libraries/mcsys/messages.json | jq -r .create)"
    cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
    cd "$MCPATH" || exit 1
    tar -pzcf ./libraries/mcsys/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
@@ -37,7 +37,7 @@ fi
 [ -f screenlog.2 ] && mv screenlog.2 screenlog.3
 [ -f screenlog.1 ] && mv screenlog.1 screenlog.2
 [ -f screenlog.0 ] && mv screenlog.0 screenlog.1
-if [[ $(yq eval '.bedrock' mcsys.yml) == "true" ]]; then echo -e "5"
+if [[ $(yq eval '.bedrock' mcsys.yml) == "true" ]]; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.bedrock' ./libraries/mcsys/messages.json | jq -r .bedrock)"
  cd "$MCPATH"/libraries/mcsys || exit 1
  wget -q  
  chmod +x bedrock.sh
@@ -49,7 +49,7 @@ exit 0
 }
 
 mcstop (){
-if ! screen -list | grep -q "$MCNAME"; then echo -e "S1"
+if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstop.offline' ./libraries/mcsys/messages.json | jq -r .create)"
   exit 1
 fi
 MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
