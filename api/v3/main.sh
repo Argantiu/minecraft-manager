@@ -5,8 +5,8 @@ MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
 
 mcstart (){
-if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.online | messages.json' | jq -r .online)" && exit 1
-else echo -e "2"
+if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.online' ./libraries/mcsys/messages.json | jq -r .online)" && exit 1
+else echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.start' ./libraries/mcsys/messages.json | jq -r .start)"
 fi
 if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar
 fi
@@ -14,17 +14,15 @@ if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries
 fi
 sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
-MCBACKUP=$(yq eval '.backup' mcsys.yml)
-if [[ $MCBACKUP == "true" ]]; then
- if [ -f "$MCNAME.jar" ]; then echo -e "3"
+if [[ $(yq eval '.backup' mcsys.yml) == "true" ]]; then
+ if [ -f "$MCNAME.jar" ]; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.bachup.create' ./libraries/mcsys/messages.json | jq -r .create)"
    cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
    cd "$MCPATH" || exit 1
    tar -pzcf ./libraries/mcsys/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
-   echo -e "4"
+   echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.backup.finish' ./libraries/mcsys/messages.json | jq -r .finish)"
  fi
 fi
-MCPROXY=$(yq eval '.proxy' mcsys.yml)
-if [[ $MCPROXY == "TRUE" ]]; then
+if [[ $(yq eval '.proxy' mcsys.yml) == "true" ]]; then
 sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
 sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1
 else 
@@ -39,8 +37,7 @@ fi
 [ -f screenlog.2 ] && mv screenlog.2 screenlog.3
 [ -f screenlog.1 ] && mv screenlog.1 screenlog.2
 [ -f screenlog.0 ] && mv screenlog.0 screenlog.1
-MCBEDROCK=$(yq eval '.bedrock' mcsys.yml)
-if [[ $MCBEDROCK == "true" ]]; then echo -e "5"
+if [[ $(yq eval '.bedrock' mcsys.yml) == "true" ]]; then echo -e "5"
  cd "$MCPATH"/libraries/mcsys || exit 1
  wget -q  
  chmod +x bedrock.sh
@@ -55,9 +52,8 @@ mcstop (){
 if ! screen -list | grep -q "$MCNAME"; then echo -e "S1"
   exit 1
 fi
-MCCOUNT=$(yq eval '.count' mcsys.yml)
 MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
-if ! [[ $MCSOFTWARE == "bungeecord" ]] || [[ $MCSOFTWARE == "velocity" ]] || [[ $MCSOFTWARE == "waterfall" ]] && [[ $MCCOUNT == "true" ]]; then
+if ! [[ $MCSOFTWARE == "bungeecord" ]] || [[ $MCSOFTWARE == "velocity" ]] || [[ $MCSOFTWARE == "waterfall" ]] && [[ $(yq eval '.count' mcsys.yml) == "true" ]]; then
 mkdir -p "$MCPATH"/cache/mcsys && cd "$MCPATH"/cache/mcsys || exit 1
 hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
