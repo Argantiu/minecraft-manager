@@ -1,8 +1,13 @@
 #!/bin/bash
 
 PAPERAPI=https://api.papermc.io/v2/projects/paper/versions/
-PURPURAPI=
-
+PURPURAPI=https://api.purpurmc.org/v2/purpur/
+SPIBUKAPI=https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+MOHISTAPI=https://mohistmc.com/api/
+BUNGEEAPI=https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
+WATERAPI=https://api.papermc.io/v2/projects/waterfall/versions/
+VELOAPI=https://api.papermc.io/v2/projects/velocity/versions/
+MCAPI=https://piston-data.mojang.com/v1/
 
 MCVERS=$(yq eval '.version' ./../../mcsys.yml && cut -d "." -f2)
 if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then
@@ -35,4 +40,31 @@ diff -q paper-"$MAINVERSION"-"$LATEST".jar "$MTPATH"/"$MCNAME".jar >/dev/null 2>
   rm -f version.json
  fi
 fi
+}
+
+
+
+
+
+
+
+velocity() {
+}
+waterfall() {
+}
+bungeecord() {
+}
+# Default Minecraft
+minecraft() {
+}
+bukkit() {
+}
+spigot() {
+}
+paper() {
+}
+purpur() {
+}
+# Modded Server
+mohist() {
 }
