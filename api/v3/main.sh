@@ -64,15 +64,15 @@ hostname -I > ip-info.txt
 MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
 MCPORT=$(cat < "$MTPATH"/server.properties | grep server-port= | cut -b 13,14,1)
 wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O on-i.txt
- if grep -q error "on-i.txt"; then echo -e ".counter.invalid" 
+ if grep -q error "on-i.txt"; then echo -e "$(jq -r .counter.invalid ./libraries/mcsys/messages.json)" 
  else MCOTYPE=$(cat < on-i.txt | grep online | tr -d " " | cut -b 10)
  fi
 fi
-if ! [[ $MCOTYPE = "0" ]]; then screen -Rd "$MCNAME" -X stuff "say .counter.stop 10 .counter.sec $(printf '\r')" && sleep 6s
- screen -Rd "$MCNAME" -X stuff "say .counter.stop 4 .counter.sec $(printf '\r')" && sleep 1s
- screen -Rd "$MCNAME" -X stuff "say .counter.stop 3 .counter.sec $(printf '\r')" && sleep 1s
- screen -Rd "$MCNAME" -X stuff "say .counter.stop 2 .counter.sec $(printf '\r')" && sleep 1s
- screen -Rd "$MCNAME" -X stuff "say .counter.stop 1 .counter.sec $(printf '\r')" && sleep 1s
+if ! [[ $MCOTYPE = "0" ]]; then screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 10 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 6s
+ screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 4 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 3 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 2 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 1 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
 fi
 screen -Rd "$MCNAME" -X stuff "say .mcstop.stop_n $(printf '\r')"
 StopChecks=0
