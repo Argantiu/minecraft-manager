@@ -84,7 +84,7 @@ while [ $StopChecks -lt 30 ]; do
   StopChecks=$((StopChecks+1))
 done
 if screen -list | grep -q "$MCNAME"; then
-  echo -e ".mcstop.kill"
+  echo -e "$(jq -r .mcstop.kill ./libraries/mcsys/messages.json)"
   screen -S "$MCNAME" -X quit
   pkill -15 -f "SCREEN -dmSL $MCNAME"
 fi
