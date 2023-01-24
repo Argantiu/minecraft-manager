@@ -5,8 +5,8 @@ MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
 
 mcstart (){
-if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.online' ./libraries/mcsys/messages.json | jq -r .online)" && exit 1
-else echo -e "$(jq -nc --arg MCPREFIX "$MCPREFIX" '.mcstart.start' ./libraries/mcsys/messages.json | jq -r .start)"
+if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && exit 1
+else echo -e "$(jq -r .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"
 fi
 if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar
 fi
