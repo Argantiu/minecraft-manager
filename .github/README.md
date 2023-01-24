@@ -3,6 +3,9 @@
 <a href="https://github.com/Argantiu/minecraft-manager/tree/main/.github/README-de.md">Deutsch</a>
 -->
 <p align="center">
+    <a><b>PLEASE WAIT UNTIL I FINISHED THE V3.5.0.0</b></a>
+</p>
+<p align="center">
     <a href="https://crazycloudcraft.de/">
     <img src="https://crazycloudcraft.de/wp-content/uploads/2021/04/cropped-crazycloudcraft-icon-server.png" width="150"><br/>
     <a href="https://github.com/Argantiu/minecraft-manager/security">
@@ -18,8 +21,7 @@
 Minecraft management scripts
 </h3>
 <p align="center">
-    <a><b>Shell scripts to run your Mineraft server very well</b></a></br>
-    <a><b>PLEASE WAIT UNTIL I FINISHED THE V3.5.0.0</b></a>
+    <a><b>Shell scripts to run your Mineraft server very well</b></a>
 </p>
 <h3 align="center">
 What the scripts can do
