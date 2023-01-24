@@ -1,7 +1,7 @@
 {
    "tool": {
     "help": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] What do you want to do?\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] 1 = Start\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] 2 = Stop\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] 3 = Restart\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] 4 = Remove system",
-    "remove": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Do you want to remove the system? (Server itself won't be removed)\n[\u001b[1;32myes\u001b[0m|\u001b[0;31mno\033[0m]",
+    "remove": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Do you want to remove the system? (Server itself won't be removed)\n[\u001b[1;32myes\u001b[0m|\u001b[0;31mno\u001b[0m]",
     "rm_ok": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Deleting system...",
     "rm_no": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] OK System stays."
     },
