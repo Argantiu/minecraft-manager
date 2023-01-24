@@ -102,7 +102,7 @@ exit 0
 }
 
 mcdelete (){
-echo -e ".tool.remove"
+echo -e "$(jq -r .tool.remove ./libraries/mcsys/messages.json)"
 {
 echo -n "";
 read MCONFIRM;
@@ -111,8 +111,8 @@ if [[ $MCONFIRM == "ja" ]] || [[ $MCONFIRM == "yes" ]]; then
 mcstop &
 DELMC="$?" 
 wait $DELMC
-rm -r ./mcsys && echo -e ".tool.rm_ok" && rm -- "$0"
-else echo -e ".tool.rm_no"
+rm -r ./mcsys && echo -e "$(jq -r .tool.rm_ok ./libraries/mcsys/messages.json)" && rm -- "$0"
+else echo -e "$(jq -r .tool.rm_no ./libraries/mcsys/messages.json)"
 fi
 exit 0
 }
