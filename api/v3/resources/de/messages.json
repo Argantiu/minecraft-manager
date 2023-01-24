@@ -1,27 +1,27 @@
 {
    "tool": {
-    "help": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Was willst du den machen?\n$MCPREFIX 1 = Starten\n$MCPREFIX 2 = Stoppen\n$MCPREFIX 3 = Neustarten\n$MCPREFIX 5 = System Endfernen",
-    "remove": "$MCPREFIX Willst du das System endfernen? (Server bleibt erhalten)\n[${green}ja${reset}|${red}nein${reset}",
-    "rm_ok": "$MCPREFIX System wird endfernt...",
-    "rm_no": "$MCPREFIX System bleibt."
+    "help": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Was willst du den machen?\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] 1 = Starten\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] 2 = Stoppen\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] 3 = Neustarten\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] 5 = System Endfernen",
+    "remove": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Willst du das System endfernen? (Server bleibt erhalten)\n[\u001b[1;32mja\u001b[0m|\u001b[1;31mnein\u001b[0m",
+    "rm_ok": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] System wird endfernt...",
+    "rm_no": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] System bleibt."
     },
    "mcstart": {
-	  "online": "$MCPREFIX Server ist schon online! Nutze:\n$MCPREFIX screen -r $MCNAME um in die Konsole zu gelangen.\n$MCPREFIX less -r screenlog.0 um in den log zu sehen.",
-	  "start": "$MCPREFIX Starte $MCNAME Server...",
-	  "bedrock": "$MCPREFIX Aktualisiere Bedrock Edition...",
+	  "online": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Server ist schon online! Nutze:\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] screen -r $MCNAME um in die Konsole zu gelangen.\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] less -r screenlog.0 um in den log zu sehen.",
+	  "start": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Starte $MCNAME Server...",
+	  "bedrock": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Aktualisiere Bedrock Edition...",
 	  "backup": {
-	  	"create": "$MCPREFIX Erstelle Backup...",
-		"finish": "$MCPREFIX Backup ist im /libraries/mcsys/backups Ordner"
+	  	"create": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Erstelle Backup...",
+		"finish": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Backup ist im /libraries/mcsys/backups Ordner"
 	  }
    },
    "mcstop": {
-   	  "offline": "$MCPREFIX Der Server wurde schon gestoppt!",
-	  "stop_n": "$MCPREFIX Stoppe $MCNAME Server...",
-	  "kill": "$MCPREFIX Server hat nach 30 sekunden nicht reagiert, Minecraft instance wird abgewürgt.",
-	  "stopped": "$MCPREFIX Server $MCNAME gestoppt."
+   	  "offline": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Der Server wurde schon gestoppt!",
+	  "stop_n": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Stoppe $MCNAME Server...",
+	  "kill": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Server hat nach 30 sekunden nicht reagiert, Minecraft instance wird abgewürgt.",
+	  "stopped": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Server $MCNAME gestoppt."
    },
    "counter": {
   	"sec": "sekunden",
 	"stop": "Server stoppt in",
-	"invalid": "$MCPREFIX Counter Information ungültig.\n$MCPREFIX Bitte mache deinen Port zugänglich oder ändere ihn.\n$MCPREFIX Oder deaktivire es in der config ${green}counter:${red} false${reset}"
+	"invalid": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Counter Information ungültig.\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Bitte mache deinen Port zugänglich oder ändere ihn.\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Oder deaktivire es in der config \u001b[1;32mcounter:\u001b[1;31m false\u001b[0m"
 }}
