@@ -74,7 +74,7 @@ if ! [[ $MCOTYPE = "0" ]]; then screen -Rd "$MCNAME" -X stuff "say $(jq -r .coun
  screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 2 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
  screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 1 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
 fi
-screen -Rd "$MCNAME" -X stuff "say .mcstop.stop_n $(printf '\r')"
+screen -Rd "$MCNAME" -X stuff "say $(jq -r .mcstop.stop_n ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g") $(printf '\r')"
 StopChecks=0
 while [ $StopChecks -lt 30 ]; do
   if ! screen -list | grep -q "$MCNAME"; then
@@ -88,12 +88,12 @@ if screen -list | grep -q "$MCNAME"; then
   screen -S "$MCNAME" -X quit
   pkill -15 -f "SCREEN -dmSL $MCNAME"
 fi
-echo -e ".mcstop.stopped"
+echo -e "$(jq -r .mcstop.stopped ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"
 exit 0
 }
 
 mcrestart (){
-if ! screen -list | grep -q "$MCNAME"; then echo -e ".mcstop.offline & .mcstart.start" && mcstart && exit 0
+if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline + .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && mcstart && exit 0
 else
 mcstop
 mcstart
