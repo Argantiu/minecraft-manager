@@ -19,6 +19,7 @@ Minecraft management scripts
 </h3>
 <p align="center">
     <a><b>Shell scripts to run your Mineraft server very well</b></a>
+    <a><b>PLEASE WAIT UNTIL I FINISHED THE V3.5.0.0</b></a>
 </p>
 <h3 align="center">
 What the scripts can do
