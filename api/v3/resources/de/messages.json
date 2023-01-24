@@ -6,8 +6,8 @@
     "rm_no": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] System bleibt."
     },
    "mcstart": {
-	  "online": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Server ist schon online! Nutze:\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] screen -r $MCNAME um in die Konsole zu gelangen.\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] less -r screenlog.0 um in den log zu sehen.",
-	  "start": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Starte $MCNAME Server...",
+	  "online": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Server ist schon online! Nutze:\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] screen -r %s_name% um in die Konsole zu gelangen.\n\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] less -r screenlog.0 um in den log zu sehen.",
+	  "start": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Starte %s_name% Server...",
 	  "bedrock": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Aktualisiere Bedrock Edition...",
 	  "backup": {
 	  	"create": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Erstelle Backup...",
@@ -16,9 +16,9 @@
    },
    "mcstop": {
    	  "offline": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Der Server wurde schon gestoppt!",
-	  "stop_n": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Stoppe $MCNAME Server...",
+	  "stop_n": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Stoppe %s_name% Server...",
 	  "kill": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Server hat nach 30 sekunden nicht reagiert, Minecraft instance wird abgewürgt.",
-	  "stopped": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Server $MCNAME gestoppt."
+	  "stopped": "\u001b[0m[\u001b[1;32mArgantiu\u001b[0m] Server %s_name% gestoppt."
    },
    "counter": {
   	"sec": "sekunden",
