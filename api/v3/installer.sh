@@ -32,6 +32,7 @@ esac
 { echo -n -e " "
 read -r ASOFT; }
 MCWARE=$(echo $ASOFT | tr '[:upper:]' '[:lower:]' | sed 's/mc//')
+mkdir -p "$DICTY"/libraries/mcsys
 if ! command -v wget $AGDEBUG; then apt-get install wget -y $AGDEBUG; fi
 cd "$DICTY" || exit 1
 wget $ARGANTIUAPI/main.sh $AGDEBUG
