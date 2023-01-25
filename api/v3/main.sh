@@ -3,14 +3,7 @@
 MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
-
-help (){
-echo "$(jq -r .tool.help ./libraries/mcsys/messages.json)"
-}
-
-
-mcstart (){
-if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && exit 1
+mcstart (){ if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && exit 1
 else echo -e "$(jq -r .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"
 fi
 if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar
@@ -53,8 +46,7 @@ fi
 exit 0
 }
 
-mcstop (){
-if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)"
+mcstop() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)"
   exit 1
 fi
 MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
@@ -89,24 +81,18 @@ if screen -list | grep -q "$MCNAME"; then
   pkill -15 -f "SCREEN -dmSL $MCNAME"
 fi
 echo -e "$(jq -r .mcstop.stopped ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"
-exit 0
-}
+exit 0 }
 
-mcrestart (){
-if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline + .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && mcstart && exit 0
+mcrestart() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline + .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && mcstart && exit 0
 else
 mcstop
 mcstart
 fi
-exit 0
-}
+exit 0 }
 
-mcdelete (){
-echo -e "$(jq -r .tool.remove ./libraries/mcsys/messages.json)"
-{
-echo -n "";
-read MCONFIRM;
-}
+mcdelete() { echo -e "$(jq -r .tool.remove ./libraries/mcsys/messages.json)"
+{ echo -n "";
+read MCONFIRM; }
 if [[ $MCONFIRM == "ja" ]] || [[ $MCONFIRM == "yes" ]]; then 
 mcstop &
 DELMC="$?" 
@@ -116,8 +102,9 @@ cd ./libraries | exit 1
 rm -r ./mcsys && echo -e "$(jq -r .tool.rm_ok ./libraries/mcsys/messages.json)" && rm -- "$0"
 else echo -e "$(jq -r .tool.rm_no ./libraries/mcsys/messages.json)"
 fi
-exit 0
-}
+exit 0 }
+
+help() { echo "$(jq -r .tool.help ./libraries/mcsys/messages.json)" }
 
 while getopts ":h" option; do
    case $option in
