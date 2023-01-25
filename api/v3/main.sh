@@ -111,6 +111,8 @@ if [[ $MCONFIRM == "ja" ]] || [[ $MCONFIRM == "yes" ]]; then
 mcstop &
 DELMC="$?" 
 wait $DELMC
+rm ./mcsys.yml && rm -r ./cache
+cd ./libraries | exit 1
 rm -r ./mcsys && echo -e "$(jq -r .tool.rm_ok ./libraries/mcsys/messages.json)" && rm -- "$0"
 else echo -e "$(jq -r .tool.rm_no ./libraries/mcsys/messages.json)"
 fi
