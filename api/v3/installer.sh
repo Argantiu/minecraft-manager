@@ -45,7 +45,7 @@ esac
 echo -n -e " "
 read -r ASOFT;
 }
-MCSOFTWARE=$(echo $ASOFT | tr '[:upper:]' '[:lower:]' | sed 's/mc//')
+MCWARE=$(echo $ASOFT | tr '[:upper:]' '[:lower:]' | sed 's/mc//')
 if ! command -v wget $AGDEBUG; then apt-get install wget -y $AGDEBUG
 fi
 cd "$DICTY" || exit 1
@@ -86,8 +86,13 @@ fi
 if ! command -v rpl $AGDEBUG; then apt-get install rpl -y $AGDEBUG
 fi
 if ! command -v yq $AGDEBUG; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq $AGDEBUG
+sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml $AGDEBUG
+sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml $AGDEBUG
 case $LANG in
 1) echo -e "$PREFIX Setup finished! \nOpen configuration..." ;;
 2) echo -e "$PREFIX Fertig mit dem Aufsetzten! \nHier kommt die Konfiguration..." ;;
 esac
-
+cd "$DICTY" || exit 1
+joe ./mcsys.yml
+###
+wget -q https://github.com/Argantiu/.github/releases/download/v3.5.0.0/mcstats.yml && rm mcstats.yml >/dev/null 2>&1
