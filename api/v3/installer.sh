@@ -67,6 +67,10 @@ wget -q $ARGANTIUAPI/software.sh
 chmod +x ./software.sh
 apt-get update -y $AGDEBUG
 apt-get upgrade -y $AGDEBUG
+apt install gnupg ca-certificates curl -y $AGDEBUG
+curl -s https://repos.azul.com/azul-repo.key | gpg --dearmor -o /usr/share/keyrings/azul.gpg $AGDEBUG
+echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" | tee /etc/apt/sources.list.d/zulu.list $AGDEBUG
+
 if ! command -v joe $AGDEBUG; then apt-get install joe -y $AGDEBUG
 fi
 if ! command -v screen $AGDEBUG; then apt-get install screen -y $AGDEBUG
@@ -87,6 +91,3 @@ case $LANG in
 2) echo -e "$PREFIX Fertig mit dem Aufsetzten! \nHier kommt die Konfiguration..." ;;
 esac
 
-apt install gnupg ca-certificates curl
-curl -s https://repos.azul.com/azul-repo.key | gpg --dearmor -o /usr/share/keyrings/azul.gpg
-echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" | tee /etc/apt/sources.list.d/zulu.list
