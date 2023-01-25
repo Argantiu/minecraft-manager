@@ -3,7 +3,7 @@
 MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 ARGANTIUAPI=https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api/v3
 AGDEBUG=&> /dev/null 2>&1
-# Ask for language Which language do you speak.
+# Ask for language: Which language do you speak.
 echo -e "\033[1;32m------------------------------------------"
 echo -e "$PREFIX Welcome to Argantiu's server management tool"
 echo -e "$PREFIX You can leave with STRG+C"
