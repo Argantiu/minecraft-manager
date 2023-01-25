@@ -1,7 +1,7 @@
 #!/bin/bash
 # Minecraft Server installer
 MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
-ARGANTIUAPI=https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api/v3/
+ARGANTIUAPI=https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api/v3
 # Ask for language Which language do you speak.
 echo -e "\033[1;32m------------------------------------------"
 echo -e "$PREFIX Welcome to Argantiu's server management tool"
@@ -50,8 +50,20 @@ echo -n -e " "
 read -r ASOFT;
 }
 MCSOFTWARE=$(echo $ASOFT | tr '[:upper:]' '[:lower:]' | sed 's/mc//')
-# Ask for server location
-# Ask for server Software
+if ! command -v wget &> /dev/null; then apt-get install wget -y >/dev/null 2>&1
+fi
+case $LANG in
+1)
+  echo -e "$PREFIX Great! System is generating the configuration now. Please wait..."
+  wget -q $ARGANTIUAPI/resources/de/mcsys.yml
+  wget -q $ARGANTIUAPI/resources/en/messages.json
+;;
+2)
+  echo -e "$PREFIX Okay! Die Konfiguration wird vorbereitet. Bitte warten..."
+  wget -q $ARGANTIUAPI/resources/de/mcsys.yml
+  wget -q $ARGANTIUAPI/resources/de/messages.json 
+;;
+esac
 # Downloading language assets
 # Downloading assets
 # Update packetloader
