@@ -8,21 +8,15 @@ if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar; fi
 if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries/mcsys/updater.sh; fi
 sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
 sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
-if [[ $(yq eval '.backup' mcsys.yml) == "true" ]]; then
- if [ -f "$MCNAME.jar" ]; then echo -e "$(jq -r .mcstart.backup.create ./libraries/mcsys/messages.json)"
-   cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
-   cd "$MCPATH" || exit 1
-   tar -pzcf ./libraries/mcsys/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
-   echo -e "$(jq -r .mcstart.backup.finish ./libraries/mcsys/messages.json)"
- fi
-fi
-if [[ $(yq eval '.proxy' mcsys.yml) == "true" ]]; then
-sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
-sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1
-else 
+if [[ $(yq eval '.backup' mcsys.yml) == "true" ]] && [ -f "$MCNAME.jar" ]; then echo -e "$(jq -r .mcstart.backup.create ./libraries/mcsys/messages.json)"
+cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
+cd "$MCPATH" || exit 1
+tar -pzcf ./libraries/mcsys/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
+echo -e "$(jq -r .mcstart.backup.finish ./libraries/mcsys/messages.json)"; fi
+if [[ $(yq eval '.proxy' mcsys.yml) == "true" ]]; then sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
+sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1; else 
 sed -i '0,;online-mode=false;online-mode=true' "$MCPATH"/server.propeties >/dev/null 2>&1
-sed -i '0,;bungeecord: true;bungeecord: false' "$MCPATH"/spigot.yml >/dev/null 2>&1
-fi
+sed -i '0,;bungeecord: true;bungeecord: false' "$MCPATH"/spigot.yml >/dev/null 2>&1; fi
 # if $LOGROTATE == true ; then ...
 [ -f screenlog.6 ] && rm screenlog.6
 [ -f screenlog.5 ] && mv screenlog.5 screenlog.6
@@ -33,7 +27,7 @@ fi
 [ -f screenlog.0 ] && mv screenlog.0 screenlog.1
 if [[ $(yq eval '.bedrock' mcsys.yml) == "true" ]]; then echo -e "$(jq -r .mcstart.bedrock ./libraries/mcsys/messages.json)"
  cd "$MCPATH"/libraries/mcsys || exit 1
- wget -q  
+ wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api/v3/bedrock.sh
  chmod +x bedrock.sh
  /bin/bash "$MCPATH"/libraries/mcsys/bedrock.sh &
  fi
@@ -42,9 +36,7 @@ fi
 exit 0
 }
 
-mcstop() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)"
-  exit 1
-fi
+mcstop() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
 MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
 if ! [[ $MCSOFTWARE == "bungeecord" ]] || [[ $MCSOFTWARE == "velocity" ]] || [[ $MCSOFTWARE == "waterfall" ]] && [[ $(yq eval '.count' mcsys.yml) == "true" ]]; then
 mkdir -p "$MCPATH"/cache/mcsys && cd "$MCPATH"/cache/mcsys || exit 1
