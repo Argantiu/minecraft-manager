@@ -7,6 +7,8 @@ BUNGEEAPI=https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootst
 WATERAPI=https://api.papermc.io/v2/projects/waterfall/versions/
 VELOAPI=https://api.papermc.io/v2/projects/velocity/versions/
 MCAPI=https://piston-data.mojang.com/v1/
+if [[ $(yq eval .debug ../../mcsys.yml) == "true" ]]; then MCDEBUG=&> /dev/null 2>&1; fi
+
 
 MCVERS=$(yq eval '.version' ./../../mcsys.yml && cut -d "." -f2)
 if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then apt install zulu17-jdk; else apt install zulu8-jdk; fi
@@ -20,7 +22,7 @@ LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | 
 wget -q "$PAPERAPI""$MCVERSION"/builds/"$LATEST"/downloads/paper-"$MCVERSION"-"$LATEST".jar -O paper-"$MCVERSION"-"$LATEST".jar
 unzip -qq -t paper-"$MAINVERSION"-"$LATEST".jar
 if [ "$?" -ne 0 ]; then 
-echo "Downloaded paper-$MAINVERSION-$LATEST.jar is corrupt. No update." | /usr/bin/logger -t "$MCNAME"
+echo "Downloaded paper-$MAINVERSION-$LATEST.jar is corrupt. No update." 
 else 
 diff -q paper-"$MAINVERSION"-"$LATEST".jar "$MTPATH"/"$MCNAME".jar >/dev/null 2>&1
  if [ "$?" -eq 1 ]; then 
