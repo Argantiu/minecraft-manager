@@ -11,10 +11,8 @@ MCAPI=https://piston-data.mojang.com/v1/
 MCVERS=$(yq eval '.version' ./../../mcsys.yml && cut -d "." -f2)
 if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then apt install zulu17-jdk; else apt install zulu8-jdk; fi
 
-mcbase() {
-cd "$MCPATH"/libraries/mcsys/saves || exit 1
-rm -f version.json
-}
+mcbase() { cd "$MCPATH"/libraries/mcsys/saves || exit 1
+rm -f version.json }
 
 paper() {
 wget -q "$PAPERAPI""$MCVERSION"/ -O version.json
