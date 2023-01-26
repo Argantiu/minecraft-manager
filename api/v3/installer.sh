@@ -35,7 +35,7 @@ MCWARE=$(echo $ASOFT | tr '[:upper:]' '[:lower:]' | sed 's/mc//')
 mkdir -p "$DICTY"/libraries/mcsys
 if ! command -v wget $AGDEBUG; then apt-get install wget -y $AGDEBUG; fi
 cd "$DICTY" || exit 1
-wget $ARGANTIUAPI/main.sh $AGDEBUG
+wget -q $ARGANTIUAPI/main.sh
 chmod +x ./main.sh
 case $LANG in
 1) echo -e "$PREFIX Great! System is generating the configuration now. Please wait..."
