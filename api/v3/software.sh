@@ -20,18 +20,17 @@ paper() {
 wget -q "$PAPERAPI""$MCVERSION"/ -O version.json
 LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ")
 wget -q "$PAPERAPI""$MCVERSION"/builds/"$LATEST"/downloads/paper-"$MCVERSION"-"$LATEST".jar -O paper-"$MCVERSION"-"$LATEST".jar
-unzip -qq -t paper-"$MAINVERSION"-"$LATEST".jar
-if [ "$?" -ne 0 ]; then 
-echo "Downloaded paper-$MAINVERSION-$LATEST.jar is corrupt. No update." 
+if [ "$(unzip -qq -t paper-"$MAINVERSION"-"$LATEST".jar)" -ne 0 ]; then 
+echo "Downloaded paper-$MAINVERSION-$LATEST.jar is corrupt. No update." $MCDEBUG
 else 
 diff -q paper-"$MAINVERSION"-"$LATEST".jar "$MTPATH"/"$MCNAME".jar >/dev/null 2>&1
  if [ "$?" -eq 1 ]; then 
   cp paper-"$MAINVERSION"-"$LATEST".jar paper-"$MAINVERSION"-"$LATEST".jar."$(date +%Y.%m.%d.%H.%M.%S)" && mv paper-"$MAINVERSION"-"$LATEST".jar "$MTPATH"/"$MCNAME".jar
-  /usr/bin/find "$MTPATH"/mcsys/saves/jar/* -type f -mtime +10 -delete 2>&1 #| /usr/bin/logger -t "$MCNAME"
-  echo "paper-$MAINVERSION-$LATEST has been updated" #| /usr/bin/logger -t "$MCNAME"
+  /usr/bin/find "$MTPATH"/mcsys/saves/jar/* -type f -mtime +10 -delete 2>&1
+  echo "paper-$MAINVERSION-$LATEST has been updated" $MCDEBUG
   rm -f version.json
  else 
-  echo "No paper-$MAINVERSION-$LATEST update neccessary" #| /usr/bin/logger -t "$MCNAME"
+  echo "No paper-$MAINVERSION-$LATEST update neccessary" $MCDEBUG
   rm paper-"$MAINVERSION"-"$LATEST".jar
   rm -f version.json
  fi
