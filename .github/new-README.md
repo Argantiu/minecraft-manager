@@ -15,25 +15,6 @@ Minecraft management scripts
     <a><b>Shell scripts to run your Mineraft server very well</b></a>
 </p>
 <h3 align="center">
-What the scripts can do
-</h3>
-<p align="center">
-<a>• Updates any supported software automatically •</a><br/>
-<a>• Can update Bedrock Edition connection plugins •</a><br/>
-<a>• Can create (lightwight) backups and save them with date •</a><br/>
-<a>• You can configure everything like you want •</a><br/>
-<a>• Install all needed things to work (except for Java) •</a><br/>
-<a>• You can set your own ram that the minecraft server should use •</a><br/>
-<a>• Userfriendly use •</a>
-</p>
-<h3 align="center">
-Why you should use it
-</h3>
-<p align="center">
-<a>If you run a Minecraft server, you probably get issues by manage them or by updating the software manually.</a><br/>
-<a>With these scripts it's probably solved.</a>
-</p>
-<h3 align="center">
 Installation
 </h3>
 <p align="center">
