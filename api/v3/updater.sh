@@ -6,6 +6,7 @@ ARGANAPI=https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api
 find / -name "mcagon" -exec rm {} \;
 
 #View for language in config
+PROXYRE=$(yq eval '.proxy' ../../mcsys.yml)
 SYSMANG=$(yq eval '.conf_version' ../../mcsys.yml | cut -d "-" tr1)
 CONFVER=$(yq eval '.conf_version' ../../mcsys.yml | cut -d "-" tr2)
 DIREC=$(yq eval '.directory' ../../mcsys.yml)
@@ -35,9 +36,11 @@ cd "$DIREC"/libraries/mcsys || exit 1
 wget -q $ARGANAPI/software.sh -O software.sh.new
 rm software.sh && mv software.sh.new software.sh
 
-# Check for if not proxy
-# Update Bedrock.sh
-# else update Bedrock.pr.sh
+#if ! [[ $PROXYRE == "true" ]]; then
+#wget -q $ARGANAPI/bedrock.sh -O bedrock.sh.new
+#rm bedrock.sh && mv bedrock.sh.new bedrock.sh
+#fi
+# else update pr bedrock
 
 # Update dependencys
 # With yq
