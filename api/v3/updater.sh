@@ -32,9 +32,8 @@ wget -q $ARGANAPI/main.sh -O main.sh.new
 rm main.sh && mv main.sh.new main.sh
 
 cd "$DIREC"/libraries/mcsys || exit 1
-
-
-# Update Software.sh
+wget -q $ARGANAPI/software.sh -O software.sh.new
+rm software.sh && mv software.sh.new software.sh
 
 # Check for if not proxy
 # Update Bedrock.sh
