@@ -42,5 +42,14 @@ rm software.sh && mv software.sh.new software.sh
 #fi
 # else update pr bedrock
 
-# Update dependencys
-# With yq
+apt-get update -y &> /dev/null 2>&1
+apt-get upgrade -y &> /dev/null 2>&1
+
+if ! command -v joe $AGDEBUG; then apt-get install joe -y $AGDEBUG; fi
+if ! command -v screen $AGDEBUG; then apt-get install screen -y $AGDEBUG; fi
+if ! command -v sudo $AGDEBUG; then apt-get install sudo -y $AGDEBUG; fi
+if ! command -v zip $AGDEBUG; then apt-get install zip -y $AGDEBUG; fi
+if ! command -v xargs $AGDEBUG; then apt-get install findutils -y $AGDEBUG; fi
+if ! command -v diff $AGDEBUG; then apt-get install diffutils -y $AGDEBUG; fi
+if ! command -v rpl $AGDEBUG; then apt-get install rpl -y $AGDEBUG; fi
+if ! command -v yq $AGDEBUG; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq $AGDEBUG; fi
