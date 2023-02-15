@@ -3,6 +3,7 @@
 MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
+MCSOFT=$(yq eval '.software' mcsys.yml)
 mcstart (){ if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && exit 1; else echo -e "$(jq -r .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"; fi
 if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar; fi
 if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries/mcsys/updater.sh; fi
@@ -32,7 +33,8 @@ if [[ $(yq eval '.bedrock' mcsys.yml) == "true" ]]; then echo -e "$(jq -r .mcsta
  /bin/bash "$MCPATH"/libraries/mcsys/bedrock.sh &
  fi
 fi
-/bin/bash "$MCPATH"/libraries/mcsys/software.sh &
+/bin/bash "$MCPATH"/libraries/mcsys/software.sh $MCSOFT &
+wait for $!
 exit 0
 }
 
