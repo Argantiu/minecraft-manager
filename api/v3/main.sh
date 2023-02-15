@@ -38,7 +38,7 @@ wait for $!
 exit 0
 }
 
-mcstop() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
+mcstop (){ if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
 MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
 if ! [[ $MCSOFTWARE == "bungeecord" ]] || [[ $MCSOFTWARE == "velocity" ]] || [[ $MCSOFTWARE == "waterfall" ]] && [[ $(yq eval '.count' mcsys.yml) == "true" ]]; then
 mkdir -p "$MCPATH"/cache/mcsys && cd "$MCPATH"/cache/mcsys || exit 1
