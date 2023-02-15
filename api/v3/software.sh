@@ -43,28 +43,4 @@ fi
 rm -f version.json
 exit 0
 }
-
-#purpur() {
-#}
-
-
-
-
-
-
-#velocity() {
-#}
-#waterfall() {
-#}
-#bungeecord() {
-#}
-# Default Minecraft
-#minecraft() {
-#}
-#bukkit() {
-#}
-#spigot() {
-#}
-# Modded Server
-#mohist() {
-#}
+#purpur() velocity() waterfall() bungeecord() minecraft() bukkit() spigot() mohist()
