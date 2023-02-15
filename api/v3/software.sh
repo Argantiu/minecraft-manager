@@ -44,27 +44,27 @@ rm -f version.json
 exit 0
 }
 
-purpur() {
-}
+#purpur() {
+#}
 
 
 
 
 
 
-velocity() {
-}
-waterfall() {
-}
-bungeecord() {
-}
+#velocity() {
+#}
+#waterfall() {
+#}
+#bungeecord() {
+#}
 # Default Minecraft
-minecraft() {
-}
-bukkit() {
-}
-spigot() {
-}
+#minecraft() {
+#}
+#bukkit() {
+#}
+#spigot() {
+#}
 # Modded Server
-mohist() {
-}
+#mohist() {
+#}
