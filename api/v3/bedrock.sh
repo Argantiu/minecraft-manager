@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#
 
 mcbedrock() {
 mkdir -p "$MTPATH"/mcsys/floodgate
