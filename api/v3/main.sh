@@ -4,7 +4,7 @@ MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
 MCNAME=$(yq eval '.name' mcsys.yml)
 MCPATH=$(yq eval '.directory' mcsys.yml && sed 's/\/$//')
 MCSOFT=$(yq eval '.software' mcsys.yml)
-mcstart (){ if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && exit 1; else echo -e "$(jq -r .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"; fi
+mcstart() { if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && exit 1; else echo -e "$(jq -r .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"; fi
 if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar; fi
 if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries/mcsys/updater.sh; fi
 sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
@@ -38,7 +38,7 @@ wait for $!
 exit 0
 }
 
-mcstop (){ if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
+mcstop() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
 MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
 if ! [[ $MCSOFTWARE == "bungeecord" ]] || [[ $MCSOFTWARE == "velocity" ]] || [[ $MCSOFTWARE == "waterfall" ]] && [[ $(yq eval '.count' mcsys.yml) == "true" ]]; then
 mkdir -p "$MCPATH"/cache/mcsys && cd "$MCPATH"/cache/mcsys || exit 1
