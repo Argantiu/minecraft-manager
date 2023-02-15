@@ -45,6 +45,10 @@ rm software.sh && mv software.sh.new software.sh
 apt-get update -y &> /dev/null 2>&1
 apt-get upgrade -y &> /dev/null 2>&1
 
+apt install gnupg ca-certificates curl -y > /dev/null $1>$2
+curl -s https://repos.azul.com/azul-repo.key | gpg --dearmor -o /usr/share/keyrings/azul.gpg > /dev/null $1>$2
+echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" | tee /etc/apt/sources.list.d/zulu.list > /dev/null $1>$2
+
 if ! command -v joe $AGDEBUG; then apt-get install joe -y $AGDEBUG; fi
 if ! command -v screen $AGDEBUG; then apt-get install screen -y $AGDEBUG; fi
 if ! command -v sudo $AGDEBUG; then apt-get install sudo -y $AGDEBUG; fi
