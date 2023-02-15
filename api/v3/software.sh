@@ -17,8 +17,9 @@ if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then apt install zulu17-jdk; 
 
 
 
-mcbase() { cd "$MCPATH"/libraries/mcsys/saves || exit 1
-rm -f version.json }
+mcbase() { cd "$MCPATH"/libraries/mcsys/saves || exit 1 
+rm -f version.json 
+}
 
 paper() { 
 mcbase && wget -q "$PAPERAPI""$MCVERSION"/ -O version.json
