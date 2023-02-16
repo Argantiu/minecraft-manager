@@ -7,7 +7,7 @@ if [ ! "$ASOFTWARE" = "modded/mohist.sh" ]; then
  fi
  cd "$MTPATH"/mcsys/floodgate || exit 1
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/spigot/target/floodgate-spigot.jar -O floodgate-spigot.jar
- if[ "$(unzip -qq -t floodgate-spigot.jar)" -ne 0 ]; then
+ if [ "$(unzip -qq -t floodgate-spigot.jar)" -ne 0 ]; then
   echo "Downloaded floodgate default is corrupt. No update." | /usr/bin/logger -t "$MCNAME"
  else
   diff -q floodgate-spigot.jar "$MTPATH"/plugins/floodgate-spigot.jar >/dev/null 2>&1
