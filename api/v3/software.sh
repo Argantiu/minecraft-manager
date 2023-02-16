@@ -1,25 +1,21 @@
 #!/bin/bash
 PMC=https://api.papermc.io/v2
 PAPERAPI="$PMC"/projects/paper/versions/
-PURPURAPI="$PMC"/purpur/
-SPIBUKAPI=https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
-MOHISTAPI=https://mohistmc.com/api/
-BUNGEEAPI=https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
-WATERAPI="$PMC"/projects/waterfall/versions/
-VELOAPI="$PMC"/projects/velocity/versions/
-MCAPI=https://piston-data.mojang.com/v1/
+#PURPURAPI="$PMC"/purpur/
+#SPIBUKAPI=https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
+#MOHISTAPI=https://mohistmc.com/api/
+#BUNGEEAPI=https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
+#WATERAPI="$PMC"/projects/waterfall/versions/
+#VELOAPI="$PMC"/projects/velocity/versions/
+#MCAPI=https://piston-data.mojang.com/v1/
 MCVERSION=$(yq eval '.version' ./../../mcsys.yml)
 
-if [[ $(yq eval .debug ../../mcsys.yml) == "true" ]]; then MCDEBUG=&> /dev/null 2>&1; fi
+#if [[ $(yq eval .debug ../../mcsys.yml) == "true" ]]; then MCDEBUG=&> /dev/null 2>&1; fi
 
 MCVERS=$($MCVERSION && cut -d "." -f2)
 if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then apt install zulu17-jdk; else apt install zulu8-jdk; fi
 
-
-
-mcbase() { cd "$MCPATH"/libraries/mcsys/saves || exit 1 
-rm -f version.json 
-}
+mcbase() { cd "$MCPATH"/libraries/mcsys/saves && rm -f version.json || exit 1; }
 
 paper() { 
 mcbase && wget -q "$PAPERAPI""$MCVERSION"/ -O version.json
