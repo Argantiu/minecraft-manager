@@ -1,4 +1,4 @@
-#
+#!/bin/bash
 
 mcbedrock() {
 mkdir -p "$MTPATH"/mcsys/floodgate
@@ -7,8 +7,7 @@ if [ ! "$ASOFTWARE" = "modded/mohist.sh" ]; then
  fi
  cd "$MTPATH"/mcsys/floodgate || exit 1
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Floodgate/job/master/lastSuccessfulBuild/artifact/spigot/target/floodgate-spigot.jar -O floodgate-spigot.jar
- unzip -qq -t floodgate-spigot.jar
- if [ "$?" -ne 0 ]; then
+ if[ "$(unzip -qq -t floodgate-spigot.jar)" -ne 0 ]; then
   echo "Downloaded floodgate default is corrupt. No update." | /usr/bin/logger -t "$MCNAME"
  else
   diff -q floodgate-spigot.jar "$MTPATH"/plugins/floodgate-spigot.jar >/dev/null 2>&1
@@ -32,8 +31,7 @@ if [[ ! $ASOFTWARE == "modded/mohist.sh" ]] && [[ ! $PROXYMO == "true" ]] || [[ 
  fi
  cd "$MTPATH"/mcsys/geyser || exit 1
  wget -q https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/spigot/target/Geyser-Spigot.jar -O Geyser-Spigot.jar
- unzip -qq -t Geyser-Spigot.jar
- if [ "$?" -ne 0 ]; then
+ if [ "$(unzip -qq -t Geyser-Spigot.jar)" -ne 0 ]; then
   echo "Downloaded Geyser Default is corrupt. No update." | /usr/bin/logger -t "$MCNAME"
  else
   diff -q Geyser-Spigot.jar "$LPATH"/plugins/Geyser-Spigot.jar >/dev/null 2>&1
