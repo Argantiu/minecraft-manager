@@ -1,0 +1,6 @@
+---
+engines:
+  rubocop:
+    exclude_paths:
+      - ".github/README.md"
+      - ".github/old-README.md"
