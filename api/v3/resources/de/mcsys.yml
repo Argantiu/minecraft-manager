@@ -4,10 +4,10 @@ debug: false
 
 # Welchen Namen soll dein system haben? 
 # Nutze nur kleinbuchstaben
-name: myserver
+name: mymcserver
 
 # In diesen Ordner(n) befinndet sich dein Server.
-directory: installarg1
+directory: /opt/myserver
 
 # Welche Minecraft Version willst du haben?
 version: 1.19.3
