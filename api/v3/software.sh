@@ -10,6 +10,8 @@ PAPERAPI="$PMC"/projects/paper/versions/
 #MCAPI=https://piston-data.mojang.com/v1/
 MCVERSION=$(yq eval '.version' ./../../mcsys.yml)
 RAM=$(yq eval '.ram' ./../../mcsys.yml)
+MCNAME=$(yq eval '.name' ./../../mcsys.yml)
+MCPATH=$(yq eval '.directory' ./../../mcsys.yml)
 #if [[ $(yq eval .debug ../../mcsys.yml) == "true" ]]; then MCDEBUG=&> /dev/null 2>&1; fi
 
 MCVERS=$($MCVERSION && cut -d "." -f2)
