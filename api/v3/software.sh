@@ -27,7 +27,7 @@ wget -q "$PAPERAPI""$MCVERSION"/builds/"$LATEST"/downloads/paper-"$MCVERSION"-"$
 if [ "$(unzip -qq -t paper-"$MCVERSION"-"$LATEST".jar)" -ne 0 ]; then 
 echo "Downloaded paper-$MCVERSION-$LATEST.jar is corrupt. No update."
 else 
-diff -q paper-"$MCVERSION"-"$LATEST".jar "$MTPATH"/"$MCNAME".jar >/dev/null 2>&1
+diff -q paper-"$MCVERSION"-"$LATEST".jar "$MCPATH"/"$MCNAME".jar >/dev/null 2>&1
  
  if [ "$?" -eq 1 ]; then 
    cp paper-"$MCVERSION"-"$LATEST".jar paper-"$MCVERSION"-"$LATEST".jar."$(date +%Y.%m.%d.%H.%M.%S)" 
