@@ -31,7 +31,7 @@ diff -q paper-"$MCVERSION"-"$LATEST".jar "$MCPATH"/"$MCNAME".jar >/dev/null 2>&1
  
  if [ "$?" -eq 1 ]; then 
    cp paper-"$MCVERSION"-"$LATEST".jar paper-"$MCVERSION"-"$LATEST".jar."$(date +%Y.%m.%d.%H.%M.%S)" 
-   mv paper-"$MAINVERSION"-"$LATEST".jar "$MTPATH"/"$MCNAME".jar
+   mv paper-"$MAINVERSION"-"$LATEST".jar "$MCPATH"/"$MCNAME".jar
   /usr/bin/find "$MCPATH"/libraries/mcsys/saves/jar/* -type f -mtime +10 -delete 2>&1
   echo "paper-$MCVERSION-$LATEST has been updated"
   else 
