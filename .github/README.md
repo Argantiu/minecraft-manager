@@ -18,10 +18,10 @@ Minecraft management scripts
 Installation
 </h3>
 <p align="center">
-    <a>You can paste this anywhere on your distribution:</a>
+    <a>You can paste this anywhere on your debian/ubuntu distribution:</a>
 </p>
 
-```bash
+```
 wget -q https://0cn.de/ll -O mcagon && chmod +x mcagon && ./mcagon
 ```  
 
