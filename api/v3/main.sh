@@ -111,13 +111,4 @@ case "$1" in
 4|'delete') mcdelete ;;
 *) echo "Error: Invalid option" && help && exit ;;
 esac
-
-#while getopts ":1:2:3:4" option; do
-#   case $option in
-#     1) mcstart;;
-#     2) mcstop;;
-  #   3) mcresart;;
-  #   4) mcdelete;;
-  #   \?) 
-  # esac
-#done
+done
