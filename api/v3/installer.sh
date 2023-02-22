@@ -17,9 +17,10 @@ case $MCLANG in
 2) echo -e "$MCPREFIX Willst du dir den instalationsprozess ansehen?\n $MCPREFIX Bitte schreibe true oder false." ;;
 *) echo "Please select a language! " && exit 1 ;;
 esac
-{ echo -n -e " "; read -r MCDEB; }
-if [[ $MCDEB == "true" ]]; then MCDEBUG=>/dev/null 2>&1
-else MCDEBUG=
+{ echo -n -e " "; read -r MCDEBACC; }
+if [[ $MCDEBACC == "true" ]]; then 
+MCDEB=">/dev/null 2>&1"
+MCDEBUG=$(echo "$MCDEB" | tr -d '"')
 fi
 case $MCLANG in
 1) echo -e "$MCPREFIX Where is your server directory located?"
