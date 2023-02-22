@@ -71,8 +71,11 @@ if ! command -v xargs $MCDEBUG; then apt-get install findutils -y $MCDEBUG; fi
 if ! command -v diff $MCDEBUG; then apt-get install diffutils -y $MCDEBUG; fi
 if ! command -v rpl $MCDEBUG; then apt-get install rpl -y $MCDEBUG; fi
 if ! command -v yq $MCDEBUG; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
-sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml 
-sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml 
+sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml $MCDEBUG
+sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml $MCDEBUG
+cd ~/root/.bashrc || exit 1
+
+
 case $LANG in
 1) echo -e "$MCPREFIX Setup finished! \nOpen configuration..." ;;
 2) echo -e "$MCPREFIX Fertig mit dem Aufsetzten! \nHier kommt die Konfiguration..." ;;
