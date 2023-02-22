@@ -13,8 +13,8 @@ echo -e "$MCPREFIX 1 = English (English)"
 echo -e "$MCPREFIX 2 = Deutsch (German)"
 { echo -n -e "$MCPREFIX Please type a number and hit enter:"; echo -n -e " "; read -r MCLANG; }
 case $MCLANG in
-1) echo -e "$MCPREFIX Do you want to view the install process?\n $MCPREFIX Please type true or false."
-2) echo -e "$MCPREFIX Willst du dir den instalationsprozess ansehen?\n $MCPREFIX Bitte schreibe true oder false."
+1) echo -e "$MCPREFIX Do you want to view the install process?\n $MCPREFIX Please type true or false." ;;
+2) echo -e "$MCPREFIX Willst du dir den instalationsprozess ansehen?\n $MCPREFIX Bitte schreibe true oder false." ;;
 *) echo "Please select a language! " && exit 1 ;;
 { echo -n -e " "; read -r MCDEB; }
 if [[ $MCDEB == "true" ]]; then MCDEBUG=>/dev/null 2>&1
