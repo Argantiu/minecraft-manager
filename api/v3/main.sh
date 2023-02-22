@@ -97,12 +97,20 @@ exit 0 ;}
 
 help() { jq -r .tool.help ./libraries/mcsys/messages.json;}
 
-while getopts ":1:2:3:4" option; do
-   case $option in
-     1) mcstart;;
-     2) mcstop;;
-     3) mcresart;;
-     4) mcdelete;;
-     \?) echo "Error: Invalid option" && help && exit;;
-   esac
-done
+case "$1" in
+1|'start') mcstart ;;
+2|'stop') mcstop ;;
+3|'restart') mcstop ;;
+4|'delete') mcdelete ;;
+*) echo "Error: Invalid option" && help && exit ;;
+esac
+
+#while getopts ":1:2:3:4" option; do
+#   case $option in
+#     1) mcstart;;
+#     2) mcstop;;
+  #   3) mcresart;;
+  #   4) mcdelete;;
+  #   \?) 
+  # esac
+#done
