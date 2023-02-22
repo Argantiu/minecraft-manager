@@ -97,7 +97,7 @@ exit 0 ;}
 
 help() { jq -r .tool.help ./libraries/mcsys/messages.json;}
 
-while getopts "1:2:3:4" option; do
+while getopts ":1:2:3:4" option; do
    case $option in
      1) mcstart;;
      2) mcstop;;
