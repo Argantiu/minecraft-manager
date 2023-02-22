@@ -40,7 +40,7 @@ mcstart() {
         /bin/bash "$MCPATH"/libraries/mcsys/bedrock.sh &
         fi
         cd "$MCPATH" || exit 1
-        rm *~
+        rm mcsys.yml~
         /bin/bash "$MCPATH"/libraries/mcsys/software.sh "$MCSOFT" &
         wait for $!
         exit 0 ;}
