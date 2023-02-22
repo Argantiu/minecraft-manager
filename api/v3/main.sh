@@ -111,4 +111,3 @@ case "$1" in
 4|'delete') mcdelete ;;
 *) echo "Error: Invalid option" && help && exit ;;
 esac
-done
