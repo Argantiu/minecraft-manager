@@ -58,21 +58,21 @@ case $MCLANG in
 esac
 wget -q $ARGANTIUAPI/software.sh
 chmod +x ./software.sh
-#apt-get -q update -y "$MCDEBUG" 
-#apt-get -q upgrade -y "$MCDEBUG"
-apt install gnupg ca-certificates curl -y "$MCDEBUG"
-curl -s https://repos.azul.com/azul-repo.key "$MCDEBUG" | gpg --dearmor -o /usr/share/keyrings/azul.gpg "$MCDEBUG"
-echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" "$MCDEBUG" | tee /etc/apt/sources.list.d/zulu.list "$MCDEBUG"
-if ! command -v joe "$MCDEBUG"; then apt-get install joe -y "$MCDEBUG"; fi
-if ! command -v screen "$MCDEBUG"; then apt-get install screen -y "$MCDEBUG"; fi
-if ! command -v sudo "$MCDEBUG"; then apt-get install sudo -y ; fi
-if ! command -v zip "$MCDEBUG"; then apt-get install zip -y "$MCDEBUG"; fi
-if ! command -v xargs "$MCDEBUG"; then apt-get install findutils -y "$MCDEBUG"; fi
-if ! command -v diff "$MCDEBUG"; then apt-get install diffutils -y "$MCDEBUG"; fi
-if ! command -v rpl "$MCDEBUG"; then apt-get install rpl -y "$MCDEBUG"; fi
-if ! command -v yq "$MCDEBUG"; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
-sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml "$MCDEBUG"
-sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml "$MCDEBUG"
+apt-get -q update -y $MCDEBUG
+apt-get -q upgrade -y $MCDEBUG
+apt install gnupg ca-certificates curl -y $MCDEBUG
+curl -s https://repos.azul.com/azul-repo.key $MCDEBUG | gpg --dearmor -o /usr/share/keyrings/azul.gpg $MCDEBUG
+echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" $MCDEBUG | tee /etc/apt/sources.list.d/zulu.list $MCDEBUG
+if ! command -v joe $MCDEBUG; then apt-get install joe -y $MCDEBUG; fi
+if ! command -v screen $MCDEBUG; then apt-get install screen -y $MCDEBUG; fi
+if ! command -v sudo $MCDEBUG; then apt-get install sudo -y $MCDEBUG; fi
+if ! command -v zip $MCDEBUG; then apt-get install zip -y $MCDEBUG; fi
+if ! command -v xargs $MCDEBUG; then apt-get install findutils -y $MCDEBUG; fi
+if ! command -v diff $MCDEBUG; then apt-get install diffutils -y $MCDEBUG; fi
+if ! command -v rpl $MCDEBUG; then apt-get install rpl -y $MCDEBUG; fi
+if ! command -v yq $MCDEBUG; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
+sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml $MCDEBUG
+sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml $MCDEBUG
 #cd ~/root || exit 1
 #printf "# Minecraft Manager System\nalias mcsys='/bin/bash ~/mcsys_terminal.sh'" >> .bashrc
 #cd / || exit 1
