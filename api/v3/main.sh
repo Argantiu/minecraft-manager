@@ -1,9 +1,10 @@
 #!/bin/bash
 # This is the brand new Minecraft server manager build by CrazyCloudCraft.de
 #MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
-MCNAME=$(yq eval '.name' mcsys.yml)
-MCPATH=$(yq eval '.directory' mcsys.yml | sed 's/\/$//')
-MCSOFT=$(yq eval '.software' mcsys.yml)
+THISDIR=$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
+MCNAME=$(yq eval '.name' "$THISDIR"mcsys.yml)
+MCPATH=$(yq eval '.directory' "$THISDIR"mcsys.yml | sed 's/\/$//')
+MCSOFT=$(yq eval '.software' "$THISDIR"mcsys.yml)
 
 mcstart() { 
         cd "$MCPATH" || exit 1
