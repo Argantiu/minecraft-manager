@@ -73,10 +73,10 @@ if ! command -v rpl "$MCDEBUG"; then apt-get install rpl -y "$MCDEBUG"; fi
 if ! command -v yq "$MCDEBUG"; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
 sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml "$MCDEBUG"
 sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml "$MCDEBUG"
-cd ~/root || exit 1
-printf "# Minecraft Manager System\nalias mcsys='/bin/bash ~/mcsys_terminal.sh'" >> .bashrc
-cd / || exit 1
-if [ ! -f ./mcsys_terminal.sh ]; then wget -q $ARGANTIUAPI/terminal.sh -O mcsys_terminal.sh; fi 
+#cd ~/root || exit 1
+#printf "# Minecraft Manager System\nalias mcsys='/bin/bash ~/mcsys_terminal.sh'" >> .bashrc
+#cd / || exit 1
+#if [ ! -f ./mcsys_terminal.sh ]; then wget -q $ARGANTIUAPI/terminal.sh -O mcsys_terminal.sh; fi 
 case $LANG in
 1) echo -e "$MCPREFIX Setup finished! \nOpen configuration..." ;;
 2) echo -e "$MCPREFIX Fertig mit dem Aufsetzten! \nHier kommt die Konfiguration..." ;;
