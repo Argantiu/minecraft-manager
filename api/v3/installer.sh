@@ -71,6 +71,7 @@ if ! command -v xargs $MCDEBUG; then apt-get install findutils -y $MCDEBUG; fi
 if ! command -v diff $MCDEBUG; then apt-get install diffutils -y $MCDEBUG; fi
 if ! command -v rpl $MCDEBUG; then apt-get install rpl -y $MCDEBUG; fi
 if ! command -v yq $MCDEBUG; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
+if ! command -v jq $MCDEBUG; then apt-get install jq -y $MCDEBUG; fi
 sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml $MCDEBUG
 sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml $MCDEBUG
 #cd ~/root || exit 1
