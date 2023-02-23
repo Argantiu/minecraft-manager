@@ -6,6 +6,8 @@ MCPATH=$(yq eval '.directory' mcsys.yml)
 MCSOFT=$(yq eval '.software' mcsys.yml)
 
 mcstart() { 
+        cd "$MCPATH" || exit 1
+        rm -f mcsys.yml~ 
         if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && exit 1; else echo -e "$(jq -r .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"; fi
         if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar; fi
         if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries/mcsys/updater.sh; fi
@@ -14,7 +16,7 @@ mcstart() {
         diff -q updater-new.sh updater.sh >/dev/null 2>&1
         if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && chmod +x updater.sh && /bin/bash updater.sh
         fi
-        sed -i 's/false/true/g' "$MCPATH"/eula.txt >/dev/null 2>&1
+        printf "#This is the Eula of the Minecraft Server.\neula=true" >> "$MCPATH"/eula.txt >/dev/null 2>&1
         sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
         if [[ $(yq eval '.backup' mcsys.yml) == "true" ]] && [ -f "$MCNAME.jar" ]; then echo -e "$(jq -r .mcstart.backup.create ./libraries/mcsys/messages.json)"
         cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
@@ -37,12 +39,10 @@ mcstart() {
         cd "$MCPATH"/libraries/mcsys || exit 1
         wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api/v3/bedrock.sh
         chmod +x bedrock.sh
-        /bin/bash "$MCPATH"/libraries/mcsys/bedrock.sh &
+        /bin/bash "$MCPATH"/libraries/mcsys/bedrock.sh
         fi
         cd "$MCPATH" || exit 1
-        rm mcsys.yml~
-        /bin/bash "$MCPATH"/libraries/mcsys/software.sh "$MCSOFT" &
-        wait for $!
+        /bin/bash "$MCPATH"/libraries/mcsys/software.sh "$MCSOFT"
         exit 0 ;}
 
 mcstop() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
