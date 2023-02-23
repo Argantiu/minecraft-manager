@@ -46,3 +46,7 @@ screen -d -m -L -S "$MCNAME"  /bin/bash -c "/usr/bin/java -Xms$RAM -Xmx$RAM -XX:
 exit 1
 }
 #purpur() velocity() waterfall() bungeecord() minecraft() bukkit() spigot() mohist()
+
+case "$1" in
+paper) paper ;;
+esac
