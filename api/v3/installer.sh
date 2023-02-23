@@ -58,8 +58,8 @@ case $MCLANG in
 esac
 wget -q $ARGANTIUAPI/software.sh
 chmod +x ./software.sh
-apt-get -q update -y "$MCDEBUG" 
-apt-get -q upgrade -y "$MCDEBUG"
+#apt-get -q update -y "$MCDEBUG" 
+#apt-get -q upgrade -y "$MCDEBUG"
 apt install gnupg ca-certificates curl -y "$MCDEBUG"
 curl -s https://repos.azul.com/azul-repo.key "$MCDEBUG" | gpg --dearmor -o /usr/share/keyrings/azul.gpg "$MCDEBUG"
 echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" "$MCDEBUG" | tee /etc/apt/sources.list.d/zulu.list "$MCDEBUG"
