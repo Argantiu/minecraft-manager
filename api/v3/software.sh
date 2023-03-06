@@ -14,6 +14,16 @@ MCNAME=$(yq eval '.name' ./../../mcsys.yml)
 MCPATH=$(yq eval '.directory' ./../../mcsys.yml)
 #if [[ $(yq eval .debug ../../mcsys.yml) == "true" ]]; then MCDEBUG=&> /dev/null 2>&1; fi
 
+# 1. Selection software
+# 2. Download and prepare
+# 3. Select start Arguments
+
+function mcpaper() {
+cd "$MCPATH"/libraries/mcsys/saves && rm -f version.json || exit 1
+LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ")
+}
+
+
 MCVERS=$($MCVERSION && cut -d "." -f2)
 if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then apt install zulu17-jdk; else apt install zulu8-jdk; fi
 
