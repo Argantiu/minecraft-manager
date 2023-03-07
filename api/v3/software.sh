@@ -19,6 +19,12 @@ PURPURAPI="$PMC"/purpur/
 # 1. Selection software
 # 2. Download and prepare
 # 3. Select start Arguments
+# 1 = Paper + PurPur 
+# 2 = Spigot + Bukkit 
+# 3 = Velocy + Waterfall
+# 4 = Bungeecord
+# 5 = Mohist + Magma
+# 6 = Minecraft
 
 function mcpaper() {
 if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then 
@@ -29,13 +35,13 @@ fi
 
 cd "$MCPATH"/libraries/mcsys/saves && rm -f version.json || exit 1
 
-if [[ $SOFTTYPE == "1" ]]; then wget -q "$APILINK""$MCVERSION"/ -O version.json
+if [[ $SOFTTYPE == "1" ]] || [[ $SOFTTYPE == "3" ]]; then wget -q "$APILINK""$MCVERSION"/ -O version.json
 LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ") ; fi
 
 }
 
 
-
+deniedaction() {
 wget -q https://mohistmc.com/api/"$MAINVERSION"/latest/download -O mohist-"$MAINVERSION"-"$DATE".jar
 unzip -qq -t  mohist-"$MAINVERSION"-"$DATE".jar
 if [ "$?" -ne 0 ]; then
@@ -52,8 +58,14 @@ else
   rm mohist-"$MAINVERSION"-"$DATE".jar
  fi
 fi
-
-
+}
+mcserverstart() {
+cd "$MCPATH" || exit 1
+echo "Starting $MCPATH/$MCNAME.jar" | /usr/bin/logger -t "$MCNAME"
+if [[ $SOFTTYPE == 1 ]]; then
+screen -d -m -L -S "$MCNAME"  /bin/bash -c "$JAVABIN -Xms$RAM -Xmx$RAM -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true --add-modules=jdk.incubator.vector -jar $MCNAME.jar nogui"
+exit 1
+}
 
 
 
@@ -108,10 +120,6 @@ else
  fi
 fi
 # Starting server
-cd "$MTPATH" || exit 1
-echo "Starting $MTPATH/$MCNAME.jar" | /usr/bin/logger -t "$MCNAME"
-screen -d -m -L -S "$MCNAME"  /bin/bash -c "$JAVABIN -Xms$RAM -Xmx$RAM -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true --add-modules=jdk.incubator.vector -jar $MCNAME.jar nogui"
-exit 1
 }
 
 case "$1" in
