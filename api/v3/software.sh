@@ -27,8 +27,7 @@ PURPURAPI="$PMC"/purpur/
 # 6 = Minecraft
 
 function mclinkapi() {
-if [[ 
-wget -q $()
+wget -q $(grep )
 }
 
 
