@@ -26,7 +26,14 @@ PURPURAPI="$PMC"/purpur/
 # 5 = Mohist + Magma
 # 6 = Minecraft
 
-function mcpaper() {
+function mclinkapi() {
+if [[ 
+wget -q $()
+}
+
+
+
+function mcloadbase() {
 if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then 
 apt install zulu17-jdk
 else 
@@ -37,7 +44,7 @@ cd "$MCPATH"/libraries/mcsys/saves && rm -f version.json || exit 1
 
 if [[ $SOFTTYPE == "1" ]] || [[ $SOFTTYPE == "3" ]]; then wget -q "$APILINK""$MCVERSION"/ -O version.json
 LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ") ; fi
-
+mclinkapi
 }
 
 
