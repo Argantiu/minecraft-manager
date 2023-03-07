@@ -1,4 +1,12 @@
 #!/bin/bash
+MCVERSION=$(yq eval '.version' ./../../mcsys.yml)
+RAM=$(yq eval '.ram' ./../../mcsys.yml)
+MCNAME=$(yq eval '.name' ./../../mcsys.yml)
+MCPATH=$(yq eval '.directory' ./../../mcsys.yml)
+MCVERS=$($MCVERSION && cut -d "." -f2)
+DATE=$(date +%Y.%m.%d.%H.%M.%S)
+#if [[ $(yq eval .debug ../../mcsys.yml) == "true" ]]; then MCDEBUG=&> /dev/null 2>&1; fi
+
 PMC=https://api.papermc.io/v2
 PAPERAPI="$PMC"/projects/paper/versions/
 PURPURAPI="$PMC"/purpur/
@@ -8,26 +16,47 @@ PURPURAPI="$PMC"/purpur/
 #WATERAPI="$PMC"/projects/waterfall/versions/
 #VELOAPI="$PMC"/projects/velocity/versions/
 #MCAPI=https://piston-data.mojang.com/v1/
-MCVERSION=$(yq eval '.version' ./../../mcsys.yml)
-RAM=$(yq eval '.ram' ./../../mcsys.yml)
-MCNAME=$(yq eval '.name' ./../../mcsys.yml)
-MCPATH=$(yq eval '.directory' ./../../mcsys.yml)
-#if [[ $(yq eval .debug ../../mcsys.yml) == "true" ]]; then MCDEBUG=&> /dev/null 2>&1; fi
-
 # 1. Selection software
 # 2. Download and prepare
 # 3. Select start Arguments
 
 function mcpaper() {
+if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then 
+apt install zulu17-jdk
+else 
+apt install zulu8-jdk
+fi
+
 cd "$MCPATH"/libraries/mcsys/saves && rm -f version.json || exit 1
-LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ")
+
+if [[ $SOFTTYPE == "1" ]]; then wget -q "$APILINK""$MCVERSION"/ -O version.json
+LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ") ; fi
+
 }
 
 
-MCVERS=$($MCVERSION && cut -d "." -f2)
-if [[ $MCVERS == "19" ]] || [[ $MCVERS == "18" ]]; then apt install zulu17-jdk; else apt install zulu8-jdk; fi
 
-mcbase() { cd "$MCPATH"/libraries/mcsys/saves && rm -f version.json || exit 1; }
+wget -q https://mohistmc.com/api/"$MAINVERSION"/latest/download -O mohist-"$MAINVERSION"-"$DATE".jar
+unzip -qq -t  mohist-"$MAINVERSION"-"$DATE".jar
+if [ "$?" -ne 0 ]; then
+ echo "Downloaded mohist-$MAINVERSION-$DATE.jar is corrupt. No update." | /usr/bin/logger -t "$MCNAME"
+else
+ diff -q mohist-"$MAINVERSION"-"$DATE".jar "$MTPATH"/"$MCNAME".jar >/dev/null 2>&1
+ if [ "$?" -eq 1 ]; then
+  cp mohist-"$MAINVERSION"-"$DATE".jar  mohist-"$MAINVERSION"-"$DATE".jar.backup
+  mv mohist-"$MAINVERSION"-"$DATE".jar "$MTPATH"/"$MCNAME".jar
+  /usr/bin/find "$MTPATH"/mcsys/saves/jar/* -type f -mtime +10 -delete 2>&1 | /usr/bin/logger -t "$MCNAME"
+  echo "mohist-$MAINVERSION-$DATE.jar has been updated" | /usr/bin/logger -t "$MCNAME"
+ else
+  echo "No mohist-$MAINVERSION-$DATE.jar update neccessary" | /usr/bin/logger -t "$MCNAME"
+  rm mohist-"$MAINVERSION"-"$DATE".jar
+ fi
+fi
+
+
+
+
+
 
 paper() { 
 mcbase && wget -q "$PAPERAPI""$MCVERSION"/ -O version.json
