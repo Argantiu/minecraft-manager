@@ -11,16 +11,15 @@ echo -e "$MCPREFIX First, please select your language:"
 echo -e "$MCPREFIX 1 = English (English)"
 echo -e "$MCPREFIX 2 = Deutsch (German)"
 { echo -n -e "$MCPREFIX Please type a number and hit enter:"; echo -n -e " "; read -r MCLANG; }
-case $MCLANG in
-1) echo -e "$MCPREFIX Do you want to view the install process?\n $MCPREFIX Please type true or false." ;;
-2) echo -e "$MCPREFIX Willst du dir den instalationsprozess ansehen?\n $MCPREFIX Bitte schreibe true oder false." ;;
-*) echo "Please select a language! " && exit 1 ;;
-esac
-{ echo -n -e " "; read -r MCDEBACC; }
-if [[ $MCDEBACC == "true" ]]; then 
-MCDEB=">/dev/null 2>&1"
-MCDEBUG=$(echo "$MCDEB" | tr -d '"')
-fi
+#case $MCLANG in
+#1) echo -e "$MCPREFIX Do you want to view the install process?\n$MCPREFIX Please type true or false: " ;;
+#2) echo -e "$MCPREFIX Willst du dir den Instalationsprozess ansehen?\n$MCPREFIX Bitte schreibe true oder false: " ;;
+#*) echo "Please select a language! " && exit 1 ;;
+#esac
+#{ read -r MCDEBACC; }
+#if [[ $MCDEBACC == "true" ]]; then
+#MCDEBUG=$(exec >/dev/null 2>&1)
+#fi
 case $MCLANG in
 1) echo -e "$MCPREFIX Where is your server directory located?"
  echo -e "$MCPREFIX e.g. /opt/paper or /home/myserver/server"
@@ -28,6 +27,7 @@ case $MCLANG in
 2) echo -e "$MCPREFIX Wo ist oder soll dein Serverordner sich befinnden?"
  echo -e "$MCPREFIX z.b. /opt/paper oder /home/meinserver/server"
  echo -e "$MCPREFIX Und wo ist oder soll der Ordner sein:" ;;
+*) echo "Please select a language! " && exit 1 ;;
 esac
 { echo -n -e " "; read -r DCI; }
 DICTY=$(echo "$DCI" | sed 's/\/$//')
@@ -41,42 +41,46 @@ esac
 read -r ASOFT; }
 MCWARE=$(echo "$ASOFT" | tr '[:upper:]' '[:lower:]' | sed 's/mc//')
 mkdir -p "$DICTY"/libraries/mcsys
-if ! command -v wget $MCDEBUG; then apt-get install wget -y $MCDEBUG; fi
+if ! command -v wget >/dev/null 2>&1; then apt-get install wget -y >/dev/null 2>&1; fi
 cd "$DICTY" || exit 1
-wget -q $ARGANTIUAPI/main.sh
+wget -q "$ARGANTIUAPI"/main.sh
 chmod +x ./main.sh
 case $MCLANG in
 1) echo -e "$MCPREFIX Great! System is generating the configuration now. Please wait..."
-  wget -q $ARGANTIUAPI/resources/de/mcsys.yml
+  wget -q "$ARGANTIUAPI"/resources/de/mcsys.yml
   cd "$DICTY"/libraries/mcsys || exit 1
-  wget -q $ARGANTIUAPI/resources/en/messages.json ;;
+  wget -q "$ARGANTIUAPI"/resources/en/messages.json ;;
 2) echo -e "$MCPREFIX Okay! Die Konfiguration wird vorbereitet. Bitte warten..."
   wget -q $ARGANTIUAPI/resources/de/mcsys.yml
   cd "$DICTY"/libraries/mcsys || exit 1
-  wget -q $ARGANTIUAPI/resources/de/messages.json ;;
+  wget -q "$ARGANTIUAPI"/resources/de/messages.json ;;
 esac
-wget -q $ARGANTIUAPI/software.sh
+wget -q "$ARGANTIUAPI"/software.sh
 chmod +x ./software.sh
-apt-get -q update -y $MCDEBUG
-apt-get -q upgrade -y $MCDEBUG
-apt install gnupg ca-certificates curl -y $MCDEBUG
-curl -s https://repos.azul.com/azul-repo.key $MCDEBUG | gpg --dearmor -o /usr/share/keyrings/azul.gpg $MCDEBUG
-echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" $MCDEBUG | tee /etc/apt/sources.list.d/zulu.list $MCDEBUG
-if ! command -v joe $MCDEBUG; then apt-get install joe -y $MCDEBUG; fi
-if ! command -v screen $MCDEBUG; then apt-get install screen -y $MCDEBUG; fi
-if ! command -v sudo $MCDEBUG; then apt-get install sudo -y $MCDEBUG; fi
-if ! command -v zip $MCDEBUG; then apt-get install zip -y $MCDEBUG; fi
-if ! command -v xargs $MCDEBUG; then apt-get install findutils -y $MCDEBUG; fi
-if ! command -v diff $MCDEBUG; then apt-get install diffutils -y $MCDEBUG; fi
-if ! command -v rpl $MCDEBUG; then apt-get install rpl -y $MCDEBUG; fi
-if ! command -v yq $MCDEBUG; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
-if ! command -v jq $MCDEBUG; then apt-get install jq -y $MCDEBUG; fi
-sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml $MCDEBUG
-sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml $MCDEBUG
+apt-get -q update -y >/dev/null 2>&1
+apt-get -q upgrade -y >/dev/null 2>&1
+apt install gnupg ca-certificates curl -y >/dev/null 2>&1
+case $MCLANG in
+1) echo -e "$MCPREFIX Please type just Enter if you now been ask to rename a file." ;;
+2) echo -e "$MCPREFIX Bitte gebe jetzt einfach Enter ein, wenn du nach einer Datei umbenennung gefragt wirst." ;;
+esac
+curl -s https://repos.azul.com/azul-repo.key >/dev/null 2>&1 | gpg --dearmor -o /usr/share/keyrings/azul.gpg >/dev/null 2>&1
+echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" >/dev/null 2>&1 | tee /etc/apt/sources.list.d/zulu.list >/dev/null 2>&1
+if ! command -v joe >/dev/null 2>&1; then apt-get install joe -y >/dev/null 2>&1; fi
+if ! command -v screen >/dev/null 2>&1; then apt-get install screen -y >/dev/null 2>&1; fi
+if ! command -v sudo >/dev/null 2>&1; then apt-get install sudo -y >/dev/null 2>&1; fi
+if ! command -v zip >/dev/null 2>&1; then apt-get install zip -y >/dev/null 2>&1; fi
+if ! command -v xargs >/dev/null 2>&1; then apt-get install findutils -y >/dev/null 2>&1; fi
+if ! command -v diff >/dev/null 2>&1; then apt-get install diffutils -y >/dev/null 2>&1; fi
+if ! command -v rpl >/dev/null 2>&1; then apt-get install rpl -y >/dev/null 2>&1; fi
+if ! command -v yq >/dev/null 2>&1; then wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq; fi
+if ! command -v jq >/dev/null 2>&1; then apt-get install jq -y >/dev/null 2>&1; fi
+sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml >/dev/null 2>&1
+sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml >/dev/null 2>&1
 #cd ~/root || exit 1
 #printf "# Minecraft Manager System\nalias mcsys='/bin/bash ~/mcsys_terminal.sh'" >> .bashrc
 #cd / || exit 1
-#if [ ! -f ./mcsys_terminal.sh ]; then wget -q $ARGANTIUAPI/terminal.sh -O mcsys_terminal.sh; fi 
+#if [ ! -f ./mcsys_terminal.sh ]; then wget -q $ARGANTIUAPI/terminal.sh -O mcsys_terminal.sh; fi
 case $LANG in
 1) echo -e "$MCPREFIX Setup finished! \nOpen configuration..." ;;
 2) echo -e "$MCPREFIX Fertig mit dem Aufsetzten! \nHier kommt die Konfiguration..." ;;
