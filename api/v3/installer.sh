@@ -16,7 +16,7 @@ echo -e "$MCPREFIX 2 = Deutsch (German)"
 #2) echo -e "$MCPREFIX Willst du dir den Instalationsprozess ansehen?\n$MCPREFIX Bitte schreibe true oder false: " ;;
 #*) echo "Please select a language! " && exit 1 ;;
 #esac
-#{ read -r MCDEBACC; }
+# { read -r MCDEBACC; }
 #if [[ $MCDEBACC == "true" ]]; then
 #MCDEBUG=$(exec >/dev/null 2>&1)
 #fi
