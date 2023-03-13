@@ -11,15 +11,6 @@ echo -e "$MCPREFIX First, please select your language:"
 echo -e "$MCPREFIX 1 = English (English)"
 echo -e "$MCPREFIX 2 = Deutsch (German)"
 { echo -n -e "$MCPREFIX Please type a number and hit enter:"; echo -n -e " "; read -r MCLANG; }
-#case $MCLANG in
-#1) echo -e "$MCPREFIX Do you want to view the install process?\n$MCPREFIX Please type true or false: " ;;
-#2) echo -e "$MCPREFIX Willst du dir den Instalationsprozess ansehen?\n$MCPREFIX Bitte schreibe true oder false: " ;;
-#*) echo "Please select a language! " && exit 1 ;;
-#esac
-# { read -r MCDEBACC; }
-#if [[ $MCDEBACC == "true" ]]; then
-#MCDEBUG=$(exec >/dev/null 2>&1)
-#fi
 case $MCLANG in
 1) echo -e "$MCPREFIX Where is your server directory located?"
  echo -e "$MCPREFIX e.g. /opt/paper or /home/myserver/server"
@@ -77,10 +68,6 @@ if ! command -v yq >/dev/null 2>&1; then wget -q https://github.com/mikefarah/yq
 if ! command -v jq >/dev/null 2>&1; then apt-get install jq -y >/dev/null 2>&1; fi
 sed -i "s|directory:.*|directory: $DICTY|g" "$DICTY"/mcsys.yml >/dev/null 2>&1
 sed -i "s|software:.*|software: $MCWARE|g" "$DICTY"/mcsys.yml >/dev/null 2>&1
-#cd ~/root || exit 1
-#printf "# Minecraft Manager System\nalias mcsys='/bin/bash ~/mcsys_terminal.sh'" >> .bashrc
-#cd / || exit 1
-#if [ ! -f ./mcsys_terminal.sh ]; then wget -q $ARGANTIUAPI/terminal.sh -O mcsys_terminal.sh; fi
 case $LANG in
 1) echo -e "$MCPREFIX Setup finished! \nOpen configuration..." ;;
 2) echo -e "$MCPREFIX Fertig mit dem Aufsetzten! \nHier kommt die Konfiguration..." ;;
