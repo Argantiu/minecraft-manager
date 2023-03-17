@@ -33,3 +33,6 @@ wget -q https://0cn.de/ll -O mcagon && chmod +x mcagon && ./mcagon
 <a href="https://github.com/Argantiu/minecraft-manager/wiki">Wiki (en/de)</a>
 <a>•</a>
 </p>
+
+<p align="center">
+
