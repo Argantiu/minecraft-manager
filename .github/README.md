@@ -10,7 +10,7 @@
 Minecraft management scripts
 </h3>
 <p align="center">
-    <a><b>Shell scripts to run your Mineraft server very well, if I finish the stoftware installer :|</b></a>
+    <a><b>Shell scripts to run your Mineraft server very well, if I finish the stoftware :|</b></a>
 </p>
 <h3 align="center">
 Installation
