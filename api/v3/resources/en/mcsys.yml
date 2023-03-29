@@ -26,6 +26,7 @@ bedrock: false
 ram: 4GB
 
 # Is or should your server be connected to a proxy?
+# ! Don't work with VelocityMC
 proxy: false
 
 # Do you want to have a counter if there are still players online?
