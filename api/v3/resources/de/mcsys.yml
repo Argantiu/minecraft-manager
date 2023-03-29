@@ -26,6 +26,7 @@ bedrock: false
 ram: 4GB
 
 # Ist oder Soll dein Server mit einem Proxy verbunden sein?
+# ! Funktioniert nicht mit Velocity
 proxy: false
 
 # Willst du einen Counter haben wenn noch Spieler online sind?
