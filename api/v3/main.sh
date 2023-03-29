@@ -20,11 +20,11 @@ mcstart() {
         printf "#This is the Eula of the Minecraft Server.\neula=true" >> "$MCPATH"/eula.txt >/dev/null 2>&1
         sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1
         if [[ $(yq eval '.backup' mcsys.yml) == "true" ]] && [ -f "$MCNAME.jar" ]; then echo -e "$(jq -r .mcstart.backup.create ./libraries/mcsys/messages.json)"
-        cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
+        mkdir -p "$MCPATH"/libraries/mcsys/backups && cd "$MCPATH"/libraries/mcsys/backups && usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1 #ls -1tr | head -n -10 | xargs -d '\n' rm -f --
         cd "$MCPATH" || exit 1
-        tar -pzcf ./libraries/mcsys/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="unused/*" --exclude="$MCNAME.jar" --exclude="mcsys/*" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
+        tar -pzcf ./libraries/mcsys/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="$MCNAME.jar" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="paper.yml-README.txt" --exclude="screenlog.*" --exclude="versions/*" ./ 
         echo -e "$(jq -r .mcstart.backup.finish ./libraries/mcsys/messages.json)"; fi
-        if [[ $(yq eval '.proxy' mcsys.yml) == "true" ]]; then sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
+        if [[ $(yq eval '.proxy' mcsys.yml) == "true" ]] && [[ $MCSOFT == "bungeecord" ]] || [[ $MCSOFT == "waterfall" ]]; then sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
         sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1; else 
         sed -i '0,;online-mode=false;online-mode=true' "$MCPATH"/server.propeties >/dev/null 2>&1
         sed -i '0,;bungeecord: true;bungeecord: false' "$MCPATH"/spigot.yml >/dev/null 2>&1; fi
