@@ -1,5 +1,5 @@
 #!/bin/bash
-MCVERSION=$(yq eval '.version' ./../../mcsys.yml)
+MCVER=$(yq eval '.version' ./../../mcsys.yml)
 RAM=$(yq eval '.ram' ./../../mcsys.yml)
 MCNAME=$(yq eval '.name' ./../../mcsys.yml)
 MCPATH=$(yq eval '.directory' ./../../mcsys.yml)
