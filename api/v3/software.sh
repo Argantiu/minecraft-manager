@@ -34,7 +34,7 @@ rm -f version.json
 wget -q $SOFTAPI -O version.json
 LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -v ":" | grep -e "[0-9]" | cut -d "\"" -f2)
 if [[ $SOFTWARE == "purpur" ]]; then wget -q "$SOFTAPI""$LATEST"/download -O server-"$MCVER"-"$LATEST".jar ; fi
-if [[ $SOFTWARE == "paper" ]]; then wget -q "$SOFTAPI"/builds/"$LATEST"/downloads/paper-"$MCVER"-"$LATEST".jar -O server-"MCVER"-"$LATEST.jar ; fi
+if [[ $SOFTWARE == "paper" ]]; then wget -q "$SOFTAPI"/builds/"$LATEST"/downloads/paper-"$MCVER"-"$LATEST".jar -O server-"$MCVER"-"$LATEST".jar ; fi
 if [[ $SOFTWARE == "waterfall" ]]; then wget -q "$SOFTAPI"/builds/"$LATEST"/downloads/waterfall-"$MCVER"-"$LATEST".jar -O server-"MCVER"-"$LATEST".jar ; fi
 unzip -qq -t server-"$MCVER"-"$LATEST".jar
 if [ "$?" -ne 0 ]; then
