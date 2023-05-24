@@ -15,7 +15,7 @@ wget -q "$ARGANAPI"updater.sh -O updater-new.sh
 diff -q updater-new.sh updater.sh >/dev/null 2>&1
 if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && chmod +x updater.sh && /bin/bash updater.sh ; fi 
 }
-function onlaunch() { 
+function onlaunch() { # Make the system ready for first launch
 cd "$MCPATH" || exit 1
 rm -f mcsys.yml~
 if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar; fi
@@ -24,7 +24,6 @@ sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/sp
 if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online $LANGFILE | sed "s:%s_name%:$MCNAME:g")" && exit 1; else echo -e "$(jq -r .mcstart.start $LANGFILE | sed "s:%s_name%:$MCNAME:g")"; fi 
 }
 function proxysettings() {
-if [[ $(yq eval '.proxy' "$THISDIR"/mcsys.yml) == "true" ]]; then
 sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
 sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1 ; else
 sed -i '0,;online-mode=false;online-mode=true' "$MCPATH"/server.propeties >/dev/null 2>&1
@@ -50,13 +49,27 @@ echo -e "$(jq -r .mcstart.bedrock ./libraries/mcsys/messages.json)"
 cd "$MCPATH"/libraries/mcsys || exit 1
 wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api/v3/bedrock.sh && chmod +x bedrock.sh
 /bin/bash "$MCPATH"/libraries/mcsys/bedrock.sh
-fi 
 cd "$MCPATH" || exit 1
-/bin/bash "$MCPATH"/libraries/mcsys/software.sh 
-exit 0
+/bin/bash "$MCPATH"/libraries/mcsys/software.sh
 }
 
-mcstop() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
+function mcstart() {
+if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then onlaunch ; fi
+autoupdater &
+wait $!
+createbackup &
+wait $!
+logrotate
+if [[ $(yq eval '.proxy' "$THISDIR"/mcsys.yml) == "true" ]]; then proxysettings ; fi
+if [[ $(yq eval '.bedrock' mcsys.yml) == "true" ]]; then 
+bedrockupdate &
+wait $!
+fi
+/bin/bash "$MCPATH"/libraries/mcsys/software.sh
+exit 0
+}
+function mcstop() { 
+if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
 MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
 if ! [[ $MCSOFTWARE == "bungeecord" ]] || [[ $MCSOFTWARE == "velocity" ]] || [[ $MCSOFTWARE == "waterfall" ]] && [[ $(yq eval '.count' mcsys.yml) == "true" ]]; then
 mkdir -p "$MCPATH"/cache/mcsys && cd "$MCPATH"/cache/mcsys || exit 1
