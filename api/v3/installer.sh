@@ -74,4 +74,4 @@ case $LANG in
 esac
 cd "$DICTY" || exit 1
 joe ./mcsys.yml
-wget -q https://github.com/Argantiu/.github/releases/download/v3.5.0.0/mcstats.used.yml && rm mcstats.used.yml >/dev/null 2>&1
+wget -q https://github.com/Argantiu/.github/releases/download/v3.6.0.0/mcstats.used.yml && rm mcstats.used.yml >/dev/null 2>&1
