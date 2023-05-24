@@ -1,0 +1,124 @@
+#!/bin/bash
+# This is the brand new Minecraft server manager build by CrazyCloudCraft.de
+#MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"
+THISDIR=$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
+MCNAME=$(yq eval '.name' "$THISDIR"/mcsys.yml)
+MCPATH=$(yq eval '.directory' "$THISDIR"/mcsys.yml | sed 's/\/$//')
+MCSOFT=$(yq eval '.software' "$THISDIR"/mcsys.yml)
+ARGANAPI=https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api/v3/
+LANGFILE="$THISDIR"/libraries/mcsys/messages.json
+
+function autoupdater() { # Updating the updater
+if [ ! -f "$MCPATH"/libraries/mcsys/updater.sh ]; then touch "$MCPATH"/libraries/mcsys/updater.sh; fi
+cd "$MCPATH"/libraries/mcsys || exit 1
+wget -q "$ARGANAPI"updater.sh -O updater-new.sh
+diff -q updater-new.sh updater.sh >/dev/null 2>&1
+if [ "$?" -eq 1 ]; then mv updater-new.sh updater.sh && chmod +x updater.sh && /bin/bash updater.sh ; fi 
+}
+function onlaunch() { 
+cd "$MCPATH" || exit 1
+rm -f mcsys.yml~
+if [ ! -f "$MCPATH"/"$MCNAME".jar ]; then touch "$MCPATH"/"$MCNAME".jar; fi
+if [ ! -f "$MCPATH"/eula.txt ]; then printf "eula=true" >> "$MCPATH"/eula.txt >/dev/null 2>&1
+sed -i 's;restart-script: ./start.sh;restart-script: ./main.sh 3;g' "$MCPATH"/spigot.yml >/dev/null 2>&1 
+if screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstart.online $LANGFILE | sed "s:%s_name%:$MCNAME:g")" && exit 1; else echo -e "$(jq -r .mcstart.start $LANGFILE | sed "s:%s_name%:$MCNAME:g")"; fi 
+}
+function proxysettings() {
+if [[ $(yq eval '.proxy' "$THISDIR"/mcsys.yml) == "true" ]]; then
+sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1
+sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1 ; else
+sed -i '0,;online-mode=false;online-mode=true' "$MCPATH"/server.propeties >/dev/null 2>&1
+sed -i '0,;bungeecord: true;bungeecord: false' "$MCPATH"/spigot.yml >/dev/null 2>&1 ; fi
+}
+function createbackup() {
+if [[ $(yq eval '.backup' "$THISDIR"/mcsys.yml) == "true" ]] && [ -f "$MCNAME.jar" ]; then echo -e "$(jq -r .mcstart.backup.create $LANGFILE)" && mkdir -p "$MCPATH"/libraries/mcsys/backups && cd "$MCPATH"/libraries/mcsys/backups
+usr/bin/find "$MCPATH"/libraries/mcsys/backups/* -type f -mtime +10 -delete 2>&1
+cd "$MCPATH" || exit 1
+tar -pzcf ./libraries/mcsys/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz --exclude="$MCNAME.jar" --exclude="cache/*" --exclude="logs/*" --exclude="libraries/*" --exclude="screenlog.*" --exclude="versions/*" ./ 
+echo -e "$(jq -r .mcstart.backup.finish $LANGFILE)"; fi 
+}
+function logrotate() { 
+[ -f screenlog.5 ] && rm screenlog.5 
+[ -f screenlog.4 ] && mv screenlog.4 screenlog.5
+[ -f screenlog.3 ] && mv screenlog.3 screenlog.4
+[ -f screenlog.2 ] && mv screenlog.2 screenlog.3
+[ -f screenlog.1 ] && mv screenlog.1 screenlog.2
+[ -f screenlog.0 ] && mv screenlog.0 screenlog.1 ;}
+function bedrockupdate() {
+if [[ $(yq eval '.bedrock' mcsys.yml) == "true" ]]; then
+echo -e "$(jq -r .mcstart.bedrock ./libraries/mcsys/messages.json)"
+cd "$MCPATH"/libraries/mcsys || exit 1
+wget -q https://raw.githubusercontent.com/Argantiu/minecraft-manager/dev-v3/api/v3/bedrock.sh && chmod +x bedrock.sh
+/bin/bash "$MCPATH"/libraries/mcsys/bedrock.sh
+fi 
+cd "$MCPATH" || exit 1
+/bin/bash "$MCPATH"/libraries/mcsys/software.sh 
+exit 0
+}
+
+mcstop() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline ./libraries/mcsys/messages.json)" && exit 1; fi
+MCSOFTWARE=$(yq eval '.software' mcsys.yml && yq 'downcase')
+if ! [[ $MCSOFTWARE == "bungeecord" ]] || [[ $MCSOFTWARE == "velocity" ]] || [[ $MCSOFTWARE == "waterfall" ]] && [[ $(yq eval '.count' mcsys.yml) == "true" ]]; then
+mkdir -p "$MCPATH"/cache/mcsys && cd "$MCPATH"/cache/mcsys || exit 1
+hostname -I > ip-info.txt
+MCIPAD=$(cat < ip-info.txt | grep -o '^\S*')
+MCPORT=$(cat < "$MCPATH"/server.properties | grep server-port= | cut -b 13,14,1)
+wget -q https://api.minetools.eu/ping/"$MCIPAD"/"$MCPORT" -O on-i.txt
+ if grep -q error "on-i.txt"; then echo -e "$(jq -r .counter.invalid ./libraries/mcsys/messages.json)" 
+ else MCOTYPE=$(cat < on-i.txt | grep online | tr -d " " | cut -b 10)
+ fi
+fi
+if ! [[ $MCOTYPE = "0" ]]; then screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 10 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 6s
+ screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 4 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 3 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 2 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
+ screen -Rd "$MCNAME" -X stuff "say $(jq -r .counter.stop + 1 + .counter.sec ./libraries/mcsys/messages.json) $(printf '\r')" && sleep 1s
+fi
+screen -Rd "$MCNAME" -X stuff "say $(jq -r .mcstop.stop_n ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g") $(printf '\r')"
+StopChecks=0
+while [ $StopChecks -lt 30 ]; do
+  if ! screen -list | grep -q "$MCNAME"; then
+    break
+  fi
+  sleep 1;
+  StopChecks=$((StopChecks+1))
+done
+if screen -list | grep -q "$MCNAME"; then
+  echo -e "$(jq -r .mcstop.kill ./libraries/mcsys/messages.json)"
+  screen -S "$MCNAME" -X quit
+  pkill -15 -f "SCREEN -dmSL $MCNAME"
+fi
+echo -e "$(jq -r .mcstop.stopped ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")"
+exit 0 ;}
+
+mcrestart() { if ! screen -list | grep -q "$MCNAME"; then echo -e "$(jq -r .mcstop.offline + .mcstart.start ./libraries/mcsys/messages.json | sed "s:%s_name%:$MCNAME:g")" && mcstart && exit 0
+else
+mcstop &
+wait for $!
+mcstart
+fi
+exit 0 ;}
+
+mcdelete() { echo -e "$(jq -r .tool.remove ./libraries/mcsys/messages.json)"
+{ echo -n "";
+read -r MCONFIRM; }
+if [[ $MCONFIRM == "ja" ]] || [[ $MCONFIRM == "yes" ]]; then 
+mcstop &
+DELMC="$?" 
+wait $DELMC
+rm ./mcsys.yml && rm -r ./cache
+cd ./libraries || exit 1
+echo -e "$(jq -r .tool.rm_ok ./libraries/mcsys/messages.json)" && rm -r ./mcsys && rm -- "$0"
+else echo -e "$(jq -r .tool.rm_no ./libraries/mcsys/messages.json)"
+fi
+exit 0 ;}
+
+help() { jq -r .tool.help ./libraries/mcsys/messages.json;}
+
+case "$1" in
+1|'start') ;;
+2|'stop') mcstop ;;
+3|'restart') mcstop ;;
+4|'delete') mcdelete ;;
+*) echo "Error: Invalid option" && help && exit ;;
+esac
