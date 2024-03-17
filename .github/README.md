@@ -1,5 +1,5 @@
 <div align="center">
-<h3> Minecraft management scripts </h3>
+<h2> Minecraft management scripts </h2>
 <b>Shell scripts to run your Mineraft server very well</b>
 
 <h3> Installation </h3>
