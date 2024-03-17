@@ -5,7 +5,10 @@
 <h3> Installation </h3>
 You can paste this anywhere on your debian/ubuntu distribution:
 
-``` wget -q https://0cn.de/ll -O mcagon && chmod +x mcagon && ./mcagon ```<br><br>
+``` 
+wget -q https://0cn.de/ll -O mcagon && chmod +x mcagon && ./mcagon
+```
+<br><br>
 •
 <a href="https://github.com/Argantiu/minecraft-manager/issues">Support</a> •
 <a href="https://github.com/orgs/Argantiu/projects/1">Tasks & Todos</a> •
