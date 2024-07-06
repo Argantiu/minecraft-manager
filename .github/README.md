@@ -1,13 +1,14 @@
 <div align="center">
 <h2> Minecraft management scripts </h2>
 <b>Shell scripts to run your Mineraft server very well</b>
-
+<!--
 <h3> Installation </h3>
 You can paste this anywhere on your debian/ubuntu distribution:
 
 ``` 
 wget -q https://0cn.de/ll -O mcagon && chmod +x mcagon && ./mcagon
 ```
+-->
 <br><br>
 •
 <a href="https://github.com/Argantiu/minecraft-manager/issues">Support</a> •
