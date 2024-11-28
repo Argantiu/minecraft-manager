@@ -1,6 +1,7 @@
 <div align="center">
 <h2> Minecraft management scripts </h2>
 <b>Shell scripts to run your Mineraft server very well</b>
+<b>Still in development!</b>
 <!--
 <h3> Installation </h3>
 You can paste this anywhere on your debian/ubuntu distribution:
