@@ -1,6 +1,6 @@
 <div align="center">
 <h2> Minecraft management scripts </h2>
-<b>Shell scripts to run your Mineraft server very well</b>
+<b>Shell scripts to run your Mineraft server very well</b><br>
 <b>Still in development!</b>
 <!--
 <h3> Installation </h3>
