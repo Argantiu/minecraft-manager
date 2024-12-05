@@ -3,6 +3,7 @@ IP=$(hostname -I | grep -o '^\S*') # the server ip. This can be 127.0.0.1
 PORT=$(cat < "$MCPATH"/server.properties | grep server-port= | cut -b 13,14,1) # get's server port !NOT OPTIMIZED
 
 # Get server information
+# ... echo -e "\xFE\x01" | nc ... to get version and type
 response=$(echo -e "\xFE" | nc $IP $PORT | tr -d '\0')
 
 # Get current playercount
