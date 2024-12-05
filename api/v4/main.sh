@@ -1,30 +1,43 @@
 #!/bin/bash
 source cycodly/VariableReader
 
-function Start() {
+# Preparation functions
+function logger() {
+    echo -e "$(jq -r .$1 ./cycodly/messages.json | sed "s:%servername%:$MCNAME:g")"
+}
+
+
+# System functions
+
+function start() {
+    if screen -list | grep -q "$MCNAME"; then
+        logger mcstart.online;
+        return;
+    fi
+    logger mcstart.start
     
 }
 
-function Stop() {
+function stop() {
     
 }
 
-function Restart() {
+function restart() {
     
 }
 
-function Remove() {
+function remove() {
     
 }
 
-function Help() {
+function help() {
     
 }
 
 case "$1" in
-    1|'start') Start;;
-    2|'stop') Stop;;
-    3|'restart') Restart;;
-    4|'remove') Remove;;
-    *) Help;;
+    1|'start') start;;
+    2|'stop') stop;;
+    3|'restart') restart;;
+    4|'remove') remove;;
+    *) help;;
 esac
