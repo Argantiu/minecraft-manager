@@ -1,0 +1,11 @@
+#!/bin/bash
+IP=$(hostname -I | grep -o '^\S*') # the server ip. This can be 127.0.0.1
+PORT=$(cat < "$MCPATH"/server.properties | grep server-port= | cut -b 13,14,1) # get's server port !NOT OPTIMIZED
+
+# Get server information
+response=$(echo -e "\xFE" | nc $IP $PORT | tr -d '\0')
+
+# Get current playercount
+playercount=$(echo "$response" | grep -oE '[0-9]+' | tail -n 2 | head -n 1)
+
+echo "$playercount players online"
