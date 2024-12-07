@@ -18,7 +18,7 @@ on:
     #branches: [ "dev-v3" ]
   #pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ "dev-v3" ]
+    branches: [ "v4" ]
   schedule:
     - cron: '42 17 * * 5'
 

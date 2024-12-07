@@ -1,9 +1,9 @@
 blank_issues_enabled: true
 contact_links:
-  - name: Argantiu Discord
-    url: https://discord.gg/evqk3C8ks9
-    about: Our support Discord, please ask questions and search support here.
-  - name: Argantiu English Wiki
+  #- name: Argantiu Discord
+  #  url: 
+  #  about: Our support Discord, please ask questions and search support here.
+  - name: Argantiu english wiki
     url: https://github.com/Argantiu/minecraft-manager/wiki
     about: Take a look at the wiki page for instructions how use it.
   - name: Argantiu Deutsches Wiki
