@@ -1,0 +1,38 @@
+# Minecraft Server verwaltungs Werkzeug
+# Version de-4.0.0 erstellt von Cycodly 07.12.2024 https://cycodly.de
+
+# Welchen Namen soll dein system haben? 
+# Nutze nur kleinbuchstaben
+name: mymcserver
+
+# In diesen Ordner(n) befinndet sich dein Server.
+path: /opt/myserver
+
+# Welche Minecraft Version willst du haben?
+version: 1.21.4
+
+# Welche Software willst du verwenden?
+# Du kannst hier [ paper, purpur, spigot, bukkit, mohist
+# bungeecord, velocity, waterfall ] hinschreiben.
+software: purpur
+
+# Willst du Bedrock Spieler auf deinen Server lassen?
+bedrock: false
+
+# Wie viel Ram brauchst du? 
+# Nutze niemals alles an Ram. Der Server braucht auch was zu Essen.
+# Ram ist nicht CPU und kann nichts gegen lags machen.
+ram: 4GB
+
+# Ist oder Soll dein Server mit einem Proxy verbunden sein?
+# ! Funktioniert nicht mit Velocity
+proxy: false
+
+# Willst du einen Counter haben wenn noch Spieler online sind?
+counter: true
+
+# Willst du intiligente Backups von deinem Server machen?
+backup: true
+
+conf_version: de-1
+# Konfiguration fertig :)

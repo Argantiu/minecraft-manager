@@ -1,6 +1,5 @@
 # Minecraft Server managemant tool
-# Version en-3.5.0.0 created by CrazyCloudCraft crazycloudcraft.de
-debug: false
+# Version en-4.0.0 created by Cycodly 2024-12-07 https://cycodly.de
 
 # Wich name should your system have? 
 # Please use lowercase letters only
@@ -10,7 +9,7 @@ name: mymcserver
 path: /opt/myserver
 
 # Wich Minecraft Version do you like to use?
-version: 1.19.3
+version: 1.21.4
 
 # Wich Software do you want to use?
 # You can write [ paper, purpur, spigot, bukkit, mohist

@@ -9,7 +9,7 @@
 
 ## Reporting a Vulnerability
 
-You can report a vulnerability to kontakt[at]buzcraft.de
+You can not report a vulnerability at the moment :(
 
 If we find an vulnerability or someone reported it, we will be faster as a plane to fix it.  
 Any Pull request will be checkt for vulnerabilitys before accepting it.

@@ -1,13 +1,6 @@
 #!/bin/bash
-source cycodly/VariableReader
-
+source ./cycodly/CycodlySystemManager
 # Preparation functions
-function logger() {
-    echo -e "$(jq -r .$1 ./cycodly/messages.json | sed "s:%servername%:$MCNAME:g")"
-}
-function configRead() {
-    yq eval ".$1" mcsys.yml
-}
 EXCLUDE=(
     "--exclude=${MCNAME}.jar"
     "--exclude=cache/*"
@@ -17,50 +10,123 @@ EXCLUDE=(
     "--exclude=screenlog.*"
     "--exclude=versions/*"
 )
-)
-
 
 # System functions
-
 function start() {
     if screen -list | grep -q "$MCNAME"; then
         logger mcstart.online;
         return;
     else
-        logger mcstart.start
+        logger mcstart.start;
     fi
 
-    if [$(configRead backup) == "true"]; then
+    if [[$MCBACKUP == "true"]]; then
         logger mcstart.backup.create
         mkdir -p "$MCPATH"/cycodly/backups
         find "$MCPATH"/cycodly/backups/* -type f -mtime +10 -delete 2>&1
         tar -pzcf "$MCPATH"/cycodly/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz ${EXCLUDE[@]} ./
-        logger mcstart.backup.finish
+        logger mcstart.backup.finish;
     fi
-    if []
-
+    if [[ $MCPROXY == "true" ]] && [[ $MCSOFTWARE == "bungeecord" || "waterfall" ]]; then 
+        sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1;
+        sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1; 
+    else
+        sed -i '0,;online-mode=false;online-mode=true' "$MCPATH"/server.propeties >/dev/null 2>&1;
+        sed -i '0,;bungeecord: true;bungeecord: false' "$MCPATH"/spigot.yml >/dev/null 2>&1; 
+    fi
+    for n in {5..1}; do 
+        [ -f screenlog.$(($n-1)) ] && mv screenlog.$(($n-1)) screenlog.$n; 
+    done
+    if [[ $MCBEDROCK == "true" ]]; then
+        execute bedrock;
+    fi
+    execute software;
+    return;
 }
 
 function stop() {
+    if ! screen -list | grep -q "$MCNAME"; then
+        logger mcstop.offline;
+        return;
+    fi
+    logger mcstop.stop;
+    if ! [[ $MCSOFTWARE =~ ^(bungeecord|velocity|waterfall)$ ]] && [[ $MCCOUNTER == "true" ]]; then
+    local ip=$(hostname -I | grep -o '^\S*') # the server ip. This can be 127.0.0.1
+    local port=$(cat < "$MCPATH"/server.properties | grep server-port | grep -oE '[0-9]+') # get's server port
+    # Get server information
+    local response=$(echo -e "\xFE" | nc $ip $port | tr -d '\0'); then
+    # Get current playercount
+    if (response); then
+        local playercount=$(echo "$response" | grep -oE '[0-9]+' | tail -n 2 | head -n 1)
+        if ! [[ $playercount == "0" ]]; then
+            for numb in {10...1}; do
+                if [[ $numb =~ ^(9|8|7|6)$]]; then
+                    sleep 1s;
+                else
+                    screen -Rd "$MCNAME" -X stuff "say $(logger counter.stop) $numb $(logger counter.sec) $(printf '\r')";
+                    sleep 1s;
+                fi
+            done
+            screen -Rd "$MCNAME" -X stuff "say $(logger mcstop.stop_n) $(printf '\r')";
+        fi
+    else
+        logger counter.invalid;
+    fi
     
+    local StopChecks=0
+    screen -S "$MCNAME" -X quit
+    while [ $StopChecks -lt 10 ]; do
+        if ! screen -list | grep -q "$MCNAME"; then
+            break
+        else
+            sleep 1s
+            StopChecks=$((StopChecks+1))
+        fi
+    done
+    if screen -list | grep -q "$MCNAME"; then
+        logger mcstop.kill;
+        pkill -15 -f "SCREEN -dmSL $MCNAME"
+    fi
+    logger mcstop.stopped;
+    return;
 }
 
 function restart() {
-    
+    if ! screen -list | grep -q "$MCNAME"; then
+        logger mcstop.offline;
+        start;
+    else
+        stop &
+        wait for $!
+        start
+    fi
+    return;
 }
 
 function remove() {
-    
+    logger tool.remove;
+    { 
+        echo -n "";
+        read -r MCONFIRM; 
+    }
+    if [[ $MCONFIRM =~ ^("ja"|"yes")$ ]]; then
+        logger tool.rm_ok;
+        stop &
+        wait for $!
+        rm "$MCPATH"/mcsys.yml;
+        rm -r "$MCPATH"/cycodly;
+        rm -- "$0"
+    else
+        logger tool.rm_no;
+    fi
+    return;
 }
 
-function help() {
-    
-}
-
+validConfig
 case "$1" in
     1|'start') start;;
     2|'stop') stop;;
     3|'restart') restart;;
     4|'remove') remove;;
-    *) help;;
+    *) logger tool.help;;
 esac
