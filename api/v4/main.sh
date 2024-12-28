@@ -1,5 +1,5 @@
 #!/bin/bash
-source ./cycodly/CycodlySystemManager
+source ./cycodly/CycodlySystemManager.sh
 # Preparation functions
 EXCLUDE=(
     "--exclude=${MCNAME}.jar"
@@ -13,6 +13,8 @@ EXCLUDE=(
 
 # System functions
 function start() {
+    local backupPath="$MCPATH"/cycodly/backups
+
     if screen -list | grep -q "$MCNAME"; then
         logger mcstart.online;
         return;
@@ -22,9 +24,9 @@ function start() {
 
     if [[$MCBACKUP == "true"]]; then
         logger mcstart.backup.create
-        mkdir -p "$MCPATH"/cycodly/backups
-        find "$MCPATH"/cycodly/backups/* -type f -mtime +10 -delete 2>&1
-        tar -pzcf "$MCPATH"/cycodly/backups/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz ${EXCLUDE[@]} ./
+        mkdir -p $backupPath
+        find $backupPath/* -type f -mtime +10 -delete 2>&1
+        tar -pzcf $backupPath/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz ${EXCLUDE[@]} ./
         logger mcstart.backup.finish;
     fi
     if [[ $MCPROXY == "true" ]] && [[ $MCSOFTWARE == "bungeecord" || "waterfall" ]]; then 
@@ -75,7 +77,7 @@ function stop() {
     
     local StopChecks=0
     screen -S "$MCNAME" -X quit
-    while [ $StopChecks -lt 10 ]; do
+    while [ $StopChecks -lt 30 ]; do
         if ! screen -list | grep -q "$MCNAME"; then
             break
         else
@@ -123,6 +125,7 @@ function remove() {
 }
 
 validConfig
+cd $MCPATH
 case "$1" in
     1|'start') start;;
     2|'stop') stop;;

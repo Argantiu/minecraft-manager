@@ -1,11 +1,62 @@
 #!/bin/bash
+source ./CycodlySystemManager.sh
 
-#!/bin/bash
-MCVER=$(yq eval '.version' ./../../mcsys.yml)
-SOFTWARE=$(yq eval '.software' ./../../mcsys.yml)
-LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ")
-MCJAVA=$($MCVER && cut -d "." -f2)
-MCPATH=$(yq eval '.directory' ./../../mcsys.yml)
+function javaManager() {
+    local GETmcVersionType=$(echo $MCVERSION | cut -d '.' -f 2)
+    apt install gnupg ca-certificates curl;
+    curl -s https://repos.azul.com/azul-repo.key | gpg --dearmor -o /usr/share/keyrings/azul.gpg
+    echo "deb [signed-by=/usr/share/keyrings/azul.gpg] https://repos.azul.com/zulu/deb stable main" | tee /etc/apt/sources.list.d/zulu.list
+    apt update
+    if [[ GETmcVersionType -gt 19 ]]; then
+        apt install zulu21-jdk;
+    elif [[ GETmcVersionType -gt 16 ]]; then
+        apt install zulu17-jdk;
+    else 
+        apt install zulu8-jdk;
+    fi
+    if java -version 2>&1 | awk -F '"' '/version/ {print $2}' | cut -d '.' -f1; then
+        return;
+    else
+        echo "ERROR: Java installation failed!";
+        exit 1;
+    fi
+}
+
+function softwareInstall() {
+    # Process of PaperMC
+
+    local PAPERMC=$(curl -s https://api.papermc.io/v2/projects/paper/versions/$MCVERSION | jq -r .builds[-1])
+    local PURPUR=$(curl -s https://api.purpurmc.org/v2/purpur/$MCVERSION | jq -r .builds.all[-1])
+    if [ -f version.json ] && [[ $(cat < version.json) == $LATEST ]]; then
+            echo "Update not needed.";
+            return;
+    fi
+    if ! [ -f version.json ]; then
+        echo $LATEST > version.json
+    fi
+    wget -q 
+
+
+
+
+
+
+    # 1. Dowload the latest software version
+    # 2. check if files are different
+    # 3. change files
+    # 4. save files in backup folder
+}
+
+
+
+#######################################
+
+
+#MCVER=$(yq eval '.version' ./../../mcsys.yml)
+#SOFTWARE=$(yq eval '.software' ./../../mcsys.yml)
+#LATEST=$(cat < version.json | jq -r ".builds" | grep -v "," | grep -e "[0-9]" | tr -d " ")
+#MCJAVA=$($MCVER && cut -d "." -f2)
+#MCPATH=$(yq eval '.directory' ./../../mcsys.yml)
 
 case "$SOFTWARE" in
 #minecraft) SOFTAPI=https://piston-data.mojang.com/v1/ ;;
@@ -20,14 +71,6 @@ waterfall) SOFTAPI=https://api.papermc.io/v2/projects/waterfall/versions/"$MCVER
 #bungeecord) SOFTAPI=https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
 *) echo "Error >> Software doesn't exitst. Does it have a typo?" ;;
 esac
-
-function mcloadbase() {
-if [[ $MCJAVA == "19" ]] || [[ $MCJAVA == "18" ]]; then 
-apt install zulu17-jdk
-else 
-apt install zulu8-jdk
-fi
-}
 
 # Downloader old for testing
 mkdir -p "$MCPATH"/cache/mcsys
@@ -51,7 +94,7 @@ else
   echo "$SOFTWARE-$MCVER-$LATEST has been updated"
   rm version.json
  else
-  echo "No server-$MCVER-$LATEST update neccessary" 
+  echo "No server-$MCVER-$LATEST update neccessary"
   rm server-"$MAINVERSION"-"$LATEST".jar
   rm version.json
  fi
@@ -101,7 +144,11 @@ bungeecord) SOFTAPI=https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artif
 esac
 
 function javainstall() { # Todo: Checker if java already exists + get java home for startup.
-if [[ $MCJAVA == "19" ]] || [[ $MCJAVA == "18" ]]; then apt install zulu17-jdk ; else apt install zulu8-jdk ; fi
+if [[ $MCJAVA == "19" ]] || [[ $MCJAVA == "18" ]]; then 
+apt install zulu17-jdk; 
+else 
+apt install zulu8-jdk;
+fi
 }
 
 # 1. Variant
