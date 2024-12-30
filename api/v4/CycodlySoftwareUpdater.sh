@@ -23,8 +23,7 @@ function javaManager() {
 }
 
 function softwareInstall() {
-    mkdir -p "$MCPATH"/cache/cycodly
-    cd "$MCPATH"/cache/cycodly
+    cd "$MCPATH"
     if [ -f version.json ] && [[ $(cat < version.json) == $LATEST ]]; then
             echo "Update not needed.";
             minecraftServiceStart;
@@ -32,6 +31,8 @@ function softwareInstall() {
     else
         echo $LATEST > version.json;
     fi
+    mkdir -p "$MCPATH"/cache/cycodly
+    cd "$MCPATH"/cache/cycodly
 
     if [[ $MCSOFTWARE == "velocity" ]]; then 
         wget -q -O $MCSOFTWARE-$V_VERSION-$LATEST.jar $DOWNLOAD_URL
