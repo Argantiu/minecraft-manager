@@ -1,5 +1,5 @@
 #!/bin/bash
-function logger() {
+function logMessage() {
     local rawmessage=$(jq -r .$1 "$MCPATH"/cycodly/messages.json)
     if [[ -z $rawmessage || $rawmessage == "null" ]]; then
         echo "Error: Message key '$1' not found in messages.json" >&2
@@ -63,7 +63,7 @@ function minecraftServiceStart() {
     local javabin=$1
     local ram="$($MCRAM | tr -d 'B')"
     cd "$MCPATH" || exit 1
-    logger mcstart.start;
+    logMessage mcstart.start;
     #if [[] $MCSOFTWARE == "velocity"]]
     screen -d -m -L -S "$MCNAME"  /bin/bash -c "$javabin -Xms$ram -Xmx$ram 
     -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions 
@@ -98,7 +98,7 @@ function validConfig() {
   fi
 
   # Validate MCSOFTWARE (valid options)
-  if [[ ! "$MCSOFTWARE" =~ ^(paper|purpur|spigot|bukkit|mohist|bungeecord|velocity|waterfall)$ ]]; then
+  if [[ ! "$MCSOFTWARE" =~ ^(paper|purpur|spigot|craftbukkit|mohist|bungeecord|velocity|waterfall)$ ]]; then
     echo "Error: MCSOFTWARE ('$MCSOFTWARE') is not a valid software choice."
     valid=false
   fi

@@ -16,18 +16,18 @@ function start() {
     local backupPath="$MCPATH"/cycodly/backups
 
     if screen -list | grep -q "$MCNAME"; then
-        logger mcstart.online;
+        logMessage mcstart.online;
         return;
     else
-        logger mcstart.start;
+        logMessage mcstart.start;
     fi
 
     if [[$MCBACKUP == "true"]]; then
-        logger mcstart.backup.create
+        logMessage mcstart.backup.create
         mkdir -p $backupPath
         find $backupPath/* -type f -mtime +10 -delete 2>&1
         tar -pzcf $backupPath/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz ${EXCLUDE[@]} ./
-        logger mcstart.backup.finish;
+        logMessage mcstart.backup.finish;
     fi
     if [[ $MCPROXY == "true" ]] && [[ $MCSOFTWARE == "bungeecord" || "waterfall" ]]; then 
         sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1;
@@ -48,10 +48,10 @@ function start() {
 
 function stop() {
     if ! screen -list | grep -q "$MCNAME"; then
-        logger mcstop.offline;
+        logMessage mcstop.offline;
         return;
     fi
-    logger mcstop.stop;
+    logMessage mcstop.stop;
     if ! [[ $MCSOFTWARE =~ ^(bungeecord|velocity|waterfall)$ ]] && [[ $MCCOUNTER == "true" ]]; then
     local ip=$(hostname -I | grep -o '^\S*') # the server ip. This can be 127.0.0.1
     local port=$(cat < "$MCPATH"/server.properties | grep server-port | grep -oE '[0-9]+') # get's server port
@@ -65,14 +65,14 @@ function stop() {
                 if [[ $numb =~ ^(9|8|7|6)$]]; then
                     sleep 1s;
                 else
-                    screen -Rd "$MCNAME" -X stuff "say $(logger counter.stop) $numb $(logger counter.sec) $(printf '\r')";
+                    screen -Rd "$MCNAME" -X stuff "say $(logMessage counter.stop) $numb $(logMessage counter.sec) $(printf '\r')";
                     sleep 1s;
                 fi
             done
-            screen -Rd "$MCNAME" -X stuff "say $(logger mcstop.stop_n) $(printf '\r')";
+            screen -Rd "$MCNAME" -X stuff "say $(logMessage mcstop.stop_n) $(printf '\r')";
         fi
     else
-        logger counter.invalid;
+        logMessage counter.invalid;
     fi
     
     local StopChecks=0
@@ -86,16 +86,16 @@ function stop() {
         fi
     done
     if screen -list | grep -q "$MCNAME"; then
-        logger mcstop.kill;
+        logMessage mcstop.kill;
         pkill -15 -f "SCREEN -dmSL $MCNAME"
     fi
-    logger mcstop.stopped;
+    logMessage mcstop.stopped;
     return;
 }
 
 function restart() {
     if ! screen -list | grep -q "$MCNAME"; then
-        logger mcstop.offline;
+        logMessage mcstop.offline;
         start;
     else
         stop &
@@ -106,20 +106,20 @@ function restart() {
 }
 
 function remove() {
-    logger tool.remove;
+    logMessage tool.remove;
     { 
         echo -n "";
         read -r MCONFIRM; 
     }
     if [[ $MCONFIRM =~ ^("ja"|"yes")$ ]]; then
-        logger tool.rm_ok;
+        logMessage tool.rm_ok;
         stop &
         wait for $!
         rm "$MCPATH"/mcsys.yml;
         rm -r "$MCPATH"/cycodly;
         rm -- "$0"
     else
-        logger tool.rm_no;
+        logMessage tool.rm_no;
     fi
     return;
 }
@@ -131,5 +131,5 @@ case "$1" in
     2|'stop') stop;;
     3|'restart') restart;;
     4|'remove') remove;;
-    *) logger tool.help;;
+    *) logMessage tool.help;;
 esac
