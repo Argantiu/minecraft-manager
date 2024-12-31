@@ -127,9 +127,9 @@ function remove() {
 validConfig
 cd $MCPATH
 case "$1" in
-    1|'start') start;;
-    2|'stop') stop;;
-    3|'restart') restart;;
-    4|'remove') remove;;
-    *) logMessage tool.help;;
+    1|'start') start ;;
+    2|'stop') stop ;;
+    3|'restart') restart ;;
+    4|'remove') remove ;;
+    *) logMessage tool.help ;;
 esac

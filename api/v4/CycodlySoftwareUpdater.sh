@@ -89,6 +89,7 @@ bungeecord)
     API=https://ci.md-5.net/job/BungeeCord
     LATEST=$(curl -s $API/api/json | jq -r .builds[0].number)
     DOWNLOAD_URL=$API/$LATEST/artifact/bootstrap/target/BungeeCord.jar
+    ;;
 esac
 javaManager
 softwareInstall
