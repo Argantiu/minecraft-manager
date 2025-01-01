@@ -1,5 +1,21 @@
 #!/bin/bash
 
+### IDEA for 4.5.0 to be a full integration into the server.
+# Firewall installation
+# System installation
+  # Find already servers with start.sh
+  # Print a list with the avabiable servers to choose or write a new location
+    # save server location as variable
+# Configuation
+  # Ask for servername
+  # Ask for server software
+  # Search for Proxys by finding all mcsys.yml files with serversoftware and get location and name
+    # Ask if server should connect to a proxy from the list or none
+
+# With knowing the existing servers, creating a network is much easier
+
+
+
 #!/bin/bash
 # Minecraft Server installer
 MCPREFIX="\033[1;30m[\033[1;32mArgantiu\033[1;30m]\033[0;37m"

@@ -29,13 +29,18 @@ function start() {
         tar -pzcf $backupPath/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz ${EXCLUDE[@]} ./
         logMessage mcstart.backup.finish;
     fi
-    if [[ $MCPROXY == "true" ]] && [[ $MCSOFTWARE == "bungeecord" || "waterfall" ]]; then 
-        sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1;
-        sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1; 
-    else
-        sed -i '0,;online-mode=false;online-mode=true' "$MCPATH"/server.propeties >/dev/null 2>&1;
-        sed -i '0,;bungeecord: true;bungeecord: false' "$MCPATH"/spigot.yml >/dev/null 2>&1; 
-    fi
+    ### Proxy support for future versions
+    #if [[ $MCSOFTWARE =~ (spigot|paper|purpur|banner|youer|mohist)$]]; then
+    #    if [[ $MCPROXY =~ (waterfall|bungeecord)$ ]]; then 
+    #        sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1;
+    #        sed -i '0,;bungeecord: false;bungeecord: true' "$MCPATH"/spigot.yml >/dev/null 2>&1; 
+    #    else
+    #        sed -i '0,;online-mode=false;online-mode=true' "$MCPATH"/server.propeties >/dev/null 2>&1;
+    #        sed -i '0,;bungeecord: true;bungeecord: false' "$MCPATH"/spigot.yml >/dev/null 2>&1;
+    #    fi
+    #    if [[ $MCPROXY =~ (velocity)$ ]]; then
+    #        sed -i '0,;online-mode=true;online-mode=false' "$MCPATH"/server.propeties >/dev/null 2>&1;
+    #    fi
     for n in {5..1}; do 
         [ -f screenlog.$(($n-1)) ] && mv screenlog.$(($n-1)) screenlog.$n; 
     done

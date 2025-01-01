@@ -1,0 +1,13 @@
+{
+    "comment": "List of all Minecraft servers that are managed by cycodly",
+    "Systems": {
+        "myawesomeserver": {
+            "software": "paper",
+            "location": "/opt/myawesomeserver"
+        },
+        "myawesomeproxy": {
+            "software": "velocity",
+            "location": "/opt/myawesomeproxy"
+        }
+    }
+}

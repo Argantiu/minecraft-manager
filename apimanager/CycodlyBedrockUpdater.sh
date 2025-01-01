@@ -3,17 +3,28 @@
 source ./CycodlySystemManager.sh
 API=https://download.geysermc.org/v2/projects
 
-function updateGeyser() {
-    local SOFTWARE=spigot
-    local PRODUCT=geyser
+function updateService() {
+    local PRODUCT=$1
+    local SOFTWARE=$2
     local VERSION=$(curl -s $API/$PRODUCT | jq -r .versions[-1])
     local LATEST=$(curl -s $API/$PRODUCT/versions/$VERSION | jq -r .builds[-1])
     local DOWNLOAD_URL=$API/$PRODUCT/versions/$VERSION/builds/$LATEST/downloads/$SOFTWARE
+
+    cd "$MCPATH"/cycodly
+    if [ -f $PRODUCT.json ] && [[ $(cat < $PRODUCT.json) == $LATEST ]]; then
+        echo "Update not needed.";
+        return;
+    else
+        echo $LATEST > $PRODUCT.json
+    fi
+    mkdir -p "$MCPATH"/cache/cycodly && cd "$_"
+
+    
 }
 function updateFloodgate() {
-
+    
 }
-function updateHydraulic() {
+function updateiHydraulic() {
 
 }
 function updateHurricane() {
@@ -28,32 +39,39 @@ function updateViaVersion() {
 }
 
 if ! grep -qE 'velocity:\s*true|bungeecord:\s*true' "$MCPATH"/configs/paper-global.yml "$MCPATH"/spigot.yml; then
-    updateGeyser
+    updateGeyser 
 fi
 updateFloodgate
 case $MCSOFTWARE in
 paper|craftbukkit|spigot|purpur)
-    SOFTWARE=spigot
-    updateHurricane
-    updateCosmetics
+    if ! grep -qE 'velocity:\s*true|bungeecord:\s*true' "$MCPATH"/configs/paper-global.yml "$MCPATH"/spigot.yml; then
+    updateService geyser spigot
+    fi
+    updateService hurricane spigot
+    updateService thirdpartycosmetics thirdpartycosmetics
     ;;
 mohist|youer)
     SOFTWARE=neoforge
-    updateHydraulic
-    updateHurricane
-    updateCosmetics
+    if ! grep -qE 'velocity:\s*true|bungeecord:\s*true' "$MCPATH"/configs/paper-global.yml "$MCPATH"/spigot.yml; then
+    updateService geyser neoforge
+    fi
+    updateService hydraulic neoforge
+    updateService hurricane spigot
+    updateService thirdpartycosmetics thirdpartycosmetics
     ;;
 banner)
-    SOFTWARE=fabric
-    updateHydraulic
-    updateHurricane
-    updateCosmetics
+    if ! grep -qE 'velocity:\s*true|bungeecord:\s*true' "$MCPATH"/configs/paper-global.yml "$MCPATH"/spigot.yml; then
+    updateService geyser fabric
+    fi
+    updateService hydraulic fabric
+    updateService hurricane spigot
+    updateService thirdpartycosmetics thirdpartycosmetics
     ;;
 velocity)
-    SOFTWARE=velocity
+    updateService geyser velocity
     ;;
 bungeecord|waterfall)
-    SOFTWARE=bungeecord
+    updateService geyser fabric
     ;;
 esac
 

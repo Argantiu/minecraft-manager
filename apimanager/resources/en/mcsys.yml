@@ -26,7 +26,7 @@ ram: 4GB
 
 # Is or should your server be connected to a proxy?
 # ! Don't work with VelocityMC
-proxy: false
+proxy: false # This Feature is planned for future versions
 
 # Do you want to have a counter if there are still players online?
 counter: true

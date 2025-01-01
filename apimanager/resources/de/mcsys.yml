@@ -2,7 +2,7 @@
 # Version de-4.0.0 erstellt von Cycodly 07.12.2024 https://cycodly.de
 
 # Welchen Namen soll dein system haben? 
-# Nutze nur kleinbuchstaben
+# Nutze nur Kleinbuchstaben
 name: mymcserver
 
 # In diesen Ordner(n) befinndet sich dein Server.
@@ -13,10 +13,11 @@ version: 1.21.4
 
 # Welche Software willst du verwenden?
 # Du kannst hier [ paper, purpur, spigot, bukkit, mohist
-# bungeecord, velocity, waterfall ] hinschreiben.
+# bungeecord, velocity, waterfall, banner, youer ] hinschreiben.
 software: purpur
 
 # Willst du Bedrock Spieler auf deinen Server lassen?
+# Auch möglich für Modded server, jedoch nur zum ausprobieren!
 bedrock: false
 
 # Wie viel Ram brauchst du? 
@@ -24,15 +25,16 @@ bedrock: false
 # Ram ist nicht CPU und kann nichts gegen lags machen.
 ram: 4GB
 
-# Ist oder Soll dein Server mit einem Proxy verbunden sein?
-# ! Funktioniert nicht mit Velocity
-proxy: false
+# Ist oder soll dein Server mit einem Proxy verbunden sein?
+# Hiermit werden Einstellungen in den configs geändert.
+# Die restliche Einrichtung musst du jedoch machen.
+proxy: false # Geplant für zukünftige Versionen
 
-# Willst du einen Counter haben wenn noch Spieler online sind?
+# Willst du einen Countdown haben wenn noch Spieler online sind?
 counter: true
 
 # Willst du intiligente Backups von deinem Server machen?
 backup: true
 
-conf_version: de-1
+conf_version: de-2
 # Konfiguration fertig :)
