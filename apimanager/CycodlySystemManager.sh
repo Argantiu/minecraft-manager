@@ -85,9 +85,9 @@ function validConfig() {
     valid=false
   fi
 
-  # Validate MCDIRECTORY (should be a valid directory path)
-  if [[ ! "$MCDIRECTORY" =~ ^/ ]]; then
-    echo "Error: MCDIRECTORY ('$MCDIRECTORY') should be an absolute path starting with '/'."
+  # Validate MCPATH (should be a valid directory path)
+  if [[ ! "$MCPATH" =~ ^/ ]]; then
+    echo "Error: MCPATH ('$MCPATH') should be an absolute path starting with '/'."
     valid=false
   fi
 

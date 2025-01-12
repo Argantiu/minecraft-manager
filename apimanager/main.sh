@@ -45,10 +45,10 @@ function start() {
     for n in {5..1}; do 
         [ -f screenlog.$(($n-1)) ] && mv screenlog.$(($n-1)) screenlog.$n; 
     done
-    if [[ $MCBEDROCK == "true" ]]; then
-        execute bedrock;
-    fi
-    execute software;
+    #if [[ $MCBEDROCK == "true" ]]; then
+    #    execute bedrock;
+    #fi
+    /bin/bash $MCPATH/cycodly/CycodlySoftwareUpdater.sh;
     return;
 }
 
