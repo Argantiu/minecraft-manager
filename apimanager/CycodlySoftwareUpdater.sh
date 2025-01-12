@@ -48,8 +48,8 @@ function softwareInstall() {
     else
         mkdir -p "$MCPATH"/cycodly/softwarebackup;
         cp $MCSOFTWARE-$MCVERSION-$LATEST.jar "$MCPATH"/cycodly/softwarebackup/$MCSOFTWARE-"$MCVERSION"-"$LATEST"_"$(date +%Y-%m-%d)".jar;
-        mv $MCSOFTWARE-$MCVERSION-$LATEST.jar "$MCPATH"/"$MCNAME".jar
         find "$MCPATH"/cycodly/softwarebackup/* -type f -mtime +10 -delete 2>&1;
+        mv $MCSOFTWARE-$MCVERSION-$LATEST.jar "$MCPATH"/"$MCNAME".jar
         cd "$MCPATH"/cache && rm -r -f cycodly
         echo "$MCSOFTWARE-$MCVERSION-$LATEST.jar updated";
         minecraftServiceStart;

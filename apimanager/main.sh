@@ -9,11 +9,12 @@ EXCLUDE=(
     "--exclude=paper.yml-README.txt"
     "--exclude=screenlog.*"
     "--exclude=versions/*"
+    "--exclude=cycodly/*backup/*"
 )
 
 # System functions
 function start() {
-    local backupPath="$MCPATH"/cycodly/backups
+    local backupPath="$MCPATH"/cycodly/systembackup
 
     if screen -list | grep -q "$MCNAME"; then
         logMessage mcstart.online;

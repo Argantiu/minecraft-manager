@@ -148,4 +148,4 @@ function validConfig() {
   fi
 }
 
-eval $(configReader ./cycodly/mcsys.yml MC)
+eval $(configReader ./../mcsys.yml MC)

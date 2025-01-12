@@ -17,11 +17,14 @@ version: 1.21.4
 software: purpur
 
 # Do you like to have Bedrock players on your Server?
+# WARNING: For modded servers and anything under 1.16.5, 
+# you need to use a proxy like Bungeecord or Velocity 
+# If that is the case, set bedrock: true on the proxy and this server
 bedrock: false
 
 # How much ram do you need?
 # Never use all of the ram. The server also needs something to eat.
-# Ram isn't CPU and can't do anything about lags.
+# Ram isn't CPU and can't do much about lags.
 ram: 4GB
 
 # Is or should your server be connected to a proxy?

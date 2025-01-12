@@ -3,7 +3,7 @@
 source ./CycodlySystemManager.sh
 API=https://download.geysermc.org/v2/projects
 
-function updateService() {
+function GeyserPlugin() {
     local PRODUCT=$1
     local SOFTWARE=$2
     local VERSION=$(curl -s $API/$PRODUCT | jq -r .versions[-1])
@@ -19,63 +19,67 @@ function updateService() {
     fi
     mkdir -p "$MCPATH"/cache/cycodly && cd "$_"
 
+    wget -q -O $PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar $DOWNLOAD_URL
     
+    if [ $(unzip -qq -t $PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar) -ne 0 ]; then
+        echo "Downloaded $PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar is corrupt. No update.";
+    else
+        mkdir -p "$MCPATH"/cycodly/pluginbackup;
+        cp $PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar "$MCPATH"/cycodly/pluginbackup/"$PRODUCT"-"$SOFTWARE"-"$VERSION"-"$LATEST"_"$(date +%Y-%m-%d)".jar;
+        find "$MCPATH"/cycodly/pluginbackup/* -type f -mtime +2 -delete 2>&1;
+        
+        if [[ $SOFTWARE =~ (fabric|quilt|forge|neoforge)$ ]]
+            mv $PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar "$MCPATH"/mods/$PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar
+        elif [[ $SOFTWARE == "thirdpartycosmetics" ]]
+            mv $PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar "$MCPATH"/plugins/$PRODUCT-$VERSION-$LATEST.jar
+        else
+            mv $PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar "$MCPATH"/plugins/$PRODUCT-$SOFTWARE-$VERSION-$LATEST.jar
+        fi
+        cd "$MCPATH"/cache && rm -r -f cycodly
+        echo "$MCSOFTWARE-$MCVERSION-$LATEST.jar updated";
+        return;
+    fi
 }
-function updateFloodgate() {
-    
-}
-function updateiHydraulic() {
+
+function ViaProducts() {
 
 }
-function updateHurricane() {
 
-}
-function updateCosmetics() {
-
-}
-
-function updateViaVersion() {
+function ModrinthPlugin() {
 
 }
 
-if ! grep -qE 'velocity:\s*true|bungeecord:\s*true' "$MCPATH"/configs/paper-global.yml "$MCPATH"/spigot.yml; then
-    updateGeyser 
-fi
-updateFloodgate
 case $MCSOFTWARE in
 paper|craftbukkit|spigot|purpur)
     if ! grep -qE 'velocity:\s*true|bungeecord:\s*true' "$MCPATH"/configs/paper-global.yml "$MCPATH"/spigot.yml; then
-    updateService geyser spigot
+    GeyserPlugin geyser spigot
     fi
-    updateService hurricane spigot
-    updateService thirdpartycosmetics thirdpartycosmetics
+    GeyserPlugin floodgate spigot
+    GeyserPlugin hurricane spigot
+    GeyserPlugin thirdpartycosmetics thirdpartycosmetics
     ;;
 mohist|youer)
-    SOFTWARE=neoforge
-    if ! grep -qE 'velocity:\s*true|bungeecord:\s*true' "$MCPATH"/configs/paper-global.yml "$MCPATH"/spigot.yml; then
-    updateService geyser neoforge
-    fi
-    updateService hydraulic neoforge
-    updateService hurricane spigot
-    updateService thirdpartycosmetics thirdpartycosmetics
+    GeyserPlugin floodgate spigot
+    GeyserPlugin hydraulic neoforge
+    GeyserPlugin hurricane spigot
+    GeyserPlugin thirdpartycosmetics thirdpartycosmetics
     ;;
 banner)
-    if ! grep -qE 'velocity:\s*true|bungeecord:\s*true' "$MCPATH"/configs/paper-global.yml "$MCPATH"/spigot.yml; then
-    updateService geyser fabric
-    fi
-    updateService hydraulic fabric
-    updateService hurricane spigot
-    updateService thirdpartycosmetics thirdpartycosmetics
+    GeyserPlugin floodgate spigot
+    GeyserPlugin hydraulic fabric
+    GeyserPlugin hurricane spigot
+    GeyserPlugin thirdpartycosmetics thirdpartycosmetics
     ;;
 velocity)
-    updateService geyser velocity
+    GeyserPlugin geyser velocity
+    GeyserPlugin floodgate velocity
     ;;
 bungeecord|waterfall)
-    updateService geyser fabric
+    GeyserPlugin geyser bungeecord
+    GeyserPlugin floodgate bungee
+    ViaProducts 
     ;;
 esac
-
-
 
 
 ########################################
