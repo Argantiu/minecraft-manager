@@ -172,11 +172,11 @@ function setup() {
     
     if [[ "$mclang" =~ ^de_ ]]; then
         wget -q $api/resources/de/messages.json
-        cd ../
+        cd ./
         wget -q $api/resources/de/mcsys.yml
     else
         wget -q $api/resources/en/messages.json
-        cd ../
+        cd ./
         wget -q $api/resources/en/mcsys.yml
     fi
     sed -i "s|directory:.*|directory: $directory|g" "$directory"/mcsys.yml >/dev/null 2>&1
