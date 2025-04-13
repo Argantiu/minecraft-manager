@@ -1,6 +1,6 @@
 #!/bin/bash
 function logMessage() {
-    local rawmessage=$(jq -r .$1 "$MCPATH"/cycodly/messages.json)
+    local rawmessage=$(jq -r ."$1" "$MCPATH"/cycodly/messages.json)
     if [[ -z $rawmessage || $rawmessage == "null" ]]; then
         echo "Error: Message key '$1' not found in messages.json" >&2
         return 1
@@ -30,7 +30,7 @@ function logMessage() {
 
 function configReader() {
     local file=$1
-    local prefix=$2
+    local prefix=$1
     local s='[[:space:]]*' 
     local w='[a-zA-Z0-9_]*' 
     local fs=$(echo @ | tr @ '\034')
@@ -60,8 +60,10 @@ function configReader() {
 }
 
 function minecraftServiceStart() {
-    local javabin=$1
-    local ram="$($MCRAM | tr -d 'B')"
+    local javabin
+    javabin=$1
+    local ram
+    ram="$($MCRAM | tr -d 'B')"
     cd "$MCPATH" || exit 1
     logMessage mcstart.start;
     #if [[] $MCSOFTWARE == "velocity"]]
@@ -148,4 +150,4 @@ function validConfig() {
   fi
 }
 
-eval $(configReader ./../mcsys.yml MC)
+eval "$(configReader ./../mcsys.yml MC)"
