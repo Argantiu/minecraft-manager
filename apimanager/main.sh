@@ -174,15 +174,15 @@ function setup() {
         wget -q $api/resources/de/messages.json
         cd ./
         wget -q $api/resources/de/mcsys.yml &
-        wait for $!
+        wait $!
     else
         wget -q $api/resources/en/messages.json
         cd ./
         wget -q $api/resources/en/mcsys.yml &
-        wait for $!
+        wait $!
     fi
-    sed -i "$directory"/mcsys.yml "s|directory:.*|directory: $directory|g"  2>&1
-    sed -i "$directory"/mcsys.yml "s|name:.*|name: $servname|g"  2>&1
+    sed -i "s|directory:.*|directory: $directory|g" "$directory"/mcsys.yml >/dev/null 2>&1
+    sed -i "s|name:.*|name: $servname|g" "$directory"/mcsys.yml >/dev/null 2>&1
     source ./cycodly/CycodlySystemManager.sh
     wget -q https://github.com/Argantiu/.github/releases/download/v3.6.0.0/mcstats.used.yml && rm mcstats.used.yml >/dev/null 2>&1
     logMessage setup.finish
