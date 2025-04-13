@@ -5,6 +5,9 @@
 		"rmY": "§r[§aArgantiu§r] Deleting system...",
 		"rmN": "§r[§aArgantiu§r] OK System stays."
 	},
+	"setup": {
+		"finish": "§r[§aArgantiu§r] Setup finished! Please look into the mcsys.yml"
+	},
 	"start": {
 		"online": "§r[§6Warning§r] Server is already online! Use:\n§r[§aArgantiu§r] screen -r %servername% to get the console.\n§r[§aArgantiu§r] less -r screenlog.0 to view the log.",
 		"start": "§r[§aArgantiu§r] Start %servername% server...",
@@ -27,5 +30,5 @@
 	},
 	"javaInstall": {
 		"error": "§r[§4ERROR§r] §6Java installation failed!§r"
-	} 
+	}
 }

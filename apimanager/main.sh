@@ -1,5 +1,9 @@
 #!/bin/bash
-source ./cycodly/CycodlySystemManager.sh
+if [ -f "./cycodly/CycodlySystemManager.sh" ]; then
+    source ./cycodly/CycodlySystemManager.sh
+else
+    setup
+fi
 # Preparation functions
 EXCLUDE=(
     "--exclude=${MCNAME}.jar"
@@ -15,7 +19,7 @@ EXCLUDE=(
 # System functions
 function start() {
     local backupPath="$MCPATH"/cycodly/systembackup
-
+    
     
     
     if screen -list | grep -q "$MCNAME"; then
@@ -132,6 +136,57 @@ function remove() {
     return;
 }
 
+function setup() {
+    local api=https://raw.githubusercontent.com/Argantiu/minecraft-manager/refs/heads/v4/apimanager
+    local mclang=$LANG
+    local directory=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+    local servname=$(basename "$directory" | tr '[:upper:]' '[:lower:]')
+    apt-get -q -y update >/dev/null 2>&1
+    apt-get -q -y upgrade >/dev/null 2>&1
+    
+    for cmd in wget joe screen sudo zip xargs diff rpl jq; do
+        if ! command -v "$cmd" >/dev/null 2>&1; then
+            case "$cmd" in
+                xargs) apt-get install -y findutils >/dev/null 2>&1 ;;
+                diff)  apt-get install -y diffutils >/dev/null 2>&1 ;;
+                *)     apt-get install -y "$cmd" >/dev/null 2>&1 ;;
+            esac
+        fi
+    done
+    
+    if ! command -v yq >/dev/null 2>&1; then
+        local bin_path="/usr/local/bin/yq"
+        if [[ $EUID -ne 0 ]]; then
+            bin_path="$HOME/.local/bin/yq"
+            mkdir -p "$(dirname "$bin_path")"
+            export PATH="$HOME/.local/bin:$PATH"
+        fi
+        wget -q https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O "$bin_path" && chmod +x "$bin_path"
+    fi
+    
+    mkdir -p ./cycodly && cd ./cycodly
+    wget -q $api/CycodlySystemManager.sh
+    [[ ! -s CycodlySystemManager.sh ]] && echo "ERROR: Script not loaded, no Network connection." && return 1
+    wget -q $api/CycodlySoftwareUpdater.sh
+    [[ ! -s CycodlySoftwareUpdater.sh ]] && echo "ERROR: Script not loaded, no Network connection." && return 1
+    
+    if [[ "$mclang" =~ ^de_ ]]; then
+        wget -q $api/resources/de/messages.json
+        cd ../
+        wget -q $api/resources/de/mcsys.yml
+    else
+        wget -q $api/resources/en/messages.json
+        cd ../
+        wget -q $api/resources/en/mcsys.yml
+    fi
+    sed -i "s|directory:.*|directory: $directory|g" "$directory"/mcsys.yml >/dev/null 2>&1
+    sed -i "s|name:.*|name: $servname|g" "$directory"/mcsys.yml >/dev/null 2>&1
+    source ./cycodly/CycodlySystemManager.sh
+    wget -q https://github.com/Argantiu/.github/releases/download/v3.6.0.0/mcstats.used.yml && rm mcstats.used.yml >/dev/null 2>&1
+    logMessage setup.finish
+    return;
+}
+
 validConfig
 cd "$MCPATH" || exit
 case "$1" in
@@ -139,5 +194,11 @@ case "$1" in
     2|'stop') stop ;;
     3|'restart') restart ;;
     4|'remove') remove ;;
-    *) logMessage tool.help ;;
+    *)
+        if ! logMessage tool.help >/dev/null 2>&1; then
+            setup
+        else
+            logMessage tool.help
+        fi
+    ;;
 esac

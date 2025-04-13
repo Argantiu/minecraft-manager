@@ -49,6 +49,8 @@ esac
 { echo -n -e " "
 read -r ASOFT; }
 MCWARE=$(echo "$ASOFT" | tr '[:upper:]' '[:lower:]' | sed 's/mc//')
+
+
 mkdir -p "$DICTY"/libraries/mcsys
 if ! command -v wget >/dev/null 2>&1; then apt-get install wget -y >/dev/null 2>&1; fi
 cd "$DICTY" || exit 1

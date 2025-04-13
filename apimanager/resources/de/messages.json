@@ -5,6 +5,9 @@
 		"rmY": "§r[§aArgantiu§r] System wird endfernt...",
 		"rmN": "§r[§aArgantiu§r] System bleibt."
 	},
+	"setup": {
+		"finish": "§r[§aArgantiu§r] Setup fertig! Bitte in die mcsys.yml reingucken!"
+	},
 	"start": {
 		"online": "§r[§6Warnung§r] Server ist schon online! Nutze:\n§r[§aArgantiu§r] screen -r %servername% um in die Konsole zu gelangen.\n§r[§aArgantiu§r] less -r screenlog.0 um in den log zu sehen.",
 		"start": "§r[§aArgantiu§r] Starte %servername% Server...",
