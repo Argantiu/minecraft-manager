@@ -1,8 +1,6 @@
 #!/bin/bash
 if [ -f "./cycodly/CycodlySystemManager.sh" ]; then
     source ./cycodly/CycodlySystemManager.sh
-else
-    setup
 fi
 # Preparation functions
 EXCLUDE=(
@@ -141,6 +139,8 @@ function setup() {
     local mclang=$LANG
     local directory=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
     local servname=$(basename "$directory" | tr '[:upper:]' '[:lower:]')
+
+    echo -e "Welcome to Cycodly's server management tool\nStarting setup..."
     apt-get -q -y update >/dev/null 2>&1
     apt-get -q -y upgrade >/dev/null 2>&1
     
@@ -187,7 +187,9 @@ function setup() {
     return;
 }
 
-validConfig
+if command -v validConfig >/dev/null 2>&1; then
+    validConfig
+fi
 cd "$MCPATH" || exit
 case "$1" in
     1|'start') start ;;
