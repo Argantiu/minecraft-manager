@@ -2,7 +2,7 @@
 function logMessage() {
     local rawmessage=$(jq -r ."$1" "$MCPATH"/cycodly/messages.json)
     if [[ -z $rawmessage || $rawmessage == "null" ]]; then
-        echo "Error: Message key '$1' not found in messages.json" >&2
+        echo "ERROR: Message key '$1' not found in messages.json" >&2
         return 1
     fi
 

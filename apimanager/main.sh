@@ -15,20 +15,21 @@ EXCLUDE=(
 # System functions
 function start() {
     local backupPath="$MCPATH"/cycodly/systembackup
+
+    
     
     if screen -list | grep -q "$MCNAME"; then
-        logMessage mcstart.online;
+        logMessage start.online;
         return;
     else
-        logMessage mcstart.start;
+        logMessage start.start;
     fi
     
     if [[ $MCBACKUP == "true" ]]; then
-        logMessage mcstart.backup.create
-        mkdir -p "$backupPath"
-        find "$backupPath"/* -type f -mtime +10 -delete 2>&1
+        logMessage start.backup.create
+        mkdir -p "$backupPath" && find "$backupPath"/* -maxdepth 1 -type f -mtime +10 -delete 2>&1
         tar -pzcf "$backupPath"/backup-"$MCNAME"-"$(date +%Y.%m.%d.%H.%M.%S)".tar.gz "${EXCLUDE[@]}" ./
-        logMessage mcstart.backup.finish;
+        logMessage start.backup.finish;
     fi
     ### Proxy support for future versions
     #if [[ $MCSOFTWARE =~ (spigot|paper|purpur|banner|youer|mohist)$]]; then
@@ -54,10 +55,10 @@ function start() {
 
 function stop() {
     if ! screen -list | grep -q "$MCNAME"; then
-        logMessage mcstop.offline;
+        logMessage stop.offline;
         return;
     fi
-    logMessage mcstop.stop;
+    logMessage stop.stopservice;
     if ! [[ $MCSOFTWARE =~ ^(bungeecord|velocity|waterfall)$ ]] && [[ $MCCOUNTER == "true" ]]; then
         local ip=$(hostname -I | grep -o '^\S*') # the server ip. This can be 127.0.0.1
         local port=$(cat < "$MCPATH"/server.properties | grep server-port | grep -oE '[0-9]+') # get's server port
@@ -75,7 +76,7 @@ function stop() {
                         sleep 1s;
                     fi
                 done
-                screen -Rd "$MCNAME" -X stuff "say $(logMessage mcstop.stop_n) $(printf '\r')";
+                screen -Rd "$MCNAME" -X stuff "say $(logMessage stop.stopservice) $(printf '\r')";
             fi
         else
             logMessage counter.invalid;
@@ -93,16 +94,16 @@ function stop() {
         fi
     done
     if screen -list | grep -q "$MCNAME"; then
-        logMessage mcstop.kill;
+        logMessage stop.kill;
         pkill -15 -f "SCREEN -dmSL $MCNAME"
     fi
-    logMessage mcstop.stopped;
+    logMessage stop.stopped;
     return;
 }
 
 function restart() {
     if ! screen -list | grep -q "$MCNAME"; then
-        logMessage mcstop.offline;
+        logMessage stop.offline;
         start;
     else
         stop &
@@ -119,14 +120,14 @@ function remove() {
         read -r MCONFIRM;
     }
     if [[ $MCONFIRM =~ ^("ja"|"yes")$ ]]; then
-        logMessage tool.rm_ok;
+        logMessage tool.rmY;
         stop &
         wait for $!
         rm "$MCPATH"/mcsys.yml;
         rm -r "$MCPATH"/cycodly;
         rm -- "$0"
     else
-        logMessage tool.rm_no;
+        logMessage tool.rmN;
     fi
     return;
 }

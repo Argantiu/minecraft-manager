@@ -1,12 +1,12 @@
 {
 	"tool": {
 		"help": "§r[§aArgantiu§r] What do you want to do?\n§r[§aArgantiu§r] 1 = Start\n§r[§aArgantiu§r] 2 = Stop\n§r[§aArgantiu§r] 3 = Restart\n§r[§aArgantiu§r] 4 = Remove system",
-		"remove": "§r[§aArgantiu§r] Do you want to remove the system? (Server itself won't be removed)\n[§ayes§r|§cno§r]",
-		"rm_ok": "§r[§aArgantiu§r] Deleting system...",
-		"rm_no": "§r[§aArgantiu§r] OK System stays."
+		"remove": "§r[§6Warning§r] Do you want to remove the system? (Server itself won't be removed)\n[§ayes§r|§cno§r]",
+		"rmY": "§r[§aArgantiu§r] Deleting system...",
+		"rmN": "§r[§aArgantiu§r] OK System stays."
 	},
-	"mcstart": {
-		"online": "§r[§aArgantiu§r] Server is already online! Use:\n§r[§aArgantiu§r] screen -r %servername% to get the console.\n§r[§aArgantiu§r] less -r screenlog.0 to view the log.",
+	"start": {
+		"online": "§r[§6Warning§r] Server is already online! Use:\n§r[§aArgantiu§r] screen -r %servername% to get the console.\n§r[§aArgantiu§r] less -r screenlog.0 to view the log.",
 		"start": "§r[§aArgantiu§r] Start %servername% server...",
 		"bedrock": "§r[§aArgantiu§r] Updating Bedrock Edition...",
 		"backup": {
@@ -14,15 +14,18 @@
 			"finish": "§r[§aArgantiu§r] Backup is in the /libraries/mcsys/backups directory."
 		}
 	},
-	"mcstop": {
-		"offline": "§r[§aArgantiu§r] Server already stopped!",
-		"stop_n": "§r[§aArgantiu§r] Stop %servername% server...",
-		"kill": "§r[§aArgantiu§r] Server hasn't reacted after 30 seconds. Kill Minecraft instance...",
+	"stop": {
+		"offline": "§r[§6Warning§r] Server already stopped!",
+		"stopservice": "§r[§aArgantiu§r] Stop %servername% server...",
+		"kill": "§r[§6Warning§r] §6Server hasn't reacted after 30 seconds. Kill Minecraft instance...§r",
 		"stopped": "§r[§aArgantiu§r] Server %servername% stopped."
 	},
 	"counter": {
 		"sec": "seconds",
 		"stop": "Server stopping in",
-		"invalid": "§r[§aArgantiu§r] Counter information invalid.\n§r[§aArgantiu§r] Please open the port to the outside or change it.\n§r[§aArgantiu§r] Or disable in the config §acounter:§c false§r"
-	}
+		"invalid": "§r[§4ERROR§r] §6Counter information invalid.§r\n§r[§4ERROR§r] Please open the port to the outside or change it.\n§r[§4ERROR§r] Or disable in the config §acounter:§c false§r"
+	},
+	"javaInstall": {
+		"error": "§r[§4ERROR§r] §6Java installation failed!§r"
+	} 
 }

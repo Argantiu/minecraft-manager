@@ -1,12 +1,12 @@
 {
 	"tool": {
 		"help": "§r[§aArgantiu§r] Was willst du den machen?\n§r[§aArgantiu§r] 1 = Starten\n§r[§aArgantiu§r] 2 = Stoppen\n§r[§aArgantiu§r] 3 = Neustarten\n§r[§aArgantiu§r] 5 = System Endfernen",
-		"remove": "§r[§aArgantiu§r] Willst du das System endfernen? (Server bleibt erhalten)\n[§aja§r|§cmnein§r",
-		"rm_ok": "§r[§aArgantiu§r] System wird endfernt...",
-		"rm_no": "§r[§aArgantiu§r] System bleibt."
+		"remove": "§r[§6Warnung§r] Willst du das System endfernen? (Server bleibt erhalten)\n[§aja§r|§cmnein§r",
+		"rmY": "§r[§aArgantiu§r] System wird endfernt...",
+		"rmN": "§r[§aArgantiu§r] System bleibt."
 	},
-	"mcstart": {
-		"online": "§r[§aArgantiu§r] Server ist schon online! Nutze:\n§r[§aArgantiu§r] screen -r %servername% um in die Konsole zu gelangen.\n§r[§aArgantiu§r] less -r screenlog.0 um in den log zu sehen.",
+	"start": {
+		"online": "§r[§6Warnung§r] Server ist schon online! Nutze:\n§r[§aArgantiu§r] screen -r %servername% um in die Konsole zu gelangen.\n§r[§aArgantiu§r] less -r screenlog.0 um in den log zu sehen.",
 		"start": "§r[§aArgantiu§r] Starte %servername% Server...",
 		"bedrock": "§r[§aArgantiu§r] Aktualisiere Bedrock Edition...",
 		"backup": {
@@ -14,15 +14,18 @@
 			"finish": "§r[§aArgantiu§r] Backup ist im /libraries/mcsys/backups Ordner"
 		}
 	},
-	"mcstop": {
-		"offline": "§r[§aArgantiu§r] Der Server wurde schon gestoppt!",
-		"stop_n": "§r[§aArgantiu§r] Stoppe %servername% Server...",
-		"kill": "§r[§aArgantiu§r] Server hat nach 30 sekunden nicht reagiert, Minecraft instance wird abgewürgt.",
+	"stop": {
+		"offline": "§r[§6Warnung§r] Der Server wurde schon gestoppt!",
+		"stopservice": "§r[§aArgantiu§r] Stoppe %servername% Server...",
+		"kill": "§r[§6Warnung§r] §6Server hat nach 30 sekunden nicht reagiert, Minecraft instance wird abgewürgt.§r",
 		"stopped": "§r[§aArgantiu§r] Server %servername% gestoppt."
 	},
 	"counter": {
 		"sec": "sekunden",
 		"stop": "Server stoppt in",
-		"invalid": "§r[§aArgantiu§r] Counter Information ungültig.\n§r[§aArgantiu§r] Bitte mache deinen Port zugänglich oder ändere ihn.\n§r[§aArgantiu§r] Oder deaktivire es in der config §acounter:§c false§r"
+		"invalid": "§r[§4ERROR§r] §6Counter Information ungültig.§r\n§r[§4ERROR§r] Bitte mache deinen Port zugänglich oder ändere ihn.\n§r[§4ERROR§r] Oder deaktivire es in der config §acounter:§c false§r"
+	},
+	"javaInstall": {
+		"error": "§r[§4ERROR§r] §6Java installation fehlgeschlagen!§r"
 	}
 }
